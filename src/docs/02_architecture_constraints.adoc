@@ -20,9 +20,10 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 .Conventions
 |===
 |Constraint|Explanation
-|Code | We must use React 
+| Code | We use React to implement the project
 | Language | Documentation and code is developed in English
 | Documentation | All our documentation is based on the arc42 template 
+| POD | Developed by us
 |===
 
 .Organizational Constraints
@@ -32,4 +33,12 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 |Project duration |The time we are given to develop our project are around 4 months
 |Participation control | The team has a git repository with the complete commit history of all the members to take track of the participation
 |Minutes| In the practical classes we write all the progress or modifications done in the project
+|===
+
+.Technical Constraints
+|===
+|Constraint|Explanation
+| Web Application | Our application has a web interface
+| Decentralized Architecture | Instead of relying on a single central server it distributes workloads among several machines
+| Data format | The PODs store the data of the application using JSON files
 |===
