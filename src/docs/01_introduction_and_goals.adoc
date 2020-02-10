@@ -41,7 +41,6 @@ Keep these excerpts as short as possible. Balance readability of this document w
 | Reliability-Security | Users need to trust the app and the correct data that they introduce and its decentralization to use it  | Medium-High
 |===
 
-
 === Stakeholders
 
 [options="header",cols="1,3"]
@@ -52,4 +51,3 @@ Keep these excerpts as short as possible. Balance readability of this document w
 | The Inrupt Company |  The enterprise that created Solid will value us as if it were a teacher to give a diploma to the winning team members 
 | Professors | Our lecture and practical Teachers and also, Coordinator of the Software Architecture. To see their students are able to investigate and develop a new project, so that they can be prepare for the future
 |===
-***
