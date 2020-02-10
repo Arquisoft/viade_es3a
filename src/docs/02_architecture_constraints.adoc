@@ -24,3 +24,12 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 | Language | Documentation and code is developed in English
 | Documentation | All our documentation is based on the arc42 template 
 |===
+
+.Organizational Constraints
+|===
+|Constraint|Explanation
+|Members of our team| Carlos Menéndez, Andrés Ángel González, Andrea López, Christian Gabriel, Elena Díaz, Iván Rodríguez, María González
+|Project duration |The time we are given to develop our project are around 4 months
+|Participation control | The team has a git repository with the complete commit history of all the members to take track of the participation
+|Minutes| In the practical classes we write all the progress or modifications done in the project
+|===
