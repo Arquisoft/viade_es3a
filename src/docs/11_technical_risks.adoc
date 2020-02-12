@@ -16,3 +16,11 @@ This should be your motto for systematic detection and evaluation of risks and t
 List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
 ****
 
+.Team member gives up the project
+Any member of the group can leave it at any time during the project of development, making the team schedule fall apart.
+
+.New programming language
+The team has never used React before, so the whole team needs to learn how to deal with it, which will take time. Getting used to this language is a new challenge we should deal with. The framework will help us but it also adds complexity to the tasks. Spending time on reading documentation or tutorials is required.
+
+.Architecture developing
+Designing and developing an architecture implies an additional effort and time. In order to do this, all the members of the team should interact and share each other ideas to reach an agreement. 
