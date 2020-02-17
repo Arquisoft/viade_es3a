@@ -14,7 +14,7 @@ which will not create high risks when they are not fully achieved.
 .Motivation
 Since quality requirements will have a lot of influence on architectural
 decisions you should know for every stakeholder what is really important to them,
-concrete and measurable.
+concrete and measurable .
 ****
 
 === Quality Tree
@@ -51,7 +51,7 @@ For architects, two kinds of scenarios are important:
 * Change scenarios describe a modification of the system or of its immediate environment. Example: Additional functionality is implemented or requirements for a quality attribute change.
 
 .Motivation
-Scenarios make quality requirements concrete and allow to
+Scenarios make quality requirements concrete and allow 
 more easily measure or decide whether they are fulfilled.
 
 Especially when you want to assess your architecture using methods like
