@@ -39,18 +39,32 @@ In any case the tree should include links to the scenarios of the following seec
 === Quality Scenarios
 
 [role="arc42help"]
-.Table 1. Disponibility
 
-.Table 2. Security
-.Table 3. Performance
-.Table 4. Testability
-.Table 5. Usability
+.Security
+|===
+|Scenario|Explanation|Priority
+|Decentralized data|If the server hosting the app falls, data remains safe|High
+|Data Storage|From the user´s personal computer to a Solid server|
+|===
+
+.Usability
 |===
 |Scenario|Explanation|Priority
 | Easy to learn | The users get used easily to the application|Medium
 |Good-looking interface |If the app colours are attracting for the user it will be easier and comfortable to use it|Low
+|Accesibility|Mouse is not required to use the app|Low
 |===
+
+.Modifiability
+|===
+|Scenario|Explanation|Priority
+| Clear and coherent purpose | Developers can find in the documentation where to work|Medium
+|Established methology |Visible in the documentation|Medium
+|===
+
+.Table 1: Disponibility
+.Table 3. Performance
+.Table 4. Testability
 .Table 6. Maintenance
 .Table 7. Portability
 .Table 8. Interoperability
-
