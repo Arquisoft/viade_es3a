@@ -20,6 +20,8 @@ concrete and measurable.
 === Quality Tree
 
 [role="arc42help"]
+The following diagram represents the quality scenarios which tries to show some of this project´s quality attributes, sorted by priority from high priority to lower priority.
+
 ****
 .Content
 The quality tree (as defined in ATAM – Architecture Tradeoff Analysis Method) with quality/evaluation scenarios as leafs.
@@ -62,9 +64,9 @@ In any case the tree should include links to the scenarios of the following seec
 |Established methology |Visible in the documentation|Medium
 |===
 
-.Table 1: Disponibility
-.Table 3. Performance
-.Table 4. Testability
-.Table 6. Maintenance
-.Table 7. Portability
-.Table 8. Interoperability
+.Disponibility
+.Performance
+.Testability
+.Maintenance
+.Portability
+.Interoperability
