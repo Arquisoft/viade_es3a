@@ -47,6 +47,8 @@ In any case the tree should include links to the scenarios of the following seec
 |Scenario|Explanation|Priority
 |Decentralized data|If the server hosting the app falls, data remains safe|High
 |Data Storage|From the user´s personal computer to a Solid server|
+|Login control| Each user has access only to its own account and data|High
+|Private routes| Every user's routes are private so if one user wants to share one route with a friend he has to give permissions|High
 |===
 
 .Usability
@@ -66,6 +68,10 @@ In any case the tree should include links to the scenarios of the following seec
 
 .Disponibility
 .Performance
+|===
+|Scenario |Explanation|Priority
+| Interactions with the UI are shown fast|Every change or interaction the user makes will appear without making him wait a long time | Medium
+|===
 .Testability
 .Maintenance
 .Portability
