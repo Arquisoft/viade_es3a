@@ -56,7 +56,7 @@ In any case the tree should include links to the scenarios of the following seec
 |Scenario|Explanation|Priority
 | Easy to learn | The users get used easily to the application|Medium
 |Good-looking interface |If the app colours are attracting for the user it will be easier and comfortable to use it|Low
-|Accesibility|Mouse is not required to use the app|Low
+|Accesibility|Mouse is not te only way to navigate through the app. We can use the keyboard for some function|Low
 |===
 
 .Modifiability
@@ -80,9 +80,10 @@ In any case the tree should include links to the scenarios of the following seec
 |Scenario |Explanation|Priority
 |Multiple tests| The aplication will be tested to prove its correct performance|High
 |===
-.Maintenance
+.Maintenabilty
 |===
 |Scenario |Explanation|Priority
+|Support changes| The application should support modifications without making a big impact on the usability|Medium
 |===
 .Portability
 |===
