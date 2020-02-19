@@ -67,12 +67,30 @@ In any case the tree should include links to the scenarios of the following seec
 |===
 
 .Disponibility
+|===
+|Scenario |Explanation|Priority
+|===
 .Performance
 |===
 |Scenario |Explanation|Priority
 | Interactions with the UI are shown fast|Every change or interaction the user makes will appear without making him wait a long time | Medium
 |===
 .Testability
+|===
+|Scenario |Explanation|Priority
+|Multiple tests| The aplication will be tested to prove its correct performance|High
+|===
 .Maintenance
+|===
+|Scenario |Explanation|Priority
+|===
 .Portability
+|===
+|Scenario |Explanation|Priority
+|Multiple platform| The application should be able to be launched in many different platforms.| Medium 
+|===
 .Interoperability
+|===
+|Scenario |Explanation|Priority
+|Comunication with others| Everyone's application shouldn't have problems to interact between each other|High
+|===
