@@ -1,8 +1,6 @@
 [[section-architecture-constraints]]
 == Architecture Constraints
 
-
-[role="arc42help"]
 .Conventions
 |===
 |Constraint|Explanation
