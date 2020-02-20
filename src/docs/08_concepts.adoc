@@ -7,7 +7,7 @@ relevant in multiple parts (= cross-cutting) of our system.
 
 An image is included to refer to everything that will be explained.
 
-image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
+image:images/08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
 
 === Domain model
 
