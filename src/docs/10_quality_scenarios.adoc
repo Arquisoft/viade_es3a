@@ -1,18 +1,12 @@
 [[section-quality-scenarios]]
 == Quality Requirements
 
-
-[role="arc42help"]
-
 === Quality Tree
-
-[role="arc42help"]
 The following diagram represents the quality scenarios which tries to show some of this project´s quality attributes, sorted by priority from high priority to lower priority.
 
+//TODO
 
 === Quality Scenarios
-
-[role="arc42help"]
 
 .Security
 |===
@@ -42,26 +36,31 @@ The following diagram represents the quality scenarios which tries to show some 
 |===
 |Scenario |Explanation|Priority
 |===
+
 .Performance
 |===
 |Scenario |Explanation|Priority
 | Interactions with the UI are shown fast|Every change or interaction the user makes will appear without making him wait a long time | Medium
 |===
+
 .Testability
 |===
 |Scenario |Explanation|Priority
 |Multiple tests| The aplication will be tested to prove its correct performance|High
 |===
+
 .Maintenabilty
 |===
 |Scenario |Explanation|Priority
 |Support changes| The application should support modifications without making a big impact on the usability|Medium
 |===
+
 .Portability
 |===
 |Scenario |Explanation|Priority
 |Multiple platform| The application should be able to be launched in many different platforms.| Medium 
 |===
+
 .Interoperability
 |===
 |Scenario |Explanation|Priority
