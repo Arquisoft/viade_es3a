@@ -7,7 +7,10 @@
 
 The building block view shows the static decomposition of our system into building blocks, as well as their inner dependencies.
 
- 
+This section is a hierarchical collection of black boxes and white boxes and their descriptions, as we can see in the figure below.
+
+image:05_building_blocks-EN.png["Hierarchy of building blocks"]
+
 *Level 1* 
 It is displayed the white box description of the overall system together -- with blackbox descriptions of all contained building blocks.
 
