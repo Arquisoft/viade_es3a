@@ -4,7 +4,7 @@
 === Quality Tree
 The following diagram represents the quality scenarios which tries to show some of this project´s quality attributes, sorted by priority from high priority to lower priority.
 
-//TODO
+image::images/qualityTree.png[Quality Tree]
 
 === Quality Scenarios
 
@@ -30,11 +30,6 @@ The following diagram represents the quality scenarios which tries to show some 
 |Scenario|Explanation|Priority
 | Clear and coherent purpose | Developers can find in the documentation where to work|Medium
 |Established methology |Visible in the documentation|Medium
-|===
-
-.Disponibility
-|===
-|Scenario |Explanation|Priority
 |===
 
 .Performance
