@@ -1,7 +1,6 @@
 [[section-runtime-view]]
 == Runtime View
-=== <Runtime Scenario 1>
-.LOG IN
+=== <LOG IN>
 * 1. When we open the application we will see a place to introduce the personal ID and the password. Introduce it and press the botton "OK".
 * 2. Later, our application will ask the server to approve the login request. 
 * 3. When the server accepts, the users will have access to their routes and friends.
