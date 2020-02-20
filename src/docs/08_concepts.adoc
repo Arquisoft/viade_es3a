@@ -1,67 +1,31 @@
 [[section-concepts]]
 == Cross-cutting Concepts
 
-
-[role="arc42help"]
-****
 .Content
 This section describes overall, principal regulations and solution ideas that are
-relevant in multiple parts (= cross-cutting) of your system.
-Such concepts are often related to multiple building blocks.
-They can include many different topics, such as
+relevant in multiple parts (= cross-cutting) of our system.
 
-* domain models
-* architecture patterns or design patterns
-* rules for using specific technology
-* principal, often technical decisions of overall decisions
-* implementation rules
-
-.Motivation
-Concepts form the basis for _conceptual integrity_ (consistency, homogeneity)
-of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.
-
-Some of these concepts cannot be assigned to individual building blocks
-(e.g. security or safety). This is the place in the template that we provided for a
-cohesive specification of such concepts.
-
-.Form
-The form can be varied:
-
-* concept papers with any kind of structure
-* cross-cutting model excerpts or scenarios using notations of the architecture views
-* sample implementations, especially for technical concepts
-* reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)
-
-.Structure
-A potential (but not mandatory) structure for this section could be:
-
-* Domain concepts
-* User Experience concepts (UX)
-* Safety and security concepts
-* Architecture and design patterns
-* "Under-the-hood"
-* development concepts
-* operational concepts
-
-Note: it might be difficult to assign individual concepts to one specific topic
-on this list.
+An image is included to refer to everything that will be explained.
 
 image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
-****
 
+=== Domain model
 
-=== _<Concept 1>_
+ * It is a conceptual model of all issues related to a specific problem. In our case, our domain model covers four things:
 
-_<explanation>_
+** Routes
+** User (save the routes)
+** Google Maps (shows the routes in a map)
+** Friend (receives the route that you send him/her)
 
+=== User Experience
 
+This is a routes management system and its meant to allow several people to save, see and share their routes easily. User interface must be friendly and accessible so all kind of user profiles can use the application without any impediment or difficulty.
 
-=== _<Concept 2>_
+=== Safety and security
 
-_<explanation>_
+It’s important to preserve the privacy of the data and the security of the user during the usage and the not usage of Viade.
 
-...
+=== Privacy
 
-=== _<Concept n>_
-
-_<explanation>_
+The most important concept about the project, Privacy. When you use an app that uses SOLID specs and personal PODs where the user save his/her data and, in this way, only this user is the owner of his data and not an enterprise/business that trade with this.
