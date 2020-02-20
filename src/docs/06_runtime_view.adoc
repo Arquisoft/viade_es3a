@@ -8,8 +8,4 @@
 
 //TODO Diagram
 
-=== ...
-
-=== <Runtime Scenario n>
-
 
