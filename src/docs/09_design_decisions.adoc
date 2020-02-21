@@ -4,7 +4,6 @@ We haven't taken any major design dicisions other than the following.
 
 As with every Solid app we will have to follow a P2P architecture without the central database, user's information will be stored in their pods
 
-# TO DO: complete table with the design decisions' rundown
 [options="header"]
 |===
 | Property | Decision | Explanation
