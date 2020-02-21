@@ -5,8 +5,12 @@ We haven't taken any major design dicisions other than the following.
 As with every Solid app we will have to follow a P2P architecture without the central database, user's information will be stored in their pods
 
 # TO DO: complete table with the design decisions' rundown
+[options="header"]
 |===
 | Property | Decision | Explanation
 | Database | No Database| The idea of using Solid is to avoid a central database to store data
 | Architecture | P2P | All solid apps work with P2P
+| FrameWork | React Native| It is a mandatory rule of this course to use React as the framework
+| Run-Time enviroment | Node.js | We will use Node to launch and build the app 
+| Documentation | Arc42 | It's mandatory aswell to use Arc42
 |===
