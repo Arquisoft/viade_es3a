@@ -9,7 +9,7 @@ The building block view shows the static decomposition of our system into buildi
 
 This section is a hierarchical collection of black boxes and white boxes and their descriptions, as we can see in the figure below.
 
-image: d05_complete.jpg["Hierarchy of building blocks- Viade"]
+image:d05_complete.jpg["Hierarchy of building blocks- Viade"]
 
 *Level 1* 
 
