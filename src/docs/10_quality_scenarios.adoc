@@ -2,7 +2,7 @@
 == Quality Requirements
 
 === Quality Tree
-The following diagram represents the quality scenarios which tries to show some of this project´s quality attributes, sorted by priority from high priority to lower priority.
+The following diagram represents the quality scenarios which tries to show some of this project´s quality attributes.
 
 image::images/qualityTree.png[Quality Tree]
 
