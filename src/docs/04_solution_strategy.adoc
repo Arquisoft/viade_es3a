@@ -1,24 +1,15 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
+=== Decisions
+The following list shows some decisions we have made to develop this proyect
 
-[role="arc42help"]
-****
-.Contents
-A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
+* Use of *SOLID* to save personal user's routes in the application. User will be able to decide which data wants to store and who has access to it. SOLID's main advantage is that it will allow us to have a completely descentralized application and fully under user's controll using PODS.
 
-* technology decisions
-* decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
-* decisions on how to achieve key quality goals
-* relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
+* We decided to use *JavaScript* to develop the application, because it's easier to use with SOLID and create web applications.
 
-.Motivation
-These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
+* We will use *Node.js*, an asynchronous event-driven JavaScript runtime what ables to build scalable network applications. It is compatible with SOLID an they explain how to use it to run your server quickly.
 
-.Form
-Keep the explanation of these key decisions short.
+* *Google Maps API* may allow users to see their routes in a map. This routes will be stored in *KML* format because it's the most commonly used standard that API supports and we have also used it before in another subject, so we are familiar with it.
 
-Motivate what you have decided and why you decided that way,
-based upon your problem statement, the quality goals and key constraints.
-Refer to details in the following sections.
-****
+* For data exchange and storage we decided to used *JSON*, an open-standard file format that we consider easier to manipulate than other formats like XML.
