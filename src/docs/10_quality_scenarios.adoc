@@ -4,7 +4,7 @@
 === Quality Tree
 The following diagram represents the quality scenarios which tries to show some of this project´s quality attributes.
 
-image::images/qualityTree.png[Quality Tree]
+image::qualityTree.png[Quality Tree]
 
 === Quality Scenarios
 
