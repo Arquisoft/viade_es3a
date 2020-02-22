@@ -2,7 +2,7 @@
 == Solution Strategy
 
 === Decisions
-The following list shows some decisions we have made to develop this project. This decisions may change because we didn't start
+The following list shows some decisions we have made to develop this project.
 
 * Use of *SOLID* to save personal user's routes in the application. User will be able to decide which data wants to store and who has access to it. SOLID's main advantage is that it will allow us to have a completely descentralized application and fully under user's controll using PODS.
 
