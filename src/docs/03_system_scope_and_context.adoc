@@ -18,11 +18,11 @@ Viade will contact Solid POD providers to store the routes and other related inf
 Viade will allow to show the routes on a map using Google Maps.
 Viade will allow to see routes generated with other different applications.
 
-image::images/BusinessContext.jpg[Business Context Diagram]
+image::BusinessContext.jpg[Business Context Diagram]
 
 === Technical Context
 
 The application is a a decentralised web based app, the users will store the data in the solid pods for wich they will need internet acces.
 The idea is for users to be able to share routes through urls without the need of a central database in wich to store the data
 
-image::images/TechnicalContext.PNG[Technical Context Diagram]
+image::TechnicalContext.PNG[Technical Context Diagram]
