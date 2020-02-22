@@ -4,12 +4,12 @@
 === Decisions
 The following list shows some decisions we have made to develop this project.
 
-* Use of *SOLID* to save personal user's routes in the application. User will be able to decide which data wants to store and who has access to it. SOLID's main advantage is that it will allow us to have a completely descentralized application and fully under user's controll using PODS.
+* Use of *https://solid.inrupt.com/[SOLID]* to save personal user's routes in the application. User will be able to decide which data wants to store and who has access to it. SOLID's main advantage is that it will allow us to have a completely descentralized application and fully under user's controll using PODS.
 
-* We decided to use *JavaScript* to develop this program, because it's easier to use with SOLID and create web applications. Also, we need to use *React Native* for this subject, a JavaScript library that lets you build web applications or mobile apps.
+* We decided to use *https://developer.mozilla.org/es/docs/Web/JavaScript[JavaScript]* to develop this program, because it's easier to use with SOLID and create web applications. Also, we need to use *https://facebook.github.io/react-native/[React Native]* for this subject, a JavaScript library that lets you build web applications or mobile apps.
 
-* We will use *Node.js*, an asynchronous event-driven JavaScript runtime what ables to build scalable network applications. It is compatible with SOLID an they explain how to use it to run your server quickly.
+* We will use *https://nodejs.org/es/[Node.js]*, an asynchronous event-driven JavaScript runtime what ables to build scalable network applications. It is compatible with SOLID an they explain how to use it to run your server quickly.
 
-* *Google Maps API* may allow users to see their routes in a map. This routes will be stored in *KML* format because it's the most commonly used standard that API supports and we have also used it before in another subject, so we are familiar with it.
+* *https://cloud.google.com/maps-platform?hl=es[Google Maps API]* may allow users to see their routes in a map. This routes will be stored in *https://developers.google.com/kml/documentation/kml_tut[KML]* format because it's the most commonly used standard that API supports and we have also used it before in another subject, so we are familiar with it.
 
-* For data exchange and storage we decided to used *JSON*, an open-standard file format that we consider easier to manipulate than other formats like XML.
+* For data exchange and storage we decided to used *https://www.json.org/json-en.html[JSON]*, an open-standard file format that we consider easier to manipulate than other formats like XML.
