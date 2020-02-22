@@ -16,7 +16,7 @@ image:d05_complete.jpg["Hierarchy of building blocks- Viade"]
 In the first level, we can find the components, the model and the different services of the system, this is because we are using a MVC model, so this allow us to distribute the responsabilities of the system in different parts.
 
 
-image:doc05_level1.jpg["Level 1"]
+image:d05_level1.jpg["Level 1"]
 
 
 
@@ -31,6 +31,6 @@ In the second level, zooms into the components of our application, we decided to
       * Routes management
 
 
-image:doc05_level2.jpg["Level 2"]
+image:d05_level2.jpg["Level 2"]
 
         
