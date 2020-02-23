@@ -1,31 +1,20 @@
 [[section-glossary]]
 == Glossary
 
-
-
-[role="arc42help"]
-****
-.Contents
-The most important domain and technical terms that your stakeholders use when discussing the system.
-
-You can also see the glossary as source for translations if you work in multi-language teams.
-
-.Motivation
-You should clearly define your terms, so that all stakeholders
-
-* have an identical understanding of these terms
-* do not use synonyms and homonyms
-
-.Form
-A table with columns <Term> and <Definition>.
-
-Potentially more columns in case you need translations.
-
-****
-
 [options="header"]
 |===
 | Term         | Definition
-| <Term-1>     | <definition-1>
-| <Term-2>     | <definition-2>
+| Arc42       |arc42 is a template for architecture communication and documentation, that tries to anser whatand how should we document about our architecture.
+| JavaScript     |JavaScript is a programming language that is mainly used to create dynamic web pages.
+A dynamic web page is one that incorporates effects such as text that appears and disappears, animations, actions that are activated by pressing buttons and windows with warning messages to the user.
+For more information visit https://en.wikipedia.org/wiki/JavaScript https://uniwebsidad.com/libros/javascript/capitulo-1
+| Node.js     |Node.js is a runtime enviroment that executes Javascript code outside of a browser.
+| POD     | Users stores personal data in "pods" (personal online data stores). PODs are like secure USB sticks for the Web, that you can access from anywhere. 
+For more information visit https://solid.inrupt.com/how-it-works
+A POD can be obtained on a Solid server at the following link: https://solid.inrupt.com/get-a-solid-pod
+| React     | React (also known as React.js or ReactJS) is a JavaScript library for building user interfaces. For more information visit https://es.reactjs.org/ https://en.wikipedia.org/wiki/React_(web_framework)
+https://desarrolloweb.com/articulos/que-es-react-motivos-uso.html
+| SOLID     | Solid (derived from "social linked data") is a proposed set of conventions and tools for building decentralized Web applications based on Linked Data principles. Solid is modular and extensible. It relies as much as possible on existing W3C standards and protocols. To consult more detailed information you can visit the following links : https://github.com/solid/solid, https://en.wikipedia.org/wiki/Solid_(web_decentralization_project.
+| WhiteBox     | Machine or system whose internal structure or processing is known in addition to the knowledge about its inputs, outputs, and the relationship between them.
+| JSON     | Open-standard file format or data interchange format that uses human-readable text to transmit data objects consisting of attribute–value pairs and array data types (or any other serializable value).
 |===
