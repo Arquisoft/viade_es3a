@@ -3,7 +3,7 @@
 
 == Deployment View
 
-image::images/DeployDiagram.png[Deploy diagram]
+image::DeployDiagram.png[Deploy diagram]
 
 [options="header"]
 |===
