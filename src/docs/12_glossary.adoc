@@ -15,5 +15,6 @@ https://desarrolloweb.com/articulos/que-es-react-motivos-uso.html
 | SOLID     | Solid (derived from "social linked data") is a proposed set of conventions and tools for building decentralized Web applications based on Linked Data principles. Solid is modular and extensible. It relies as much as possible on existing W3C standards and protocols. To consult more detailed information you can visit the following links : https://github.com/solid/solid, https://en.wikipedia.org/wiki/Solid_(web_decentralization_project.
 | Node.js     |Node.js is a runtime enviroment that executes Javascript code outside of a browser.
 | Arc42       |arc42 is a template for architecture communication and documentation, that tries to anser whatand how should we document about our architecture.
+| WhiteBox     | Machine or system whose internal structure or processing is known in addition to the knowledge about its inputs, outputs, and the relationship between them.
 | <Term->     | <definition->
 |===
