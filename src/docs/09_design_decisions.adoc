@@ -7,9 +7,9 @@ As with every Solid app we will have to follow a P2P architecture without the ce
 [options="header"]
 |===
 | Property | Decision | Explanation
-| Database | No Database| The idea of using Solid is to avoid a central database to store data
 | Architecture | P2P | All solid apps work with P2P
+| Database | No Database| The idea of using Solid is to avoid a central database to store data
+| Documentation | Arc42 | It's mandatory aswell to use Arc42
 | FrameWork | React Native| It is a mandatory rule of this course to use React as the framework
 | Runtime enviroment | Node.js | We will use Node to launch and build the app 
-| Documentation | Arc42 | It's mandatory aswell to use Arc42
 |===
