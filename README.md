@@ -14,13 +14,13 @@ More information about how this project has been setup is available [in the wiki
 
 ## Contributors
 
-* Elena Díaz Gutierrez
-* Christian Gabriel
+* Elena Díaz Gutiérrez
 * María González Gancedo
-* Andrés Ángel Gonzalez
-* Andrea López 
-* Carlos Menéndez
-* Iván Rodríguez
+* Andrés Ángel González Granda
+* Andrea López Suárez
+* Carlos Menéndez Martínez
+* Iván Rodríguez Ovín
+* Christian Gabriel Rodríguez Suárez
 
 
 
