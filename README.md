@@ -7,7 +7,7 @@ This repository contains a the VIADE_ES3A project, a decentralized routes manage
 
 This project is an assignment for the [Software Architecture course](https://arquisoft.github.io/) following [these requirements](https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription/).
 
-The app is deployed at [https://arquisoft.github.io/viade_es3a/](https://arquisoft.github.io/viade_0/) which also contains a [technical documentation](https://arquisoft.github.io/viade_es3a/docs).
+The app is deployed at [https://arquisoft.github.io/viade_es3a/](https://arquisoft.github.io/viade_es3a/) which also contains a [technical documentation](https://arquisoft.github.io/viade_es3a/docs).
 
 More information about how this project has been setup is available [in the wiki](https://github.com/Arquisoft/viade_es3a/wiki).
 
