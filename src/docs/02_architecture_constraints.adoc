@@ -24,7 +24,6 @@
 |Constraint|Explanation
 | Web Application | Our application has a web interface
 | Decentralized Architecture | Instead of relying on a single central server it distributes workloads among several machines
-| Data format | The PODs store the data of the application using JSON files
 |Maintenance| Use of multiple tests to preserve the correct performance, usability, security...
 |Solid | The data storage is made using Solid
 

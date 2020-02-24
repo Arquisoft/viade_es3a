@@ -2,19 +2,19 @@
 == Risks and Technical Debts
 
 
-[role="arc42help"]
-.New documentation technique
-Arc42 is new for all of us so it implies some effort on knowing and learning how to use it. Making a good use of it is a challenge for our team.
+|===
+|Risks|Explanation| How to solve it
+|New documentation technique|Arc42 is new for all of us so it implies some effort on knowing and learning how to use it. Making a good use of it is a challenge for our team.| Read the documentation and take as an example the biking2
+|Group communication and cooperation|Most of us don't know each other and it is the first time working together.| All of the members need to put effort on working together, collaborating and iteracting with each other in order to make our project progress properly. Sometimes we will do some meetings to get close to each other and share our opinions about the app .
+|Team member gives up the project|Any member of the group can leave it at any time during the project of development, making the team schedule fall apart.| Assign each task to two members so in case someone abandons we can be prepared and the amount of work will be equally divided. 
 
-.Group communication and cooperation
-Most of us don't know each other and it is the first time working together. Thus, all of the members need to put effort on working together, collaborating and iteracting with each other in order to make our project progress properly.
+|===
+
+
 
 .Solid
 It is the first interaction with Solid project for most of our team members. It introduces new concepts and technology that we should manage by ourselves. Moreover, Solid is in continuos change and improvement so developing our application will be harder. We will need some time until we use it correctly and it will imply an additional struggle.
 
-
-.Team member gives up the project
-Any member of the group can leave it at any time during the project of development, making the team schedule fall apart.
 
 .New programming language
 The team has never used React before, so the whole team needs to learn how to deal with it, which will take time. Getting used to this language is a new challenge we should deal with. The framework will help us but it also adds complexity to the tasks. Spending time on reading documentation or tutorials is required.
