@@ -31,7 +31,7 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <img src={SolidImg} alt="React logo" width="62" />
-      <Headline>Solid React Components</Headline>
+      <Headline>VIADE ES3A</Headline>
     </HeaderWrapper>
   );
 };
