@@ -36,13 +36,12 @@ const Header = () => {
 };
 
 const App = () => {
-
+      
   const webId = useWebId();
   return (
     
     <DemoWrapper>
-      <Header />
-      <AuthButton popup='https://solid.github.io/solid-auth-client/dist/popup.html' login="Login here!" logout="Log me out"/>
+      <Header/>
       {webId && (
         <ProfileViewer
           {...{
@@ -62,8 +61,10 @@ const App = () => {
 
       <br />
       <ProviderLogin callbackUri={`${window.location.origin}/`} />
+      
     </DemoWrapper>
   );
 };
 
 export default App;
+//<AuthButton popup='https://solid.github.io/solid-auth-client/dist/popup.html' login="Login here!" logout="Log me out"/> Por si fuese necesario
