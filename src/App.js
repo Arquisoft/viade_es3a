@@ -1,10 +1,11 @@
 import React from 'react';
-import { useWebId,AuthButton } from '@solid/react';
+import { useWebId,AuthButton, LoggedIn, LoggedOut } from '@solid/react';
 import styled from 'styled-components';
 import SolidImg from './logo.svg';
 import {
   ProviderLogin,
-  ProfileViewer
+  ProfileViewer,
+  LogoutButton
 } from '@inrupt/solid-react-components';
 
 const HeaderWrapper = styled.section`
@@ -52,16 +53,16 @@ const App = () => {
               // eslint-disable-next-line no-console
               console.log('ERROR', error.statusText);
             },
-            onClick: false
+            onClick: true
           }}
         >
-          <span>Hover over me!</span>
+          <button>Hover over me!</button>
         </ProfileViewer>
       )}
 
       <br />
-      <ProviderLogin callbackUri={`${window.location.origin}/`} />
-      
+      <LoggedOut><ProviderLogin callbackUri={`${window.location.origin}/`} /></LoggedOut>
+      <LoggedIn><LogoutButton /></LoggedIn>
     </DemoWrapper>
   );
 };
