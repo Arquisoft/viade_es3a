@@ -1,5 +1,5 @@
 import React from 'react';
-import { useWebId,AuthButton, LoggedIn, LoggedOut } from '@solid/react';
+import { useWebId, LoggedIn, LoggedOut } from '@solid/react';
 import styled from 'styled-components';
 import SolidImg from './logo.svg';
 import {
