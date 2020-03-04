@@ -1,14 +1,12 @@
-import React from 'react';
-import { useWebId, LoggedIn, LoggedOut } from '@solid/react';
-import styled from 'styled-components';
-import SolidImg from './logo.svg';
+import React from "react";
+import { useWebId, LoggedIn, LoggedOut } from "@solid/react";
+import styled from "styled-components";
+import SolidImg from "./logo.svg";
 import {
     ProviderLogin,
     ProfileViewer,
     LogoutButton
-} from '@inrupt/solid-react-components';
-
-
+} from "@inrupt/solid-react-components";
 
 const AppWrapper = styled.div`
   display: flex;
@@ -17,14 +15,14 @@ const AppWrapper = styled.div`
   align-items: center;
 `;
 
-
 const DemoWrapper = styled.div`
-  box-shadow: 0px 14px 20px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
+  box-shadow: 0px 20px 25px 0.5px rgba(0, 0, 0, 0.5);
+  background-color: #18EEE9;
+  border-radius: 18px;
   padding: 2rem 3rem;
-  margin-top: 4rem;
+  margin-top: 5rem;
   width: 100%;
-  max-width: 36rem;
+  max-width: 40rem;
 `;
 
 const HeaderWrapper = styled.section`
@@ -32,15 +30,12 @@ const HeaderWrapper = styled.section`
   width: 100%;
 `;
 
-
 const Headline = styled.h1`
-  color: #61DAFB;
+  color: black;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 36px;
 `;
-
-;
 
 const Header = () => {
     return (
@@ -52,10 +47,8 @@ const Header = () => {
 };
 
 const App = () => {
-
     const webId = useWebId();
     return (
-
         <AppWrapper>
             <DemoWrapper>
                 <Header />
@@ -63,11 +56,11 @@ const App = () => {
                     <ProfileViewer
                         {...{
                             webId,
-                            direction: 'down',
-                            viewMoreText: 'See Profile',
+                            direction: "down",
+                            viewMoreText: "See Profile",
                             onError: error => {
                                 // eslint-disable-next-line no-console
-                                console.log('ERROR', error.statusText);
+                                console.log("ERROR", error.statusText);
                             },
                             onClick: true
                         }}
@@ -80,11 +73,14 @@ const App = () => {
                 <LoggedOut>
                     <ProviderLogin callbackUri={`${window.location.origin}/`} />
                 </LoggedOut>
-                <LoggedIn><LogoutButton /></LoggedIn>
+                <LoggedIn>
+                    <LogoutButton />
+                </LoggedIn>
             </DemoWrapper>
         </AppWrapper>
     );
 };
+
 
 export default App;
 //<AuthButton popup='https://solid.github.io/solid-auth-client/dist/popup.html' login="Login here!" logout="Log me out"/> Por si fuese necesario
