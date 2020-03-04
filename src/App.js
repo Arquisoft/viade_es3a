@@ -17,18 +17,19 @@ const AppWrapper = styled.div`
   align-items: center;
   width:100%;
   height:100rem;
-  background-color:black;
+  background-color:#18EEE9;
 
 `;
 
 
 const DemoWrapper = styled.div`
-  box-shadow: 0px 14px 20px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 20px 25px 0.5px rgba(0, 0, 0, 0.5);
   border-radius: 16px;
   padding: 2rem 3rem;
   margin-top: 4rem;
   width: 100%;
   max-width: 36rem;
+  background-color: #667B77;
 `;
 
 const HeaderWrapper = styled.section`
@@ -38,7 +39,7 @@ const HeaderWrapper = styled.section`
 
 
 const Headline = styled.h1`
-  color: #61DAFB;
+  color: #18EEE9;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 38px;
