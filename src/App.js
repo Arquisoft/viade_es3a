@@ -34,7 +34,7 @@ const Headline = styled.h1`
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 36px;
+  font-size: 38px;
 `;
 
 const Header = () => {
