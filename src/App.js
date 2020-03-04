@@ -28,6 +28,7 @@ const Headline = styled.h1`
 ;
 
 const Header = () => {
+    return ( <
     return (
         <HeaderWrapper>
             <img src={SolidImg} alt="React logo" width="62" />
@@ -36,7 +37,7 @@ const Header = () => {
     );
 };
 
-const App = () => {
+const App=()=>{
 
     const webId = useWebId();
     return (
