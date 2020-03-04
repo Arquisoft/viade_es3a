@@ -8,63 +8,81 @@ import {
     LogoutButton
 } from '@inrupt/solid-react-components';
 
+
+
+const AppWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+`;
+
+
+const DemoWrapper = styled.div`
+  box-shadow: 0px 14px 20px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 2rem 3rem;
+  margin-top: 4rem;
+  width: 100%;
+  max-width: 36rem;
+`;
+
 const HeaderWrapper = styled.section`
-  margin-top: 60px;
   text-align: center;
   width: 100%;
 `;
 
-const DemoWrapper = styled.div`
-  max-width: 900px;
-  margin: 0 auto;
-`;
 
 const Headline = styled.h1`
-  color: #333;
+  color: #61DAFB;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
   font-size: 36px;
-  font-weight: 300;
 `;
 
 ;
 
 const Header = () => {
-    return ( <
     return (
         <HeaderWrapper>
-            <img src={SolidImg} alt="React logo" width="62" />
+            <img src={SolidImg} alt="React logo" width="100" />
             <Headline>VIADE ES3A</Headline>
         </HeaderWrapper>
     );
 };
 
-const App=()=>{
+const App = () => {
 
     const webId = useWebId();
     return (
 
-        <DemoWrapper>
-            <Header/>
-            {webId && (
-                <ProfileViewer
-                    {...{
-                        webId,
-                        direction: 'down',
-                        viewMoreText: 'See Profile',
-                        onError: error => {
-                            // eslint-disable-next-line no-console
-                            console.log('ERROR', error.statusText);
-                        },
-                        onClick: true
-                    }}
-                >
-                    <button>Hover over me!</button>
-                </ProfileViewer>
-            )}
+        <AppWrapper>
+            <DemoWrapper>
+                <Header />
+                {webId && (
+                    <ProfileViewer
+                        {...{
+                            webId,
+                            direction: 'down',
+                            viewMoreText: 'See Profile',
+                            onError: error => {
+                                // eslint-disable-next-line no-console
+                                console.log('ERROR', error.statusText);
+                            },
+                            onClick: true
+                        }}
+                    >
+                        <button>Hover over me!</button>
+                    </ProfileViewer>
+                )}
 
-            <br />
-            <LoggedOut><ProviderLogin callbackUri={`${window.location.origin}/`} /></LoggedOut>
-            <LoggedIn><LogoutButton /></LoggedIn>
-        </DemoWrapper>
+                <br />
+                <LoggedOut>
+                    <ProviderLogin callbackUri={`${window.location.origin}/`} />
+                </LoggedOut>
+                <LoggedIn><LogoutButton /></LoggedIn>
+            </DemoWrapper>
+        </AppWrapper>
     );
 };
 
