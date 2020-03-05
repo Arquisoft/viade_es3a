@@ -16,17 +16,15 @@ const AppWrapper = styled.div`
   align-content: center;
   align-items: center;
   width:100%;
-  height:100rem;
+  height:60rem;
   background-color:#18EEE9;
-
 `;
-
 
 const DemoWrapper = styled.div`
   box-shadow: 0px 20px 25px 0.5px rgba(0, 0, 0, 0.5);
   border-radius: 16px;
-  padding: 2rem 3rem;
-  margin-top: 4rem;
+  padding: 4rem 6rem;
+  margin-top: 10rem;
   width: 100%;
   max-width: 36rem;
   background-color: #667B77;
@@ -45,14 +43,32 @@ const Headline = styled.h1`
   font-size: 38px;
 `;
 
+const Title = styled.h1`
+  color: #18EEE9;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 38px;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+`;
+
 ;
 
 const Header = () => {
     return (
         <HeaderWrapper>
-            <img src={SolidImg} alt="React logo" width="100" />
+            <img src={SolidImg} alt="React logo" width="120" />
             <Headline>VIADE ES3A</Headline>
         </HeaderWrapper>
+    );
+};
+
+const Init = () =>{
+    return (
+        <Title>ROUTE MANAGER</Title>
     );
 };
 
@@ -63,6 +79,7 @@ const App = () => {
 
         <AppWrapper>
             <DemoWrapper>
+                <Init/>
                 <Header />
                 {webId && (
                     <ProfileViewer
