@@ -33,12 +33,14 @@ const DemoWrapper = styled.div`
 const HeaderWrapper = styled.section`
   text-align: center;
   width: 100%;
+
 `;
 
 
 const Headline = styled.h1`
   color: #18EEE9;
   font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 0.1em 0.1em 0.05em #000000;
   font-weight: bold;
   font-size: 38px;
 `;
@@ -46,6 +48,7 @@ const Headline = styled.h1`
 const Title = styled.h1`
   color: #18EEE9;
   font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 0.1em 0.1em 0.05em #000000;
   font-weight: bold;
   font-size: 38px;
   margin-bottom: 3rem;
