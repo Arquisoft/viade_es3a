@@ -7,6 +7,7 @@ import {
   ProfileViewer,
   LogoutButton
 } from '@inrupt/solid-react-components';
+import MainPage from './Main-page';
 
 const HeaderWrapper = styled.section`
   margin-top: 60px;
@@ -62,7 +63,9 @@ const App = () => {
 
       <br />
       <LoggedOut><ProviderLogin callbackUri={`${window.location.origin}/`} /></LoggedOut>
-      <LoggedIn><LogoutButton /></LoggedIn>
+      <LoggedIn>
+      <MainPage></MainPage>
+        <LogoutButton /></LoggedIn>
     </DemoWrapper>
   );
 };
