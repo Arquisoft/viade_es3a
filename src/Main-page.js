@@ -1,5 +1,7 @@
 import React from 'react';
 import { useWebId, LoggedIn, LoggedOut } from '@solid/react';
+
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import styled from 'styled-components';
 import SolidImg from './logo.svg';
 import {
@@ -10,14 +12,33 @@ import {
 
 
 
-const App = () => {
+/* Crear boton */
+const Button = styled.a`
+  /* This renders the buttons above... Edit me! */
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0.5rem 0;
+  margin: 0.5rem 1rem;
+  width: 11rem;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+
+  /* The GitHub button is a primary button
+   * edit this to target it specifically! */
+  ${props => props.primary && css`
+    background: white;
+    color: palevioletred;
+  `}
+`
+
+const Main_page = () => {
       
   const webId = useWebId();
   return (
     
     <Router>
       <div className={"main-page"}>
-        // Menú de navegación
         <nav>
           <ul>
             <li>
@@ -37,12 +58,14 @@ const App = () => {
               <Link to="/friends/">Friends</Link>
             </li>
           </ul>
-
           <ul>
-            <LogoutButton/>
+            <li>
+                <Button as={Link} href="/docs">
+                Documentation
+                </Button>
+            </li>
           </ul>
         </nav>
-        // Anclado de rutas al contenido
         <Route path="/" exact component={Login} />
         <Route path="/addRoute" exact component={Add-Route} />
         <Route path="/loadRoute/" component={loadRoute} />
