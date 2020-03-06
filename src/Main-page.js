@@ -39,10 +39,13 @@ const MainPage = () => {
             </li> */}
             
           </ul>
-
-          <ul>
-            <LogoutButton/>
-          </ul>
+          {/* <ul>
+            <li>
+                <Button as={Link} href="/docs">
+                Documentation
+                </Button>
+            </li>
+          </ul> */}
         </nav>
         {/* <Route path="/" exact component={Login} />
         <Route path="/addRoute" exact component={Add-Route} />
