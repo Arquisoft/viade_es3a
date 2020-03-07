@@ -36,10 +36,20 @@ const HeaderWrapper = styled.section`
 
 `;
 
+const ButStyle = styled.button`
+  background-color:#18EEE9;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0px 0px 10px 0.5px rgb(253, 252, 252);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+`;
 
 const Headline = styled.h1`
   color: #18EEE9;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Times New Roman, Helvetica, sans-serif;
   text-shadow: 0.1em 0.1em 0.05em #000000;
   font-weight: bold;
   font-size: 38px;
@@ -97,7 +107,7 @@ const App = () => {
                             onClick: true
                         }}
                     >
-                        <button>Hover over me!</button>
+                        <ButStyle>Options</ButStyle>
                     </ProfileViewer>
                 )}
 
