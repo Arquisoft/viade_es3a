@@ -49,7 +49,7 @@ const ButStyle = styled.button`
 
 const Headline = styled.h1`
   color: #18EEE9;
-  font-family: Times New Roman, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   text-shadow: 0.1em 0.1em 0.05em #000000;
   font-weight: bold;
   font-size: 38px;
