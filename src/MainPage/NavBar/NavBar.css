@@ -3,15 +3,14 @@
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
-    background: rgb(61, 61, 61);
-    height: 3.2em;
+
+    background: rgb(54, 54, 54);
 }
 .navBar_nav {
     display: flex;
     align-items: center;
-    height: 100%;
 }
+
 
 .navBarLogo a {
     color: white;
@@ -28,38 +27,32 @@
    color: white;
    text-decoration: none;
    font-size: 1.1em;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   padding: 0.3em 2em;
 }
 
 .navBarOptions ul {
     list-style: none;
     margin: 0;
     padding: 0;
+
 }
 
 .navBarOptions li {
-    float: left;
-    padding: 0 2em;
-}
-
-.navBarOptions li a{
-    display: block;
-    color: white;
-    padding: 0.2em;
-    text-decoration: none;
+    float: left; 
 }
 
 .navBarLogout a {
     float: right;
-    padding: 0 2em;
+    
 }
 
 .spaceLogout{
     width: 60em;
 }
 
-/*
+
 li a:hover, .navBarLogout a:hover{
-    background-color: rgb(100, 97, 100);
-    color:rgb(255, 255, 255);
+    background-color: rgb(90, 91, 92);
+    color:rgb(117, 227, 247);
 }
-*/
