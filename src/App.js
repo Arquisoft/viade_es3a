@@ -16,14 +16,14 @@ const AppWrapper = styled.div`
   align-content: center;
   align-items: center;
   width:100%;
-  height:60rem;
+  height:58.55rem;
   background-color:#18EEE9;
 `;
 
 const DemoWrapper = styled.div`
   box-shadow: 0px 20px 25px 0.5px rgba(0, 0, 0, 0.5);
   border-radius: 16px;
-  padding: 4rem 6rem;
+  padding: 3rem 6rem;
   margin-top: 10rem;
   width: 100%;
   max-width: 36rem;
