@@ -1,5 +1,8 @@
 import React from 'react';
 import './NavBar.css'
+import {
+    LogoutButton
+  } from '@inrupt/solid-react-components';
 
 const NavBar = () => {
     return (
@@ -27,7 +30,7 @@ const NavBar = () => {
                 </div>
                 <div className="spaceLogout"></div>
                 <div className="navBarLogout">
-                    <a href="/logout">Logout</a>
+                    <LogoutButton/>
                 </div>
             </nav>
         </header>

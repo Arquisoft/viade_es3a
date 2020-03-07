@@ -57,7 +57,6 @@ const App = () => {
             onClick: true
           }}
         >
-          <button>Hover over me!</button>
         </ProfileViewer>
       )}
 
@@ -65,7 +64,7 @@ const App = () => {
       <LoggedOut><ProviderLogin callbackUri={`${window.location.origin}/`} /></LoggedOut>
       <LoggedIn>
         <MainPage></MainPage>
-        <LogoutButton /></LoggedIn>
+        </LoggedIn>
     </DemoWrapper>
   );
 };

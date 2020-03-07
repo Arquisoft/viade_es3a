@@ -3,7 +3,6 @@
     top: 0;
     left: 0;
     right: 0;
-
     background: rgb(54, 54, 54);
 }
 .navBar_nav {
@@ -23,7 +22,7 @@
     width: 8em;
 }
 
-.navBarOptions a, .navBarLogout a {
+.navBarOptions a, .navBarLogout .logout {
    color: white;
    text-decoration: none;
    font-size: 1.1em;
@@ -42,9 +41,8 @@
     float: left; 
 }
 
-.navBarLogout a {
+.navBarLogout .logout {
     float: right;
-    
 }
 
 .spaceLogout{
@@ -52,7 +50,17 @@
 }
 
 
-li a:hover, .navBarLogout a:hover{
+li a:hover, .navBarLogout .logout:hover{
     background-color: rgb(90, 91, 92);
     color:rgb(117, 227, 247);
+}
+
+li a:active, .navBarLogout .logout:active{
+    background-color:  rgb(127, 128, 129);
+    color:rgb(97, 208, 228);
+}
+
+.logout{
+    background: transparent;
+    border: none;
 }
