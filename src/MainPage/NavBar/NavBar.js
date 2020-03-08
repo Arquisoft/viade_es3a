@@ -8,32 +8,25 @@ import {
 const NavBar = () => {
    
         return (
-        //  <header className="navBar">
+         <header className="navBar">
             <nav class="navbar navbar-dark bg-dark"  display="flex" position="fixed">
                 <div className="navBarLogo">
-                    <img src={require('../../img/logo_viade_es3a.jpg')} alt="React logo" width="150" />
+                    <img src={require('../../img/logo_viade_es3a.jpg')} alt="React logo" width="160" />
                 </div>
                 <div className="navBarOptions"> 
-                    <ul  className="navbar-nav">
-                        <li>
                             <a class="nav-addRoute" href="/addRoute">Add route</a>
-                        </li>
-                        <li >
+
                             <a class="nav-LoadRoute" href="/loadRoute">Load routes</a>
-                        </li>
-                        <li >
+
                             <a class="nav-Profile" href="/profile">Profile</a>
-                        </li>
-                        <li >
+
                             <a class="nav-Friends" href="/friends">Friends</a>
-                        </li>
-                    </ul>
                 </div>
                 <div className="navBarLogout">
                      <LogoutButton/>
                 </div>
             </nav>
-        // </header>
+         </header>
         );
     
 };
