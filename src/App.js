@@ -21,13 +21,14 @@ const AppWrapper = styled.div`
 `;
 
 const DemoWrapper = styled.div`
-  box-shadow: 0px 20px 25px 0.5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 25px 25px 0.5px rgba(0, 0, 0, 0.5);
   border-radius: 16px;
   padding: 3rem 6rem;
   margin-top: 10rem;
   width: 100%;
   max-width: 36rem;
   background-color: #667B77;
+  box-sizing: content-box;
 `;
 
 const HeaderWrapper = styled.section`
