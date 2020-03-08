@@ -6,6 +6,7 @@
     background: rgb(54, 54, 54);
 }
 .navBar_nav {
+    position: fixed;
     display: flex;
     align-items: center;
 }
