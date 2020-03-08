@@ -1,6 +1,7 @@
 
 const fileClient = new SolidFileClient(solid.auth, { enableLogging: true })
 
+//logea con solid con el solid-auth-cli
 document.getElementById('login').addEventListener('click', e => solid.auth.popupLogin({ popupUri: 'https://solid.community/common/popup.html' }))
 document.getElementById('logout').addEventListener('click', e => solid.auth.logout())
 solid.auth.trackSession(session => {
@@ -43,8 +44,10 @@ resetLogs()
 const containerInput = document.getElementById('container')
 const filesInput = document.getElementById('files')
 
+//Subida de archivos
 document.getElementById('upload-form').addEventListener('submit', async e => {
     e.preventDefault()
+    //Ruta de subida (añade barra)
     const parentContainer = containerInput.value + ((containerInput.value.endsWith('/')) ? '' : '/')
     const files = filesInput.files
 
@@ -55,6 +58,7 @@ document.getElementById('upload-form').addEventListener('submit', async e => {
     setLogStatus(true)
     for (let i = 0; i < files.length; i++) {
         const file = files[i]
+        //le añade el nombre a la ruta
         const url = parentContainer + file.name
 
         console.log(`Uploading ${file.name} to ${url}`)
@@ -62,6 +66,7 @@ document.getElementById('upload-form').addEventListener('submit', async e => {
             // Uploading the file
             // Content can be a file from a html input
             // or a string. For json objects, use JSON.stringify(object)
+            //Usa fileClient para subirla, con el método putFile
             const res = await fileClient.putFile(url, file, file.type)
             const msg = `${res.status} Uploaded ${file.name} to ${res.url}`
             console.log(msg)
