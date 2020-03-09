@@ -16,19 +16,18 @@ const AppWrapper = styled.div`
   align-content: center;
   align-items: center;
   width:100%;
-  height:58.55rem;
+  height:48.55rem;
   background-color:#18EEE9;
 `;
 
 const DemoWrapper = styled.div`
-  box-shadow: 0px 25px 25px 0.5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 20px 20px 0.5px rgba(0, 0, 0, 0.5);
   border-radius: 16px;
-  padding: 3rem 6rem;
+  padding: 1.5rem 3rem;
   margin-top: 10rem;
   width: 100%;
   max-width: 36rem;
   background-color: #667B77;
-  box-sizing: content-box;
 `;
 
 const HeaderWrapper = styled.section`
