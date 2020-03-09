@@ -6,6 +6,7 @@
     background: rgb(54, 54, 54);
 }
 .navBar_nav {
+    position: fixed;
     display: flex;
     align-items: center;
 }
@@ -34,11 +35,11 @@
     list-style: none;
     margin: 0;
     padding: 0;
-
 }
 
 .navBarOptions li {
-    float: left; 
+    float: left;
+       
 }
 
 .navBarLogout .logout {
@@ -53,6 +54,7 @@
 li a:hover, .navBarLogout .logout:hover{
     background-color: rgb(90, 91, 92);
     color:rgb(117, 227, 247);
+   
 }
 
 li a:active, .navBarLogout .logout:active{
