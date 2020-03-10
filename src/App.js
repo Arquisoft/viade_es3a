@@ -10,6 +10,8 @@ import {
 } from '@inrupt/solid-react-components';
 
 
+import * as fm from './FileManager.js'; 
+
 
 const AppWrapper = styled.div`
   display: flex;
@@ -115,7 +117,7 @@ const App = () => {
                 )}
 
                 <br />
-                <InputFiles onChange={files => console.log(files)} accept="">
+                <InputFiles onChange={files => fm.fileUpload(files)} accept="">
                 <ButStyle>Upload route</ButStyle>
                 </InputFiles>
                 <br/>
