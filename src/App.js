@@ -1,15 +1,13 @@
 import React from 'react';
 import { useWebId, LoggedIn, LoggedOut } from '@solid/react';
 import styled from 'styled-components';
+import InputFiles from 'react-input-files';
 import SolidImg from './logo.svg';
 import {
-
     ProviderLogin,
     ProfileViewer,
     LogoutButton
-
 } from '@inrupt/solid-react-components';
-import MainPage from './MainPage/Main-page';
 
 
 
@@ -117,6 +115,11 @@ const App = () => {
                 )}
 
                 <br />
+                <InputFiles onChange={files => console.log(files)} accept="">
+                <ButStyle>Upload route</ButStyle>
+                </InputFiles>
+                <br/>
+                <br/>
                 <LoggedOut>
                     <ProviderLogin callbackUri={`${window.location.origin}/`} />
                 </LoggedOut>
@@ -124,7 +127,6 @@ const App = () => {
             </DemoWrapper>
         </AppWrapper>
     );
-
 };
 
 export default App;

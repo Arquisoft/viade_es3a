@@ -11,14 +11,14 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-router-dom": "^5.1.2",
+    "react-input-files": "^1.2.0",
     "react-scripts": "^3.4.0",
     "shx": "^0.3.2",
     "solid-file-client": "^1.0.2",
     "styled-components": "^5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start","start": "react-scripts start --max-old-space-size=8192",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
     "docs": "asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && cp -R src/docs/images build/docs",
