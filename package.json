@@ -18,7 +18,7 @@
     "styled-components": "^5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start","start": "react-scripts start --max-old-space-size=8192",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
     "docs": "asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && cp -R src/docs/images build/docs",
