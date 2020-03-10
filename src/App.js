@@ -1,16 +1,17 @@
 import React from 'react';
 import { useWebId, LoggedIn, LoggedOut } from '@solid/react';
 import styled from 'styled-components';
-import InputFiles from 'react-input-files';
 import SolidImg from './logo.svg';
 import {
     ProviderLogin,
     ProfileViewer,
-    LogoutButton
+    LogoutButton,
+    Uploader,
+    ProfileUploader
 } from '@inrupt/solid-react-components';
 
 
-import * as fm from './FileManager.js'; 
+
 
 
 const AppWrapper = styled.div`
@@ -117,9 +118,13 @@ const App = () => {
                 )}
 
                 <br />
-                <InputFiles onChange={files => fm.fileUpload(files)} accept="">
-                <ButStyle>Upload route</ButStyle>
-                </InputFiles>
+                <Uploader
+                 {...{
+                 fileBase: 'https://carlosmenendez.solid.community/public/routes/',
+                         render: props => <ProfileUploader {...{ ...props }} />
+                     }}
+                />
+                
                 <br/>
                 <br/>
                 <LoggedOut>
