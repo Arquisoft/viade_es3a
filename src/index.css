@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.sc-AxgMl{
+  background-color:#18EEE9;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0px 0px 10px 0.5px rgb(253, 252, 252);
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.sc-AxhCb{
+  box-shadow: 10px 10px 15px 3px rgb(36, 35, 35);
+}
+.css-1pcexqc-container{
+  box-shadow: 10px 10px 15px 3px rgb(36, 35, 35);
+}
+.sc-AxhUy{
+  font-style: italic;
+}
