@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import SolidImg from './logo.svg';
 import {
   ProviderLogin,
-  ProfileViewer,
-  LogoutButton
+  ProfileViewer
 } from '@inrupt/solid-react-components';
 import MainPage from './MainPage/Main-page';
 
@@ -43,7 +42,7 @@ const App = () => {
   return (
 
     <DemoWrapper>
-      <Header />
+      
       {webId && (
         <ProfileViewer
           {...{
@@ -61,10 +60,10 @@ const App = () => {
       )}
 
       <br />
-      <LoggedOut><ProviderLogin callbackUri={`${window.location.origin}/`} /></LoggedOut>
+      <LoggedOut> <Header /> <ProviderLogin callbackUri={`${window.location.origin}/`} /></LoggedOut>
       <LoggedIn>
-        <MainPage></MainPage>
-        </LoggedIn>
+          <MainPage/>
+      </LoggedIn>
     </DemoWrapper>
   );
 };
