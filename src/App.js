@@ -62,7 +62,7 @@ const App = () => {
       <br />
       <LoggedOut> <Header /> <ProviderLogin callbackUri={`${window.location.origin}/`} /></LoggedOut>
       <LoggedIn>
-          <MainPage />
+          <MainPage/>
       </LoggedIn>
     </DemoWrapper>
   );

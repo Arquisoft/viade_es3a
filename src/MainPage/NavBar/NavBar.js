@@ -4,6 +4,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {
     LogoutButton
   } from '@inrupt/solid-react-components';
+import AddRoute from "../Panel/AddRoute/AddRoute.js";
+
+
 
 const NavBar = () => {
    
@@ -14,7 +17,8 @@ const NavBar = () => {
                     <img src={require('../../img/logo_viade_es3a.jpg')} alt="React logo" width="160" />
                 </div>
                 <div className="navBarOptions"> 
-                            <a class="nav-addRoute" href="/addRoute">Add route</a>
+                        {/* No va el onClick */}
+                         <a class="nav-addRoute" href="/addRoute" onClick={() => <AddRoute/>}>Add route</a>
 
                             <a class="nav-LoadRoute" href="/loadRoute">Load routes</a>
 

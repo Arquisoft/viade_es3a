@@ -1,7 +1,7 @@
 import React from 'react';
 import './Panel.css';
-
-
+import AddRoute from "./AddRoute/AddRoute.js";
+import LoadRoute from './LoadRoute/LoadRoute';
 
 const Panel = () => {
     return (
@@ -9,12 +9,19 @@ const Panel = () => {
             {/* Panel izquierdo */}
             <section className="leftPanel">
                 <nav className="leftPanel_leftPart">
-                    <ul>
+                    {/* Estatico */}
+                    {/* <ul>
                     <li>File:</li>
                     <li>Name:</li>
                     <li>Details:</li>
                     
-                    </ul>
+                    </ul> */}
+
+                    {/* Componente añadir ruta */}
+                    <AddRoute/>
+
+                    {/* Componente cargar ruta */}
+                    {/* <LoadRoute/> */}
                 </nav>
             {/* Panel derecho */}
                 <article className="rightPanel_mapa">
