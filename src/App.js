@@ -25,8 +25,8 @@ const DemoWrapper = styled.div`
   box-shadow: 0px 18px 18px 0.5px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   padding: 0.1rem 4rem;
-  margin-top: 3rem;
-  margin-bottom:3rem;
+  margin-top: auto;
+  margin-bottom:auto;
   width: 100%;
   max-width: 32rem;
   background-color: #667B77;
