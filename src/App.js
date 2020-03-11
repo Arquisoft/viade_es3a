@@ -16,7 +16,7 @@ const AppWrapper = styled.div`
   align-content: center;
   align-items: center;
   width:100%;
-  height: 38.1em;
+  height: -webkit-fill-available;
   background-color:#18EEE9;
   box-sizing:content-box;  
 `;
