@@ -23,8 +23,8 @@ const NavBar = () => {
                             <a class="nav-LoadRoute" href="/loadRoute">Load routes</a>
 
                             <a class="nav-Profile" href="/profile">Profile</a>
-
-                            <a class="nav-Friends" href="/friends">Friends</a>
+                            
+                           <a class="nav-Friends" href="/friends">Friends</a>
                 </div>
                 <div className="navBarLogout">
                      <LogoutButton/>
