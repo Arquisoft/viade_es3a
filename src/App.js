@@ -8,6 +8,8 @@ import {
 } from '@inrupt/solid-react-components';
 import MainPage from './MainPage/Main-page';
 
+import { BrowserRouter as Router } from "react-router-dom";
+
 const HeaderWrapper = styled.section`
   margin-top: 60px;
   text-align: center;
@@ -42,7 +44,7 @@ const App = () => {
   return (
 
     <DemoWrapper>
-      
+
       {webId && (
         <ProfileViewer
           {...{
@@ -62,7 +64,9 @@ const App = () => {
       <br />
       <LoggedOut> <Header /> <ProviderLogin callbackUri={`${window.location.origin}/`} /></LoggedOut>
       <LoggedIn>
-          <MainPage/>
+        <Router>
+          <MainPage />
+        </Router>
       </LoggedIn>
     </DemoWrapper>
   );

@@ -22,12 +22,12 @@ const Panel = () => {
             {/* Panel izquierdo */}
             <section className="leftPanel">
                 <nav className="leftPanel_leftPart">
-                    <Router>
-                        <Switch>
-                            <Route path="/addRoute" component={AddRoute}/>
+                    <Switch>
+                        <div>
+                            <Route path="/addRoute" component={AddRoute} />
                             <Route path="/loadRoute" component={LoadRoute} />
-                        </Switch>
-                    </Router>
+                        </div>
+                    </Switch>
                 </nav>
 
                 {/* Panel derecho */}
