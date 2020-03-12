@@ -16,33 +16,43 @@ margin-top:100px;
 const Container = styled.div`
 `;
 
+const LeftPanel = () => {
+    return (
+        <nav className="leftPanel_leftPart">
+            <Switch>
+                <div>
+                    <Route path="/addRoute" component={AddRoute} />
+                    <Route path="/loadRoute" component={LoadRoute} />
+                </div>
+            </Switch>
+        </nav>
+    );
+};
+
+const RightPanel = () => {
+    return (
+        <article className="rightPanel_mapa">
+            {/* <h1>*Insert route to show map*</h1> */}
+            <AppWrapper>
+                <Container>
+                    <Map></Map>
+                </Container>
+            </AppWrapper>
+
+        </article>
+    );
+};
+
 const Panel = () => {
     return (
         <div className="panelCompleto">
             {/* Panel izquierdo */}
             <section className="leftPanel">
-                <nav className="leftPanel_leftPart">
-                    <Switch>
-                        <div>
-                            <Route path="/addRoute" component={AddRoute} />
-                            <Route path="/loadRoute" component={LoadRoute} />
-                        </div>
-                    </Switch>
-                </nav>
-
+                <LeftPanel />
                 {/* Panel derecho */}
-                <article className="rightPanel_mapa">
-                    {/* <h1>*Insert route to show map*</h1> */}
-                    <AppWrapper>
-                        <Container>
-                            <Map></Map>
-                        </Container>
-                    </AppWrapper>
-
-                </article>
+                <RightPanel />
             </section>
         </div>
-
     );
 };
 
