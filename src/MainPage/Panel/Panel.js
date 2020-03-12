@@ -1,10 +1,11 @@
 import React from 'react';
 import './Panel.css';
-import AddRoute from "./AddRoute/AddRoute.js";
-import LoadRoute from './LoadRoute/LoadRoute';
 import Map from './Map/Map.js';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import AddRoute from "./AddRoute/AddRoute";
+import LoadRoute from './LoadRoute/LoadRoute';
+import Welcome from './Welcome/Welcome';
 
 
 const AppWrapper = styled.div`
@@ -21,6 +22,7 @@ const LeftPanel = () => {
         <nav className="leftPanel_leftPart">
             <Switch>
                 <div>
+                    <Route exact path="/" component={Welcome} />
                     <Route path="/addRoute" component={AddRoute} />
                     <Route path="/loadRoute" component={LoadRoute} />
                 </div>
