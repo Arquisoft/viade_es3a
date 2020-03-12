@@ -1,29 +1,11 @@
 import React from 'react';
 import './AddRoute.css';
+import {withRouter} from 'react-router';
 
-const AddRoute = () => {
-    
-    
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {value: ''};
-
-    //     this.handleChange = this.handleChange.bind(this);
-    //     this.handleSubmit = this.handleSubmit.bind(this);
-    // }
-
-    // handleChange(event) {
-    //     this.setState({value: event.target.value});
-    // }
-
-    // handleSubmit(event) {
-    //     alert('A name was submitted: ' + this.state.value);
-    //     event.preventDefault();
-    // }
-
-    // render() {
-        return (
-            <form> {/* onSubmit={this.handleSubmit}> */}
+class AddRoute extends React.Component {
+   render () {
+         return (
+            <form> 
                 <br></br>
                 <br></br>
                 <input type="file" />
@@ -45,7 +27,9 @@ const AddRoute = () => {
                 <input type="submit" value="Save" />
             </form>
         );
-    // }
+
+    }
+
 }
 
 export default AddRoute;
