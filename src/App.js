@@ -36,6 +36,8 @@ const DemoWrapper = styled.div`
   background-color: #667B77;
 `;
 
+import { BrowserRouter as Router } from "react-router-dom";
+
 const HeaderWrapper = styled.section`
   text-align: center;
   width: 100%;
@@ -93,49 +95,36 @@ const Init = () =>{
 
 const App = () => {
 
-    const webId = useWebId();
-    //const url= webId.substring(0,useWebId().length-15);
-    return (
+  const webId = useWebId();
+  return (
 
-        <AppWrapper>
-            <DemoWrapper>
-                <Init/>
-                <Header />
-                {webId && (
-                    <ProfileViewer
-                        {...{
-                            webId,
-                            direction: 'down',
-                            viewMoreText: 'See Profile',
-                            onError: error => {
-                                // eslint-disable-next-line no-console
-                                console.log('ERROR', error.statusText);
-                            },
-                            onClick: true
-                        }}
-                    >
-                        <ButStyle>Options</ButStyle>
-                    </ProfileViewer>
-                )}
+    <DemoWrapper>
 
-                <br />
-                <Uploader
-                 {...{
-                 fileBase: "https://carlosmenendez.solid.community/public/",
-                 
-                         render: props => <ProfileUploader {...{ ...props }} />
-                     }}
-                />
-                
-                <br/>
-                <br/>
-                <LoggedOut>
-                    <ProviderLogin callbackUri={`${window.location.origin}/`} />
-                </LoggedOut>
-                <LoggedIn><LogoutButton /></LoggedIn>
-            </DemoWrapper>
-        </AppWrapper>
-    );
+      {webId && (
+        <ProfileViewer
+          {...{
+            webId,
+            direction: 'down',
+            viewMoreText: 'See Profile',
+            onError: error => {
+              // eslint-disable-next-line no-console
+              console.log('ERROR', error.statusText);
+            },
+            onClick: true
+          }}
+        >
+        </ProfileViewer>
+      )}
+
+      <br />
+      <LoggedOut> <Header /> <ProviderLogin callbackUri={`${window.location.origin}/`} /></LoggedOut>
+      <LoggedIn>
+        <Router>
+          <MainPage />
+        </Router>
+      </LoggedIn>
+    </DemoWrapper>
+  );
 };
 
 export default App;
