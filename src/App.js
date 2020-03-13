@@ -9,6 +9,8 @@ import {
     Uploader,
     ProfileUploader
 } from '@inrupt/solid-react-components';
+import { BrowserRouter as Router } from "react-router-dom";
+import MainPage from './MainPage/Main-page';
 
 
 
@@ -36,7 +38,7 @@ const DemoWrapper = styled.div`
   background-color: #667B77;
 `;
 
-import { BrowserRouter as Router } from "react-router-dom";
+
 
 const HeaderWrapper = styled.section`
   text-align: center;
