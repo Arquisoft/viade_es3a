@@ -94,6 +94,7 @@ const Init = () =>{
 const App = () => {
 
     const webId = useWebId();
+    //const url= webId.substring(0,useWebId().length-15);
     return (
 
         <AppWrapper>
@@ -120,7 +121,8 @@ const App = () => {
                 <br />
                 <Uploader
                  {...{
-                 fileBase: 'https://carlosmenendez.solid.community/public/routes/',
+                 fileBase: "https://carlosmenendez.solid.community/public/",
+                 
                          render: props => <ProfileUploader {...{ ...props }} />
                      }}
                 />
