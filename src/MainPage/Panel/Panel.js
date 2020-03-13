@@ -23,6 +23,7 @@ const LeftPanel = () => {
             <Switch>
                 <div>
                     <Route exact path="/" component={Welcome} />
+                    <Route path="/viade_es3a" component={Welcome} />
                     <Route path="/addRoute" component={AddRoute} />
                     <Route path="/loadRoute" component={LoadRoute} />
                 </div>
