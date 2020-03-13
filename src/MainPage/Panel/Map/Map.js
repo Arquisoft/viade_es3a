@@ -26,7 +26,7 @@ export default class Map extends React.Component{
     }
 
         render(){
-            return <Wrapper width="1080px" height="720px" id="map" className="rightPanel_mapa"/>
+            return <Wrapper width="1080px" height="720px" id="map"  className="rightPanel_mapa"/>
         }
 
 }
