@@ -73,29 +73,26 @@ const AddRoute = () => {
 };
 const createFolder = async (folder) => {
     console.log(folder);
-    var existe = fileClien.itemExists(folder);
+    var existe = await fileClien.itemExists(folder);
     
     if (!existe)
-         fileClien.createFolder(folder);
+         await fileClien.createFolder(folder);
     console.log(existe)
  
     var nameValue = document.getElementById("name").value;
     var destination= folder+"/"+nameValue+"/";
+    await fileClien.createFolder(destination); 
     var x = document.getElementById("inputFile");
     
         var file = x.files[0];
         console.log(file.name)
         console.log(file.size)
         const fileURl = destination + file.name
-        fileClien.putFile(fileURl, file, file.type)
+        await fileClien.putFile(fileURl, file, file.type)
     
            
-    /*fileClien.createFolder(destination);       
-        var file = x.files[0];
-        const fileURl = destination + file.name
-        fileClient.putFile(fileURl, file, file.type)
-    */
-    
+         
+      
 
 
   }
