@@ -17,7 +17,7 @@ const Upload = () => {
             </div>
             <div class="custom-file">
                 <input type="file" class="custom-file-input" id="inputGroupFile01"
-                    aria-describedby="inputGroupFileAddon01" onChange={changeName} />
+                    aria-describedby="inputGroupFileAddon01" onChange={changeName} required/>
                 <label class="custom-file-label" for="inputGroupFile01">{filename}</label>
             </div>
         </div>
@@ -27,9 +27,10 @@ const Upload = () => {
 const Data = () => {
     return (
         <form>
+            <Upload/>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Name:</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Route's name" />
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Route's name" required/>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Description:</label>
@@ -44,7 +45,6 @@ const AddRoute = () => {
     return (
         <Fragment>
             <h2>Add route</h2>
-            <Upload />
             <Data />
         </Fragment>
 
