@@ -8,6 +8,10 @@ import {
     LogoutButton
 } from '@inrupt/solid-react-components';
 
+import * as solidAuth from 'solid-auth-client';
+import fileClient from 'solid-file-client';
+
+const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
 
 const AppWrapper = styled.div`
@@ -117,11 +121,15 @@ const App = () => {
                 <LoggedOut>
                     <ProviderLogin callbackUri={`${window.location.origin}/`} />
                 </LoggedOut>
-                <LoggedIn><LogoutButton /></LoggedIn>
+                <LoggedIn><button onClick={()=>algo('https://christian-grs.solid.community/public')} /><LogoutButton /></LoggedIn>
             </DemoWrapper>
         </AppWrapper>
     );
 };
+
+const algo = (folder) => {
+    fileClien.createFolder(folder);
+}
 
 export default App;
 //<AuthButton popup='https://solid.github.io/solid-auth-client/dist/popup.html' login="Login here!" logout="Log me out"/> Por si fuese necesario
