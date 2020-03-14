@@ -10,7 +10,7 @@ import {
 } from '@inrupt/solid-react-components';
 import MainPage from './MainPage/Main-page';
 
-
+import { BrowserRouter as Router } from "react-router-dom";
 
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
@@ -130,7 +130,12 @@ const App = () => {
                 <LoggedOut>
                     <ProviderLogin callbackUri={`${window.location.origin}/`} />
                 </LoggedOut>
-                <LoggedIn><button onClick={()=> createFolder(urlFolder)} /><LogoutButton /></LoggedIn>
+                <LoggedIn>
+                   <Router>
+                     <MainPage />
+                    </Router>
+                  <button onClick={()=> createFolder(urlFolder)} >AAAAAAAAAAAAAAA</button>
+                <LogoutButton /></LoggedIn>
             </DemoWrapper>
         </AppWrapper>
     );
