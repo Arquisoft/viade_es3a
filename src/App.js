@@ -109,34 +109,16 @@ const App = () => {
             <DemoWrapper>
                 <Init/>
                 <Header />
-                {webId && (
-                    <ProfileViewer
-                        {...{
-                            webId,
-                            direction: 'down',
-                            viewMoreText: 'See Profile',
-                            onError: error => {
-                                // eslint-disable-next-line no-console
-                                console.log('ERROR', error.statusText);
-                            },
-                            onClick: true
-                        }}
-                    >
-                        <ButStyle>Options</ButStyle>
-                    </ProfileViewer>
-                )}
-
-                <br />
                 <LoggedOut>
                     <Header />
                     <ProviderLogin callbackUri={`${window.location.origin}/`} />
                 </LoggedOut>
                 <LoggedIn>
-                   <Router>
-                     <MainPage />
+                    <Router>
+                    <MainPage />
                     </Router>
-                 
-                <LogoutButton /></LoggedIn>
+                    <LogoutButton />
+                </LoggedIn>
             </DemoWrapper>
         </AppWrapper>
     );

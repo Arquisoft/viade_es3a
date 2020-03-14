@@ -2,8 +2,8 @@
     float: left;
     top: 81px;
     padding: 20px;
-    width: 70%;
+    width: 72%;
     background-color: #f1f1f1;
-    height: 100%;
+    height: -webkit-fill-available;
     background: lightblue;
 }
