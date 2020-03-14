@@ -121,13 +121,13 @@ const App = () => {
                 <LoggedOut>
                     <ProviderLogin callbackUri={`${window.location.origin}/`} />
                 </LoggedOut>
-                <LoggedIn><button onClick={()=>algo('https://christian-grs.solid.community/public')} /><LogoutButton /></LoggedIn>
+                <LoggedIn><button onClick={()=> createFolder('https://christian-grs.solid.community/public')} /><LogoutButton /></LoggedIn>
             </DemoWrapper>
         </AppWrapper>
     );
 };
 
-const algo = (folder) => {
+const createFolder = (folder) => {
     fileClien.createFolder(folder);
 }
 
