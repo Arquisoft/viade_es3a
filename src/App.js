@@ -108,7 +108,7 @@ const App = () => {
         <AppWrapper>
             <DemoWrapper>
                 <Init/>
-                <Header />
+                
                 <LoggedOut>
                     <Header />
                     <ProviderLogin callbackUri={`${window.location.origin}/`} />
