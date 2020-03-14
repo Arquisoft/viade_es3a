@@ -1,28 +1,25 @@
 import React, { Fragment, useState } from 'react';
 import './AddRoute.css';
+import { useWebId } from '@solid/react';
+import {
 
-const Upload = () => {
-    const [file, setFile] = useState('');
-    const [filename, setFileName] = useState('Choose File');
+    Uploader,
+    ProfileUploader
+} from '@inrupt/solid-react-components';
 
-    const changeName = e => {
-        setFile(e.target.files[0]);
-        setFileName(e.target.files[0].name);
-    }
 
-    return (
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-            </div>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01"
-                    aria-describedby="inputGroupFileAddon01" onChange={changeName} />
-                <label class="custom-file-label" for="inputGroupFile01">{filename}</label>
-            </div>
-        </div>
-    );
-};
+
+const Upload = (props) => {
+    console.log("SUBIENDO "+props.url);
+    return(
+    <Uploader
+                 {...{
+                 fileBase:   props.url ,
+                         render: props => <ProfileUploader {...{ ...props }} />
+                     }}
+                />
+                );
+            };
 
 const Data = () => {
     return (
@@ -41,10 +38,14 @@ const Data = () => {
 };
 
 const AddRoute = () => {
+   
+    var user=""+useWebId();
+ 
+    const url=user.split("profile/card#me")[0]+"private/";
     return (
         <Fragment>
             <h2>Add route</h2>
-            <Upload />
+            <Upload url={url} />
             <Data />
         </Fragment>
 
