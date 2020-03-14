@@ -7,7 +7,6 @@ import {
     ProfileUploader
 } from '@inrupt/solid-react-components';
 
-
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
 
@@ -41,7 +40,7 @@ const Data = () => {
     const url=user.split("profile/card#me")[0]+"private/routes3";
     return (
         <div>
-        <form>
+        
             <Upload/>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Name:</label>
@@ -51,10 +50,8 @@ const Data = () => {
                 <label for="exampleFormControlTextarea1">Description:</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
             </div>
-            <button onSubmit={()=> createFolder(url)}  class="btn btn-info">Add route</button>
-           
-        </form>
-         <button onClick={()=> createFolder(url)}  class="btn btn-info"></button>
+            <button onClick={()=> createFolder(url)}  class="btn btn-info">Add route</button>
+         
          </div>
     );
 };
@@ -67,7 +64,6 @@ const AddRoute = () => {
             <h2>Add route</h2>
             <Data />
         </Fragment>
-
     );
 
 };
@@ -89,12 +85,6 @@ const createFolder = async (folder) => {
         console.log(file.size)
         const fileURl = destination + file.name
         await fileClien.putFile(fileURl, file, file.type)
-    
-           
-         
-      
-
-
   }
  
 export default AddRoute;
