@@ -1,0 +1,31 @@
+.panelCompleto{
+    position: fixed;
+    background: lightcoral;
+}
+.leftPanel {
+    position: fixed;
+    top: 81px;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: rgb(54, 54, 54);
+}
+
+.leftPanel_leftPart{
+    float: left;
+    width: 30%;
+    height: 100%; /* only for demonstration, should be removed */
+    background: #ccc;
+    padding: 20px;
+}
+
+
+.rightPanel_mapa{
+    float: right;
+    top:-120px;
+    width: 70%;
+    padding: 20px;
+    height: 90%;
+    background: cyan;
+    padding: 20px;
+}

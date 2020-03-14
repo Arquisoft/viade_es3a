@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
+
+.contenedor {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.1em;
+}
+.titulo {
+    -webkit-text-stroke: 1.8px #000000;
+    font-size: 3em;
+    color: rgb(77, 218, 243);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.opcion {
+    font-weight: bolder;
+}
+

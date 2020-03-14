@@ -3,10 +3,12 @@ import { useWebId, LoggedIn, LoggedOut } from '@solid/react';
 import styled from 'styled-components';
 import SolidImg from './logo.svg';
 import {
-    ProviderLogin,
-    ProfileViewer,
-    LogoutButton
+  ProviderLogin,
+  ProfileViewer
 } from '@inrupt/solid-react-components';
+import MainPage from './MainPage/Main-page';
+
+import { BrowserRouter as Router } from "react-router-dom";
 
 
 
@@ -115,9 +117,12 @@ const App = () => {
 
                 <br />
                 <LoggedOut>
+                    <Header />
                     <ProviderLogin callbackUri={`${window.location.origin}/`} />
                 </LoggedOut>
-                <LoggedIn><LogoutButton /></LoggedIn>
+                <LoggedIn><Router>
+          <MainPage />
+        </Router></LoggedIn>
             </DemoWrapper>
         </AppWrapper>
     );
