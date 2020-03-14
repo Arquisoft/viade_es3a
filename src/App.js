@@ -128,13 +128,14 @@ const App = () => {
 
                 <br />
                 <LoggedOut>
+                    <Header />
                     <ProviderLogin callbackUri={`${window.location.origin}/`} />
                 </LoggedOut>
                 <LoggedIn>
                    <Router>
                      <MainPage />
                     </Router>
-                  <button onClick={()=> createFolder(urlFolder)} >AAAAAAAAAAAAAAA</button>
+                 
                 <LogoutButton /></LoggedIn>
             </DemoWrapper>
         </AppWrapper>

@@ -42,6 +42,7 @@ const Data = () => {
     return (
         <div>
         <form>
+            <Upload/>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Name:</label>
                 <input type="text" class="form-control" id="name" placeholder="Route's name" required/>
@@ -64,7 +65,6 @@ const AddRoute = () => {
     return (
         <Fragment>
             <h2>Add route</h2>
-            <Upload />
             <Data />
         </Fragment>
 
