@@ -10,7 +10,7 @@ var urlRutas=[];
 const LoadRoute = () => {
     var user=""+useWebId();
     
-    const url=user.split("profile/card#me")[0]+"private/routes3";
+    const url=user.split("profile/card#me")[0]+"private/routes3a";
     listRoutes(url);
         return (
             <h3 id="rutas">Routes list:</h3>
@@ -37,8 +37,7 @@ export async function listRoutes(url) {
                 text = document.createTextNode(nombre);
                 (function(index){
                     a.onclick = function(){
-                        
-                          enseñaRuta(index)
+                          showRoute(index)
                     }    
                 })(i);
                 a.appendChild(text);
@@ -54,7 +53,7 @@ export async function listRoutes(url) {
     }
    
 }
-export async function enseñaRuta(index) {
+export async function showRoute(index) {
     var urlCarptetaRuta=urlRutas[index];
     console.log(urlRutas[index]);
     let folder = await fileClien.readFolder(urlCarptetaRuta);

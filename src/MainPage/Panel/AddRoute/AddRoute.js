@@ -37,7 +37,7 @@ const Upload = () => {
 const Data = () => {
     var user=""+useWebId();
  
-    const url=user.split("profile/card#me")[0]+"private/routes3";
+    const url=user.split("profile/card#me")[0]+"private/routes3a";
     return (
         <div>
         
