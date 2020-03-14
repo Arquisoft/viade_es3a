@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddRoute from "./AddRoute/AddRoute";
 import LoadRoute from './LoadRoute/LoadRoute';
 import Welcome from './Welcome/Welcome';
-
+import Friends from './Friends/Friends';
 
 const AppWrapper = styled.div`
 display: flex;
@@ -26,6 +26,7 @@ const LeftPanel = () => {
                     <Route path="/viade_es3a" component={Welcome} />
                     <Route path="/addRoute" component={AddRoute} />
                     <Route path="/loadRoute" component={LoadRoute} />
+                    <Route path="/friends" component={Friends} />
                 </div>
             </Switch>
         </nav>
