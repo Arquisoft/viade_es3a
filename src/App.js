@@ -14,6 +14,10 @@ import MainPage from './MainPage/Main-page';
 
 
 
+import * as solidAuth from 'solid-auth-client';
+import fileClient from 'solid-file-client';
+
+const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
 
 const AppWrapper = styled.div`
@@ -22,7 +26,7 @@ const AppWrapper = styled.div`
   align-content: center;
   align-items: center;
   width:100%;
-  height: 38.1em;
+  height: -webkit-fill-available;
   background-color:#18EEE9;
   box-sizing:content-box;  
 `;
@@ -31,8 +35,8 @@ const DemoWrapper = styled.div`
   box-shadow: 0px 18px 18px 0.5px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   padding: 0.1rem 4rem;
-  margin-top: 3rem;
-  margin-bottom:3rem;
+  margin-top: auto;
+  margin-bottom:auto;
   width: 100%;
   max-width: 32rem;
   background-color: #667B77;
@@ -97,37 +101,43 @@ const Init = () =>{
 
 const App = () => {
 
-  const webId = useWebId();
-  return (
+    const webId = useWebId();
+    return (
 
-    <DemoWrapper>
+        <AppWrapper>
+            <DemoWrapper>
+                <Init/>
+                <Header />
+                {webId && (
+                    <ProfileViewer
+                        {...{
+                            webId,
+                            direction: 'down',
+                            viewMoreText: 'See Profile',
+                            onError: error => {
+                                // eslint-disable-next-line no-console
+                                console.log('ERROR', error.statusText);
+                            },
+                            onClick: true
+                        }}
+                    >
+                        <ButStyle>Options</ButStyle>
+                    </ProfileViewer>
+                )}
 
-      {webId && (
-        <ProfileViewer
-          {...{
-            webId,
-            direction: 'down',
-            viewMoreText: 'See Profile',
-            onError: error => {
-              // eslint-disable-next-line no-console
-              console.log('ERROR', error.statusText);
-            },
-            onClick: true
-          }}
-        >
-        </ProfileViewer>
-      )}
-
-      <br />
-      <LoggedOut> <Header /> <ProviderLogin callbackUri={`${window.location.origin}/`} /></LoggedOut>
-      <LoggedIn>
-        <Router>
-          <MainPage />
-        </Router>
-      </LoggedIn>
-    </DemoWrapper>
-  );
+                <br />
+                <LoggedOut>
+                    <ProviderLogin callbackUri={`${window.location.origin}/`} />
+                </LoggedOut>
+                <LoggedIn><button onClick={()=> createFolder('https://christian-grs.solid.community/public')} /><LogoutButton /></LoggedIn>
+            </DemoWrapper>
+        </AppWrapper>
+    );
 };
+
+const createFolder = (folder) => {
+    fileClien.createFolder(folder);
+}
 
 export default App;
 //<AuthButton popup='https://solid.github.io/solid-auth-client/dist/popup.html' login="Login here!" logout="Log me out"/> Por si fuese necesario
