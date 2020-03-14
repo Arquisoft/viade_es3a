@@ -8,6 +8,10 @@ import {
 } from '@inrupt/solid-react-components';
 
 
+import * as solidAuth from 'solid-auth-client';
+import fileClient from 'solid-file-client';
+
+const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
 const Upload = (props) => {
     console.log("SUBIENDO "+props.url);

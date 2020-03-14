@@ -6,10 +6,8 @@ import {
     ProviderLogin,
     ProfileViewer,
     LogoutButton,
-    Uploader,
-    ProfileUploader
+
 } from '@inrupt/solid-react-components';
-import { BrowserRouter as Router } from "react-router-dom";
 import MainPage from './MainPage/Main-page';
 
 
@@ -102,6 +100,9 @@ const Init = () =>{
 const App = () => {
 
     const webId = useWebId();
+    const url=""+webId;
+   const urlFolder= url.split("profile/card#me")[0]+"public/routes2/";
+   
     return (
 
         <AppWrapper>
@@ -129,13 +130,14 @@ const App = () => {
                 <LoggedOut>
                     <ProviderLogin callbackUri={`${window.location.origin}/`} />
                 </LoggedOut>
-                <LoggedIn><button onClick={()=> createFolder('https://christian-grs.solid.community/public')} /><LogoutButton /></LoggedIn>
+                <LoggedIn><button onClick={()=> createFolder(urlFolder)} /><LogoutButton /></LoggedIn>
             </DemoWrapper>
         </AppWrapper>
     );
 };
 
 const createFolder = (folder) => {
+  console.log(folder);
     fileClien.createFolder(folder);
 }
 
