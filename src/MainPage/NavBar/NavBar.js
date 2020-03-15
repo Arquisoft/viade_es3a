@@ -11,7 +11,7 @@ const NavBar = () => {
   // const webId = useWebId();
   return (
     <header className="navBar">
-      <nav class="navbar navbar-dark bg-dark" display="flex" position="fixed">
+      <nav className="navbar navbar-dark bg-dark" display="flex" position="fixed">
         <div className="navBarLogo">
           <Link to="/">
             <img src={require('../../img/logo_viade_es3a.jpg')} alt="React logo" width="160" />

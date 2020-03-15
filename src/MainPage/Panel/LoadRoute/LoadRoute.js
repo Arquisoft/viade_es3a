@@ -1,6 +1,8 @@
 import React from 'react';
 import './LoadRoute.css';
 import { useWebId } from '@solid/react';
+import 'bootstrap/dist/css/bootstrap.css';
+import { Card, Button } from 'react-bootstrap';
 
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
@@ -13,10 +15,26 @@ const LoadRoute = () => {
     const url=user.split("profile/card#me")[0]+"private/routes3a";
     listRoutes(url);
         return (
-            <h3 id="rutas">Routes list:</h3>
+            <div  class="container">
+                <h3 id="rutas">Routes list:</h3>
+
+                {/* Por cada ruta */}
+                <div class="card bg-info text-white">
+                    <div class="card-body">
+                        <h4 class="card-title" id="routeName">Route name</h4>
+                        <p class="card-text">Route details</p>
+                        <img class="card-img-top" src="img_.png" alt="Route image"></img>
+                        <br></br>
+                        <button type="button" class="btn btn-light">Load</button>
+                    </div>
+                </div> 
+            </div>
+           
         );
     
 }
+
+
 export async function listRoutes(url) {
     
     let folder = await fileClien.readFolder(url);
@@ -58,6 +76,8 @@ export async function showRoute(index) {
     console.log(urlRutas[index]);
     let folder = await fileClien.readFolder(urlCarptetaRuta);
     console.log(folder);
+    document.getElementById("routeName").innerHTML = folder.name;
+
    
 }
 
