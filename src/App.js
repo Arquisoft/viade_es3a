@@ -30,13 +30,13 @@ const AppWrapper = styled.div`
 `;
 
 const DemoWrapper = styled.div`
-  box-shadow: 0px 18px 18px 0.5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 20px 20px 0.5px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
-  padding: 0.1rem 4rem;
+  padding: 2rem 4rem;
   margin-top: auto;
   margin-bottom:auto;
   width: 100%;
-  max-width: 32rem;
+  max-width: 35rem;
   background-color: #667B77;
 `;
 
@@ -46,17 +46,6 @@ const HeaderWrapper = styled.section`
   text-align: center;
   width: 100%;
 
-`;
-
-const ButStyle = styled.button`
-  background-color:#18EEE9;
-  border-radius: 10px;
-  font-weight: bold;
-  box-shadow: 0px 0px 10px 0.5px rgb(253, 252, 252);
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
 `;
 
 const Headline = styled.h1`
