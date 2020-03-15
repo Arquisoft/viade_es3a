@@ -1,0 +1,9 @@
+.rightPanel_mapa { 
+    float: left;
+    top: 81px;
+    padding: 20px;
+    width: 72%;
+    background-color: #f1f1f1;
+    height: -webkit-fill-available;
+    background: lightblue;
+}
