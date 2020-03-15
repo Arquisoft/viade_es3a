@@ -12,9 +12,9 @@ export default class Map extends React.Component{
 
     componentDidMount(){
         this.map = L.map("map", {
-             center: [58, 16],
-             zoom: 6,
-             zoomControl: false
+             center: [43.305, -5.60],
+             zoom: 10,
+             zoomControl: true
         });
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -23,6 +23,14 @@ export default class Map extends React.Component{
             maxNativeZoom:17,
         }).addTo(this.map);
 
+        var marker2 = L.marker([43.361070,-5.850456,16]).addTo(this.map);
+        var marker = L.marker([43.354877,-5.851336,16]).addTo(this.map);
+        
+        marker2.bindPopup("<b>Campo San Francisco</b><br>Aquí finaliza nuestra ruta").openPopup();
+        marker.bindPopup("<b>Escuela Ingeniería Informática</b><br>Aquí empieza nuestra ruta").openPopup();
+        
+
+       
     }
 
         render(){
