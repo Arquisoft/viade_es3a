@@ -1,22 +1,15 @@
 import React from 'react';
-import { useWebId, LoggedIn, LoggedOut } from '@solid/react';
+import { LoggedIn, LoggedOut } from '@solid/react';
 import styled from 'styled-components';
 import SolidImg from './logo.svg';
 import {
     ProviderLogin,
-    ProfileViewer,
     LogoutButton,
 
 } from '@inrupt/solid-react-components';
 import MainPage from './MainPage/Main-page';
 
 import { BrowserRouter as Router } from "react-router-dom";
-
-import * as solidAuth from 'solid-auth-client';
-import fileClient from 'solid-file-client';
-
-const fileClien = new fileClient(solidAuth, { enableLogging: true });
-
 
 const AppWrapper = styled.div`
   display: flex;
@@ -87,10 +80,6 @@ const Init = () =>{
 };
 
 const App = () => {
-
-    const webId = useWebId();
-    const url=""+webId;
-   const urlFolder= url.split("profile/card#me")[0]+"public/routes2/";
    
     return (
 
@@ -111,11 +100,6 @@ const App = () => {
         </AppWrapper>
     );
 };
-
-const createFolder = (folder) => {
-  console.log(folder);
-    fileClien.createFolder(folder);
-}
 
 export default App;
 //<AuthButton popup='https://solid.github.io/solid-auth-client/dist/popup.html' login="Login here!" logout="Log me out"/> Por si fuese necesario
