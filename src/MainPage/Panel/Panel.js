@@ -23,12 +23,12 @@ const LeftPanel = () => {
         <nav className="leftPanel_leftPart">
             <Switch>
                 <div>
-                    <Route exact path="/" component={Welcome} />
-                    <Route path="/viade_es3a" component={Welcome} />
-                    <Route path="/addRoute" component={AddRoute} />
-                    <Route path="/loadRoute" component={LoadRoute} />
-                    <Route path="/friends" component={Friends} />
-                    <Route path="/profile" component={Profile} />
+                    <Route exact path="/viade_es3a/" component={Welcome} />
+                    <Route path="/viade_es3a/viade_es3a" component={Welcome} />
+                    <Route path="/viade_es3a/addRoute" component={AddRoute} />
+                    <Route path="/viade_es3a/loadRoute" component={LoadRoute} />
+                    <Route path="/viade_es3a/friends" component={Friends} />
+                    <Route path="/viade_es3a/profile" component={Profile} />
                 </div>
             </Switch>
         </nav>

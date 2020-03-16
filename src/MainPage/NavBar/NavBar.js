@@ -19,10 +19,10 @@ const NavBar = () => {
         </div>
         <div className="navBarOptions">
           <div>
-            <Link to="/addRoute" > Add route </Link>
-            <Link to="/loadRoute" > Load route </Link>
-            <Link to="/profile" > Profile </Link>
-            <Link to="/friends" > Friends </Link>
+            <Link to="/viade_es3a/addRoute" > Add route </Link>
+            <Link to="/viade_es3a/loadRoute" > Load route </Link>
+            <Link to="/viade_es3a/profile" > Profile </Link>
+            <Link to="/viade_es3a/friends" > Friends </Link>
           </div>
         </div>
         <div className="navBarLogout">
