@@ -31,7 +31,6 @@ const LoadRoute = () => {
             </div>
            
         );
-    
 }
 
 
