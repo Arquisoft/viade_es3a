@@ -4,6 +4,6 @@ import App from './App';
 
 test('renders learn react link', () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/VIADE ES3A/i);
+  const linkElement = getByText("ROUTE MANAGER");
   expect(linkElement).toBeInTheDocument();
 });

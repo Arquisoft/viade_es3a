@@ -11,6 +11,7 @@ before_install:
   - sudo gem install asciidoctor asciidoctor-diagram
 script:
   - npm install -g codecov
+  - npm test && codecov
   - CI=false npm run build
   - npm run docs
 deploy:
