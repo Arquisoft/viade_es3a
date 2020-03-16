@@ -88,7 +88,7 @@ const App = () => {
                 <Init/>
                 <LoggedOut>
                     <Header />
-                    <ProviderLogin callbackUri={`${window.location.origin}/`} />
+                    <ProviderLogin callbackUri={`${window.location.origin}/viade_es3a/`} />
                 </LoggedOut>
                 <LoggedIn>
                     <Router>
