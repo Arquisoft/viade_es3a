@@ -9,10 +9,9 @@ before_install:
   - sudo apt-get -y install ruby openjdk-8-jre
   - sudo gem install asciidoctor asciidoctor-diagram
 script:
-  - unset CI
   - npm install -g codecov
   - npm test && codecov
-  - unset CI && npm run build
+  - CI=false npm run build
   - npm run docs
 deploy:
   provider: pages
