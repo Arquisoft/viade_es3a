@@ -23,7 +23,3 @@ More information about how this project has been setup is available [in the wiki
 * Carlos Menéndez Martínez
 * Iván Rodríguez Ovín
 * Christian Gabriel Rodríguez Suárez
-
-
-
-
