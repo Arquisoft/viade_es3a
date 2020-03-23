@@ -38,6 +38,7 @@ const Data = () => {
     var user=""+useWebId();
  
     const url=user.split("profile/card#me")[0]+"private/routes3a";
+    console.log(url);
     return (
         <div>
         
@@ -92,7 +93,7 @@ const createFolder = async (folder) => {
     fileList.push(document.getElementById("video"));
 
     for(var i = 0; i< fileList.length; i++) {
-        var file = fileList[i].files[0];
+        var file = fileList[i];
         console.log(file.name);
         console.log(file.size);
         const fileURl = destination + file.name;
