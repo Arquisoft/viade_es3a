@@ -81,20 +81,23 @@ const createFolder = async (folder) => {
     
     if (!existe)
          await fileClien.createFolder(folder);
-    console.log(existe)
- 
+    console.log(existe);
+
+    var fileList = [];
     var nameValue = document.getElementById("name").value;
-    var photoValue=document.getElementById("photo").value;
-    var videoValue=document.getElementById("video");
     var destination= folder+"/"+nameValue+"/";
-    await fileClien.createFolder(destination); 
-    var x = document.getElementById("inputFile");
-    
-        var file = x.files[0];
-        console.log(file.name)
-        console.log(file.size)
-        const fileURl = destination + file.name
+    await fileClien.createFolder(destination);
+    fileList.push(document.getElementById("inputFile"));
+    fileList.push(document.getElementById("photo"));
+    fileList.push(document.getElementById("video"));
+
+    for(var i = 0; i< fileList.length; i++) {
+        var file = fileList[i].files[0];
+        console.log(file.name);
+        console.log(file.size);
+        const fileURl = destination + file.name;
         await fileClien.putFile(fileURl, file, file.type)
+    }
   }
  
 export default AddRoute;

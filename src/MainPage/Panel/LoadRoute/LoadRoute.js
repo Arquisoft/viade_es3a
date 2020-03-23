@@ -22,8 +22,10 @@ const LoadRoute = () => {
                 <div class="card bg-info text-white">
                     <div class="card-body">
                         <h4 class="card-title" id="routeName">Route name</h4>
-                        <p class="card-text">Route details</p>
+                        <p class="card-Description" id ="routeDescription">Route description</p>
+                        <p className="card-Image" id="routeImage">Route image</p>
                         <img class="card-img-top" src="img_.png" alt="Route image"></img>
+                        <p className="card-Video" id="routeVideo">Route video</p>
                         <br></br>
                         <button type="button" class="btn btn-light">Load</button>
                     </div>
