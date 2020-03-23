@@ -51,11 +51,11 @@ const Data = () => {
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
             </div>
             <div class="form-group">
-                <label class="exampleInputPhoto" for="photo">Imagen:</label>
+                <label class="exampleInputPhoto" for="photo">Imagen:</label><br></br>
                 <input type="file" id="photo" accept=".png"/>
             </div>
             <div class="form-group">
-                <label class="exampleInputVideo" for="video">Vídeo:</label>
+                <label class="exampleInputVideo" for="video">Vídeo:</label><br></br>
                 <input type="file" id="video" accept=".mp4"/>
             </div>
             <button onClick={()=> createFolder(url)}  class="btn btn-info">Add route</button>
