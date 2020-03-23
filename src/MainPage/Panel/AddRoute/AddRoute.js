@@ -51,11 +51,11 @@ const Data = () => {
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="foto">Imagen:</label>
-                <input type="file" id="foto" accept=".png"/>
+                <label class="exampleInputPhoto" for="photo">Imagen:</label>
+                <input type="file" id="photo" accept=".png"/>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="video">Vídeo:</label>
+                <label class="exampleInputVideo" for="video">Vídeo:</label>
                 <input type="file" id="video" accept=".mp4"/>
             </div>
             <button onClick={()=> createFolder(url)}  class="btn btn-info">Add route</button>
@@ -84,6 +84,8 @@ const createFolder = async (folder) => {
     console.log(existe)
  
     var nameValue = document.getElementById("name").value;
+    var photoValue=document.getElementById("photo").value;
+    var videoValue=document.getElementById("video");
     var destination= folder+"/"+nameValue+"/";
     await fileClien.createFolder(destination); 
     var x = document.getElementById("inputFile");
