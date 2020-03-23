@@ -52,15 +52,11 @@ const Data = () => {
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="foto">Imagen:</label>
-                <div class="col-sm-10">
-                    <input type="file" class="custom-file-input" name="foto" accept=".png"/>
-                </div>
+                <input type="file" id="foto" accept=".png"/>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="video">Vídeo:</label>
-                <div class="col-sm-10">
-                    <input type="file" class="custom-file-input" name="video" accept=".mp4"/>
-                </div>
+                <input type="file" id="video" accept=".mp4"/>
             </div>
             <button onClick={()=> createFolder(url)}  class="btn btn-info">Add route</button>
          
