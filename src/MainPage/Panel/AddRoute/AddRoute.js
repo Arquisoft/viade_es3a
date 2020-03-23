@@ -50,6 +50,18 @@ const Data = () => {
                 <label for="exampleFormControlTextarea1">Description:</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
             </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="foto">Imagen:</label>
+                <div class="col-sm-10">
+                    <input type="file" class="custom-file-input" name="foto" accept=".png"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="video">Vídeo:</label>
+                <div class="col-sm-10">
+                    <input type="file" class="custom-file-input" name="video" accept=".mp4"/>
+                </div>
+            </div>
             <button onClick={()=> createFolder(url)}  class="btn btn-info">Add route</button>
          
          </div>
