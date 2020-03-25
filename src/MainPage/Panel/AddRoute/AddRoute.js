@@ -53,11 +53,11 @@ const Data = () => {
             </div>
             <div class="form-group">
                 <label class="exampleInputPhoto" for="photo">Imagen:</label><br></br>
-                <input type="file" id="photo" accept=".png" multiple/>
+                <input type="file" id="photo" name="image" accept=".png" multiple/>
             </div>
             <div class="form-group">
                 <label class="exampleInputVideo" for="video">Vídeo:</label><br></br>
-                <input type="file" id="video" accept=".mp4" multiple/>
+                <input type="file" id="video" name="video" accept=".mp4" multiple/>
             </div>
             <button onClick={()=> createFolder(url)}  class="btn btn-info">Add route</button>
          
@@ -77,11 +77,9 @@ const AddRoute = () => {
 
 };
 const createFolder = async (folder) => {
-    console.log(folder);
     var existe = await fileClien.itemExists(folder);
     if (!existe)
          await fileClien.createFolder(folder);
-    console.log(existe);
 
     var fileList = [];
     var nameValue = document.getElementById("name").value;
@@ -100,6 +98,6 @@ const createFolder = async (folder) => {
         fileClien.putFile(fileURl, file, file.type)
     }
   }
- 
+
 export default AddRoute;
 

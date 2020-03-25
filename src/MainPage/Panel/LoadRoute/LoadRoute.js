@@ -11,8 +11,8 @@ const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas=[];
 const LoadRoute = () => {
     var user=""+useWebId();
-    var perfil = user.split("profile/card#me")[0]
-    const url=perfil+"/private/routes3a";
+    console.log(user)
+    const url=user.split("profile/card#me")[0]+"private/routes3a";
     listRoutes(url);
         return (
             <div  class="container">
