@@ -37,7 +37,7 @@ const Upload = () => {
 const Data = () => {
     var user=""+useWebId();
  
-    const url=user.split("profile/card#me")[0]+"private/routes3a";
+    const url=user.split("profile/card#me")[0]+"/private/routes3a";
     console.log(url);
     return (
         <div>
@@ -79,14 +79,13 @@ const AddRoute = () => {
 const createFolder = async (folder) => {
     console.log(folder);
     var existe = await fileClien.itemExists(folder);
-    
     if (!existe)
          await fileClien.createFolder(folder);
     console.log(existe);
 
     var fileList = [];
     var nameValue = document.getElementById("name").value;
-    var destination= folder+"/"+nameValue+"/";
+    var destination= folder+"/"+nameValue;
     await fileClien.createFolder(destination);
     fileList.push(document.getElementById("inputFile"));
     fileList.push(document.getElementById("exampleFormControlTextarea1").value);
