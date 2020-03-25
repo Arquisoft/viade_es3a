@@ -89,6 +89,7 @@ const createFolder = async (folder) => {
     var destination= folder+"/"+nameValue+"/";
     await fileClien.createFolder(destination);
     fileList.push(document.getElementById("inputFile"));
+    fileList.push(document.getElementById("exampleFormControlTextarea1").value);
     fileList.push(document.getElementById("photo"));
     fileList.push(document.getElementById("video"));
 
@@ -97,7 +98,7 @@ const createFolder = async (folder) => {
         console.log(file.name);
         console.log(file.size);
         const fileURl = destination + file.name;
-        await fileClien.putFile(fileURl, file, file.type)
+        fileClien.putFile(fileURl, file, file.type)
     }
   }
  
