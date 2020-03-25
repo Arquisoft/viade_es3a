@@ -1,16 +1,17 @@
 import React from 'react'
-import { useWebId,List,Value,evaluateExpressions,evaluateList } from '@solid/react';
+import { useWebId, List, Value, Name } from '@solid/react';
 
 
-const Card = () => {
-    return(
+const Card = (props) => {
+    return (
         <div class="card bg-info text-white">
             <div class="card-body">
-                <h4 class="card-title" id="routeName">Friend name</h4>
-                <br></br>
+                <h4 class="card-title" id="friendName">
+                    <Name src={props.nombre}>{props.nombre}</Name>
+                </h4>
                 <button type="button" class="btn btn-light">Profile</button>
             </div>
-        </div> 
+        </div>
     )
 }
 
@@ -19,13 +20,13 @@ const Friends = () => {
     return (
         <div>
             <h2>Your friends, <Value src="user.name" /> </h2>
-                    <List src={`[${webId}].friends`}>{friend =>
-                        <li key={friend}>
-                            <p>
-                                <Card src={`[${friend}].name`}>{`${friend}`}</Card>
-                                </p>
-                        </li>}
-                    </List>
+            <List src={`[${webId}].friends`}>{friend =>
+                <li key={friend}>
+                    <p>
+                        <Card nombre={`[${friend}]`}></Card>
+                    </p>
+                </li>}
+            </List>
         </div>
     )
 }
