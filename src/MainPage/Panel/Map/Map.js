@@ -24,14 +24,26 @@ export default class Map extends React.Component{
         }).addTo(this.map);
 
         //Markers --> Inicio, Fin
-        var marker2 = L.marker([43.361070,-5.850456,16]).addTo(this.map);
-        var marker = L.marker([43.354877,-5.851336,16]).addTo(this.map);
+
+        var points = [[43.350835, -5.851479],
+                      [43.355012, -5.851291],
+                      [43.360846, -5.857008],
+                      [43.361753, -5.849873],
+                      [43.362632, -5.843335],
+                      [43.360655, -5.844574],
+                      [43.358475, -5.842981]];
+
+        var polyline = L.polyline(points, {color: 'rgb(77, 218, 243)'}).addTo(this.map);
+
+        var popup = L.popup();
+        var photoImg = "<img src='parqueDeInvierno.jpg' height='150px' width='150px'/>";
         
-        marker2.bindPopup("<b>Campo San Francisco</b><br>Aquí finaliza nuestra ruta").openPopup();
-        marker.bindPopup("<b>Escuela Ingeniería Informática</b><br>Aquí empieza nuestra ruta").openPopup();
+        var marker = L.marker([43.350835, -5.851479]).   
+                      bindPopup("<b>Parque de invierno</b><br>Aquí empieza nuestra ruta").openPopup(popup).addTo(this.map);
+                        
+        var marker2 = L.marker([43.358475, -5.842981]).
+                        bindPopup("<b>Campillín</b><br>Aquí finaliza nuestra ruta").addTo(this.map);
         
-        var points = [[43.361070,-5.850456,16], [43.354877,-5.851336,16] ];
-        var polyline = L.polyline(points, {color: 'blue'}).addTo(this.map);
 
     }
 
