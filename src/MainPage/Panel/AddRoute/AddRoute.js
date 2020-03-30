@@ -80,31 +80,33 @@ const AddRoute = () => {
     );
 
 };
+
 const createFolder = async (folder) => {
     var existe = await fileClien.itemExists(folder);
     if (!existe)
-         await fileClien.createFolder(folder);
-
+        await fileClien.createFolder(folder);
     var fileList = [];
     var nameValue = document.getElementById("name").value;
-    var destination= folder+"/"+nameValue + "/";
-    await fileClien.createFolder(destination);
-    
-    fileList.push(document.getElementById("route").files[0]);
-    await fileClien.createFile(destination + "/"+ "description", document.getElementById("description").value, "text/plain");
-    fileList.push(document.getElementById("photo"));
-    fileList.push(document.getElementById("video"));
-    
+    var destination = folder + "/" + nameValue + "/";
+    existe = await fileClien.itemExists(destination);
+    if (!existe) {
+        await fileClien.createFolder(destination);
+        fileList.push(document.getElementById("route").files[0]);
+        await fileClien.createFile(destination + "/"+ "description", document.getElementById("description").value, "text/plain");
+        fileList.push(document.getElementById("photo"));
+        fileList.push(document.getElementById("video"));
 
-    for(var i = 0; i< fileList.length; i++) {
-        var file = fileList[i];
-        const fileURl = destination + "/"+ file.name;
-        fileClien.createFile(fileURl, file, file.type);
-        
+        for (var i = 0; i < fileList.length; i++) {
+            var file = fileList[i];
+            const fileURl = destination + "/" + nameValue + ".geojson";
+            fileClien.putFile(fileURl, file, file.type);
+        }
+        alert("Your route has been added to the pod!!");
     }
-    
-    alert("Your route has been added to the pod!!"); 
-  }
+    else
+        alert("Route title already used, use another title");
+
+}
 
 export default AddRoute;
 
