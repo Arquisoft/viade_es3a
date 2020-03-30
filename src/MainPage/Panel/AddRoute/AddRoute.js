@@ -9,6 +9,8 @@ import {
 
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
+import { Redirect } from 'react-router-dom';
+
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
@@ -59,7 +61,9 @@ const Data = () => {
                 <label class="exampleInputVideo" for="video">Vídeo:</label><br></br>
                 <input type="file" id="video" name="video" accept=".mp4" multiple/>
             </div>
-            <button onClick={()=> createFolder(url)}  class="btn btn-info">Add route</button>
+            <button onClick={()=> createFolder(url)}  class="btn btn-info" >Add route
+            </button>
+            
          
          </div>
     );
@@ -95,8 +99,12 @@ const createFolder = async (folder) => {
         console.log(file.name);
         console.log(file.size);
         const fileURl = destination + file.name;
-        fileClien.putFile(fileURl, file, file.type)
+        fileClien.putFile(fileURl, file, file.type);
+        
     }
+    alert("Your route has been added to the pod!"); 
+    return <Redirect to="/viade_es3a/addRoute"/>
+      
   }
 
 export default AddRoute;
