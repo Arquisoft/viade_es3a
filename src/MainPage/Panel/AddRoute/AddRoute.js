@@ -51,7 +51,7 @@ const Data = () => {
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Description:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1"name="description" rows="3" ></textarea>
             </div>
             <div class="form-group">
                 <label class="exampleInputPhoto" for="photo">Imagen:</label><br></br>
@@ -93,12 +93,13 @@ const createFolder = async (folder) => {
     fileList.push(document.getElementById("exampleFormControlTextarea1").value);
     fileList.push(document.getElementById("photo"));
     fileList.push(document.getElementById("video"));
+    
 
     for(var i = 0; i< fileList.length; i++) {
         var file = fileList[i];
         console.log(file.name);
         console.log(file.size);
-        const fileURl = destination + file.name;
+        const fileURl = destination + "/"+ file.name;
         fileClien.putFile(fileURl, file, file.type);
         
     }
