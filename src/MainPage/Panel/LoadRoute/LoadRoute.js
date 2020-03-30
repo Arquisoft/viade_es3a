@@ -43,8 +43,6 @@ export async function listRoutes(url) {
     if (folder) {
 
         for (var i = 0; i < folder.folders.length; i++) {
-            
-            
                 li = document.createElement('li');
                 a  = document.createElement('a');
                 var urlArchivo= ""+folder.folders[i].url;
@@ -61,7 +59,6 @@ export async function listRoutes(url) {
                 li.appendChild(a);
                 ul.appendChild(li);
                
-              
               document.querySelector("#rutas").appendChild(ul);
         };
         for (var i = 0; i < urlRutas.length; i++) {
@@ -71,12 +68,24 @@ export async function listRoutes(url) {
    
 }
 export async function showRoute(index) {
+    console.log(index);
     var urlCarptetaRuta=urlRutas[index];
     console.log(urlRutas[index]);
     let folder = await fileClien.readFolder(urlCarptetaRuta);
+    
+    let urlRoute = urlCarptetaRuta.concat(index+".geojson");
+        fetch(urlRoute)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (myFile) {
+             return myFile;
+          });
+
+
     console.log(folder);
     document.getElementById("routeName").innerHTML = folder.name;
-
+    
    
 }
 

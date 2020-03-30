@@ -9,6 +9,8 @@ import {
 
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
+import { Redirect } from 'react-router-dom';
+
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
@@ -27,38 +29,49 @@ const Upload = () => {
                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
             </div>
             <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputFile"
-                    aria-describedby="inputGroupFileAddon01" onChange={changeName} multiple/>
+                <input type="file" class="custom-file-input" id="route"
+                    aria-describedby="inputGroupFileAddon01" onChange={changeName} multiple />
                 <label class="custom-file-label" for="inputGroupFile01">{filename}</label>
             </div>
         </div>
     );
 };
 const Data = () => {
-    var user=""+useWebId();
- 
-    const url=user.split("profile/card#me")[0]+"private/routes3a";
+    var user = "" + useWebId();
+
+    const url = user.split("profile/card#me")[0] + "private/routes3a";
+    console.log(url);
     return (
         <div>
-        
-            <Upload/>
+
+            <Upload />
             <div class="form-group">
                 <label for="exampleFormControlInput1">Name:</label>
-                <input type="text" class="form-control" id="name" placeholder="Route's name" required/>
+                <input type="text" class="form-control" id="name" placeholder="Route's name" required />
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Description:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+                <textarea class="form-control" id="description" name="description" rows="3" ></textarea>
             </div>
-            <button onClick={()=> createFolder(url)}  class="btn btn-info">Add route</button>
-         
-         </div>
+            <div class="form-group">
+                <label class="exampleInputPhoto" for="photo">Imagen:</label><br></br>
+                <input type="file" id="photo" name="image" accept=".png" multiple />
+            </div>
+            <div class="form-group">
+                <label class="exampleInputVideo" for="video">Vídeo:</label><br></br>
+                <input type="file" id="video" name="video" accept=".mp4" multiple />
+            </div>
+            <button onClick={() => createFolder(url)} class="btn btn-info" >Add route
+            </button>
+
+
+        </div>
     );
 };
 
 const AddRoute = () => {
-   
-   
+
+
     return (
         <Fragment>
             <h2>Add route</h2>
@@ -68,24 +81,30 @@ const AddRoute = () => {
 
 };
 const createFolder = async (folder) => {
-    console.log(folder);
     var existe = await fileClien.itemExists(folder);
-    
     if (!existe)
-         await fileClien.createFolder(folder);
-    console.log(existe)
- 
+        await fileClien.createFolder(folder);
+    var fileList = [];
     var nameValue = document.getElementById("name").value;
-    var destination= folder+"/"+nameValue+"/";
-    await fileClien.createFolder(destination); 
-    var x = document.getElementById("inputFile");
-    
-        var file = x.files[0];
-        console.log(file.name)
-        console.log(file.size)
-        const fileURl = destination + file.name
-        await fileClien.putFile(fileURl, file, file.type)
-  }
- 
-export default AddRoute;
+    var destination = folder + "/" + nameValue + "/";
+    existe = await fileClien.itemExists(destination);
+    if (!existe) {
+        await fileClien.createFolder(destination);
+        fileList.push(document.getElementById("route").files[0]);
+        fileList.push(document.getElementById("description"));
+        fileList.push(document.getElementById("photo"));
+        fileList.push(document.getElementById("video"));
 
+        for (var i = 0; i < fileList.length; i++) {
+            var file = fileList[i];
+            const fileURl = destination + "/" + nameValue + ".geojson";
+            fileClien.putFile(fileURl, file, file.type);
+        }
+        alert("Your route has been added to the pod!!");
+    }
+    else
+        alert("Route title already used, use another title");
+
+}
+
+export default AddRoute;
