@@ -9,7 +9,7 @@ import {
 
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
-import { Redirect } from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
@@ -104,7 +104,7 @@ const createFolder = async (folder) => {
         
     }
     alert("Your route has been added to the pod!"); 
-    return <Redirect to="/viade_es3a/addRoute"/>
+    window.location.reload(true);
       
   }
 
