@@ -76,9 +76,10 @@ export async function showRoute(index) {
     console.log(urlRutas[index]);
     let folder = await fileClien.readFolder(urlCarptetaRuta);
     console.log(folder);
+    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
+    console.log(folderDesc);
     document.getElementById("routeName").innerHTML = folder.name;
-
-   
+    document.getElementById("routeDescription").innerHTML = folderDesc;
 }
 
 export default LoadRoute;
