@@ -103,7 +103,8 @@ const createFolder = async (folder) => {
         fileClien.putFile(fileURl, file, file.type);
         
     }
-    alert("Your route has been added to the pod!"); 
+    alert("Your route has been added to the pod!!"); 
+    setTimeout('', 5000);
     window.location.reload(true);
       
   }
