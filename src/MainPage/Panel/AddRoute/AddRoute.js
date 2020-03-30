@@ -29,7 +29,7 @@ const Upload = () => {
                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
             </div>
             <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputFile"
+                <input type="file" class="custom-file-input" id="route"
                     aria-describedby="inputGroupFileAddon01" onChange={changeName} multiple/>
                 <label class="custom-file-label" for="inputGroupFile01">{filename}</label>
             </div>
@@ -51,7 +51,7 @@ const Data = () => {
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Description:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1"name="description" rows="3" ></textarea>
+                <textarea class="form-control" id="description" name="description" rows="3" ></textarea>
             </div>
             <div class="form-group">
                 <label class="exampleInputPhoto" for="photo">Imagen:</label><br></br>
@@ -89,8 +89,8 @@ const createFolder = async (folder) => {
     var nameValue = document.getElementById("name").value;
     var destination= folder+"/"+nameValue;
     await fileClien.createFolder(destination);
-    fileList.push(document.getElementById("inputFile"));
-    fileList.push(document.getElementById("exampleFormControlTextarea1").value);
+    fileList.push(document.getElementById("route"));
+    fileList.push(document.getElementById("description"));
     fileList.push(document.getElementById("photo"));
     fileList.push(document.getElementById("video"));
     
