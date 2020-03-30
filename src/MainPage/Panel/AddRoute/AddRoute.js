@@ -55,11 +55,11 @@ const Data = () => {
             </div>
             <div class="form-group">
                 <label class="exampleInputPhoto" for="photo">Imagen:</label><br></br>
-                <input type="file" id="photo" name="image" accept=".png" multiple/>
+                <input type="file" id="photo" name="image" accept=".png" multiple="true"/>
             </div>
             <div class="form-group">
                 <label class="exampleInputVideo" for="video">Vídeo:</label><br></br>
-                <input type="file" id="video" name="video" accept=".mp4" multiple/>
+                <input type="file" id="video" name="video" accept=".mp4" multiple="true"/>
             </div>
             <button onClick={()=> createFolder(url)}  class="btn btn-info" >Add route
             </button>
@@ -90,11 +90,16 @@ const createFolder = async (folder) => {
     var destination = folder + "/" + nameValue + "/";
     existe = await fileClien.itemExists(destination);
     if (!existe) {
+        var k=0;
         await fileClien.createFolder(destination);
         fileList.push(document.getElementById("route").files[0]);
         await fileClien.createFile(destination + "/"+ "description", document.getElementById("description").value, "text/plain");
-        await fileClien.createFile(destination + "/"+ "photo", document.getElementById("photo").files[0], "img");
-        await fileClien.createFile(destination + "/"+ "video", document.getElementById("video").files[0], "img");
+        for(k=0; k<document.getElementById("photo").files.length; k++){
+            await fileClien.createFile(destination + "/"+ "photo" + "/img" + (k+1), document.getElementById("photo").files[k], "img");
+        }
+        for(k=0; k<document.getElementById("video").files.length; k++){
+            await fileClien.createFile(destination + "/"+ "video"+ "/vid" + (k+1), document.getElementById("video").files[k], "video");
+        }
 
         for (var i = 0; i < fileList.length; i++) {
             var file = fileList[i];
