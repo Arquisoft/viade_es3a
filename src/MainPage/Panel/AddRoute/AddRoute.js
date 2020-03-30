@@ -89,8 +89,9 @@ const createFolder = async (folder) => {
     var nameValue = document.getElementById("name").value;
     var destination= folder+"/"+nameValue + "/";
     await fileClien.createFolder(destination);
+    
     fileList.push(document.getElementById("route").files[0]);
-    fileList.push(document.getElementById("description"));
+    await fileClien.createFile(destination + "/"+ "description", document.getElementById("description").value, "text/plain");
     fileList.push(document.getElementById("photo"));
     fileList.push(document.getElementById("video"));
     
@@ -98,9 +99,10 @@ const createFolder = async (folder) => {
     for(var i = 0; i< fileList.length; i++) {
         var file = fileList[i];
         const fileURl = destination + "/"+ file.name;
-        fileClien.putFile(fileURl, file, file.type);
+        fileClien.createFile(fileURl, file, file.type);
         
     }
+    
     alert("Your route has been added to the pod!!"); 
   }
 
