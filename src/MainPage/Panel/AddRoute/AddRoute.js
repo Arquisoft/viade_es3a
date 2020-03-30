@@ -93,8 +93,8 @@ const createFolder = async (folder) => {
         await fileClien.createFolder(destination);
         fileList.push(document.getElementById("route").files[0]);
         await fileClien.createFile(destination + "/"+ "description", document.getElementById("description").value, "text/plain");
-        fileList.push(document.getElementById("photo"));
-        fileList.push(document.getElementById("video"));
+        await fileClien.createFile(destination + "/"+ "photo", document.getElementById("photo").files[0], "img");
+        await fileClien.createFile(destination + "/"+ "video", document.getElementById("video").files[0], "img");
 
         for (var i = 0; i < fileList.length; i++) {
             var file = fileList[i];
