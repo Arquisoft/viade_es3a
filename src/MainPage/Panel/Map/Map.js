@@ -1,6 +1,7 @@
 import React from 'react';
-import { TileLayer, Map  } from 'react-leaflet';
+import { TileLayer, Map, GeoJSON  } from 'react-leaflet';
 import L from 'leaflet';
+import ruta from '../../../Routes/ruta.json';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 
@@ -15,6 +16,26 @@ export function showRout(route) {
     new L.GeoJSON(route).addTo(Map.map);
 }
 
+function getStyle(feature, layer) {
+    return {
+      weight: 1,
+      opacity: 1,
+      color: '#000'
+    }
+  }
+
+const geojsonMarkerOptions = {
+    radius: 4,
+    fillColor: "#EE4266",
+    color: "#000",
+    weight: 0,
+    opacity: 1,
+    fillOpacity: 0.4
+}
+
+function pointToLayer(feature, latlng) {
+    return L.circleMarker(latlng, geojsonMarkerOptions);
+}
 
 const styles = {
     wrapper: { 
@@ -33,14 +54,18 @@ const ShowMap = (props) => {
         <div style={styles.wrapper}>
             <Map style={styles.map} center={props.center} zoom={props.zoom}>
                  <TileLayer url={props.url} />
+                 <GeoJSON
+                    data={ruta}
+                    pointToLayer={pointToLayer}
+                 />
             </Map>
         </div>
     );
   }
 
 ShowMap.defaultProps = {
-    center: [43.305, -5.60],
-    zoom: 10,
+    center: [40.205, -3.60],
+    zoom: 8,
     url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   };
   
