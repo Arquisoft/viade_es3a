@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavBar.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Link } from 'react-router-dom';
 import {
   LogoutButton
 } from '@inrupt/solid-react-components';

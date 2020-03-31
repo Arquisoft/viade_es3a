@@ -2,7 +2,6 @@ import React from 'react';
 import './LoadRoute.css';
 import { useWebId } from '@solid/react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Card, Button } from 'react-bootstrap';
 
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
