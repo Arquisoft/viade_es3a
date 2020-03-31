@@ -1,8 +1,15 @@
 import React, { Fragment, useState } from 'react';
 import './AddRoute.css';
 import { useWebId } from '@solid/react';
+import {
+
+    Uploader,
+    ProfileUploader
+} from '@inrupt/solid-react-components';
+
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
+import { Redirect } from 'react-router-dom';
 
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
