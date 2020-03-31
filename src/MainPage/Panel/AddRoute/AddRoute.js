@@ -114,9 +114,18 @@ const createFolder = async (folder) => {
             fileClien.putFile(fileURl, file, file.type);
         }
         alert("Your route has been added to the pod!!");
+        //clean all fields
+        document.getElementById("name").value="";
+        document.getElementById("description").value="";
+        document.getElementById("route").value=null;
+        document.getElementById("labelRoute").value=null;
+
+        
+    
     }
     else
         alert("Route title already used, use another title");
+}
 
 }
 
