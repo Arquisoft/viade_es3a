@@ -7,6 +7,8 @@ import { Card, Button } from 'react-bootstrap';
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
 
+import * as algo from '../Map/Map';
+
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas=[];
 const LoadRoute = () => {
@@ -72,21 +74,13 @@ export async function showRoute(index) {
     var urlCarptetaRuta=urlRutas[index];
     console.log(urlRutas[index]);
     let folder = await fileClien.readFolder(urlCarptetaRuta);
-    
-    let urlRoute = urlCarptetaRuta.concat(index+".geojson");
-        fetch(urlRoute)
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (myFile) {
-             return myFile;
-          });
-
 
     console.log(folder);
     document.getElementById("routeName").innerHTML = folder.name;
+    let ruta = await fileClien.readFile(urlCarptetaRuta+folder.name+".geojson");
+
+    algo.showRout(ruta);
     
-   
 }
 
 export default LoadRoute;
