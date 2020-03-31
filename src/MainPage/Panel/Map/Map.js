@@ -1,4 +1,5 @@
 import React from 'react';
+import { TileLayer, Map  } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
@@ -14,7 +15,38 @@ export function showRout(route) {
     new L.GeoJSON(route).addTo(Map.map);
 }
 
-export default class Map extends React.Component {
+
+const styles = {
+    wrapper: { 
+        width: "70vw",
+        height: "80vh",
+        className: "rightPanel_mapa",
+        display: 'flex'
+      },
+       map: {
+         flex: 1
+    } 
+  };
+
+const ShowMap = props => {
+    return (
+        <div style={styles.wrapper}>
+            <Map style={styles.map} center={props.center} zoom={props.zoom}>
+                 <TileLayer url={props.url} />
+            </Map>
+        </div>
+    );
+  }
+
+ShowMap.defaultProps = {
+    center: [43.305, -5.60],
+    zoom: 10,
+    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  };
+  
+  export default ShowMap;
+
+/* export default class Map extends React.Component {
 
     componentDidMount() {
         this.map = L.map("map", {
@@ -56,4 +88,4 @@ export default class Map extends React.Component {
     }
 
 
-}
+} */
