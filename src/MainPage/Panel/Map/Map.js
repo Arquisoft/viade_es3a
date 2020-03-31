@@ -19,16 +19,18 @@ export function showRout(route) {
 const styles = {
     wrapper: { 
         width: "70vw",
-        height: "80vh",
+        height: "100vh",
         className: "rightPanel_mapa",
-        display: 'flex'
+        display: 'flex',
+        'margin-top': '-2.3%',
+        'margin-left': '-2.3%'
       },
        map: {
          flex: 1
     } 
   };
 
-const ShowMap = props => {
+const ShowMap = (props) => {
     return (
         <div style={styles.wrapper}>
             <Map style={styles.map} center={props.center} zoom={props.zoom}>

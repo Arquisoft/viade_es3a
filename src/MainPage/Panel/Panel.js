@@ -39,11 +39,9 @@ const RightPanel = () => {
     return (
         <article className="rightPanel_mapa">
             {/* <h1>*Insert route to show map*</h1> */}
-            <AppWrapper>
-                <Container>
+           
                     <ShowMap></ShowMap>
-                </Container>
-            </AppWrapper>
+            
 
         </article>
     );

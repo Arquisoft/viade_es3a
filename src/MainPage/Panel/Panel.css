@@ -22,10 +22,7 @@
 
 .rightPanel_mapa{
     float: right;
-    top:-120px;
     width: 70%;
-    padding: 20px;
-    height: -webkit-fill-available;
+    height: auto;
     background: cyan;
-    padding: 20px;
 }
