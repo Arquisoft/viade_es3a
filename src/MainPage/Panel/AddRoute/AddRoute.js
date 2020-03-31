@@ -30,8 +30,8 @@ const Upload = () => {
             </div>
             <div class="custom-file">
                 <input type="file" class="custom-file-input" id="route"
-                    aria-describedby="inputGroupFileAddon01" onChange={changeName} multiple/>
-                <label class="custom-file-label" for="inputGroupFile01">{filename}</label>
+                    aria-describedby="inputGroupFileAddon01" onChange={changeName} required/>
+                <label class="custom-file-label" for="inputGroupFile01"id="labelRoute">{filename}</label>
             </div>
         </div>
     );
@@ -64,6 +64,7 @@ const Data = () => {
             <button onClick={()=> createFolder(url)}  class="btn btn-info" >Add route
             </button>
             
+            
          
          </div>
     );
@@ -81,7 +82,13 @@ const AddRoute = () => {
 
 };
 
+
+
 const createFolder = async (folder) => {
+    if(document.getElementById("name").value===""||document.getElementById("route").files[0]==null){
+        alert("Name or route is empty!");
+    }
+    else{
     var existe = await fileClien.itemExists(folder);
     if (!existe)
         await fileClien.createFolder(folder);
