@@ -21,9 +21,7 @@ const styles = {
         width: "70vw",
         height: "100vh",
         className: "rightPanel_mapa",
-        display: 'flex',
-        'margin-top': '-2.3%',
-        'margin-left': '-2.3%'
+        display: 'flex'
       },
        map: {
          flex: 1
