@@ -119,9 +119,6 @@ const createFolder = async (folder) => {
         document.getElementById("description").value="";
         document.getElementById("route").value=null;
         document.getElementById("labelRoute").value=null;
-
-        
-    
     }
     else
         alert("Route title already used, use another title");

@@ -22,8 +22,9 @@ const LoadRoute = () => {
                         <h4 class="card-title" id="routeName">Route name</h4>
                         <p class="card-Description" id ="routeDescription">Route description</p>
                         <p className="card-Image" id="routeImage">Route image</p>
-                        <img class="card-img-top" src="img_.png" alt="Route image"></img>
+                        <img id="hola" src="" />
                         <p className="card-Video" id="routeVideo">Route video</p>
+                        <video id="video" src="" />
                         <br></br>
                         <button type="button" class="btn btn-light">Load</button>
                     </div>
@@ -71,14 +72,18 @@ export async function listRoutes(url) {
    
 }
 export async function showRoute(index) {
+    var k;
     var urlCarptetaRuta=urlRutas[index];
     console.log(urlRutas[index]);
     let folder = await fileClien.readFolder(urlCarptetaRuta);
     console.log(folder);
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
     console.log(folderDesc);
+    let folderImg = await fileClien.readFile(urlCarptetaRuta + "photo/img1");
     document.getElementById("routeName").innerHTML = folder.name;
     document.getElementById("routeDescription").innerHTML = folderDesc;
+    document.getElementById("hola").src=urlCarptetaRuta + "photo/img1";
+    document.getElementById("video").src=urlCarptetaRuta + "video/vid1";
 }
 
 export default LoadRoute;
