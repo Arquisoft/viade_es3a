@@ -12,8 +12,8 @@ import * as algo from '../Map/Map';
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas=[];
 const LoadRoute = () => {
-    var user=""+useWebId();
-    
+    var user=useWebId()+"";
+
     const url=user.split("profile/card#me")[0]+"private/routes3a";
     listRoutes(url);
         return (
@@ -51,7 +51,7 @@ export async function listRoutes(url) {
                 var arrayUrl=urlArchivo.split('/');
                 urlRutas.push(urlArchivo);
                 var nombre=arrayUrl[arrayUrl.length-2]
-                text = document.createTextNode(nombre);
+                text = document.createTextNode(nombre.split("%20").join(" "));
                 (function(index){
                     a.onclick = function(){
                           showRoute(index)
@@ -76,10 +76,10 @@ export async function showRoute(index) {
     let folder = await fileClien.readFolder(urlCarptetaRuta);
 
     console.log(folder);
-    document.getElementById("routeName").innerHTML = folder.name;
+    document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
     let ruta = await fileClien.readFile(urlCarptetaRuta+folder.name+".geojson");
 
-    algo.showRout(ruta);
+    algo.updateMap(ruta);
     
 }
 

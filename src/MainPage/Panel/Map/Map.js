@@ -1,9 +1,10 @@
 import React from 'react';
-import { TileLayer, Map, GeoJSON  } from 'react-leaflet';
+import { TileLayer, Map, GeoJSON } from 'react-leaflet';
 import L from 'leaflet';
 import ruta from '../../../Routes/ruta.json';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
+import ReactDOM from 'react-dom';
 
 const Wrapper = styled.div`
     width: ${props => props.width};
@@ -18,11 +19,11 @@ export function showRout(route) {
 
 function getStyle(feature, layer) {
     return {
-      weight: 1,
-      opacity: 1,
-      color: '#000'
+        weight: 1,
+        opacity: 1,
+        color: '#000'
     }
-  }
+}
 
 const geojsonMarkerOptions = {
     radius: 4,
@@ -38,38 +39,51 @@ function pointToLayer(feature, latlng) {
 }
 
 const styles = {
-    wrapper: { 
+    wrapper: {
         width: "70vw",
         height: "100vh",
         className: "rightPanel_mapa",
         display: 'flex'
-      },
-       map: {
-         flex: 1
-    } 
-  };
+    },
+    map: {
+        flex: 1
+    }
+};
 
 const ShowMap = (props) => {
     return (
-        <div style={styles.wrapper}>
+        <div style={styles.wrapper} id='thisMap' >
             <Map style={styles.map} center={props.center} zoom={props.zoom}>
-                 <TileLayer url={props.url} />
-                 <GeoJSON
-                    data={ruta}
-                    pointToLayer={pointToLayer}
-                 />
+                <TileLayer url={props.url} />
+                
             </Map>
         </div>
     );
-  }
+}
+
+export function updateMap (route) {
+    let parseR = JSON.parse(route)
+    let center = [40.205, -3.60];
+    let aa = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    let com = <div style={styles.wrapper} id="thisMap">
+        <Map style={styles.map} center={center} zoom='8'>
+            <TileLayer url={aa} />
+            <GeoJSON
+                data={parseR}
+                pointToLayer={pointToLayer}
+            />
+        </Map>
+    </div>;
+    ReactDOM.render(com,document.getElementById('jeje'))
+}
 
 ShowMap.defaultProps = {
     center: [40.205, -3.60],
     zoom: 8,
     url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-  };
-  
-  export default ShowMap;
+};
+
+export default ShowMap;
 
 /* export default class Map extends React.Component {
 

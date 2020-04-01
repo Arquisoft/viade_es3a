@@ -37,7 +37,7 @@ const LeftPanel = () => {
 
 const RightPanel = () => {
     return (
-        <article className="rightPanel_mapa">
+        <article className="rightPanel_mapa" id="jeje">
             {/* <h1>*Insert route to show map*</h1> */}
            
                     <ShowMap></ShowMap>
