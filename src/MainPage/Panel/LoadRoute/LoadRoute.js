@@ -17,7 +17,7 @@ const LoadRoute = () => {
                 <h3 id="rutas">Routes list:</h3>
 
                 {/* Por cada ruta */}
-                <div class="card bg-info text-white"  >
+                <div class="card bg-info text-white">
                     <div class="card-body">
                         <h4 class="card-title" id="routeName">Route name</h4>
                         <p class="card-Description" id ="routeDescription">Route description</p>
@@ -75,9 +75,10 @@ export async function showRoute(index) {
     console.log(urlRutas[index]);
     let folder = await fileClien.readFolder(urlCarptetaRuta);
     console.log(folder);
+    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
+    console.log(folderDesc);
     document.getElementById("routeName").innerHTML = folder.name;
-
-   
+    document.getElementById("routeDescription").innerHTML = folderDesc;
 }
 
 export default LoadRoute;
