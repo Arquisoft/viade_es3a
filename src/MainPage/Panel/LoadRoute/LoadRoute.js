@@ -39,7 +39,6 @@ export async function listRoutes(url) {
     let folder = await fileClien.readFolder(url);
     var ul = document.createElement("ul");
     var li, a, text;
-    var result = [];
     if (folder) {
 
         for (var i = 0; i < folder.folders.length; i++) {
@@ -71,24 +70,26 @@ export async function listRoutes(url) {
    
 }
 export async function showRoute(index) {
-
-    reloadRoute("images");
-    reloadRoute("videos");
+    var result = ["images","videos"];
+    reloadRoute(result)
     
-    var k;
     var urlCarptetaRuta=urlRutas[index];
-    console.log(urlRutas[index]);
     let folder = await fileClien.readFolder(urlCarptetaRuta);
-    console.log(folder);
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
-    console.log(folderDesc);
     document.getElementById("routeName").innerHTML = folder.name;
     document.getElementById("routeDescription").innerHTML = folderDesc;
     loadTypeFile(urlCarptetaRuta,"img","photo/img","images");
     loadTypeFile(urlCarptetaRuta,"video","video/vid","videos");
 }
 
-export async function reloadRoute(typeFile){
+export async function reloadRoute(result){
+    var d;
+    for(d=0;d<result.length;d++){
+        reloadRouteFiles(result[d]);
+    }
+}
+
+export async function reloadRouteFiles(typeFile){
     let hijo = document.getElementById(typeFile);
     let padre = hijo.parentNode;
     padre.removeChild(hijo);
@@ -105,7 +106,9 @@ export async function loadTypeFile(urlCarptetaRuta, typeFile, route, folder){
             let atag=document.createElement(typeFile);
             atag.src=urlCarptetaRuta + route + (k+1);
             atag.id=typeFile + (k+1);
+            document.getElementById(folder).appendChild(document.createElement("br"));
             document.getElementById(folder).appendChild(atag);
+            document.getElementById(folder).appendChild(document.createElement("br"));
         }catch{
             k=1000;
         }
