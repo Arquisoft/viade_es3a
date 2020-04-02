@@ -72,19 +72,8 @@ export async function listRoutes(url) {
 }
 export async function showRoute(index) {
 
-    let hijo = document.getElementById("images");
-    let padre = hijo.parentNode;
-    padre.removeChild(hijo);
-    let cosa=document.createElement('div');
-    cosa.id="images";
-    padre.appendChild(cosa);
-
-    hijo = document.getElementById("videos");
-    padre = hijo.parentNode;
-    padre.removeChild(hijo);
-    cosa=document.createElement('div');
-    cosa.id="videos";
-    padre.appendChild(cosa);
+    reloadRoute("images");
+    reloadRoute("videos");
     
     var k;
     var urlCarptetaRuta=urlRutas[index];
@@ -95,24 +84,28 @@ export async function showRoute(index) {
     console.log(folderDesc);
     document.getElementById("routeName").innerHTML = folder.name;
     document.getElementById("routeDescription").innerHTML = folderDesc;
+    loadTypeFile(urlCarptetaRuta,"img","photo/img","images");
+    loadTypeFile(urlCarptetaRuta,"video","video/vid","videos");
+}
+
+export async function reloadRoute(typeFile){
+    let hijo = document.getElementById(typeFile);
+    let padre = hijo.parentNode;
+    padre.removeChild(hijo);
+    let cosa=document.createElement('div');
+    cosa.id=typeFile;
+    padre.appendChild(cosa);
+}
+
+export async function loadTypeFile(urlCarptetaRuta, typeFile, route, folder){
+    var k;
     for(k=0; k<1000; k++){
         try{
-            await fileClien.readFile(urlCarptetaRuta + "photo/img" + (k+1));
-            let atag=document.createElement('img');
-            atag.src=urlCarptetaRuta + "photo/img" + (k+1);
-            atag.id="img" + (k+1);
-            document.getElementById("images").appendChild(atag);
-        }catch{
-            k=1000;
-        }
-    }
-    for(k=0; k<1000; k++){
-        try{
-            await fileClien.readFile(urlCarptetaRuta + "video/vid" + (k+1));
-            let atag=document.createElement('video');
-            atag.src=urlCarptetaRuta + "video/vid" + (k+1);
-            atag.id="vid" + (k+1);
-            document.getElementById("videos").appendChild(atag);
+            await fileClien.readFile(urlCarptetaRuta + route + (k+1));
+            let atag=document.createElement(typeFile);
+            atag.src=urlCarptetaRuta + route + (k+1);
+            atag.id=typeFile + (k+1);
+            document.getElementById(folder).appendChild(atag);
         }catch{
             k=1000;
         }
