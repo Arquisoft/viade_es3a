@@ -21,10 +21,10 @@ const LoadRoute = () => {
                     <div class="card-body">
                         <h4 class="card-title" id="routeName">Route name</h4>
                         <p class="card-Description" id ="routeDescription">Route description</p>
-                        <p className="card-Image" id="routeImage">Route image</p><div id="testImg"><div id="images"></div></div>
-                        <br></br>
+                        <p className="card-Image" id="routeImage">Route image</p>
+                        <div id="ImgDiv"><div id="images"></div></div><br></br>
                         <p className="card-Video" id="routeVideo">Route video</p>
-                        <div id="videos"></div><br></br>
+                        <div id="VidDiv"><div id="videos"></div></div><br></br>
                         <button type="button" class="btn btn-light">Load</button>
                     </div>
                 </div> 
@@ -71,12 +71,21 @@ export async function listRoutes(url) {
    
 }
 export async function showRoute(index) {
+
     let hijo = document.getElementById("images");
     let padre = hijo.parentNode;
     padre.removeChild(hijo);
     let cosa=document.createElement('div');
     cosa.id="images";
     padre.appendChild(cosa);
+
+    hijo = document.getElementById("videos");
+    padre = hijo.parentNode;
+    padre.removeChild(hijo);
+    cosa=document.createElement('div');
+    cosa.id="videos";
+    padre.appendChild(cosa);
+    
     var k;
     var urlCarptetaRuta=urlRutas[index];
     console.log(urlRutas[index]);
