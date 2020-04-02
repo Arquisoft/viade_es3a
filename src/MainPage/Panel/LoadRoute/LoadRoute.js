@@ -22,10 +22,9 @@ const LoadRoute = () => {
                         <h4 class="card-title" id="routeName">Route name</h4>
                         <p class="card-Description" id ="routeDescription">Route description</p>
                         <p className="card-Image" id="routeImage">Route image</p>
-                        <img id="hola" src="" />
+                        <div id="images"></div><br></br>
                         <p className="card-Video" id="routeVideo">Route video</p>
-                        <video id="video" src="" />
-                        <br></br>
+                        <div id="videos"></div><br></br>
                         <button type="button" class="btn btn-light">Load</button>
                     </div>
                 </div> 
@@ -79,11 +78,31 @@ export async function showRoute(index) {
     console.log(folder);
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
     console.log(folderDesc);
-    let folderImg = await fileClien.readFile(urlCarptetaRuta + "photo/img1");
+    let folderImg = await fileClien.readFile(urlCarptetaRuta + "photo");
     document.getElementById("routeName").innerHTML = folder.name;
     document.getElementById("routeDescription").innerHTML = folderDesc;
-    document.getElementById("hola").src=urlCarptetaRuta + "photo/img1";
-    document.getElementById("video").src=urlCarptetaRuta + "video/vid1";
+    for(k=0; k<1000; k++){
+        try{
+            await fileClien.readFile(urlCarptetaRuta + "photo/img" + (k+1));
+            let atag=document.createElement('img');
+            atag.src=urlCarptetaRuta + "photo/img" + (k+1);
+            atag.id="img" + (k+1);
+            document.getElementById("images").appendChild(atag);
+        }catch{
+            k=1000;
+        }
+    }
+    for(k=0; k<1000; k++){
+        try{
+            await fileClien.readFile(urlCarptetaRuta + "video/vid" + (k+1));
+            let atag=document.createElement('video');
+            atag.src=urlCarptetaRuta + "video/vid" + (k+1);
+            atag.id="vid" + (k+1);
+            document.getElementById("videos").appendChild(atag);
+        }catch{
+            k=1000;
+        }
+    }
 }
 
 export default LoadRoute;
