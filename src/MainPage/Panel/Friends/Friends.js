@@ -1,5 +1,5 @@
 import React from 'react'
-import { useWebId, List, Link, Value, Name } from '@solid/react';
+import { useWebId, List, Value, Name, Link } from '@solid/react';
 import './Friends.css'
 
 const Card = (props) => {
@@ -9,9 +9,7 @@ const Card = (props) => {
                 <h4 class="card-title" id="friendName">
                     <Name src={props.nombre}>{props.nombre}</Name>
                 </h4>
-                <button type="button" class="btn btn-light">
-                    <Link href={props.nombre}>Profile </Link>
-                </button>
+                    <Link href={props.nombre} className="btn btn-light">Profile</Link>
             </div>
         </div>
     )
