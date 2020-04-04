@@ -18,11 +18,11 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="navBarOptions">
-          <div>
-            <Link to="/viade_es3a/addRoute"> Add route </Link>
-            <Link to="/viade_es3a/loadRoute"> Load route </Link>
-            <Link to="/viade_es3a/profile"> Profile </Link>
-            <Link to="/viade_es3a/friends"> Friends </Link>
+          <div className="eachOne">
+            <Link to="/viade_es3a/addRoute" style={{ color: 'rgb(117, 227, 247)' }}> Add route  </Link>
+            <Link to="/viade_es3a/loadRoute" style={{ color: 'rgb(117, 227, 247)' }}> Load route </Link>
+            <Link to="/viade_es3a/profile" style={{ color: 'rgb(117, 227, 247)' }}> Profile </Link>
+            <Link to="/viade_es3a/friends" style={{ color: 'rgb(117, 227, 247)' }}> Friends </Link>
           </div>
         </div>
         <div className="navBarLogout">

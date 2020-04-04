@@ -50,6 +50,9 @@
     width: 60em;
 }
 
+.eachOne{
+    color: 'rgb(117, 227, 247)';
+}
 
 li a:hover, .navBarLogout .logout:hover{
     background-color: rgb(90, 91, 92);
@@ -65,4 +68,5 @@ li a:active, .navBarLogout .logout:active{
 .logout{
     background: transparent;
     border: none;
+    color:rgb(117, 227, 247);
 }
