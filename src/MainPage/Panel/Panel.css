@@ -13,7 +13,7 @@
     width: 30%;
     background:lightgrey;
     padding: 1em;
-    height: -webkit-fill-available;
+    height: 100%;
     overflow: auto;
 }
 
