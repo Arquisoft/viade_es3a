@@ -1,32 +1,29 @@
-.panelCompleto{
-    position: fixed;
-    background: lightcoral;
-}
+
 .leftPanel {
     position: fixed;
-    top: 81px;
+    top: 5em;
     left: 0;
     right: 0;
-    height: 100%;
+    bottom: 0;
     background: rgb(54, 54, 54);
 }
 
 .leftPanel_leftPart{
     float: left;
     width: 30%;
-    height: 100%; /* only for demonstration, should be removed */
     background:lightgrey;
-    padding: 20px;
-    overflow-y: auto;
+    padding: 1em;
+    height: -webkit-fill-available;
+    overflow: auto;
 }
 
 
 .rightPanel_mapa{
     float: right;
-    top:-120px;
+    top: -10em;
     width: 70%;
     padding: 20px;
     height: -webkit-fill-available;
     background: cyan;
-    padding: 20px;
+
 }
