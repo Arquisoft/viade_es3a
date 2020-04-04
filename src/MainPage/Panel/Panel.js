@@ -7,7 +7,7 @@ import AddRoute from "./AddRoute/AddRoute";
 import LoadRoute from './LoadRoute/LoadRoute';
 import Welcome from './Welcome/Welcome';
 import Friends from './Friends/Friends';
-import Profile from './Profile/Profile';
+import Profile from './Profile/index.js';
 
 const AppWrapper = styled.div`
 display: flex;

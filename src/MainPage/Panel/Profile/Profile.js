@@ -26,7 +26,7 @@ const Profile = () => {
                 
                 <div class="card bg-info text-white">
 
-                    <Photo srcImg={"user.imageSrc"} defaultSrc="profile.svg" className="profile"/>
+                    <Photo srcImg={`[${webId}]`.image} defaultSrc="profile.svg" className="profile"/>
                   
                     <div class="card-body">
                         <h4 class="card-title" id="name">
