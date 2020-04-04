@@ -50,11 +50,12 @@
 li a:hover, .navBarLogout .logout:hover{
     text-decoration: none;
     color:rgb(117, 227, 247);
-   
+    font-size: 1.15em;
 }
 
 li a:active, .navBarLogout .logout:active{
     color:rgb(60, 130, 143);
+    font-size: 1.2em;
 }
 
 .logout{

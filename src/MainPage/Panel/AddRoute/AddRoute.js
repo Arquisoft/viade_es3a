@@ -44,7 +44,7 @@ const Data = () => {
             <Upload/>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Name:</label>
-                <input type="text" class="form-control" id="name" placeholder="Route's name" required/>
+                <input type="text" class="form-control" id="name" placeholder="Route's name" required />
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Description:</label>
