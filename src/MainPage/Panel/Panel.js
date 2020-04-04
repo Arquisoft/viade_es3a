@@ -28,7 +28,7 @@ const LeftPanel = () => {
                     <Route path="/viade_es3a/addRoute" component={AddRoute} />
                     <Route path="/viade_es3a/loadRoute" component={LoadRoute} />
                     <Route path="/viade_es3a/friends" component={Friends} />
-                    <Route path="/viade_es3a/profile" component={Profile} />
+                    <Route path="/viade_es3a/profile" component={Profile} /> 
                 </div>
             </Switch>
         </nav>
@@ -49,9 +49,11 @@ const RightPanel = () => {
     );
 };
 
+
+
 const Panel = () => {
     return (
-        <div className="panelCompleto">
+        <div className="panelCompleto">      
             {/* Panel izquierdo */}
             <section className="leftPanel">
                 <LeftPanel />
