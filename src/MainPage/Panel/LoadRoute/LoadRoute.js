@@ -14,7 +14,7 @@ const LoadRoute = () => {
     listRoutes(url);
         return (
             <div  class="container">
-                <h3 id="rutas">Routes list:</h3>
+                <h2 id="rutas" class="h2">Routes list:</h2>
 
                 {/* Por cada ruta */}
                 <div class="card bg-info text-white">
@@ -25,7 +25,10 @@ const LoadRoute = () => {
                         <div id="ImgDiv"><div id="images"></div></div><br></br>
                         <p className="card-Video" id="routeVideo">Route video</p>
                         <div id="VidDiv"><div id="videos"></div></div><br></br>
-                        <button type="button" class="btn btn-light">Load</button>
+                        <center>
+                            <button type="button" class="btn btn-light">Load</button>
+                        </center>
+                        
                     </div>
                 </div> 
             </div>

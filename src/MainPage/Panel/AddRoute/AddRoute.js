@@ -51,26 +51,31 @@ const Data = () => {
     console.log(url);
     return (
         <div>
-        
+            <br></br>
             <Upload setFile={setFile} file={file}/>
+            <br></br>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Name:</label>
+                <label for="exampleFormControlInput1" class="labelName">Name:</label>
                 <input type="text" class="form-control" id="name" placeholder="Route's name" required value={name} onChange={(e) => setName(e.target.value)}/>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Description:</label>
+                <label for="exampleFormControlTextarea1" class="labelDescription">Description:</label>
                 <textarea class="form-control" id="description" name="description" rows="3" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
             <div class="form-group">
-                <label class="exampleInputPhoto" for="photo">Imagen:</label><br></br>
+                <label class="exampleInputPhoto" for="photo" class="labelPhoto">Images:</label><br></br>
                 <input value={null} type="file" id="photo" name="image" accept=".png" multiple="true" onChange={(e) => setImage(e.target.files)}/>
             </div>
             <div class="form-group">
-                <label class="exampleInputVideo" for="video">Vídeo:</label><br></br>
+                <label class="exampleInputVideo" for="video" class="labelVideo">Video:</label><br></br>
                 <input value={null} type="file" id="video" name="video" accept=".mp4" multiple="true" onChange={(e) => setVideo(e.target.files)}/>
             </div>
-            <button onClick={()=> createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo)}  class="btn btn-info" >Add route
-            </button>
+            <br></br>
+            <center>
+                <button onClick={()=> createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo)}  class="btn btn-info" >Add route
+                </button>
+            </center>
+          
             
             
          
@@ -83,7 +88,7 @@ const AddRoute = () => {
    
     return (
         <Fragment>
-            <h2>Add route</h2>
+            <h2 class="h2">Add route</h2>
             <Data />
         </Fragment>
     );
