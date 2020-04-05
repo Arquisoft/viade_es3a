@@ -9,7 +9,9 @@ const Card = (props) => {
                 <h4 class="card-title" id="friendName">
                     <Name src={props.nombre}>{props.nombre}</Name>
                 </h4>
+                <center>
                     <Link href={props.nombre} className="btn btn-light">Profile</Link>
+                </center>
             </div>
         </div>
     )
