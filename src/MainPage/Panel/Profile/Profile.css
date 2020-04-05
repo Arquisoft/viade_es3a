@@ -1,18 +1,77 @@
-.profile {
-    padding: 1rem;
-    height: 100%;
-  }
-  
-  .profile .avatar {
-    width: 150px;
-    height: 150px;
-  }
-  
-  .profile .header {
-    padding: 1rem;
-  }
-  .profile .friendList {
-    max-height: 30rem;
-    overflow: auto;
-  }
-  
+.card {
+  background: rgb(54, 54, 54);
+  height: 50vh;
+  width: 95%;
+  margin: auto;
+  border-radius: 1em;
+  top: 0.5em;
+  box-shadow: 0 0 1em 0.4em rgba(39, 37, 37, 0.7);
+}
+
+.photo {
+  justify-content: center;
+  margin: auto;
+  padding: 2em;
+}
+
+.info {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.name {
+  font-size: 4vh;
+  font-family: "Raleway", sans-serif;
+  color: rgb(97, 208, 228);
+  position: absolute;
+  top: 18vh;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.user {
+  font-size: 3vh;
+  position: absolute;
+  top: 23vh;
+  color: rgb(236, 233, 233);
+  font-family: "Work Sans", sans-serif;
+  font-style: italic;
+}
+
+.divider {
+  background-color: rgb(97, 208, 228);
+  height: 0.1em;
+  width: 10vh;
+  position: absolute;
+  top: 30vh;
+}
+
+.buttonSolid {
+  bottom: 8vh;
+  position: absolute;
+  background-color: rgb(97, 208, 228);
+  border-radius: 0.8em;
+  border-color: rgb(19, 72, 82);
+  font-size: 1.2em;
+  padding: 1vh 2.5vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(17, 16, 16);
+  text-decoration: none;
+}
+
+.buttonSolid:link, .buttonSolid:visited {
+   border-top: 1px solid #cccccc;
+   border-bottom: 2px solid #666666;
+   border-left: 1px solid #cccccc;
+   border-right: 2px solid #666666;
+}
+.buttonSolid:hover {
+   border-bottom: 1px solid #cccccc;
+   border-top: 2px solid #666666;
+   border-right: 1px solid #cccccc;
+   border-left: 2px solid #666666;
+   text-decoration: none;
+   color: rgb(0, 0, 0);
+}
