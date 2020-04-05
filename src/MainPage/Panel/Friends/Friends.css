@@ -1,3 +1,8 @@
 .listElement {
     list-style: none;
 }
+
+.h2{
+    font-family: monospace;
+    color: teal;
+}
