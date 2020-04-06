@@ -1,8 +1,8 @@
-.loadRoutePanel {
-    position: fixed;
-    top: 81px;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: rgb(54, 54, 54);
+.h2{
+    font-family: monospace;
+    color: teal;
+}
+
+.cardName{
+    font-family: monospace;
 }

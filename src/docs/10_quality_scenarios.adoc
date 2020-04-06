@@ -10,54 +10,54 @@ image::qualityTree.png[Quality Tree]
 
 .Security
 |===
-|Scenario|Explanation|Priority
-|Decentralized data|If the server hosting the app falls, data remains safe|High
-|Data Storage|From the user´s personal computer to a Solid server|High
-|Login control| Each user has access only to its own account and data|High
-|Private routes| Every user's routes are private so if one user wants to share one route with a friend he has to give permissions|High
+| Scenario | Explanation | Priority
+| Decentralized data | If the server hosting the app falls, data remains safe| High/High
+| Data Storage | From the user´s personal computer to a Solid server| High/High
+| Login control| Each user has access only to its own account and data| High/High
+| Private routes| Every user's routes are private so if one user wants to share one route with a friend he has to give permissions| High/High
 |===
 
 .Usability
 |===
-|Scenario|Explanation|Priority
-| Easy to learn | The users get used easily to the application|Medium
-|Good-looking interface |If the app colours are attracting for the user it will be easier and comfortable to use it|Low
-|Accesibility|Mouse is not te only way to navigate through the app. We can use the keyboard for some function|Low
+| Scenario| Explanation | Priority
+| Easy to learn | The users get used easily to the application | Medium/Medium
+| Good-looking interface | If the app colours are attracting for the user it will be easier and comfortable to use it | Low/Low
+| Accesibility | Mouse is not te only way to navigate through the app. We can use the keyboard for some function | Low/Low
 |===
 
 .Modifiability
 |===
-|Scenario|Explanation|Priority
-| Clear and coherent purpose | Developers can find in the documentation where to work|Medium
-|Established methology |Visible in the documentation|Medium
+| Scenario | Explanation | Priority
+| Clear and coherent purpose | Developers can find in the documentation where to work| Medium/Medium
+| Established methology | Visible in the documentation | Medium/Medium
 |===
 
 .Performance
 |===
-|Scenario |Explanation|Priority
-| Interactions with the UI are shown fast|Every change or interaction the user makes will appear without making him wait a long time | Medium
+| Scenario | Explanation| Priority
+| Interactions with the UI are shown fast | Every change or interaction the user makes will appear without making him wait a long time | Medium/Medium
 |===
 
 .Testability
 |===
-|Scenario |Explanation|Priority
-|Multiple tests| The aplication will be tested to prove its correct performance|High
+|Scenario | Explanation | Priority
+|Multiple tests| The aplication will be tested to prove its correct performance | High/High
 |===
 
 .Maintenabilty
 |===
-|Scenario |Explanation|Priority
-|Support changes| The application should support modifications without making a big impact on the usability|Medium
+| Scenario | Explanation| Priority
+| Support changes | The application should support modifications without making a big impact on the usability| Medium/Medium
 |===
 
 .Portability
 |===
-|Scenario |Explanation|Priority
-|Multiple platform| The application should be able to be launched in many different platforms.| Medium 
+|Scenario | Explanation| Priority
+| Multiple platform | The application should be able to be launched in many different platforms.| Medium/Medium 
 |===
 
 .Interoperability
 |===
-|Scenario |Explanation|Priority
-|Comunication with others| Everyone's application shouldn't have problems to interact between each other|High
+| Scenario | Explanation| Priority
+| Comunication with others| Everyone's application shouldn't have problems to interact between each other| High/High
 |===

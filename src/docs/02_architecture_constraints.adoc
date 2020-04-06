@@ -3,7 +3,7 @@
 
 .Conventions
 |===
-|Constraint|Explanation
+| Constraint | Explanation
 | Code | We use React to implement the project
 | Language | Documentation and code is developed in English
 | Documentation | All our documentation is based on the arc42 template 
@@ -12,19 +12,18 @@
 
 .Organizational Constraints
 |===
-|Constraint|Explanation
-|Members of our team| Carlos Menéndez, Andrés Ángel González, Andrea López, Christian Gabriel, Elena Díaz, Iván Rodríguez, María González
-|Project duration |The time we are given to develop our project are around 4 months
-|Participation control | The team has a git repository with the complete commit history of all the members to take track of the participation
-|Minutes| In the practical classes we write all the progress or modifications done in the project
+| Constraint | Explanation
+| Members of our team| Carlos Menéndez, Andrés Ángel González, Andrea López, Christian Gabriel, Elena Díaz, Iván Rodríguez, María González
+| Project duration | The time we are given to develop our project are around 4 months
+| Participation control | The team has a git repository with the complete commit history of all the members to take track of the participation
+| Minutes| In the practical classes we write all the progress or modifications done in the project
 |===
 
 .Technical Constraints
 |===
-|Constraint|Explanation
+| Constraint | Explanation
 | Web Application | Our application has a web interface
 | Decentralized Architecture | Instead of relying on a single central server it distributes workloads among several machines
-|Maintenance| Use of multiple tests to preserve the correct performance, usability, security...
-|Solid | The data storage is made using Solid
-
+| Maintenance| Use of multiple tests to preserve the correct performance, usability, security... using Cucumber
+| Solid | The data storage is made using Solid
 |===

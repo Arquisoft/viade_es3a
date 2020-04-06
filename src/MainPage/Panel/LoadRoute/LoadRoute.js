@@ -1,5 +1,4 @@
-import React from 'react';
-import './LoadRoute.css';
+import React, { useState, useEffect } from 'react';
 import { useWebId } from '@solid/react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Card, Button } from 'react-bootstrap';
@@ -10,22 +9,72 @@ import fileClient from 'solid-file-client';
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas=[];
 const LoadRoute = () => {
-    var user=""+useWebId();
+
+    const [folders, setFolders] = useState([]);
+    const [selected, setSelected] = useState({
+        name: '',
+        description: '',
+        images: [],
+        videos: []
+    });
+
+    console.log(selected);
+
+
+    var user=useWebId();
+
+    useEffect(() => {
+        if ( user != undefined) {
+            const url=user.split("profile/card#me")[0]+"/private/routes3a";
+            //listRoutes(url);
+            loadRoutes(url, setFolders);
+        }
+    }, [user]);
     
-    const url=user.split("profile/card#me")[0]+"private/routes3a";
-    listRoutes(url);
         return (
             <div  class="container">
-                <h3 id="rutas">Routes list:</h3>
+                <h2 id="rutas" class="h2">Routes list:</h2>
 
-                {/* Por cada ruta */}
+                <ul>
+                {
+                    folders.map((folder,i) => {
+                        var urlArchivo= ""+folder.url;
+                        var arrayUrl=urlArchivo.split('/');
+                        urlRutas.push(urlArchivo);
+                        var nombre=arrayUrl[arrayUrl.length-2]
+                        return (
+                        <li key={'folder_'+i}>
+                            <a href="#" onClick={() => loadRoute(urlArchivo, setSelected)}>
+                                {nombre}
+                            </a>
+                        </li>)
+                    })
+                }
+                </ul>
                 <div class="card bg-info text-white">
                     <div class="card-body">
-                        <h4 class="card-title" id="routeName">Route name</h4>
-                        <p class="card-text">Route details</p>
-                        <img class="card-img-top" src="img_.png" alt="Route image"></img>
-                        <br></br>
-                        <button type="button" class="btn btn-light">Load</button>
+                        <h4 class="card-title" id="routeName">{selected.name}</h4>
+                        <p class="card-Description" id ="routeDescription">{selected.description}</p>
+                        <div className="card-Image" id="routeImage">
+                            {
+                                selected.images.map((image,i) => (
+                                    <div key={'image_'+i}><img src={image}/></div>
+                                ))
+                            }
+                        </div>
+                        <div id="ImgDiv"><div id="images"></div></div><br></br>
+                        <div className="card-Video" id="routeVideo">
+                        {
+                                selected.videos.map((video,i) => (
+                                    <div key={'video_'+i}><video src={video} controls style={{width: '100%'}}/></div>
+                                ))
+                            }
+                        </div>
+                        <div id="VidDiv"><div id="videos"></div></div><br></br>
+                        <center>
+                            <button type="button" class="btn btn-light">Load</button>
+                        </center>
+                        
                     </div>
                 </div> 
             </div>
@@ -33,52 +82,43 @@ const LoadRoute = () => {
         );
 }
 
+async function loadRoutes(url, setFolders) {
 
-export async function listRoutes(url) {
-    
     let folder = await fileClien.readFolder(url);
-    var ul = document.createElement("ul");
-    var li, a, text;
-    var result = [];
-    if (folder) {
+    setFolders(folder.folders);
+}
 
-        for (var i = 0; i < folder.folders.length; i++) {
-            
-            
-                li = document.createElement('li');
-                a  = document.createElement('a');
-                var urlArchivo= ""+folder.folders[i].url;
-                var arrayUrl=urlArchivo.split('/');
-                urlRutas.push(urlArchivo);
-                var nombre=arrayUrl[arrayUrl.length-2]
-                text = document.createTextNode(nombre);
-                (function(index){
-                    a.onclick = function(){
-                          showRoute(index)
-                    }    
-                })(i);
-                a.appendChild(text);
-                li.appendChild(a);
-                ul.appendChild(li);
-               
-              
-              document.querySelector("#rutas").appendChild(ul);
-        };
-        for (var i = 0; i < urlRutas.length; i++) {
-            console.log(urlRutas[i]);
+async function loadRoute(urlCarptetaRuta, setSelected) {
+    
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
+    let images = await loadFile(urlCarptetaRuta, "photo/img");
+    let videos = await loadFile(urlCarptetaRuta, "video/vid");
+
+    setSelected({
+        name: folder.name,
+        description: folderDesc,
+        images: images,
+        videos: videos
+    });
+
+}
+
+async function loadFile(urlCarptetaRuta, route){
+    var k;
+    var result = [];
+    for(k=0; k<1000; k++){
+        try{
+            await fileClien.readFile(urlCarptetaRuta + route + (k+1));
+            result.push(urlCarptetaRuta + route + (k+1))
+        }catch{
+            k=1000;
         }
     }
-   
+    return result;
 }
-export async function showRoute(index) {
-    var urlCarptetaRuta=urlRutas[index];
-    console.log(urlRutas[index]);
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-    console.log(folder);
-    document.getElementById("routeName").innerHTML = folder.name;
 
-   
-}
+
 
 export default LoadRoute;
 
