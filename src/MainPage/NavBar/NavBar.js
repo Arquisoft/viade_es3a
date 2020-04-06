@@ -21,6 +21,7 @@ const NavBar = () => {
             <img src={require('../../img/logo_viade_es3a.jpg')} alt="React logo" width="160" />
           </Link>
         </div>
+
         <ul className="navBarOptions">
           <li className="option">
             <BackupOutlinedIcon className="icon" />
@@ -39,6 +40,7 @@ const NavBar = () => {
             <Link to="/viade_es3a/friends" > Friends </Link>
           </li>
         </ul>
+
         <div className="navBarLogout">
           <li>
             <ExitToAppOutlinedIcon className="icon" />

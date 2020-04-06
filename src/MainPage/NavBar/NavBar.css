@@ -61,4 +61,5 @@ li a:active, .navBarLogout .logout:active{
 .logout{
     background: transparent;
     border: none;
+    color:rgb(117, 227, 247);
 }
