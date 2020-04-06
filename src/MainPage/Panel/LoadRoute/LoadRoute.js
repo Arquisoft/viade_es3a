@@ -43,7 +43,7 @@ const LoadRoute = () => {
                         var nombre=arrayUrl[arrayUrl.length-2]
                         return (
                         <li key={'folder_'+i}>
-                            <a href="#" onClick={() => loadRoute(urlArchivo, setSelected)}>
+                            <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
                                 {nombre}
                             </a>
                         </li>)

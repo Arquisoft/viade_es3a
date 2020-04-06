@@ -10,3 +10,12 @@
 video{
     width: 100%;
 }
+
+.lista{
+    color: teal;
+    transition: all 0.4s ease-out;
+}
+
+.lista:hover{
+    color: rgb(0,100,220);
+}
