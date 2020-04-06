@@ -59,7 +59,7 @@ const LoadRoute = () => {
                         <div className="card-Image" id="routeImage">
                             {
                                 selected.images.map((image,i) => (
-                                    <div key={'image_'+i}><img src={image}/></div>
+                                    <div key={'image_'+i}><img src={image} class={'imag'}/></div>
                                 ))
                             }
                         </div>
@@ -67,7 +67,7 @@ const LoadRoute = () => {
                         <div className="card-Video" id="routeVideo">
                         {
                                 selected.videos.map((video,i) => (
-                                    <div key={'video_'+i}><video src={video} controls/></div>
+                                    <div key={'video_'+i}><video src={video} class={'vid'} controls/></div>
                                 ))
                             }
                         </div>
