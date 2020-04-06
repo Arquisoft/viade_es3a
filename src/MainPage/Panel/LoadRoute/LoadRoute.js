@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useWebId } from '@solid/react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Card, Button } from 'react-bootstrap';
@@ -9,21 +9,67 @@ import fileClient from 'solid-file-client';
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas=[];
 const LoadRoute = () => {
-    var user=""+useWebId();
-    const url=user.split("profile/card#me")[0]+"/private/routes3a";
-    listRoutes(url);
+
+    const [folders, setFolders] = useState([]);
+    const [selected, setSelected] = useState({
+        name: '',
+        description: '',
+        images: [],
+        videos: []
+    });
+
+    console.log(selected);
+
+
+    var user=useWebId();
+
+    useEffect(() => {
+        if ( user != undefined) {
+            const url=user.split("profile/card#me")[0]+"/private/routes3a";
+            //listRoutes(url);
+            loadRoutes(url, setFolders);
+        }
+    }, [user]);
+    
         return (
             <div  class="container">
                 <h2 id="rutas" class="h2">Routes list:</h2>
 
-                {/* Por cada ruta */}
+                <ul>
+                {
+                    folders.map((folder,i) => {
+                        var urlArchivo= ""+folder.url;
+                        var arrayUrl=urlArchivo.split('/');
+                        urlRutas.push(urlArchivo);
+                        var nombre=arrayUrl[arrayUrl.length-2]
+                        return (
+                        <li key={'folder_'+i}>
+                            <a href="#" onClick={() => loadRoute(urlArchivo, setSelected)}>
+                                {nombre}
+                            </a>
+                        </li>)
+                    })
+                }
+                </ul>
                 <div class="card bg-info text-white">
                     <div class="card-body">
-                        <h4 class="card-title" id="routeName">Route name</h4>
-                        <p class="card-Description" id ="routeDescription">Route description</p>
-                        <p className="card-Image" id="routeImage">Route image</p>
+                        <h4 class="card-title" id="routeName">{selected.name}</h4>
+                        <p class="card-Description" id ="routeDescription">{selected.description}</p>
+                        <div className="card-Image" id="routeImage">
+                            {
+                                selected.images.map((image,i) => (
+                                    <div key={'image_'+i}><img src={image}/></div>
+                                ))
+                            }
+                        </div>
                         <div id="ImgDiv"><div id="images"></div></div><br></br>
-                        <p className="card-Video" id="routeVideo">Route video</p>
+                        <div className="card-Video" id="routeVideo">
+                        {
+                                selected.videos.map((video,i) => (
+                                    <div key={'video_'+i}><video src={video} controls style={{width: '100%'}}/></div>
+                                ))
+                            }
+                        </div>
                         <div id="VidDiv"><div id="videos"></div></div><br></br>
                         <center>
                             <button type="button" class="btn btn-light">Load</button>
@@ -36,87 +82,43 @@ const LoadRoute = () => {
         );
 }
 
+async function loadRoutes(url, setFolders) {
 
-export async function listRoutes(url) {
-    
     let folder = await fileClien.readFolder(url);
-    var ul = document.createElement("ul");
-    var li, a, text;
-    if (folder) {
-
-        for (var i = 0; i < folder.folders.length; i++) {
-            
-            
-                li = document.createElement('li');
-                a  = document.createElement('a');
-                var urlArchivo= ""+folder.folders[i].url;
-                var arrayUrl=urlArchivo.split('/');
-                urlRutas.push(urlArchivo);
-                var nombre=arrayUrl[arrayUrl.length-2]
-                text = document.createTextNode(nombre);
-                (function(index){
-                    a.onclick = function(){
-                          showRoute(index)
-                    }    
-                })(i);
-                a.appendChild(text);
-                li.appendChild(a);
-                ul.appendChild(li);
-               
-              
-              document.querySelector("#rutas").appendChild(ul);
-        };
-        for (var i = 0; i < urlRutas.length; i++) {
-            console.log(urlRutas[i]);
-        }
-    }
-   
+    setFolders(folder.folders);
 }
-export async function showRoute(index) {
-    var result = ["images","videos"];
-    reloadRoute(result)
+
+async function loadRoute(urlCarptetaRuta, setSelected) {
     
-    var urlCarptetaRuta=urlRutas[index];
     let folder = await fileClien.readFolder(urlCarptetaRuta);
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
-    document.getElementById("routeName").innerHTML = folder.name;
-    document.getElementById("routeDescription").innerHTML = folderDesc;
-    loadTypeFile(urlCarptetaRuta,"img","photo/img","images");
-    loadTypeFile(urlCarptetaRuta,"video","video/vid","videos");
+    let images = await loadFile(urlCarptetaRuta, "photo/img");
+    let videos = await loadFile(urlCarptetaRuta, "video/vid");
+
+    setSelected({
+        name: folder.name,
+        description: folderDesc,
+        images: images,
+        videos: videos
+    });
+
 }
 
-export async function reloadRoute(result){
-    var d;
-    for(d=0;d<result.length;d++){
-        reloadRouteFiles(result[d]);
-    }
-}
-
-export async function reloadRouteFiles(typeFile){
-    let hijo = document.getElementById(typeFile);
-    let padre = hijo.parentNode;
-    padre.removeChild(hijo);
-    let cosa=document.createElement('div');
-    cosa.id=typeFile;
-    padre.appendChild(cosa);
-}
-
-export async function loadTypeFile(urlCarptetaRuta, typeFile, route, folder){
+async function loadFile(urlCarptetaRuta, route){
     var k;
+    var result = [];
     for(k=0; k<1000; k++){
         try{
             await fileClien.readFile(urlCarptetaRuta + route + (k+1));
-            let atag=document.createElement(typeFile);
-            atag.src=urlCarptetaRuta + route + (k+1);
-            atag.id=typeFile + (k+1);
-            document.getElementById(folder).appendChild(document.createElement("br"));
-            document.getElementById(folder).appendChild(atag);
-            document.getElementById(folder).appendChild(document.createElement("br"));
+            result.push(urlCarptetaRuta + route + (k+1))
         }catch{
             k=1000;
         }
     }
+    return result;
 }
+
+
 
 export default LoadRoute;
 
