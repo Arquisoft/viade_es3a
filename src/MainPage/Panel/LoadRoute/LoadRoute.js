@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useWebId } from '@solid/react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Card, Button } from 'react-bootstrap';
-
+import './LoadRoute.css';
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
 
@@ -19,7 +19,6 @@ const LoadRoute = () => {
     });
 
     console.log(selected);
-
 
     var user=useWebId();
 
@@ -66,7 +65,7 @@ const LoadRoute = () => {
                         <div className="card-Video" id="routeVideo">
                         {
                                 selected.videos.map((video,i) => (
-                                    <div key={'video_'+i}><video src={video} controls style={{width: '100%'}}/></div>
+                                    <div key={'video_'+i}><video src={video} controls/></div>
                                 ))
                             }
                         </div>

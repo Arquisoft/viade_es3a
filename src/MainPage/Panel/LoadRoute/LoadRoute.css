@@ -6,3 +6,11 @@
 .cardName{
     font-family: monospace;
 }
+
+video{
+    width: 100%;
+}
+
+a{
+    color:teal;
+}

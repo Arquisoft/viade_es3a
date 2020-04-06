@@ -12,7 +12,6 @@ import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 const NavBar = () => {
-
   // const webId = useWebId();
   return (
     <header className="navBar">
