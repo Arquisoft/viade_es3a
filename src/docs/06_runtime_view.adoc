@@ -5,6 +5,20 @@
 * 2. Later, our application will ask the server to approve the login request. 
 * 3. When the server accepts, the users will have access to their routes and friends.
 
-//TODO Diagram
+=== <ADD ROUTE>
+* 1. We click on Add route, which is in the NavBar.
+* 2. We add all the stuff we want to upload to the POD (.geoJson file is obligatory).
 
+=== <LOAD ROUTE>
+* 1. We click on My routes, which is in the NavBar.
+* 2. We will see a list that contains every route we have added to our POD. We choose one.
+* 3. When the petition is processed, we will see the map with our route and a menu where we can see the photos, videos and descrption.
 
+=== <FRIENDS>
+* 1. We click on Friends, which is in the NavBar.
+
+=== <PROFILE>
+* 1. We click on Profile, which is in the NavBar.
+
+=== <LOG OUT>
+* 1. If we click on Log out, we will log out of the application.
