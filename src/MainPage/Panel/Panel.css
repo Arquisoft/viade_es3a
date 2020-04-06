@@ -6,17 +6,15 @@
     right: 0;
     bottom: 0;
     background: rgb(54, 54, 54);
-    
 }
 
 .leftPanel_leftPart{
     float: left;
     width: 30%;
     background:lightgrey;
-
-    padding: 20px;
-    overflow-y: scroll;
-
+    padding: 1em;
+    height: 100%;
+    overflow: auto;
 }
 
 
