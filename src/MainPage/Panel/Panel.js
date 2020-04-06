@@ -1,6 +1,6 @@
 import React from 'react';
 import './Panel.css';
-import Map from './Map/Map.js';
+import ShowMap from './Map/Map.js';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddRoute from "./AddRoute/AddRoute";
@@ -37,13 +37,11 @@ const LeftPanel = () => {
 
 const RightPanel = () => {
     return (
-        <article className="rightPanel_mapa">
+        <article className="rightPanel_mapa" id="jeje">
             {/* <h1>*Insert route to show map*</h1> */}
-            <AppWrapper>
-                <Container>
-                    <Map></Map>
-                </Container>
-            </AppWrapper>
+           
+                    <ShowMap></ShowMap>
+            
 
         </article>
     );

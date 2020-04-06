@@ -9,7 +9,7 @@ import {
 
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
-import { Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
@@ -84,8 +84,8 @@ const Data = () => {
 };
 
 const AddRoute = () => {
-   
-   
+
+
     return (
         <Fragment>
             <h2 class="h2">Add route</h2>
@@ -145,4 +145,3 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
 }
 
 export default AddRoute;
-

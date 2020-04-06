@@ -17,7 +17,7 @@ const NavBar = () => {
     <header className="navBar">
       <nav className="navbar navbar-dark bg-dark" display="flex" position="fixed">
         <div className="navBarLogo">
-          <Link to="/">
+          <Link to="/viade_es3a">
             <img src={require('../../img/logo_viade_es3a.jpg')} alt="React logo" width="160" />
           </Link>
         </div>

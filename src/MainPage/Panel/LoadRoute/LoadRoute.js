@@ -6,6 +6,8 @@ import './LoadRoute.css';
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
 
+import * as algo from '../Map/Map';
+
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas=[];
 const LoadRoute = () => {
@@ -40,7 +42,7 @@ const LoadRoute = () => {
                         var urlArchivo= ""+folder.url;
                         var arrayUrl=urlArchivo.split('/');
                         urlRutas.push(urlArchivo);
-                        var nombre=arrayUrl[arrayUrl.length-2]
+                        var nombre=arrayUrl[arrayUrl.length-2].split("%20").join(" ")
                         return (
                         <li key={'folder_'+i}>
                             <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
@@ -94,6 +96,8 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     let images = await loadFile(urlCarptetaRuta, "photo/img");
     let videos = await loadFile(urlCarptetaRuta, "video/vid");
 
+    await showRoute(urlCarptetaRuta);
+
     setSelected({
         name: folder.name,
         description: folderDesc,
@@ -117,7 +121,17 @@ async function loadFile(urlCarptetaRuta, route){
     return result;
 }
 
+export async function showRoute(urlCarptetaRuta) {
+    
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
 
+    console.log(folder);
+    document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
+    let ruta = await fileClien.readFile(urlCarptetaRuta+folder.name+".geojson");
+
+    algo.updateMap(ruta);
+    
+}
 
 export default LoadRoute;
 
