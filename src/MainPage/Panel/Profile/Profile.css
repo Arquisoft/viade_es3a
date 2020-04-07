@@ -8,6 +8,11 @@
   box-shadow: 0 0 1em 0.4em rgba(39, 37, 37, 0.7);
 }
 
+.h2{
+  font-family: monospace;
+  color: teal;
+}
+
 .photo {
   justify-content: center;
   margin: auto;
