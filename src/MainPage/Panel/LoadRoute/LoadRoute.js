@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useWebId } from '@solid/react';
+import { List, useWebId,Value, Name, Link  } from '@solid/react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Card, Button } from 'react-bootstrap';
 import './LoadRoute.css';
@@ -24,6 +24,20 @@ const LoadRoute = () => {
 
     var user=useWebId();
 
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+         coll[i].addEventListener("click", function() {
+         this.classList.toggle("active");
+         var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+              content.style.display = "none";
+         } else {
+              content.style.display = "block";
+          }
+        });
+    }
     useEffect(() => {
         if ( user != undefined) {
             const url=user.split("profile/card#me")[0]+"/private/routes3a";
@@ -74,7 +88,18 @@ const LoadRoute = () => {
                         <div id="VidDiv"><div id="videos"></div></div><br></br>
                         <center>
                             <button type="button" class="btn btn-light">Load</button>
+                            <button type="button" class="btn btn-light" onClick={() => enseñaAmigos()}>Share</button>
+                            <List  src={`[${user}].friends`} className="list" padding-inline-start="0">{friend =>
+                <li key={friend} className="listElement">
+                    <p>
+                        <Carda nombre={`[${friend}]`}></Carda>
+                    </p>
+                </li>}
+                    </List>
                         </center>
+                        
+                    
+                        
                         
                     </div>
                 </div> 
@@ -132,6 +157,20 @@ export async function showRoute(urlCarptetaRuta) {
     algo.updateMap(ruta);
     
 }
-
+async function enseñaAmigos(){
+    console.log("Amigos")
+}
+const Carda = (props) => {
+    return (
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h4 class="card-title" id="friendName">
+                    <Name src={props.nombre}>{props.nombre}</Name>
+                </h4>
+                    <Link href={props.nombre} className="btn btn-light">Profile</Link>
+            </div>
+        </div>
+    )
+}
 export default LoadRoute;
 
