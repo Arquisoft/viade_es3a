@@ -38,7 +38,6 @@ const DemoWrapper = styled.div`
 const HeaderWrapper = styled.section`
   text-align: center;
   width: 100%;
-
 `;
 
 const Headline = styled.h1`
