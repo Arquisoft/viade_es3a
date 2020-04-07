@@ -27,6 +27,7 @@ const Upload = ({setFile, file}) => {
     return (
         <div class="input-group">
             <div class="input-group-prepend">
+                <label for="exampleRoute" class="labelRoute">Route (.geojson):</label><br></br>
                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
             </div>
             <div class="custom-file">

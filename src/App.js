@@ -16,10 +16,10 @@ const AppWrapper = styled.div`
   flex-direction: column;
   align-content: center;
   align-items: center;
-  width:100%;
-  height: -webkit-fill-available;
-  background-color:#18EEE9;
-  box-sizing:content-box;  
+  width: 100%;
+  background-color: #18EEE9;
+  box-sizing: content-box;  
+  height: 100vh;
 `;
 
 const DemoWrapper = styled.div`
@@ -38,7 +38,6 @@ const DemoWrapper = styled.div`
 const HeaderWrapper = styled.section`
   text-align: center;
   width: 100%;
-
 `;
 
 const Headline = styled.h1`
