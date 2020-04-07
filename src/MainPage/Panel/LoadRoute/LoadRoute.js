@@ -54,7 +54,7 @@ const LoadRoute = () => {
                 </ul>
                 <div class="card bg-info text-white">
                     <div class="card-body">
-                        <h4 class="card-title" id="routeName">{selected.name}</h4>
+                        <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
                         <p class="card-Description" id ="routeDescription">{selected.description}</p>
                         <div className="card-Image" id="routeImage">
                             {
@@ -72,9 +72,6 @@ const LoadRoute = () => {
                             }
                         </div>
                         <div id="VidDiv"><div id="videos"></div></div><br></br>
-                        <center>
-                            <button type="button" class="btn btn-light">Load</button>
-                        </center>
                         
                     </div>
                 </div> 
