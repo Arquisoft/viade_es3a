@@ -16,7 +16,7 @@
 .photo {
   justify-content: center;
   margin: auto;
-  padding: 2em;
+  padding: 1em;
 }
 
 .info {
@@ -31,7 +31,7 @@
   font-family: "Raleway", sans-serif;
   color: rgb(97, 208, 228);
   position: absolute;
-  top: 18vh;
+  top: 19vh;
   letter-spacing: 0.1em;
   font-weight: 600;
 }
@@ -39,7 +39,7 @@
 .user {
   font-size: 3vh;
   position: absolute;
-  top: 23vh;
+  top: 24vh;
   color: rgb(236, 233, 233);
   font-family: "Work Sans", sans-serif;
   font-style: italic;
@@ -50,7 +50,7 @@
   height: 0.1em;
   width: 10vh;
   position: absolute;
-  top: 30vh;
+  top: 31vh;
 }
 
 .buttonSolid {
