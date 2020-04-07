@@ -88,11 +88,11 @@ const LoadRoute = () => {
                         <div id="VidDiv"><div id="videos"></div></div><br></br>
                         <center>
                             <button type="button" class="btn btn-light">Load</button>
-                            <button type="button" class="btn btn-light" onClick={() => enseñaAmigos()}>Share</button>
+                            <button type="button" class="btn btn-light" onClick={() => enseñaAmigos(user)}>Share</button>
                             
                         </center>
                         
-                    
+                            <button  type="button">Christian</button>
                         
                         
                     </div>
@@ -151,20 +151,10 @@ export async function showRoute(urlCarptetaRuta) {
     algo.updateMap(ruta);
     
 }
-async function enseñaAmigos(){
-    console.log("Amigos")
+async function enseñaAmigos(user){
+    
+
 }
-const Carda = (props) => {
-    return (
-        <div class="card bg-info text-white">
-            <div class="card-body">
-                <h4 class="card-title" id="friendName">
-                    <Name src={props.nombre}>{props.nombre}</Name>
-                </h4>
-                    <Link href={props.nombre} className="btn btn-light">Profile</Link>
-            </div>
-        </div>
-    )
-}
+
 export default LoadRoute;
 
