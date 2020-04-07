@@ -9,6 +9,7 @@ import {
 
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
+import DocumentTitle from "react-document-title";
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
@@ -28,20 +29,20 @@ const Upload = () => {
             </div>
             <div class="custom-file">
                 <input type="file" class="custom-file-input" id="inputFile"
-                    aria-describedby="inputGroupFileAddon01" onChange={changeName} multiple/>
+                    aria-describedby="inputGroupFileAddon01" onChange={changeName} multiple />
                 <label class="custom-file-label" for="inputGroupFile01">{filename}</label>
             </div>
         </div>
     );
 };
 const Data = () => {
-    var user=""+useWebId();
- 
-    const url=user.split("profile/card#me")[0]+"private/routes3a";
+    var user = "" + useWebId();
+
+    const url = user.split("profile/card#me")[0] + "private/routes3a";
     return (
         <div>
-        
-            <Upload/>
+
+            <Upload />
             <div class="form-group">
                 <label for="exampleFormControlInput1">Name:</label>
                 <input type="text" class="form-control" id="name" placeholder="Route's name" required />
@@ -50,42 +51,44 @@ const Data = () => {
                 <label for="exampleFormControlTextarea1">Description:</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
             </div>
-            <button onClick={()=> createFolder(url)}  class="btn btn-info">Add route</button>
-         
-         </div>
+            <button onClick={() => createFolder(url)} class="btn btn-info">Add route</button>
+
+        </div>
     );
 };
 
 const AddRoute = () => {
-   
-   
+
+
     return (
-        <Fragment>
-            <h2>Add route</h2>
-            <Data />
-        </Fragment>
+        <DocumentTitle title='Add route'>
+            <Fragment>
+                <h2>Add route</h2>
+                <Data />
+            </Fragment>
+        </DocumentTitle>
     );
 
 };
 const createFolder = async (folder) => {
     console.log(folder);
     var existe = await fileClien.itemExists(folder);
-    
+
     if (!existe)
-         await fileClien.createFolder(folder);
+        await fileClien.createFolder(folder);
     console.log(existe)
- 
+
     var nameValue = document.getElementById("name").value;
-    var destination= folder+"/"+nameValue+"/";
-    await fileClien.createFolder(destination); 
+    var destination = folder + "/" + nameValue + "/";
+    await fileClien.createFolder(destination);
     var x = document.getElementById("inputFile");
-    
-        var file = x.files[0];
-        console.log(file.name)
-        console.log(file.size)
-        const fileURl = destination + file.name
-        await fileClien.putFile(fileURl, file, file.type)
-  }
- 
+
+    var file = x.files[0];
+    console.log(file.name)
+    console.log(file.size)
+    const fileURl = destination + file.name
+    await fileClien.putFile(fileURl, file, file.type)
+}
+
 export default AddRoute;
 
