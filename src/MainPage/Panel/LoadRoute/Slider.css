@@ -1,0 +1,11 @@
+.media {
+    width: 100%;
+    height: 100%;
+}
+
+.slider-item-div {
+    height: 40vh;
+    /* Para ponerlo cuadrado: */
+    /* width: 40vh; */
+    margin: auto;
+}

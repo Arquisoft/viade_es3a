@@ -62,29 +62,19 @@ const LoadRoute = () => {
                 <div class="card-body">
                     <h4 class="card-title" id="routeName">{selected.name}</h4>
                     <p class="card-Description" id="routeDescription">{selected.description}</p>
-                    <div className="card-Image" id="routeImage">
-                        {
-                            selected.images.map((image, i) => (
-                                // <div key={'image_'+i}><img src={image} class={'imag'}/></div>
-                                images.push(image)
-                            ))
-                        }
+                    {
+                        selected.images.map((image) => (
+                            images.push(image)
+                        ))
+                    }
+                    {
+                        selected.videos.map((video) => (
+                            videos.push(video)
+                        ))
+                    }
+                    <div className="bodyMedia">
+                        <Slider images={images} videos={videos} />
                     </div>
-                    <div id="ImgDiv"><div id="images"></div></div><br></br>
-                    <div className="card-Video" id="routeVideo">
-                        {
-                            selected.videos.map((video, i) => (
-                                // <div key={'video_'+i}><video src={video} class={'vid'} controls/></div>
-                                videos.push(video)
-                            ))
-                        }
-                    </div>
-                    <Slider images={images} videos={videos} />
-                    <div id="VidDiv"><div id="videos"></div></div><br></br>
-                    <center>
-                        <button type="button" class="btn btn-light">Load</button>
-                    </center>
-
                 </div>
             </div>
         </div>
