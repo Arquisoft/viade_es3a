@@ -16,7 +16,8 @@ const LoadRoute = () => {
         name: '',
         description: '',
         images: [],
-        videos: []
+        videos: [],
+        url: ''
     });
 
     console.log(selected);
@@ -86,20 +87,16 @@ const LoadRoute = () => {
                         </div>
                         <div id="VidDiv"><div id="videos"></div></div><br></br>
                         <center>
-                            <button type="button" class="btn btn-light">Load</button>
-                            <button type="button" class="btn btn-light" onClick={() => enseñaAmigos()}>Share</button>
-                            <List  src={`[${user}].friends`} className="list" padding-inline-start="0">{friend =>
-                <li key={friend} className="listElement">
-                    <p>
-                        <Carda nombre={`[${friend}]`}></Carda>
-                    </p>
-                </li>}
+                            <h2 className="h2">Share with a friend:  </h2>
+                        <List  src={`[${user}].friends`} className="list" padding-inline-start="0">{friend =>
+                            <li key={friend} className="listElement">
+                            <p>
+                                <Carda nombre={`[${friend}]`} url={selected.url}></Carda>
+                            </p>
+                            </li>}
                     </List>
 
-                    <h2 className="h2">Your friends, <Value src="user.name" /> </h2>
-           
-
-                                <List src="user.friends" />
+                    
 
   
                         </center>
@@ -126,14 +123,15 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
     let images = await loadFile(urlCarptetaRuta, "photo/img");
     let videos = await loadFile(urlCarptetaRuta, "video/vid");
-
+    console.log(folder.url)
     await showRoute(urlCarptetaRuta);
 
     setSelected({
         name: folder.name,
         description: folderDesc,
         images: images,
-        videos: videos
+        videos: videos,
+        url: folder.url
     });
 
 }
@@ -156,16 +154,18 @@ export async function showRoute(urlCarptetaRuta) {
     
     let folder = await fileClien.readFolder(urlCarptetaRuta);
 
-    console.log(folder);
+    
     document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
     let ruta = await fileClien.readFile(urlCarptetaRuta+folder.name+".geojson");
 
     algo.updateMap(ruta);
     
 }
-async function enseñaAmigos(){
-    console.log("Amigos")
+async function enseñaAmigos(source,target){
    
+    const urlTarget=target.split("profile/card#me")[0]+"inbox/ruta";
+    console.log(urlTarget)
+     //fileClien.createFolder( urlTarget)
 }
 const Carda = (props) => {
     return (
@@ -174,7 +174,7 @@ const Carda = (props) => {
                 <h4 class="card-title" id="friendName">
                     <Name src={props.nombre}>{props.nombre}</Name>
                 </h4>
-                    <Link href={props.nombre} className="btn btn-light">Profile</Link>
+                    <button  className="btn btn-light" onClick={() => enseñaAmigos(props.url,props.nombre)}>Share</button>
             </div>
         </div>
     )
