@@ -8,6 +8,27 @@
   box-shadow: 0 0 1em 0.4em rgba(39, 37, 37, 0.7);
 }
 
+.card-friends {
+  background: rgb(54, 54, 54);
+  height: 25vh;
+  width: 45%;
+  margin-left: 1vw;
+  border-radius: 1em;
+  top: 0.5em;
+  box-shadow: 0 0 1em 0.4em rgba(39, 37, 37, 0.7);
+}
+
+.card-routes {
+  background: rgb(54, 54, 54);
+  height: 25vh;
+  width: 45%;
+  margin-left: 14vw;
+  margin-top: -25vh;
+  border-radius: 1em;
+  top: 0.5em;
+  box-shadow: 0 0 1em 0.4em rgba(39, 37, 37, 0.7);
+}
+
 .h2{
   font-family: monospace;
   color: teal;
@@ -45,6 +66,34 @@
   font-style: italic;
 }
 
+.friends {
+  font-size: 3vh;
+  position: absolute;
+  top: 65vh;
+  color: rgb(236, 233, 233);
+  font-family: "Work Sans", sans-serif;
+  font-style: italic;
+}
+
+.routes {
+  font-size: 3vh;
+  position: absolute;
+  top: 65vh;
+  color: rgb(236, 233, 233);
+  font-family: "Work Sans", sans-serif;
+  font-style: italic;
+}
+
+.data {
+  font-size: 3vh;
+  position: absolute;
+  top: 70vh;
+  font-family: "Raleway", sans-serif;
+  color: rgb(97, 208, 228);
+  position: absolute;
+  font-style: italic;
+}
+
 .divider {
   background-color: rgb(97, 208, 228);
   height: 0.1em;
@@ -66,6 +115,7 @@
   text-decoration: none;
 }
 
+
 .buttonSolid:link, .buttonSolid:visited {
    border-top: 1px solid #cccccc;
    border-bottom: 2px solid #666666;
@@ -79,4 +129,32 @@
    border-left: 2px solid #666666;
    text-decoration: none;
    color: rgb(0, 0, 0);
+}
+
+.buttonFriends {
+  bottom: 16vh;
+  position: absolute;
+  background-color: rgb(97, 208, 228);
+  border-radius: 0.4em;
+  border-color: rgb(19, 72, 82);
+  font-size: 1.2em;
+  padding: 1vh 2.5vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(17, 16, 16);
+  text-decoration: none;
+}
+
+.buttonFriends:link, .buttonSolid:visited {
+  border-top: 1px solid #cccccc;
+  border-bottom: 2px solid #666666;
+  border-left: 1px solid #cccccc;
+  border-right: 2px solid #666666;
+}
+.buttonFriends:hover {
+  border-bottom: 1px solid #cccccc;
+  border-top: 2px solid #666666;
+  border-right: 1px solid #cccccc;
+  border-left: 2px solid #666666;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
 }
