@@ -10,6 +10,7 @@ import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import ShareIcon from '@material-ui/icons/Share';
 
 const NavBar = () => {
   // const webId = useWebId();
@@ -30,6 +31,10 @@ const NavBar = () => {
           <li className="option">
             <RoomOutlinedIcon className="icon" />
             <Link to="/viade_es3a/loadRoute" >My routes</Link>
+          </li>
+          <li className="option">
+            <ShareIcon className="icon" />
+            <Link to="/viade_es3a/shareRoute" >Share routes</Link>
           </li>
           <li className="option">
             <AccountCircleOutlinedIcon className="icon" />
