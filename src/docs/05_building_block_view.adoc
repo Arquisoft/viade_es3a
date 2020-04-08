@@ -3,34 +3,77 @@
 
 == Building Block View
 
-****
 
-The building block view shows the static decomposition of our system into building blocks, as well as their inner dependencies.
+The building block view shows the static decomposition of our system into building blocks, as well as their inner dependencies. We will show different levels and zoom into black boxes to show their components.
 
-This section is a hierarchical collection of black boxes and white boxes and their descriptions, as we can see in the figure below.
+It is all based on the scope and context diagram that has been described in the third section of the documentation.
 
-image:d05_complete.jpg["Hierarchy of building blocks- Viade"]
 
-*Level 1* 
+=== Level 1
 
-In the first level, we can find the components, the model and the different services of the system, this is because we are using a MVC model, so this allow us to distribute the responsabilities of the system in different parts.
-
+In the first level, we distribute the responsabilities of the system in the main application, which is Viade, and Solid Server.
 
 image:d05_level1.jpg["Level 1"]
 
+* Building block content 
 
+[options="header",cols="1,2"]
+|===
+|Name |Responsability
+| Viade Application | It allows users to add and store information and media about routes, and share with their friends.
+| Solid Server |  It provides users information and their PODs, that store the information.
+|===
 
+=== Level 2
 
-*Level 2* 
-
-In the second level, zooms into the components of our application, we decided to mark important user features that he could do and manage as the following ones:
-
-      * Login
-      * Profile
-      * Notifications management
-      * Routes management
-
+In the second level, zooms into the components of each part mention in the previous level.
 
 image:d05_level2.jpg["Level 2"]
 
-****     
+==== Viade Application
+* Building block content 
+
+[options="header",cols="1,2"]
+|===
+|Name |Responsability
+| Routes | It allows users to add and store information and media about routes, and share with their friends.
+| Data and Service |  It provides users information and their PODs which store the information.
+|===
+
+==== Solid Server
+* Building block content 
+
+[options="header",cols="1,2"]
+|===
+|Name |Responsability
+| Authentication | It manages user register and log in.
+| Profile | It contains Solid user profile.
+| PODs | It manages all information and media about Solid users routes.
+|===
+
+=== Level 3
+
+In the third level, zooms into the components of our Viade application, we decided to mark important user features that a user could do and manage as the following ones:
+
+image:d05_level1.jpg["Level 3"]
+
+==== Routes management
+
+[options="header",cols="1,2"]
+|===
+|Name |Responsability
+| Add Route | It allows to store a route in the POD.
+| My Routes | It lists routes created by user.
+| Share Routes | It allows to share user routes with friends.
+|===
+
+
+==== Data and Service management
+
+[options="header",cols="1,2"]
+|===
+|Name |Responsability
+| Login | It allows to log in to a Solid Server provider.
+| Profile | It shows user profile status and a link to Solid profile.
+| Friends | It lists user friends.
+|===
