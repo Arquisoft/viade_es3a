@@ -165,16 +165,7 @@ export async function showRoute(urlCarptetaRuta) {
 }
 async function enseñaAmigos(){
     console.log("Amigos")
-    fc.readFile(myUrlFile).then(() => {
-        this.sendMessageToPod(personal, receiver,message); 
-      }, (err) => {
-        if(err.includes("404")){ //Not found = Not created
-          fc.updateFile(myUrlFile, header + "\n\n\n" + myBody).then( success => {
-            //console.log("Create conversation file in my POD");
-            this.sendMessageToPod(personal, receiver, message); 
-          }, err => console.log(err) );
-        }
-      });
+   
 }
 const Carda = (props) => {
     return (
