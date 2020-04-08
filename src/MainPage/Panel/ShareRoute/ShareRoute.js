@@ -22,7 +22,7 @@ const LoadRoute = () => {
     console.log(selected);
 
     var user=useWebId();
-
+    const webId = useWebId();
     var coll = document.getElementsByClassName("collapsible");
     var i;
 
@@ -95,6 +95,13 @@ const LoadRoute = () => {
                     </p>
                 </li>}
                     </List>
+
+                    <h2 className="h2">Your friends, <Value src="user.name" /> </h2>
+           
+
+                                <List src="user.friends" />
+
+  
                         </center>
                         
                     
@@ -158,6 +165,16 @@ export async function showRoute(urlCarptetaRuta) {
 }
 async function enseñaAmigos(){
     console.log("Amigos")
+    fc.readFile(myUrlFile).then(() => {
+        this.sendMessageToPod(personal, receiver,message); 
+      }, (err) => {
+        if(err.includes("404")){ //Not found = Not created
+          fc.updateFile(myUrlFile, header + "\n\n\n" + myBody).then( success => {
+            //console.log("Create conversation file in my POD");
+            this.sendMessageToPod(personal, receiver, message); 
+          }, err => console.log(err) );
+        }
+      });
 }
 const Carda = (props) => {
     return (
