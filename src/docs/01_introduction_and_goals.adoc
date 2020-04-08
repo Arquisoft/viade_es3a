@@ -12,21 +12,19 @@ Along this documentation, you will be able to find the prominent requirements of
 === Requirements Overview
 
 
-****
+
 [options="header",cols="1,2"]
 |===
 |Requirement|Description
-| Decentralized architecture | The application will be separated from the data storage, that means all the data including messages.
-|Routes | User can view their routes in their own PODs. 
-|Maps | User can view the routes stored on a map.
-|Shared files |  Pictures, videos or information about a route can be shared with other friends.
+| Decentralized architecture | The application will be separated from the data storage
+|Routes | User can store their routes in their own PODs. 
+|Map | User can view their routes, added to the POD, stored on a map.
+|Shared files |  Pictures, videos or information about a route can be shared with user friends.
 |Notifications | When some friend of our user shares a route with him, he can get notifications.
-|Group users| Users can have groups of friends with whom they may want to share a route. 
+|Group of friends| Users can have groups of friends with whom they may want to share a route. 
 |Interoperability| It should be possible to view routes loaded by users that are using a different app.
 |===
 
-It is important to be considered that our application could work on a mobile devices and user can share their routes while they are doing the routes.
-****
 
 === Quality Goals
 
