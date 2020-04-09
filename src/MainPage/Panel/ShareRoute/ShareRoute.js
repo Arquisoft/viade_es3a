@@ -167,7 +167,7 @@ async function enseñaAmigos(source,target){
     const urlTarget=target2.split("profile/card#me")[0]+"inbox/";
     console.log(urlTarget)
 
-    await fileClien.postFile(urlTarget+"prueba", source, "text/plain"); 
+    await fileClien.postFile(urlTarget+"prueba3", source, "text/plain"); 
 }
 const Carda = (props) => {
     return (
