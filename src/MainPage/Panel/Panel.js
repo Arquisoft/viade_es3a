@@ -7,7 +7,13 @@ import AddRoute from "./AddRoute/AddRoute";
 import LoadRoute from './LoadRoute/LoadRoute';
 import Welcome from './Welcome/Welcome';
 import Friends from './Friends/Friends';
+<<<<<<< HEAD
 import Profile from './Profile/Profile.js';
+=======
+import Profile from './Profile/Profile';
+import ShareRoute from './ShareRoute/ShareRoute';
+import SharedRoutes from './SharedRoutes/SharedRoutes';
+>>>>>>> shareRoute
 
 const AppWrapper = styled.div`
 display: flex;
@@ -27,6 +33,8 @@ const LeftPanel = () => {
                     <Route path="/viade_es3a/viade_es3a" component={Welcome} />
                     <Route path="/viade_es3a/addRoute" component={AddRoute} />
                     <Route path="/viade_es3a/loadRoute" component={LoadRoute} />
+                    <Route path="/viade_es3a/shareRoute" component={ShareRoute} />
+                    <Route path="/viade_es3a/sharedRoutes" component={SharedRoutes} />
                     <Route path="/viade_es3a/friends" component={Friends} />
                     <Route path="/viade_es3a/profile" component={Profile} /> 
                 </div>
