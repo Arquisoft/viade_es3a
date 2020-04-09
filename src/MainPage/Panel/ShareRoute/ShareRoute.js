@@ -163,9 +163,11 @@ export async function showRoute(urlCarptetaRuta) {
 }
 async function enseñaAmigos(source,target){
    
-    const urlTarget=target.split("profile/card#me")[0]+"inbox/ruta";
+    const target2=target.split("[")[1];
+    const urlTarget=target2.split("profile/card#me")[0]+"inbox/";
     console.log(urlTarget)
-     //fileClien.createFolder( urlTarget)
+    
+    await fileClien.copyFolder(source,urlTarget)
 }
 const Carda = (props) => {
     return (
