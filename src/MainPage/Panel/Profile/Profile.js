@@ -19,12 +19,17 @@ var routes;
 var friends;
 
 export async function RoutesLength(user) {
-    if (user != undefined) {
-        const url = user.split("profile/card#me")[0] + "/private/routes3a";
-        let folder = await fileClien.readFolder(url);
+    if (user != undefined && user != "") {
+        try {
+            const url = user.split("profile/card#me")[0] + "/private/routes3a";
+            let folder = await fileClien.readFolder(url);
 
-        if (folder) {
-            routes = folder.folders.length;
+            if (folder) {
+                routes = folder.folders.length;
+            }
+        }
+        catch (err) {
+            routes = 0;
         }
     }
 }
