@@ -5,7 +5,7 @@ import DocumentTitle from 'react-document-title';
 
 const Card = (props) => {
     return (
-        <div class="card bg-info text-white">
+        <div class="card bg-info text-white" >
             <div class="card-body">
                 <h4 class="card-title" id="friendName">
                     <Name src={props.nombre}>{props.nombre}</Name>
@@ -21,7 +21,7 @@ const Card = (props) => {
 const Friends = () => {
     const webId = useWebId();
     return (
-        <DocumentTitle title="friends">
+        <DocumentTitle title="Friends">
         <div>
             <h2 className="h2">Your friends, <Value src="user.name" /> </h2>
             <List src={`[${webId}].friends`} className="list" padding-inline-start="0">{friend =>
