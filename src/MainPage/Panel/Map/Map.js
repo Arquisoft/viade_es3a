@@ -11,12 +11,6 @@ const Wrapper = styled.div`
     height: ${props => props.height};
 `;
 
-
-export function showRout(route) {
-    console.log("Llegue");
-    new L.GeoJSON(route).addTo(Map.map);
-}
-
 function getStyle(feature, layer) {
     return {
         weight: 1,
@@ -61,11 +55,20 @@ const ShowMap = (props) => {
     );
 }
 
-export function updateMap (route) {
-    let parseR = JSON.parse(route)
+export function updateMap (route,name) {
     let center = [40.205, -3.60];
     let aa = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-    let com = <div style={styles.wrapper} id="thisMap">
+    let com = <div style={styles.wrapper} id={name}>
+        <Map style={styles.map} center={center} zoom='8'>
+            <TileLayer url={aa} />
+            
+        </Map>
+    </div>;
+    ReactDOM.render(com,document.getElementById('jeje'))
+
+
+    let parseR = JSON.parse(route)
+    com = <div style={styles.wrapper} id={name}>
         <Map style={styles.map} center={center} zoom='8'>
             <TileLayer url={aa} />
             <GeoJSON
