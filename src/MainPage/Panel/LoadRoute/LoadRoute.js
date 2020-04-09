@@ -41,6 +41,12 @@ const LoadRoute = () => {
 
     images=[]
     videos=[]
+    selected.images.map((image) => (
+        images.push(image)
+    ))
+    selected.videos.map((video) => (
+        videos.push(video)
+    ))
     return (
         
         <DocumentTitle title="Load Route">
@@ -67,16 +73,6 @@ const LoadRoute = () => {
                 <div class="card-body">
                     <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
                     <p class="card-Description" id="routeDescription">{selected.description}</p>
-                    {
-                        selected.images.map((image) => (
-                            images.push(image)
-                        ))
-                    }
-                    {
-                        selected.videos.map((video) => (
-                            videos.push(video)
-                        ))
-                    }
                     <div className="bodyMedia">
                         <Slider images={images} videos={videos} />
                     </div>
