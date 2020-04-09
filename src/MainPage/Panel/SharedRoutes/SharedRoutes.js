@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { List, useWebId,Value, Name, Link  } from '@solid/react';
+import { useWebId } from '@solid/react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './ShareRoute.css';
+import { Card, Button } from 'react-bootstrap';
+import './LoadRoute.css';
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
 
@@ -9,44 +10,30 @@ import * as algo from '../Map/Map';
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas=[];
-const LoadRoute = () => {
+const SharedRoutes = () => {
 
     const [folders, setFolders] = useState([]);
     const [selected, setSelected] = useState({
         name: '',
         description: '',
         images: [],
-        videos: [],
-        url: ''
+        videos: []
     });
 
     console.log(selected);
 
     var user=useWebId();
-    const webId = useWebId();
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
 
-    for (i = 0; i < coll.length; i++) {
-         coll[i].addEventListener("click", function() {
-         this.classList.toggle("active");
-         var content = this.nextElementSibling;
-          if (content.style.display === "block") {
-              content.style.display = "none";
-         } else {
-              content.style.display = "block";
-          }
-        });
-    }
     useEffect(() => {
         if ( user != undefined) {
-            const url=user.split("profile/card#me")[0]+"/private/routes3a";
+            const url=user.split("profile/card#me")[0]+"inbox/rutas3a";
             //listRoutes(url);
             loadRoutes(url, setFolders);
         }
     }, [user]);
     
         return (
+            
             <div  class="container">
                 <h2 id="rutas" class="h2">Routes list:</h2>
 
@@ -68,7 +55,7 @@ const LoadRoute = () => {
                 </ul>
                 <div class="card bg-info text-white">
                     <div class="card-body">
-                        <h4 class="card-title" id="routeName">{selected.name}</h4>
+                        <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
                         <p class="card-Description" id ="routeDescription">{selected.description}</p>
                         <div className="card-Image" id="routeImage">
                             {
@@ -86,23 +73,6 @@ const LoadRoute = () => {
                             }
                         </div>
                         <div id="VidDiv"><div id="videos"></div></div><br></br>
-                        <center>
-                            <h2 className="h2">Share with a friend:  </h2>
-                        <List  src={`[${user}].friends`} className="list" padding-inline-start="0">{friend =>
-                            <li key={friend} className="listElement">
-                            <p>
-                                <Carda nombre={`[${friend}]`} url={selected.url} name={selected.name}></Carda>
-                            </p>
-                            </li>}
-                    </List>
-
-                    
-
-  
-                        </center>
-                        
-                    
-                        
                         
                     </div>
                 </div> 
@@ -123,15 +93,14 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
     let images = await loadFile(urlCarptetaRuta, "photo/img");
     let videos = await loadFile(urlCarptetaRuta, "video/vid");
-    console.log(folder.url)
+
     await showRoute(urlCarptetaRuta);
 
     setSelected({
         name: folder.name,
         description: folderDesc,
         images: images,
-        videos: videos,
-        url: folder.url
+        videos: videos
     });
 
 }
@@ -154,37 +123,12 @@ export async function showRoute(urlCarptetaRuta) {
     
     let folder = await fileClien.readFolder(urlCarptetaRuta);
 
-    
+    console.log(folder);
     document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
     let ruta = await fileClien.readFile(urlCarptetaRuta+folder.name+".geojson");
 
     algo.updateMap(ruta);
     
 }
-async function enseñaAmigos(source,target,name){
-   
-    const target2=target.split("[")[1];
-    const urlTarget=target2.split("profile/card#me")[0]+"inbox/rutas3a";
-    console.log(name)
 
-
-    await fileClien.createFolder(urlTarget);
-    await fileClien.createFolder(urlTarget+"/"+name+"/");
-    await fileClien.copyFolder(source,urlTarget+"/"+name+"/",{merge:"keep_source"})
-    alert("Your route has been shared!")
-}
-const Carda = (props) => {
-    return (
-        <div class="card bg-info text-white">
-            <div class="card-body">
-                <h4 class="card-title" id="friendName">
-                    <Name src={props.nombre}>{props.nombre}</Name>
-                </h4>
-                    <button  className="btn btn-light" onClick={() => enseñaAmigos(props.url,props.nombre,props.name)}>Share</button>
-            </div>
-        </div>
-    )
-}
-
-export default LoadRoute;
-
+export default SharedRoutes;

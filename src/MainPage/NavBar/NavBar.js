@@ -37,6 +37,10 @@ const NavBar = () => {
             <Link to="/viade_es3a/shareRoute" >Share routes</Link>
           </li>
           <li className="option">
+            <PeopleAltOutlinedIcon className="icon" />
+            <Link to="/viade_es3a/SharedRoutes" > Friend's Routes </Link>
+          </li>
+          <li className="option">
             <AccountCircleOutlinedIcon className="icon" />
             <Link to="/viade_es3a/profile" > Profile </Link>
           </li>
@@ -44,6 +48,7 @@ const NavBar = () => {
             <PeopleAltOutlinedIcon className="icon" />
             <Link to="/viade_es3a/friends" > Friends </Link>
           </li>
+
         </ul>
 
         <div className="navBarLogout">
