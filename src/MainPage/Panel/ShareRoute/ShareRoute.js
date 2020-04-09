@@ -91,7 +91,7 @@ const LoadRoute = () => {
                         <List  src={`[${user}].friends`} className="list" padding-inline-start="0">{friend =>
                             <li key={friend} className="listElement">
                             <p>
-                                <Carda nombre={`[${friend}]`} url={selected.url}></Carda>
+                                <Carda nombre={`[${friend}]`} url={selected.url} name={selected.name}></Carda>
                             </p>
                             </li>}
                     </List>
@@ -161,13 +161,13 @@ export async function showRoute(urlCarptetaRuta) {
     algo.updateMap(ruta);
     
 }
-async function enseñaAmigos(source,target){
+async function enseñaAmigos(source,target,name){
    
     const target2=target.split("[")[1];
     const urlTarget=target2.split("profile/card#me")[0]+"inbox/";
-    console.log(urlTarget)
+    console.log(name)
 
-    await fileClien.postFile(urlTarget+"prueba3", source, "text/plain"); 
+    await fileClien.postFile(urlTarget+name, source, "text/plain"); 
 }
 const Carda = (props) => {
     return (
@@ -176,7 +176,7 @@ const Carda = (props) => {
                 <h4 class="card-title" id="friendName">
                     <Name src={props.nombre}>{props.nombre}</Name>
                 </h4>
-                    <button  className="btn btn-light" onClick={() => enseñaAmigos(props.url,props.nombre)}>Share</button>
+                    <button  className="btn btn-light" onClick={() => enseñaAmigos(props.url,props.nombre,props.name)}>Share</button>
             </div>
         </div>
     )
