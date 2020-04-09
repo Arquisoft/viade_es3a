@@ -22,3 +22,12 @@ test('Elements addRoute are present', () => {
     expect(getByTestId("inputImg")).toBeInTheDocument();
     expect(getByTestId("inputVid")).toBeInTheDocument();
   });
+
+test('Click on inputs', ()=>{
+    const { getByTestId } = render(<AddRoute></AddRoute>);
+    getByTestId("inputGeo").click();
+    getByTestId("inputName").click();
+    getByTestId("inputDesc").click();
+    getByTestId("inputImg").click();
+    getByTestId("inputVid").click();
+});
