@@ -42,7 +42,7 @@ const Profile = () => {
     return (
         <DocumentTitle title='Profile'>
             <div>
-                <p><h2 class="h2">Profile</h2></p>
+                <h2 class="h2">Profile</h2>
                 <div className="card" id="cardProfile">
                     <div className="photo">
                         {webId && (
@@ -69,25 +69,24 @@ const Profile = () => {
                         <div className="divider"></div>
                         <Link href={`[${webId}]`} className="buttonSolid">Go to SOLID profile</Link>
                     </div>
-
                 </div>
-                <br></br>
-
-                <div className="card-friends">
-                    <div className="info">
-                        <div className="friends"> My friends</div>
-                        <div className="data">{friends.length}</div>
-                        {/* /viade_es3a/friends */}
-                        <Link to="/viade_es3a/friends" className="buttonFriends">Show friends</Link>
+                <div className="cardExtra">
+                    <div className="cardInfoExtra">
+                        <div className="infoExtra">
+                            <div className="titleExtra">My friends</div>
+                            <div className="data">{friends.length}</div>
+                            {/* /viade_es3a/friends */}
+                            <Link to="/viade_es3a/friends" className="buttonExtra">Show friends</Link>
+                        </div>
                     </div>
-                </div>
-                <div className="card-routes">
-                    <div className="info">
-                        <div className="routes"> My routes</div>
-                        <div className="data">{routes}</div>
-                        <div ></div>
-                        {/* /viade_es3a/loadRoute */}
-                        <Link to="/viade_es3a/loadRoute" className="buttonFriends">Show routes</Link>
+                    <div className="hueco"></div>
+                    <div className="cardInfoExtra">
+                        <div className="infoExtra">
+                            <div className="titleExtra">My routes</div>
+                            <div className="data">{routes}</div>
+                            {/* /viade_es3a/loadRoute */}
+                            <Link to="/viade_es3a/loadRoute" className="buttonExtra">Show routes</Link>
+                        </div>
                     </div>
                 </div>
 

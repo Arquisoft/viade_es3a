@@ -1,6 +1,6 @@
 #cardProfile {
   background: rgb(54, 54, 54);
-  height: 50vh;
+  height: 45vh;
   width: 95%;
   margin: auto;
   border-radius: 1em;
@@ -8,28 +8,26 @@
   box-shadow: 0 0 1em 0.4em rgba(39, 37, 37, 0.7);
 }
 
-.card-friends {
+.cardExtra {
+  width: 94%;
+  margin: auto;
+  display: flex;
+}
+
+.cardInfoExtra {
+  margin-top: 1.2em;
   background: rgb(54, 54, 54);
   height: 25vh;
-  width: 45%;
-  margin-left: 1vw;
+  width: 100%;
   border-radius: 1em;
-  top: 0.5em;
   box-shadow: 0 0 1em 0.4em rgba(39, 37, 37, 0.7);
 }
 
-.card-routes {
-  background: rgb(54, 54, 54);
-  height: 25vh;
-  width: 45%;
-  margin-left: 14vw;
-  margin-top: -25vh;
-  border-radius: 1em;
-  top: 0.5em;
-  box-shadow: 0 0 1em 0.4em rgba(39, 37, 37, 0.7);
+.hueco{
+  padding: 0.3em;
 }
 
-.h2{
+.h2 {
   font-family: monospace;
   color: teal;
 }
@@ -40,11 +38,18 @@
   padding: 1em;
 }
 
-.info {
+.info, .infoExtra {
   height: 100%;
   width: 100%;
-  display: flex;
   justify-content: center;
+}
+
+.info {
+  display: flex;
+}
+
+.infoExtra {
+  text-align: center;
 }
 
 .name {
@@ -60,25 +65,15 @@
 .user {
   font-size: 3vh;
   position: absolute;
-  top: 24vh;
+  top: 25vh;
   color: rgb(236, 233, 233);
   font-family: "Work Sans", sans-serif;
   font-style: italic;
 }
 
-.friends {
+.titleExtra {
   font-size: 3vh;
-  position: absolute;
-  top: 65vh;
-  color: rgb(236, 233, 233);
-  font-family: "Work Sans", sans-serif;
-  font-style: italic;
-}
-
-.routes {
-  font-size: 3vh;
-  position: absolute;
-  top: 65vh;
+  margin-top: 3vh;
   color: rgb(236, 233, 233);
   font-family: "Work Sans", sans-serif;
   font-style: italic;
@@ -86,12 +81,11 @@
 
 .data {
   font-size: 3vh;
-  position: absolute;
-  top: 70vh;
+  margin-top: 2vh;
   font-family: "Raleway", sans-serif;
   color: rgb(97, 208, 228);
-  position: absolute;
   font-style: italic;
+  margin-bottom: 3vh;
 }
 
 .divider {
@@ -99,58 +93,37 @@
   height: 0.1em;
   width: 10vh;
   position: absolute;
-  top: 31vh;
+  top: 32vh;
 }
 
-.buttonSolid {
-  bottom: 8vh;
-  position: absolute;
+.buttonSolid, .buttonExtra {
   background-color: rgb(97, 208, 228);
   border-radius: 0.8em;
   border-color: rgb(19, 72, 82);
-  font-size: 1.2em;
   padding: 1vh 2.5vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(17, 16, 16);
   text-decoration: none;
 }
 
-
-.buttonSolid:link, .buttonSolid:visited {
-   border-top: 1px solid #cccccc;
-   border-bottom: 2px solid #666666;
-   border-left: 1px solid #cccccc;
-   border-right: 2px solid #666666;
-}
-.buttonSolid:hover {
-   border-bottom: 1px solid #cccccc;
-   border-top: 2px solid #666666;
-   border-right: 1px solid #cccccc;
-   border-left: 2px solid #666666;
-   text-decoration: none;
-   color: rgb(0, 0, 0);
-}
-
-.buttonFriends {
-  bottom: 6vh;
+.buttonSolid {
   position: absolute;
-  background-color: rgb(97, 208, 228);
-  border-radius: 0.4em;
-  border-color: rgb(19, 72, 82);
+  bottom: 3vh;
   font-size: 1.2em;
-  padding: 1vh 2.5vh;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: rgb(17, 16, 16);
-  text-decoration: none;
 }
 
-.buttonFriends:link, .buttonSolid:visited {
+.buttonExtra {
+  font-size: 1.1em;
+}
+
+.buttonSolid:link, .buttonSolid:visited, .buttonExtra:link, .buttonExtra:visited {
   border-top: 1px solid #cccccc;
   border-bottom: 2px solid #666666;
   border-left: 1px solid #cccccc;
   border-right: 2px solid #666666;
 }
-.buttonFriends:hover {
+
+.buttonSolid:hover, .buttonExtra:hover {
   border-bottom: 1px solid #cccccc;
   border-top: 2px solid #666666;
   border-right: 1px solid #cccccc;
