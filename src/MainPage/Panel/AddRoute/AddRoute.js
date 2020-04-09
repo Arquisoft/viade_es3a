@@ -28,11 +28,11 @@ const Upload = ({setFile, file}) => {
     return (
         <div class="input-group">
             <div class="input-group-prepend">
-                <label for="exampleRoute" class="labelRoute">Route (.geojson):</label><br></br>
+                <label for="exampleRoute" class="labelRoute" data-testid="route">Route (.geojson):</label><br></br>
                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
             </div>
             <div class="custom-file">
-                <input value={null} type="file" class="custom-file-input" id="route"
+                <input value={null} type="file" class="custom-file-input" id="route" accept=".geojson"
                     aria-describedby="inputGroupFileAddon01" onChange={changeName} required/>
                 <label class="custom-file-label" for="inputGroupFile01"id="labelRoute">{filename}</label>
 
@@ -59,20 +59,20 @@ const Data = () => {
             <br></br>
 
             <div class="form-group">
-                <label for="exampleFormControlInput1" class="labelName">Name:</label>
+                <label for="exampleFormControlInput1" class="labelName" data-testid="name">Name:</label>
                 <input type="text" class="form-control" id="name" placeholder="Route's name" required value={name} onChange={(e) => setName(e.target.value)}/>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1" class="labelDescription">Description:</label>
+                <label for="exampleFormControlTextarea1" class="labelDescription" data-testid="desc">Description:</label>
                 <textarea class="form-control" id="description" name="description" rows="3" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
 
             <div class="form-group">
-                <label class="exampleInputPhoto" for="photo" class="labelPhoto">Images:</label><br></br>
+                <label class="exampleInputPhoto" for="photo" class="labelPhoto" data-testid="img">Images:</label><br></br>
                 <input value={null} type="file" id="photo" name="image" accept=".png" multiple="true" onChange={(e) => setImage(e.target.files)}/>
             </div>
             <div class="form-group">
-                <label class="exampleInputVideo" for="video" class="labelVideo">Video:</label><br></br>
+                <label class="exampleInputVideo" for="video" class="labelVideo" data-testid="vid">Video:</label><br></br>
                 <input value={null} type="file" id="video" name="video" accept=".mp4" multiple="true" onChange={(e) => setVideo(e.target.files)}/>
             </div>
             <br></br>
