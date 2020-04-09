@@ -1,6 +1,7 @@
 import React from 'react'
 import { useWebId, List, Value, Name, Link } from '@solid/react';
 import './Friends.css'
+import 'bootstrap/dist/css/bootstrap.css';
 import DocumentTitle from 'react-document-title';
 
 const Card = (props) => {

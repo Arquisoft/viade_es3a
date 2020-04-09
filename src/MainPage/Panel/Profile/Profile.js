@@ -43,7 +43,7 @@ const Profile = () => {
         <DocumentTitle title='Profile'>
             <div>
                 <p><h2 class="h2">Profile</h2></p>
-                <div className="card">
+                <div className="card" id="cardProfile">
                     <div className="photo">
                         {webId && (
                             <ProfileViewer
