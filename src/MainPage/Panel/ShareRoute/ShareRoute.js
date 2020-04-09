@@ -183,5 +183,6 @@ const Carda = (props) => {
         </div>
     )
 }
+
 export default LoadRoute;
 
