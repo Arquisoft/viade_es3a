@@ -29,11 +29,11 @@ const Upload = ({setFile, file}) => {
         <div class="input-group">
             <div class="input-group-prepend">
                 <label for="exampleRoute" class="labelRoute" data-testid="route">Route (.geojson):</label><br></br>
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                <span class="input-group-text" id="inputGroupFileAddon01" data-testid="upload">Upload</span>
             </div>
             <div class="custom-file">
                 <input value={null} type="file" class="custom-file-input" id="route" accept=".geojson"
-                    aria-describedby="inputGroupFileAddon01" onChange={changeName} required/>
+                    aria-describedby="inputGroupFileAddon01" onChange={changeName} required data-testid="inputGeo"/>
                 <label class="custom-file-label" for="inputGroupFile01"id="labelRoute">{filename}</label>
 
             </div>
@@ -60,20 +60,20 @@ const Data = () => {
 
             <div class="form-group">
                 <label for="exampleFormControlInput1" class="labelName" data-testid="name">Name:</label>
-                <input type="text" class="form-control" id="name" placeholder="Route's name" required value={name} onChange={(e) => setName(e.target.value)}/>
+                <input type="text" class="form-control" id="name" data-testid="inputName" placeholder="Route's name" required value={name} onChange={(e) => setName(e.target.value)}/>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1" class="labelDescription" data-testid="desc">Description:</label>
-                <textarea class="form-control" id="description" name="description" rows="3" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                <textarea class="form-control" id="description" data-testid="inputDesc" name="description" rows="3" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
 
             <div class="form-group">
                 <label class="exampleInputPhoto" for="photo" class="labelPhoto" data-testid="img">Images:</label><br></br>
-                <input value={null} type="file" id="photo" name="image" accept=".png" multiple="true" onChange={(e) => setImage(e.target.files)}/>
+                <input value={null} type="file" id="photo" name="image" data-testid="inputImg" accept=".png" multiple="true" onChange={(e) => setImage(e.target.files)}/>
             </div>
             <div class="form-group">
                 <label class="exampleInputVideo" for="video" class="labelVideo" data-testid="vid">Video:</label><br></br>
-                <input value={null} type="file" id="video" name="video" accept=".mp4" multiple="true" onChange={(e) => setVideo(e.target.files)}/>
+                <input value={null} type="file" id="video" name="video" accept=".mp4" data-testid="inputVid" multiple="true" onChange={(e) => setVideo(e.target.files)}/>
             </div>
             <br></br>
             <center>

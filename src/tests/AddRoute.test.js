@@ -15,4 +15,10 @@ test('Elements addRoute are present', () => {
     expect(getByTestId("desc")).toBeInTheDocument();
     expect(getByTestId("img")).toBeInTheDocument();
     expect(getByTestId("vid")).toBeInTheDocument();
+    expect(getByTestId("upload")).toBeInTheDocument();
+    expect(getByTestId("inputGeo")).toBeInTheDocument();
+    expect(getByTestId("inputName")).toBeInTheDocument();
+    expect(getByTestId("inputDesc")).toBeInTheDocument();
+    expect(getByTestId("inputImg")).toBeInTheDocument();
+    expect(getByTestId("inputVid")).toBeInTheDocument();
   });
