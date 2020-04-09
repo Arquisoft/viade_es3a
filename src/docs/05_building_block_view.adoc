@@ -13,7 +13,7 @@ It is all based on the scope and context diagram that has been described in the 
 
 In the first level, we distribute the responsabilities of the system in the main application, which is Viade, and Solid Server.
 
-image:d05_level1.jpg["Level 1"]
+image:d05_level1.png["Level 1"]
 
 * Building block content 
 
@@ -28,7 +28,7 @@ image:d05_level1.jpg["Level 1"]
 
 In the second level, zooms into the components of each part mention in the previous level.
 
-image:d05_level2.jpg["Level 2"]
+image:d05_level2.png["Level 2"]
 
 ==== Viade Application
 * Building block content 
@@ -55,7 +55,7 @@ image:d05_level2.jpg["Level 2"]
 
 In the third level, zooms into the components of our Viade application, we decided to mark important user features that a user could do and manage as the following ones:
 
-image:d05_level1.jpg["Level 3"]
+image:d05_level3.png["Level 3"]
 
 ==== Routes management
 
