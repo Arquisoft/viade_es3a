@@ -12,7 +12,7 @@ const Card = (props) => {
                     <Name src={props.nombre}>{props.nombre}</Name>
                 </h4>
                 <center>
-                    <Link href={props.nombre} className="btn btn-light">Profile</Link>
+                    <Link href={props.nombre} className="btn btn-light" data-testId="link">Profile</Link>
                 </center>
             </div>
         </div>
@@ -24,7 +24,7 @@ const Friends = () => {
     return (
         <DocumentTitle title="Friends">
         <div>
-            <h2 className="h2">Your friends, <Value src="user.name" /> </h2>
+            <h2 className="h2" data-testId="label">Your friends, <Value src="user.name"/> </h2>
             <List src={`[${webId}].friends`} className="list" padding-inline-start="0">{friend =>
                 <li key={friend} className="listElement">
                     <p>
