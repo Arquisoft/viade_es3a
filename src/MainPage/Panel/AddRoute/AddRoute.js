@@ -32,7 +32,7 @@ const Upload = ({setFile, file}) => {
                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
             </div>
             <div class="custom-file">
-                <input value={null} type="file" class="custom-file-input" id="route"
+                <input value={null} type="file" class="custom-file-input" id="route" accept=".geojson"
                     aria-describedby="inputGroupFileAddon01" onChange={changeName} required/>
                 <label class="custom-file-label" for="inputGroupFile01"id="labelRoute">{filename}</label>
 
