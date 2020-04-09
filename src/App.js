@@ -10,6 +10,7 @@ import {
 import MainPage from './MainPage/Main-page';
 
 import { BrowserRouter as Router } from "react-router-dom";
+import DocumentTitle from "react-document-title";
 
 const AppWrapper = styled.div`
   display: flex;
@@ -72,26 +73,27 @@ const Header = () => {
     );
 };
 
-const Init = () =>{
+const Init = () => {
     return (
         <Title>ROUTE MANAGER</Title>
     );
 };
 
 const App = () => {
-   
+
     return (
 
         <AppWrapper>
             <DemoWrapper>
-                <Init/>
+                <DocumentTitle title='VIADE ES3A'/>
+                <Init />
                 <LoggedOut>
                     <Header />
                     <ProviderLogin callbackUri={`${window.location.origin}/viade_es3a/`} />
                 </LoggedOut>
                 <LoggedIn>
                     <Router>
-                    <MainPage />
+                        <MainPage />
                     </Router>
                     <LogoutButton />
                 </LoggedIn>

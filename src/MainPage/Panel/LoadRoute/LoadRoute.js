@@ -5,6 +5,7 @@ import { Card, Button } from 'react-bootstrap';
 import './LoadRoute.css';
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
+import DocumentTitle from "react-document-title";
 
 import * as algo from '../Map/Map';
 
@@ -33,6 +34,7 @@ const LoadRoute = () => {
     }, [user]);
     
         return (
+            <DocumentTitle title="Load Route">
             <div  class="container">
                 <h2 id="rutas" class="h2">Routes list:</h2>
 
@@ -76,7 +78,7 @@ const LoadRoute = () => {
                     </div>
                 </div> 
             </div>
-           
+            </DocumentTitle>
         );
 }
 
@@ -131,4 +133,3 @@ export async function showRoute(urlCarptetaRuta) {
 }
 
 export default LoadRoute;
-

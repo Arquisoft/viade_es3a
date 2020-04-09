@@ -1,6 +1,7 @@
 import React from 'react'
 import { useWebId, List, Value, Name, Link } from '@solid/react';
 import './Friends.css'
+import DocumentTitle from 'react-document-title';
 
 const Card = (props) => {
     return (
@@ -9,7 +10,9 @@ const Card = (props) => {
                 <h4 class="card-title" id="friendName">
                     <Name src={props.nombre}>{props.nombre}</Name>
                 </h4>
+                <center>
                     <Link href={props.nombre} className="btn btn-light">Profile</Link>
+                </center>
             </div>
         </div>
     )
@@ -18,6 +21,7 @@ const Card = (props) => {
 const Friends = () => {
     const webId = useWebId();
     return (
+        <DocumentTitle title="friends">
         <div>
             <h2 className="h2">Your friends, <Value src="user.name" /> </h2>
             <List src={`[${webId}].friends`} className="list" padding-inline-start="0">{friend =>
@@ -28,6 +32,7 @@ const Friends = () => {
                 </li>}
             </List>
         </div>
+        </DocumentTitle>
     )
 }
 

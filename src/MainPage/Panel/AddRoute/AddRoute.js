@@ -10,6 +10,7 @@ import {
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
 import { Redirect } from 'react-router-dom';
+import DocumentTitle from "react-document-title";
 
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
@@ -34,6 +35,7 @@ const Upload = ({setFile, file}) => {
                 <input value={null} type="file" class="custom-file-input" id="route"
                     aria-describedby="inputGroupFileAddon01" onChange={changeName} required/>
                 <label class="custom-file-label" for="inputGroupFile01"id="labelRoute">{filename}</label>
+
             </div>
         </div>
     );
@@ -55,6 +57,7 @@ const Data = () => {
             <br></br>
             <Upload setFile={setFile} file={file}/>
             <br></br>
+
             <div class="form-group">
                 <label for="exampleFormControlInput1" class="labelName">Name:</label>
                 <input type="text" class="form-control" id="name" placeholder="Route's name" required value={name} onChange={(e) => setName(e.target.value)}/>
@@ -63,6 +66,7 @@ const Data = () => {
                 <label for="exampleFormControlTextarea1" class="labelDescription">Description:</label>
                 <textarea class="form-control" id="description" name="description" rows="3" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
+
             <div class="form-group">
                 <label class="exampleInputPhoto" for="photo" class="labelPhoto">Images:</label><br></br>
                 <input value={null} type="file" id="photo" name="image" accept=".png" multiple="true" onChange={(e) => setImage(e.target.files)}/>
@@ -78,20 +82,22 @@ const Data = () => {
             </center>
           
             
-            
-         
          </div>
+
     );
 };
 
 const AddRoute = () => {
 
-
     return (
-        <Fragment>
-            <h2 class="h2">Add route</h2>
-            <Data />
-        </Fragment>
+
+        <DocumentTitle title='Add route'>
+            <Fragment>
+                <h2>Add route</h2>
+                <Data />
+            </Fragment>
+        </DocumentTitle>
+
     );
 
 };
@@ -104,6 +110,7 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
     }
     else{
     var existe = await fileClien.itemExists(folder);
+
     if (!existe)
         await fileClien.createFolder(folder);
     var fileList = [];
@@ -144,5 +151,6 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
 }
 
 }
+
 
 export default AddRoute;
