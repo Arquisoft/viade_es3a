@@ -39,12 +39,14 @@ const LoadRoute = () => {
         }
     }, [user]);
 
+    images=[]
+    videos=[]
     return (
         
         <DocumentTitle title="Load Route">
         <div class="container">
             <h2 id="rutas" class="h2">Routes list:</h2>
-
+            
             <ul>
                 {
                     folders.map((folder, i) => {
@@ -92,6 +94,8 @@ async function loadRoutes(url, setFolders) {
 }
 
 async function loadRoute(urlCarptetaRuta, setSelected) {
+
+    
 
     let folder = await fileClien.readFolder(urlCarptetaRuta);
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
