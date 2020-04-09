@@ -1,6 +1,7 @@
 #cardProfile {
   background: rgb(54, 54, 54);
   height: 45vh;
+
   width: 95%;
   margin: auto;
   border-radius: 1em;
@@ -50,6 +51,7 @@
 
 .infoExtra {
   text-align: center;
+
 }
 
 .name {
@@ -88,6 +90,7 @@
   margin-bottom: 3vh;
 }
 
+
 .divider {
   background-color: rgb(97, 208, 228);
   height: 0.1em;
@@ -100,6 +103,7 @@
   background-color: rgb(97, 208, 228);
   border-radius: 0.8em;
   border-color: rgb(19, 72, 82);
+
   padding: 1vh 2.5vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(17, 16, 16);
