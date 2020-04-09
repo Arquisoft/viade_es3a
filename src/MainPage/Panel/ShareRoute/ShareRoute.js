@@ -164,10 +164,12 @@ export async function showRoute(urlCarptetaRuta) {
 async function enseñaAmigos(source,target,name){
    
     const target2=target.split("[")[1];
-    const urlTarget=target2.split("profile/card#me")[0]+"inbox/";
+    const urlTarget=target2.split("profile/card#me")[0]+"inbox/rutas3a";
     console.log(name)
 
-    await fileClien.postFile(urlTarget+name, source, "text/plain"); 
+
+    await fileClien.createFolder(urlTarget); 
+    await fileClien.postFile(urlTarget+"/"+name+"2", source, "text/plain"); 
 }
 const Carda = (props) => {
     return (
