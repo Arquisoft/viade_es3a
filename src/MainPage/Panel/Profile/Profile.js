@@ -1,5 +1,6 @@
 import React from 'react'
-import { useWebId, ProfileViewer } from '@inrupt/solid-react-components';
+import { ProfileViewer } from '@inrupt/solid-react-components';
+import { useWebId } from '@solid/react';
 import { Value } from '@solid/react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as ProfileLogo } from '../../../img/profile.svg';
@@ -7,17 +8,32 @@ import './Profile.css'
 
 import DocumentTitle from "react-document-title";
 
-import { useLDflexValue, useLDflexList } from '@solid/react';
+import { useLDflexList } from '@solid/react';
 
-const Data = (props) => {
-    return (
-        props.lenght
-    )
+import * as solidAuth from 'solid-auth-client';
+import fileClient from 'solid-file-client';
+
+const fileClien = new fileClient(solidAuth, { enableLogging: true });
+
+var routes;
+var friends;
+
+export async function RoutesLength(user) {
+    if (user != undefined) {
+        const url = user.split("profile/card#me")[0] + "/private/routes3a";
+        let folder = await fileClien.readFolder(url);
+
+        if (folder) {
+            routes = folder.folders.length;
+        }
+    }
 }
 
 const Profile = () => {
     const webId = useWebId();
-    const friends = useLDflexList('user.friends');
+    friends = useLDflexList('user.friends');
+    RoutesLength(webId);
+
     return (
         <DocumentTitle title='Profile'>
             <div>
@@ -63,10 +79,10 @@ const Profile = () => {
                 <div className="card-routes">
                     <div className="info">
                         <div className="routes"> My routes</div>
-                        <div className="data">5</div>
+                        <div className="data">{routes}</div>
                         <div ></div>
                         {/* /viade_es3a/loadRoute */}
-                        <Link href={`[${webId}]`} className="buttonFriends">Show route</Link>
+                        <Link to="/viade_es3a/loadRoute" className="buttonFriends">Show routes</Link>
                     </div>
                 </div>
 
