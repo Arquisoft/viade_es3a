@@ -34,7 +34,7 @@ const Upload = ({setFile, file}) => {
             <div class="custom-file">
                 <input value={null} type="file" class="custom-file-input" id="route" accept=".geojson"
                     aria-describedby="inputGroupFileAddon01" onChange={changeName} required data-testid="inputGeo"/>
-                <label class="custom-file-label" for="inputGroupFile01"id="labelRoute">{filename}</label>
+                <label class="custom-file-label" for="inputGroupFile01"id="labelRoute" data-testid="labelRoute">{filename}</label>
 
             </div>
         </div>
@@ -44,6 +44,7 @@ const Data = () => {
     var user=""+useWebId();
     //it saves the actual state of the data
     const [file, setFile] = useState(null);
+    const [error, setError] = useState(null);
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -76,8 +77,14 @@ const Data = () => {
                 <input value={null} type="file" id="video" name="video" accept=".mp4" data-testid="inputVid" multiple="true" onChange={(e) => setVideo(e.target.files)}/>
             </div>
             <br></br>
+            {
+                error &&
+                    <div data-testid="msjerror" class="alert alert-danger" role="alert">
+                        {error}
+                    </div>
+            }
             <center>
-                <button onClick={()=> createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo)}  class="btn btn-info" >Add route
+                <button data-testid="btnenviar" onClick={()=> createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo, setError)}  class="btn btn-info" >Add route
                 </button>
             </center>
           
@@ -104,11 +111,12 @@ const AddRoute = () => {
 
 
 
-const createFolder = async (folder, route, name, description, photo, video,setFile, setName, setDescription, setImage, setVideo) => {
+const createFolder = async (folder, route, name, description, photo, video,setFile, setName, setDescription, setImage, setVideo, setError) => {
     if (name===""||route==null){
-        alert("Name or route is empty!");
+        setError("Name or route is empty!");
     }
     else{
+        setError(null);
     var existe = await fileClien.itemExists(folder);
 
     if (!existe)

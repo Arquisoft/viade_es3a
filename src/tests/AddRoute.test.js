@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { render } from '@testing-library/react';
+import { render, fireEvent, within } from '@testing-library/react';
 import AddRoute from '../MainPage/Panel/AddRoute/AddRoute';
 
 test('Not crashing component', ()=>{
@@ -31,3 +31,36 @@ test('Click on inputs', ()=>{
     getByTestId("inputImg").click();
     getByTestId("inputVid").click();
 });
+
+
+
+test("Route load", () => {
+    const { getByTestId } = render(<AddRoute />);
+    const inputRoute = getByTestId("inputGeo");
+  
+    const file = new File(["..."], "ruta1.geojson", {
+      type: "application/json"
+    });
+  
+   
+    Object.defineProperty(inputRoute, "files", {
+      value: [file]
+    });
+  
+    fireEvent.change(inputRoute);
+  
+    const { getByText } = within(getByTestId('labelRoute'));
+    expect(getByText('ruta1.geojson')).toBeInTheDocument();
+  });
+
+  
+  test('Route and name empty', ()=>{
+    const { getByTestId } = render(<AddRoute></AddRoute>);
+
+    getByTestId("btnenviar").click();
+
+    const { getByText } = within(getByTestId('msjerror'));
+    expect(getByText('Name or route is empty!')).toBeInTheDocument();
+});
+  
+  
