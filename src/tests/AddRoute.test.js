@@ -41,9 +41,7 @@ test("Route load", () => {
       type: "application/json"
     });
   
-    // throws error
-    // inputEl.files = [file]
-  
+   
     Object.defineProperty(inputRoute, "files", {
       value: [file]
     });
@@ -53,3 +51,16 @@ test("Route load", () => {
     const { getByText } = within(getByTestId('labelRoute'));
     expect(getByText('ruta1.geojson')).toBeInTheDocument();
   });
+
+  
+  test('', ()=>{
+    const { getByTestId } = render(<AddRoute></AddRoute>);
+
+    getByTestId("inputGeo").click();
+    getByTestId("inputName").click();
+    getByTestId("inputDesc").click();
+    getByTestId("inputImg").click();
+    getByTestId("inputVid").click();
+});
+  
+  
