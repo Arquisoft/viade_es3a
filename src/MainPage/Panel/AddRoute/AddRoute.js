@@ -34,7 +34,7 @@ const Upload = ({setFile, file}) => {
             <div class="custom-file">
                 <input value={null} type="file" class="custom-file-input" id="route" accept=".geojson"
                     aria-describedby="inputGroupFileAddon01" onChange={changeName} required data-testid="inputGeo"/>
-                <label class="custom-file-label" for="inputGroupFile01"id="labelRoute">{filename}</label>
+                <label class="custom-file-label" for="inputGroupFile01"id="labelRoute" data-testid="labelRoute">{filename}</label>
 
             </div>
         </div>

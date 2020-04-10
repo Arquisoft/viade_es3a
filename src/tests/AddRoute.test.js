@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { render } from '@testing-library/react';
+import { render, fireEvent, within } from '@testing-library/react';
 import AddRoute from '../MainPage/Panel/AddRoute/AddRoute';
 
 test('Not crashing component', ()=>{
     const div = document.createElement('div');
     ReactDOM.render(<AddRoute></AddRoute>,div);
 })
-
+/*
 test('Elements addRoute are present', () => {
     const { getByTestId } = render(<AddRoute></AddRoute>);
     expect(getByTestId("route")).toBeInTheDocument();
@@ -31,3 +31,25 @@ test('Click on inputs', ()=>{
     getByTestId("inputImg").click();
     getByTestId("inputVid").click();
 });
+
+*/
+test("Route load", () => {
+    const { getByTestId } = render(<AddRoute />);
+    const inputRoute = getByTestId("inputGeo");
+  
+    const file = new File(["..."], "ruta1.geojson", {
+      type: "application/json"
+    });
+  
+    // throws error
+    // inputEl.files = [file]
+  
+    Object.defineProperty(inputRoute, "files", {
+      value: [file]
+    });
+  
+    fireEvent.change(inputRoute);
+  
+    const { getByText } = within(getByTestId('labelRoute'));
+    expect(getByText('ruta1.geojson')).toBeInTheDocument();
+  });
