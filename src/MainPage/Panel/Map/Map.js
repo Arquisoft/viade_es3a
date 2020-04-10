@@ -1,7 +1,6 @@
 import React from 'react';
 import { TileLayer, Map, GeoJSON } from 'react-leaflet';
 import L from 'leaflet';
-import ruta from '../../../Routes/ruta.json';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import ReactDOM from 'react-dom';
