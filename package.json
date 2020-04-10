@@ -31,7 +31,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build", 
-    "test": "react-scripts tests --coverage", 
+    "test": "react-scripts test --coverage", 
     "docs": "asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && cp -R src/docs/images build/docs",
     "eject": "react-scripts eject"
   },

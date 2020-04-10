@@ -7,7 +7,7 @@ test('Not crashing component', ()=>{
     const div = document.createElement('div');
     ReactDOM.render(<AddRoute></AddRoute>,div);
 })
-/*
+
 test('Elements addRoute are present', () => {
     const { getByTestId } = render(<AddRoute></AddRoute>);
     expect(getByTestId("route")).toBeInTheDocument();
@@ -32,7 +32,8 @@ test('Click on inputs', ()=>{
     getByTestId("inputVid").click();
 });
 
-*/
+
+
 test("Route load", () => {
     const { getByTestId } = render(<AddRoute />);
     const inputRoute = getByTestId("inputGeo");
@@ -53,14 +54,13 @@ test("Route load", () => {
   });
 
   
-  test('', ()=>{
+  test('Route and name empty', ()=>{
     const { getByTestId } = render(<AddRoute></AddRoute>);
 
-    getByTestId("inputGeo").click();
-    getByTestId("inputName").click();
-    getByTestId("inputDesc").click();
-    getByTestId("inputImg").click();
-    getByTestId("inputVid").click();
+    getByTestId("btnenviar").click();
+
+    const { getByText } = within(getByTestId('msjerror'));
+    expect(getByText('Name or route is empty!')).toBeInTheDocument();
 });
   
   
