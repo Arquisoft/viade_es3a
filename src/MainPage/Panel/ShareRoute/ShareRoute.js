@@ -168,7 +168,6 @@ async function enseñaAmigos(source,target,name){
     console.log(name)
 
 
-    await fileClien.createFolder(urlTarget);
     await fileClien.createFolder(urlTarget+"/"+name+"/");
     await fileClien.copyFolder(source,urlTarget+"/"+name+"/",{merge:"keep_source"})
     alert("Your route has been shared!")
