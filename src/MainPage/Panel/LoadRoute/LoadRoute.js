@@ -51,7 +51,7 @@ const LoadRoute = () => {
         
         <DocumentTitle title="Load Route">
         <div class="container">
-            <h2 id="rutas" class="h2">Routes list:</h2>
+            <h2 id="rutas" class="h2" data-testid="label">Routes list:</h2>
             
             <ul>
                 {
@@ -69,7 +69,7 @@ const LoadRoute = () => {
                     })
                 }
             </ul>
-            <div class="card bg-info text-white">
+            <div class="card bg-info text-white" data-testid="card">
                 <div class="card-body">
                     <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
                     <p class="card-Description" id="routeDescription">{selected.description}</p>
