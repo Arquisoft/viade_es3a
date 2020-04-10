@@ -158,7 +158,7 @@ export async function showRoute(urlCarptetaRuta) {
     document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
     let ruta = await fileClien.readFile(urlCarptetaRuta+folder.name+".geojson");
 
-    algo.updateMap(ruta);
+    algo.updateMap(ruta, folder.name);
     
 }
 async function enseñaAmigos(source,target,name){
