@@ -2,16 +2,16 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import ReactDOM from 'react-dom';
 import { cleanup } from "@testing-library/react";
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import NavBar from '../MainPage/NavBar/NavBar';
-import Welcome from '../MainPage/Panel/Welcome/Welcome'
 import App from '../App';
 
 afterEach(cleanup);
 
 test("Render component not crashing.", () => {
     const div = document.createElement("div");
-    ReactDOM.render(<NavBar></NavBar>, div);
+    ReactDOM.render(<Router><NavBar></NavBar></Router>, div);
  });
 
  test('renders learn react link', () => {
@@ -21,7 +21,7 @@ test("Render component not crashing.", () => {
   });
 
   test("Check NavBar Options", () => {
-    const { getByTestId } = render(<NavBar></NavBar>);
+    const { getByTestId } = render(<Router><NavBar></NavBar></Router>);
     expect(getByTestId("logo")).toBeInTheDocument();
     getByTestId("logo").click();
 
