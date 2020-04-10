@@ -7,7 +7,7 @@ import App from '../App';
 
 import Slider from '../MainPage/Panel/LoadRoute/Slider';
 import img from './media/img.png';
-import vi from './media/video.mp4';
+// import vi from './media/video.mp4';
 
 afterEach(cleanup);
 
