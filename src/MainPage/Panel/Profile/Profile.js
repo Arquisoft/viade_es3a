@@ -1,7 +1,7 @@
 import React from 'react'
 import { ProfileViewer } from '@inrupt/solid-react-components';
 import { useWebId } from '@solid/react';
-import { Value } from '@solid/react';
+import { Value, Link as LinkSolid } from '@solid/react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as ProfileLogo } from '../../../img/profile.svg';
 import './Profile.css'
@@ -42,7 +42,7 @@ const Profile = () => {
     return (
         <DocumentTitle title='Profile'>
             <div>
-                <h2 class="h2" data-testid= "label">Profile</h2>
+                <h2 className="h2" data-testid= "label">Profile</h2>
                 <div className="card" id="cardProfile">
                     <div className="photo">
                         {webId && (
@@ -67,7 +67,7 @@ const Profile = () => {
                         </div>
                         <div className="user">Viade's user</div>
                         <div className="divider"></div>
-                        <Link href={`[${webId}]`} className="buttonSolid">Go to SOLID profile</Link>
+                        <LinkSolid href={`[${webId}]`} className="buttonSolid">Go to SOLID profile</LinkSolid>
                     </div>
                 </div>
                 <div className="cardExtra">
