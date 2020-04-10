@@ -7,7 +7,7 @@ import App from '../App';
 
 import Slider from '../MainPage/Panel/LoadRoute/Slider';
 import img from './media/img.png';
-// import vi from './media/video.mp4';
+import vi from './media/video.mp4';
 
 afterEach(cleanup);
 
@@ -17,9 +17,9 @@ test('renders learn react link', () => {
     expect(linkElement).toBeInTheDocument();
   });
 
-// test("Render component not crashing.", () => {
-//     const div = document.createElement("div");
-//     const imagen = img;
-//     const video = vi;
-//     ReactDOM.render(<Slider images={imagen} video={video}></Slider>, div);
-//  });
+test("Render component not crashing.", () => {
+    const div = document.createElement("div");
+    const imagen = [img];
+    const video = [vi];
+    ReactDOM.render(<Slider images={imagen} videos={video}></Slider>, div);
+ });
