@@ -15,17 +15,18 @@ import ShareIcon from '@material-ui/icons/Share';
 const NavBar = () => {
   // const webId = useWebId();
   return (
+    
     <header className="navBar">
       <nav className="navbar navbar-dark bg-dark" display="flex" position="fixed">
         <div className="navBarLogo">
-          <Router>
+         
           <Link to="/viade_es3a" data-testid="logo">
             <img src={require('../../img/logo_viade_es3a.jpg')} alt="React logo" width="160" />
           </Link>
-          </Router>
+          
         </div>
 
-        <Router>
+        
         <ul className="navBarOptions">
           <li className="option">
             <BackupOutlinedIcon className="icon" />
@@ -53,17 +54,17 @@ const NavBar = () => {
           </li>
 
         </ul>
-        </Router>
         <div className="navBarLogout">
-          <Router>
+         
           <li>
             <ExitToAppOutlinedIcon className="icon" />
             <LogoutButton data-testid="logout"/>
           </li>
-          </Router>
+          
         </div>
       </nav>
     </header>
+    
   );
 };
 
