@@ -18,7 +18,7 @@ Viade will contact Solid POD providers to store the routes and other related inf
 Viade will allow to show the routes on a map using Google Maps.
 Viade will allow to see routes generated with other different applications.
 
-image::BusinessContext.jpg[Business Context Diagram]
+image::BusinessContext.png[Business Context Diagram]
 
 === Technical Context
 
