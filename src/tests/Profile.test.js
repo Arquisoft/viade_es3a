@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import ReactDOM from 'react-dom';
 import Profile from '../MainPage/Panel/Profile/Profile';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -25,4 +25,18 @@ test('Profile elements are present', () => {
     expect(getByTestId("myRoutesProfile")).toBeInTheDocument();
     expect(getByTestId("routesLengthProfile")).toBeInTheDocument();
     expect(getByTestId("buttonRoutesProfile")).toBeInTheDocument();
+});
+
+test('Buttons with correct links', () => {
+    const profile = render(<Router><Profile></Profile></Router>);
+
+    /* const enlaceSolid = profile.getByText("Go to SOLID profile");
+    expect(enlaceSolid.getAttribute("href")).toMatch("solid.community/profile/card#me"); */
+
+    const linkFriends = profile.getByText("Show friends");
+    expect(linkFriends.getAttribute("href")).toEqual("/viade_es3a/friends");
+
+    const linkRoutes = profile.getByText("Show routes");
+    expect(linkRoutes.getAttribute("href")).toEqual("/viade_es3a/loadRoute");
+
 });
