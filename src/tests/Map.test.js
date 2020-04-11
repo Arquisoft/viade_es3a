@@ -1,9 +1,9 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import { render } from "@testing-library/react";
+import ReactDOM from "react-dom";
 import { cleanup } from "@testing-library/react";
 
-import Map from '../MainPage/Panel/Map/Map'
+import Map from "../MainPage/Panel/Map/Map"
 
 afterEach(cleanup);
 

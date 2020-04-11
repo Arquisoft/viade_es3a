@@ -1,17 +1,17 @@
-import React from 'react'
-import { ProfileViewer } from '@inrupt/solid-react-components';
-import { useWebId } from '@solid/react';
-import { Value, Link as LinkSolid } from '@solid/react';
-import { Link } from 'react-router-dom';
-import { ReactComponent as ProfileLogo } from '../../../img/profile.svg';
-import './Profile.css'
+import React from "react"
+import { ProfileViewer } from "@inrupt/solid-react-components";
+import { useWebId } from "@solid/react";
+import { Value, Link as LinkSolid } from "@solid/react";
+import { Link } from "react-router-dom";
+import { ReactComponent as ProfileLogo } from "../../../img/profile.svg";
+import "./Profile.css"
 
 import DocumentTitle from "react-document-title";
 
-import { useLDflexList } from '@solid/react';
+import { useLDflexList } from "@solid/react";
 
-import * as solidAuth from 'solid-auth-client';
-import fileClient from 'solid-file-client';
+import * as solidAuth from "solid-auth-client";
+import fileClient from "solid-file-client";
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
@@ -36,11 +36,11 @@ export async function RoutesLength(user) {
 
 const Profile = () => {
     const webId = useWebId();
-    friends = useLDflexList('user.friends');
+    friends = useLDflexList("user.friends");
     RoutesLength(webId);
 
     return (
-        <DocumentTitle title='Profile'>
+        <DocumentTitle title="Profile">
             <div>
                 <h2 className="h2" data-testid="label" data-testid="titleProfile">Profile</h2>
                 <div className="card" id="cardProfile">
@@ -49,10 +49,10 @@ const Profile = () => {
                             <ProfileViewer data-testid="viewerProfile"
                                 {...{
                                     webId,
-                                    direction: 'down',
+                                    direction: "down",
                                     onError: error => {
                                         // eslint-disable-next-line no-console
-                                        console.log('ERROR', error.statusText);
+                                        console.log("ERROR", error.statusText);
                                     },
                                     onClick: false
                                 }}
@@ -65,7 +65,7 @@ const Profile = () => {
                         <div className="name">
                             <Value src="user.name" data-testid="nameProfile" />
                         </div>
-                        <div className="user" data-testid="userProfile">Viade's user</div>
+                        <div className="user" data-testid="userProfile">Viade"s user</div>
                         <div className="divider" data-testid="dividerProfile"></div>
                         <LinkSolid href={`[${webId}]`} className="buttonSolid" data-testid="buttonSolidProfile">Go to SOLID profile</LinkSolid>
                     </div>

@@ -1,19 +1,19 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import { render } from "@testing-library/react";
+import ReactDOM from "react-dom";
 import { cleanup } from "@testing-library/react";
 
-import App from '../App';
+import App from "../App";
 
-import Slider from '../MainPage/Panel/LoadRoute/Slider';
-import img from './media/img.png';
-import img2 from './media/img2.jpg'
-import vi from './media/video.mp4';
-import vi2 from './media/video2.mp4';
+import Slider from "../MainPage/Panel/LoadRoute/Slider";
+import img from "./media/img.png";
+import img2 from "./media/img2.jpg"
+import vi from "./media/video.mp4";
+import vi2 from "./media/video2.mp4";
 
 afterEach(cleanup);
 
-test('renders learn react link', () => {
+test("renders learn react link", () => {
   const { getByText } = render(<App />);
   const linkElement = getByText("ROUTE MANAGER");
   expect(linkElement).toBeInTheDocument();

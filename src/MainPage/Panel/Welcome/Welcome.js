@@ -1,6 +1,6 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.css';
-import './Welcome.css'
+import React from "react"
+import "bootstrap/dist/css/bootstrap.css";
+import "./Welcome.css"
 
 const Welcome = () => {
     return (

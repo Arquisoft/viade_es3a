@@ -1,14 +1,14 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import NavBar from './NavBar/NavBar';
-import Panel from './Panel/Panel';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import NavBar from "./NavBar/NavBar";
+import Panel from "./Panel/Panel";
 
 import * as solidAuth from "solid-auth-client";
-import fileClient from 'solid-file-client';
-import { useWebId } from '@solid/react';
+import fileClient from "solid-file-client";
+import { useWebId } from "@solid/react";
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
-const auth = require('solid-auth-client')
+const auth = require("solid-auth-client")
 
 const MainPage = () => {
   creates();
