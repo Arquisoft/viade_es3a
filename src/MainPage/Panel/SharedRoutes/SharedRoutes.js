@@ -5,8 +5,9 @@ import { Card, Button } from 'react-bootstrap';
 import './LoadRoute.css';
 import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
-
+import DocumentTitle from "react-document-title";
 import * as algo from '../Map/Map';
+import Slider from "../LoadRoute/Slider";
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas=[];
@@ -20,6 +21,8 @@ const SharedRoutes = () => {
         videos: []
     });
 
+    var images = [];
+var videos = [];
     console.log(selected);
 
     var user=useWebId();
@@ -33,50 +36,39 @@ const SharedRoutes = () => {
     }, [user]);
     
         return (
-             
-            <div  class="container">
-                <h2 data-testid="label" id="rutas" class="h2">Routes from your friends:</h2>
-
-                <ul>
+            
+            <DocumentTitle title="Shared Routes">
+        <div class="container">
+            <h2 id="rutas" class="h2" data-testid="label">Routes list:</h2>
+            
+            <ul>
                 {
-                    folders.map((folder,i) => {
-                        var urlArchivo= ""+folder.url;
-                        var arrayUrl=urlArchivo.split('/');
+                    folders.map((folder, i) => {
+                        var urlArchivo = "" + folder.url;
+                        var arrayUrl = urlArchivo.split('/');
                         urlRutas.push(urlArchivo);
-                        var nombre=arrayUrl[arrayUrl.length-2].split("%20").join(" ")
+                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ")
                         return (
-                        <li key={'folder_'+i}>
-                            <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
-                                {nombre}
-                            </a>
-                        </li>)
+                            <li key={'folder_' + i}>
+                                <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
+                                    {nombre}
+                                </a>
+                            </li>)
                     })
                 }
-                </ul>
-                <div data-testid="card" class="card bg-info text-white">
-                    <div class="card-body">
-                        <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
-                        <p class="card-Description" id ="routeDescription">{selected.description}</p>
-                        <div className="card-Image" id="routeImage">
-                            {
-                                selected.images.map((image,i) => (
-                                    <div key={'image_'+i}><img src={image} class={'imag'}/></div>
-                                ))
-                            }
-                        </div>
-                        <div id="ImgDiv"><div id="images"></div></div><br></br>
-                        <div className="card-Video" id="routeVideo">
-                        {
-                                selected.videos.map((video,i) => (
-                                    <div key={'video_'+i}><video src={video} class={'vid'} controls/></div>
-                                ))
-                            }
-                        </div>
-                        <div id="VidDiv"><div id="videos"></div></div><br></br>
-                        
+            </ul>
+            <div class="card bg-info text-white" data-testid="card">
+                <div class="card-body">
+                    <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
+                    <p class="card-Description" id="routeDescription">{selected.description}</p>
+                    <div className="bodyMedia">
+                        <Slider images={images} videos={videos} />
                     </div>
-                </div> 
+                </div>
             </div>
+        </div>
+        </DocumentTitle>           
+    
            
         );
 }
