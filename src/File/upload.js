@@ -6,12 +6,12 @@ document.getElementById('login').addEventListener('click', e => solid.auth.popup
 document.getElementById('logout').addEventListener('click', e => solid.auth.logout())
 solid.auth.trackSession(session => {
     if (!session) {
-        $('.logged-in').hide()
-        $('.logged-out').show()
+        $('.logged-in').hide();
+        $('.logged-out').show();
     } else {
-        $('.logged-in').show()
-        $('.logged-out').hide()
-        $('.webid').text(session.webId)
+        $('.logged-in').show();
+        $('.logged-out').hide();
+        $('.webid').text(session.webId);
     }
 })
 

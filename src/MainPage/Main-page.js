@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import NavBar from './NavBar/NavBar';
 import Panel from './Panel/Panel';
 
-import * as solidAuth from 'solid-auth-client';
+import * as solidAuth from "solid-auth-client";
 import fileClient from 'solid-file-client';
 import { useWebId } from '@solid/react';
 

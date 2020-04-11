@@ -1,17 +1,17 @@
-import React, { Fragment, useState, useEffect, useRef } from 'react';
-import './AddRoute.css';
-import { useWebId } from '@solid/react';
+import React, { Fragment, useState, useEffect, useRef } from "react";
+import "./AddRoute.css";
+import { useWebId } from "@solid/react";
 import {
 
     Uploader,
     ProfileUploader
-} from '@inrupt/solid-react-components';
+} from "@inrupt/solid-react-components";
 
-import * as solidAuth from 'solid-auth-client';
-import fileClient from 'solid-file-client';
-import { Redirect } from 'react-router-dom';
+import * as solidAuth from "solid-auth-client";
+import fileClient from "solid-file-client";
+import { Redirect } from "react-router-dom";
 import DocumentTitle from "react-document-title";
-const auth = require('solid-auth-client')
+const auth = require("solid-auth-client")
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
@@ -166,9 +166,9 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
         setImage(null);
         setVideo(null);  
         
-        document.getElementById('photo').value=null;
-        document.getElementById('video').value=null;
-        document.getElementById('route').value=null;
+        document.getElementById("photo").value=null;
+        document.getElementById("video").value=null;
+        document.getElementById("route").value=null;
     }
     else
         alert("Route title already used, use another title");

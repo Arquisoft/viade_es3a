@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { List, useWebId,Value, Name, Link  } from '@solid/react';
-import 'bootstrap/dist/css/bootstrap.css';
-import './ShareRoute.css';
-import * as solidAuth from 'solid-auth-client';
-import fileClient from 'solid-file-client';
+import React, { useState, useEffect } from "react";
+import { List, useWebId,Value, Name, Link  } from "@solid/react";
+import "bootstrap/dist/css/bootstrap.css";
+import "./ShareRoute.css";
+import * as solidAuth from "solid-auth-client";
+import fileClient from "solid-file-client";
 
-import * as algo from '../Map/Map';
+import * as algo from "../Map/Map";
 
-const SolidAclUtils = require('solid-acl-utils')
-const auth = require('solid-auth-client')
+const SolidAclUtils = require("solid-acl-utils")
+const auth = require("solid-auth-client")
 const { AclApi, AclDoc, AclParser, AclRule, Permissions, Agents } = SolidAclUtils
 const { READ, WRITE, APPEND, CONTROL } = Permissions
 
@@ -23,11 +23,11 @@ const LoadRoute = () => {
 
     const [folders, setFolders] = useState([]);
     const [selected, setSelected] = useState({
-        name: '',
-        description: '',
+        name: "",
+        description: "",
         images: [],
         videos: [],
-        url: ''
+        url: ""
     });
 
     console.log(selected);
@@ -64,11 +64,11 @@ const LoadRoute = () => {
                 {
                     folders.map((folder,i) => {
                         var urlArchivo= ""+folder.url;
-                        var arrayUrl=urlArchivo.split('/');
+                        var arrayUrl=urlArchivo.split("/");
                         urlRutas.push(urlArchivo);
                         var nombre=arrayUrl[arrayUrl.length-2].split("%20").join(" ")
                         return (
-                        <li key={'folder_'+i}>
+                        <li key={"folder_"+i}>
                             <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
                                 {nombre}
                             </a>
@@ -83,7 +83,7 @@ const LoadRoute = () => {
                         <div className="card-Image" id="routeImage">
                             {
                                 selected.images.map((image,i) => (
-                                    <div key={'image_'+i}><img src={image} class={'imag'}/></div>
+                                    <div key={"image_"+i}><img src={image} class={"imag"}/></div>
                                 ))
                             }
                         </div>
@@ -91,7 +91,7 @@ const LoadRoute = () => {
                         <div className="card-Video" id="routeVideo">
                         {
                                 selected.videos.map((video,i) => (
-                                    <div key={'video_'+i}><video src={video} class={'vid'} controls/></div>
+                                    <div key={"video_"+i}><video src={video} class={"vid"} controls/></div>
                                 ))
                             }
                         </div>
