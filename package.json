@@ -24,6 +24,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
     "shx": "^0.3.2",
+    "solid-acl-utils": "github:otto-aa/solid-acl-utils",
     "solid-auth-client": "^2.4.1",
     "solid-file-client": "^1.0.2",
     "styled-components": "^5.0.1"

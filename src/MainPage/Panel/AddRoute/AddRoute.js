@@ -11,7 +11,7 @@ import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
 import { Redirect } from 'react-router-dom';
 import DocumentTitle from "react-document-title";
-
+const auth = require('solid-auth-client')
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
@@ -112,6 +112,7 @@ const AddRoute = () => {
 
 
 const createFolder = async (folder, route, name, description, photo, video,setFile, setName, setDescription, setImage, setVideo, setError) => {
+    
     if (name===""||route==null){
         setError("Name or route is empty!");
     }
@@ -128,6 +129,21 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
     if (!existe) {
         var k=0;
         await fileClien.createFolder(destination);
+        var user=await auth.currentSession()
+        console.log(user.webId)
+        let content = "# ACL resource for the private folder\n"+
+      "@prefix acl: <http://www.w3.org/ns/auth/acl#>.\n"+
+      "\n"+
+      "# The owner has all permissions\n"+
+      "<#owner>\n"+
+          "a acl:Authorization;\n"+
+          "acl:agent <"+ user.webId +">;\n"+
+          "acl:accessTo <./>;\n"+
+          "acl:defaultForNew <./>;\n"+
+          "acl:mode acl:Read, acl:Write, acl:Control."
+
+        await fileClien.createFile(destination+"/.acl", content,"text/turtle")
+
         fileList.push(route);
         await fileClien.createFile(destination + "/"+ "description", description, "text/plain");
         for(k=0; photo != null && k<photo.length; k++){

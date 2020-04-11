@@ -26,7 +26,7 @@ const SharedRoutes = () => {
 
     useEffect(() => {
         if ( user != undefined) {
-            const url=user.split("profile/card#me")[0]+"inbox/rutas3a";
+            const url=user.split("profile/card#me")[0]+"inbox/routes3a";
             //listRoutes(url);
             loadRoutes(url, setFolders);
         }

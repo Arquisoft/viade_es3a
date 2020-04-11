@@ -7,6 +7,16 @@ import fileClient from 'solid-file-client';
 
 import * as algo from '../Map/Map';
 
+const SolidAclUtils = require('solid-acl-utils')
+const auth = require('solid-auth-client')
+const { AclApi, AclDoc, AclParser, AclRule, Permissions, Agents } = SolidAclUtils
+const { READ, WRITE, APPEND, CONTROL } = Permissions
+
+const fetch = auth.fetch.bind(auth)
+
+const aclApi = new AclApi(fetch, { autoSave: true })
+
+
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas=[];
 const LoadRoute = () => {
@@ -164,12 +174,16 @@ export async function showRoute(urlCarptetaRuta) {
 async function enseñaAmigos(source,target,name){
    
     const target2=target.split("[")[1];
-    const urlTarget=target2.split("profile/card#me")[0]+"inbox/rutas3a";
+    const urlTarget=target2.split("profile/card#me")[0]+"/inbox/routes3a";
     console.log(name)
 
+    const aclApi = new AclApi(fetch, { autoSave: true })
+    const acl = await aclApi.loadFromFileUrl(source)
 
-    await fileClien.createFolder(urlTarget+"/"+name+"/");
-    await fileClien.copyFolder(source,urlTarget+"/"+name+"/",{merge:"keep_source"})
+    await acl.addRule(READ, target2.split("]")[0])
+
+    await fileClien.postFile(urlTarget + "/"+ name, source , "text/plain");
+    
     alert("Your route has been shared!")
 }
 const Carda = (props) => {
