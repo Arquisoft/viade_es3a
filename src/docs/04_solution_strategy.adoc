@@ -10,6 +10,6 @@ The following list shows some decisions we have made to develop this project.
 
 * We will use *https://nodejs.org/es/[Node.js]*, an asynchronous event-driven JavaScript runtime what ables to build scalable network applications. It is compatible with SOLID an they explain how to use it to run your server quickly.
 
-* *https://cloud.google.com/maps-platform?hl=es[Google Maps API]* may allow users to see their routes in a map. This routes will be stored in *https://developers.google.com/kml/documentation/kml_tut[KML]* format because it's the most commonly used standard that API supports and we have also used it before in another subject, so we are familiar with it.
+* At the beginning of the project we wanted to use *https://cloud.google.com/maps-platform?hl=es[Google Maps API]*, but later we decided to use *https://wiki.openstreetmap.org/wiki/ES:P%C3%A1gina_principal[Open Street Map]* with *https://leafletjs.com/[Leaflet]*, an open source JavaScript library for mobile-friendly interactive maps, because Google Maps allows you to send a specific number of free requests and later you have to pay to keep using the API. 
 
-* For data exchange and storage we decided to used *https://www.json.org/json-en.html[JSON]*, an open-standard file format that we consider easier to manipulate than other formats like XML.
+* For data exchange and storage we decided to used *https://geojson.org/[GeoJSON]*, an open standard format designed for representing simple geographical features that we consider easier to manipulate than other formats like XML.

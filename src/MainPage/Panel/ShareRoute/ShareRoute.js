@@ -7,6 +7,16 @@ import fileClient from 'solid-file-client';
 
 import * as algo from '../Map/Map';
 
+const SolidAclUtils = require('solid-acl-utils')
+const auth = require('solid-auth-client')
+const { AclApi, AclDoc, AclParser, AclRule, Permissions, Agents } = SolidAclUtils
+const { READ, WRITE, APPEND, CONTROL } = Permissions
+
+const fetch = auth.fetch.bind(auth)
+
+const aclApi = new AclApi(fetch, { autoSave: true })
+
+
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas=[];
 const LoadRoute = () => {
@@ -48,7 +58,7 @@ const LoadRoute = () => {
     
         return (
             <div  class="container">
-                <h2 id="rutas" class="h2">Routes list:</h2>
+                <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
 
                 <ul>
                 {
@@ -66,7 +76,7 @@ const LoadRoute = () => {
                     })
                 }
                 </ul>
-                <div class="card bg-info text-white">
+                <div data-testid="card" class="card bg-info text-white">
                     <div class="card-body">
                         <h4 class="card-title" id="routeName">{selected.name}</h4>
                         <p class="card-Description" id ="routeDescription">{selected.description}</p>
@@ -158,19 +168,22 @@ export async function showRoute(urlCarptetaRuta) {
     document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
     let ruta = await fileClien.readFile(urlCarptetaRuta+folder.name+".geojson");
 
-    algo.updateMap(ruta);
+    algo.updateMap(ruta, folder.name);
     
 }
 async function enseñaAmigos(source,target,name){
    
     const target2=target.split("[")[1];
-    const urlTarget=target2.split("profile/card#me")[0]+"inbox/rutas3a";
+    const urlTarget=target2.split("profile/card#me")[0]+"/inbox/routes3a";
     console.log(name)
 
+    const aclApi = new AclApi(fetch, { autoSave: true })
+    const acl = await aclApi.loadFromFileUrl(source)
 
-    await fileClien.createFolder(urlTarget);
-    await fileClien.createFolder(urlTarget+"/"+name+"/");
-    await fileClien.copyFolder(source,urlTarget+"/"+name+"/",{merge:"keep_source"})
+    await acl.addRule(READ, target2.split("]")[0])
+
+    await fileClien.postFile(urlTarget + "/"+ name, source , "text/plain");
+    
     alert("Your route has been shared!")
 }
 const Carda = (props) => {

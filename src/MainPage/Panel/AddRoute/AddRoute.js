@@ -11,7 +11,7 @@ import * as solidAuth from 'solid-auth-client';
 import fileClient from 'solid-file-client';
 import { Redirect } from 'react-router-dom';
 import DocumentTitle from "react-document-title";
-
+const auth = require('solid-auth-client')
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
@@ -28,13 +28,13 @@ const Upload = ({setFile, file}) => {
     return (
         <div class="input-group">
             <div class="input-group-prepend">
-                <label for="exampleRoute" class="labelRoute">Route (.geojson):</label><br></br>
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                <label for="exampleRoute" class="labelRoute" data-testid="route">Route (.geojson):</label><br></br>
+                <span class="input-group-text" id="inputGroupFileAddon01" data-testid="upload">Upload</span>
             </div>
             <div class="custom-file">
                 <input value={null} type="file" class="custom-file-input" id="route" accept=".geojson"
-                    aria-describedby="inputGroupFileAddon01" onChange={changeName} required/>
-                <label class="custom-file-label" for="inputGroupFile01"id="labelRoute">{filename}</label>
+                    aria-describedby="inputGroupFileAddon01" onChange={changeName} required data-testid="inputGeo"/>
+                <label class="custom-file-label" for="inputGroupFile01"id="labelRoute" data-testid="labelRoute">{filename}</label>
 
             </div>
         </div>
@@ -44,6 +44,7 @@ const Data = () => {
     var user=""+useWebId();
     //it saves the actual state of the data
     const [file, setFile] = useState(null);
+    const [error, setError] = useState(null);
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -59,25 +60,31 @@ const Data = () => {
             <br></br>
 
             <div class="form-group">
-                <label for="exampleFormControlInput1" class="labelName">Name:</label>
-                <input type="text" class="form-control" id="name" placeholder="Route's name" required value={name} onChange={(e) => setName(e.target.value)}/>
+                <label for="exampleFormControlInput1" class="labelName" data-testid="name">Name:</label>
+                <input type="text" class="form-control" id="name" data-testid="inputName" placeholder="Route's name" required value={name} onChange={(e) => setName(e.target.value)}/>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1" class="labelDescription">Description:</label>
-                <textarea class="form-control" id="description" name="description" rows="3" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                <label for="exampleFormControlTextarea1" class="labelDescription" data-testid="desc">Description:</label>
+                <textarea class="form-control" id="description" data-testid="inputDesc" name="description" rows="3" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
 
             <div class="form-group">
-                <label class="exampleInputPhoto" for="photo" class="labelPhoto">Images:</label><br></br>
-                <input value={null} type="file" id="photo" name="image" accept="image/*" multiple="true" onChange={(e) => setImage(e.target.files)}/>
+                <label class="exampleInputPhoto" for="photo" class="labelPhoto" data-testid="img">Images:</label><br></br>
+                <input value={null} type="file" id="photo" name="image" data-testid="inputImg" accept="image/*" multiple="true" onChange={(e) => setImage(e.target.files)}/>
             </div>
             <div class="form-group">
-                <label class="exampleInputVideo" for="video" class="labelVideo">Video:</label><br></br>
-                <input value={null} type="file" id="video" name="video" accept="video/*" multiple="true" onChange={(e) => setVideo(e.target.files)}/>
+                <label class="exampleInputVideo" for="video" class="labelVideo" data-testid="vid">Video:</label><br></br>
+                <input value={null} type="file" id="video" name="video" accept="video/*" data-testid="inputVid" multiple="true" onChange={(e) => setVideo(e.target.files)}/>
             </div>
             <br></br>
+            {
+                error &&
+                    <div data-testid="msjerror" class="alert alert-danger" role="alert">
+                        {error}
+                    </div>
+            }
             <center>
-                <button onClick={()=> createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo)}  class="btn btn-info" >Add route
+                <button data-testid="btnenviar" onClick={()=> createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo, setError)}  class="btn btn-info" >Add route
                 </button>
             </center>
           
@@ -104,11 +111,13 @@ const AddRoute = () => {
 
 
 
-const createFolder = async (folder, route, name, description, photo, video,setFile, setName, setDescription, setImage, setVideo) => {
+const createFolder = async (folder, route, name, description, photo, video,setFile, setName, setDescription, setImage, setVideo, setError) => {
+    
     if (name===""||route==null){
-        alert("Name or route is empty!");
+        setError("Name or route is empty!");
     }
     else{
+        setError(null);
     var existe = await fileClien.itemExists(folder);
 
     if (!existe)
@@ -120,6 +129,21 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
     if (!existe) {
         var k=0;
         await fileClien.createFolder(destination);
+        var user=await auth.currentSession()
+        console.log(user.webId)
+        let content = "# ACL resource for the private folder\n"+
+      "@prefix acl: <http://www.w3.org/ns/auth/acl#>.\n"+
+      "\n"+
+      "# The owner has all permissions\n"+
+      "<#owner>\n"+
+          "a acl:Authorization;\n"+
+          "acl:agent <"+ user.webId +">;\n"+
+          "acl:accessTo <./>;\n"+
+          "acl:defaultForNew <./>;\n"+
+          "acl:mode acl:Read, acl:Write, acl:Control."
+
+        await fileClien.createFile(destination+"/.acl", content,"text/turtle")
+
         fileList.push(route);
         await fileClien.createFile(destination + "/"+ "description", description, "text/plain");
         for(k=0; photo != null && k<photo.length; k++){

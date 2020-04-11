@@ -11,7 +11,6 @@ import Profile from './Profile/Profile';
 import ShareRoute from './ShareRoute/ShareRoute';
 import SharedRoutes from './SharedRoutes/SharedRoutes';
 
-
 const AppWrapper = styled.div`
 display: flex;
 justify-content:center;

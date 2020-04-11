@@ -1,7 +1,7 @@
 import React from 'react'
 import { ProfileViewer } from '@inrupt/solid-react-components';
 import { useWebId } from '@solid/react';
-import { Value } from '@solid/react';
+import { Value, Link as LinkSolid } from '@solid/react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as ProfileLogo } from '../../../img/profile.svg';
 import './Profile.css'
@@ -15,8 +15,8 @@ import fileClient from 'solid-file-client';
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
-var routes;
-var friends;
+var routes = 0;
+var friends = 0;
 
 export async function RoutesLength(user) {
     if (user != undefined && user != "") {
@@ -42,11 +42,11 @@ const Profile = () => {
     return (
         <DocumentTitle title='Profile'>
             <div>
-                <h2 class="h2">Profile</h2>
+                <h2 className="h2" data-testid="label" data-testid="titleProfile">Profile</h2>
                 <div className="card" id="cardProfile">
-                    <div className="photo">
+                    <div className="photo" data-testid="photoProfile">
                         {webId && (
-                            <ProfileViewer
+                            <ProfileViewer data-testid="viewerProfile"
                                 {...{
                                     webId,
                                     direction: 'down',
@@ -57,35 +57,35 @@ const Profile = () => {
                                     onClick: false
                                 }}
                             >
-                                <ProfileLogo height="16vh" width="16vh" className="icon" />
+                                <ProfileLogo height="16vh" width="16vh" className="icon" data-testid="logoProfile" />
                             </ProfileViewer>
                         )}
                     </div>
                     <div className="info">
                         <div className="name">
-                            <Value src="user.name" />
+                            <Value src="user.name" data-testid="nameProfile" />
                         </div>
-                        <div className="user">Viade's user</div>
-                        <div className="divider"></div>
-                        <Link href={`[${webId}]`} className="buttonSolid">Go to SOLID profile</Link>
+                        <div className="user" data-testid="userProfile">Viade's user</div>
+                        <div className="divider" data-testid="dividerProfile"></div>
+                        <LinkSolid href={`[${webId}]`} className="buttonSolid" data-testid="buttonSolidProfile">Go to SOLID profile</LinkSolid>
                     </div>
                 </div>
                 <div className="cardExtra">
                     <div className="cardInfoExtra">
                         <div className="infoExtra">
-                            <div className="titleExtra">My friends</div>
-                            <div className="data">{friends.length}</div>
+                            <div className="titleExtra" data-testid="myFriendsProfile">My friends</div>
+                            <div className="data" data-testid="friendsLengthProfile">{friends.length}</div>
                             {/* /viade_es3a/friends */}
-                            <Link to="/viade_es3a/friends" className="buttonExtra">Show friends</Link>
+                            <Link to="/viade_es3a/friends" className="buttonExtra" data-testid="buttonFriendsProfile">Show friends</Link>
                         </div>
                     </div>
                     <div className="hueco"></div>
                     <div className="cardInfoExtra">
                         <div className="infoExtra">
-                            <div className="titleExtra">My routes</div>
-                            <div className="data">{routes}</div>
+                            <div className="titleExtra" data-testid="myRoutesProfile">My routes</div>
+                            <div className="data" data-testid="routesLengthProfile">{routes}</div>
                             {/* /viade_es3a/loadRoute */}
-                            <Link to="/viade_es3a/loadRoute" className="buttonExtra">Show routes</Link>
+                            <Link to="/viade_es3a/loadRoute" className="buttonExtra" data-testid="buttonRoutesProfile">Show routes</Link>
                         </div>
                     </div>
                 </div>
