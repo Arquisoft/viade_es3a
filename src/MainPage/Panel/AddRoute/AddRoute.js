@@ -74,7 +74,7 @@ const Data = () => {
             </div>
             <div class="form-group">
                 <label class="exampleInputVideo" for="video" class="labelVideo" data-testid="vid">Video:</label><br></br>
-                <input value={null} type="file" id="video" name="video" accept=".mp4" data-testid="video/*" multiple="true" onChange={(e) => setVideo(e.target.files)}/>
+                <input value={null} type="file" id="video" name="video" accept="video/*" data-testid="inputVid" multiple="true" onChange={(e) => setVideo(e.target.files)}/>
             </div>
             <br></br>
             {
