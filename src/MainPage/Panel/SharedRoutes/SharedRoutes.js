@@ -112,8 +112,8 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     setSelected({
         name: folder.name,
         description: "",
-        images: "",
-        videos: ""
+        images: [],
+        videos: []
     });
 
 }
