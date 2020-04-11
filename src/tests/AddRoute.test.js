@@ -33,7 +33,6 @@ test('Click on inputs', ()=>{
 });
 
 
-
 test("Route load", () => {
     const { getByTestId } = render(<AddRoute />);
     const inputRoute = getByTestId("inputGeo");
@@ -99,4 +98,31 @@ test('Route empty', ()=>{
   const { getByText } = within(getByTestId('msjerror'));
   expect(getByText('Name or route is empty!')).toBeInTheDocument();
 });
+
+
+test('Name empty', ()=>{
+  const { getByTestId } = render(<AddRoute />);
+  const inputRoute = getByTestId("inputGeo");
+
+  const file = new File(["..."], "ruta1.geojson", {
+    type: "application/json"
+  });
+
+ 
+  Object.defineProperty(inputRoute, "files", {
+    value: [file]
+  });
+
+  fireEvent.change(inputRoute);
+  
+  getByTestId("inputDesc").click();
+  const inputDesc = getByTestId("inputDesc");
+  inputDesc.innerText = "Patata";
+
+  getByTestId("btnenviar").click();
+  const { getByText } = within(getByTestId('msjerror'));
+  expect(getByText('Name or route is empty!')).toBeInTheDocument();
+});
+
+
   
