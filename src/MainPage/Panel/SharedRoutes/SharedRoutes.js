@@ -35,7 +35,7 @@ const SharedRoutes = () => {
         return (
             
             <div  class="container">
-                <h2 id="rutas" class="h2">Routes list:</h2>
+                <h2 id="rutas" class="h2">Routes from your friends:</h2>
 
                 <ul>
                 {
