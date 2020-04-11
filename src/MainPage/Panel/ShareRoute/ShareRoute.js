@@ -58,7 +58,7 @@ const LoadRoute = () => {
     
         return (
             <div  class="container">
-                <h2 id="rutas" class="h2">Routes list:</h2>
+                <h2 id="rutas" class="h2">Share a route with your friends:</h2>
 
                 <ul>
                 {
