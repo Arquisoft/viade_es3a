@@ -51,7 +51,7 @@ const NavBar = () => {
         </Nav>
         <Nav pullRight>
           <NavItem href="/viade_es3a/logout">
-          <ExitToAppOutlinedIcon className="icon" />
+            <ExitToAppOutlinedIcon className="icon" />
             <LogoutButton data-testid="logout" className="logout" />
           </NavItem>
         </Nav>

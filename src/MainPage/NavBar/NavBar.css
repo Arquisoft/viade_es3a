@@ -1,11 +1,16 @@
+.mr-auto {
+    margin: auto !important;
+}
+
 .icon {
-    margin-right: 0.5em;
+    margin-right: 0.2em;
     color: rgb(97, 208, 228);
 }
 
 .opcionYLogo {
     display: flex;
     align-items: center;
+    padding: 0em 0.9em;
 }
 
 .option, .navBarLogout .logout {
