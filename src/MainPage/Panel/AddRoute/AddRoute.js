@@ -16,7 +16,7 @@ const auth = require("solid-auth-client")
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
 const Upload = ({setFile, file}) => {
-    const filename = file == null ? 'Choose File' : file.name;
+    const filename = file == null ? "Choose File" : file.name;
 
     const changeName = e => {
         setFile(e.target.files[0]);
@@ -46,8 +46,8 @@ const Data = () => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
 
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
     const [image, setImage] = useState(null);
     const [video, setVideo] = useState(null);
 
@@ -84,7 +84,7 @@ const Data = () => {
                     </div>
             }
             <center>
-                <button data-testid="btnenviar" onClick={()=> createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo, setError)}  class="btn btn-info" >Add route
+                <button data-testid="btnenviar" onClick={() => createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo, setError)}  class="btn btn-info" >Add route
                 </button>
             </center>
           
@@ -98,7 +98,7 @@ const AddRoute = () => {
 
     return (
 
-        <DocumentTitle title='Add route'>
+        <DocumentTitle title="Add route">
             <Fragment>
                 <h2>Add route</h2>
                 <Data />
@@ -160,8 +160,8 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
         }
         alert("Your route has been added to the pod!!");
         //clean all fields
-        setName('');
-        setDescription('');
+        setName("");
+        setDescription("");
         setFile(null);
         setImage(null);
         setVideo(null);  
