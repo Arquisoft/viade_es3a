@@ -1,9 +1,9 @@
-import React from 'react';
-import { TileLayer, Map, GeoJSON } from 'react-leaflet';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import styled from 'styled-components';
-import ReactDOM from 'react-dom';
+import React from "react";
+import { TileLayer, Map, GeoJSON } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import styled from "styled-components";
+import ReactDOM from "react-dom";
 
 const Wrapper = styled.div`
     width: ${props => props.width};
@@ -14,7 +14,7 @@ function getStyle(feature, layer) {
     return {
         weight: 1,
         opacity: 1,
-        color: '#000'
+        color: "#000"
     }
 }
 
@@ -36,7 +36,7 @@ const styles = {
         width: "70vw",
         height: "100vh",
         className: "rightPanel_mapa",
-        display: 'flex'
+        display: "flex"
     },
     map: {
         flex: 1
@@ -45,7 +45,7 @@ const styles = {
 
 const ShowMap = (props) => {
     return (
-        <div style={styles.wrapper} id='thisMap' >
+        <div style={styles.wrapper} id="thisMap" >
             <Map style={styles.map} center={props.center} zoom={props.zoom}>
                 <TileLayer url={props.url} />
                 
@@ -56,19 +56,19 @@ const ShowMap = (props) => {
 
 export function updateMap (route,name) {
     let center = [40.205, -3.60];
-    let aa = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    let aa = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     let com = <div style={styles.wrapper} id={name}>
-        <Map style={styles.map} center={center} zoom='8'>
+        <Map style={styles.map} center={center} zoom="8">
             <TileLayer url={aa} />
             
         </Map>
     </div>;
-    ReactDOM.render(com,document.getElementById('jeje'))
+    ReactDOM.render(com,document.getElementById("jeje"))
 
 
     let parseR = JSON.parse(route)
     com = <div style={styles.wrapper} id={name}>
-        <Map style={styles.map} center={center} zoom='8'>
+        <Map style={styles.map} center={center} zoom="8">
             <TileLayer url={aa} />
             <GeoJSON
                 data={parseR}
@@ -76,13 +76,13 @@ export function updateMap (route,name) {
             />
         </Map>
     </div>;
-    ReactDOM.render(com,document.getElementById('jeje'))
+    ReactDOM.render(com,document.getElementById("jeje"))
 }
 
 ShowMap.defaultProps = {
     center: [40.205, -3.60],
     zoom: 8,
-    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 };
 
 export default ShowMap;
@@ -96,7 +96,7 @@ export default ShowMap;
             zoomControl: true
         });
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
             detectRetina: true,
             maxZoom: 20,
             maxNativeZoom: 17,
@@ -112,10 +112,10 @@ export default ShowMap;
         [43.360655, -5.844574],
         [43.358475, -5.842981]];
 
-        var polyline = L.polyline(points, { color: 'rgb(77, 218, 243)' }).addTo(this.map);
+        var polyline = L.polyline(points, { color: "rgb(77, 218, 243)" }).addTo(this.map);
 
         var popup = L.popup();
-        var photoImg = "<img src='parqueDeInvierno.jpg' height='150px' width='150px'/>";
+        var photoImg = "<img src="parqueDeInvierno.jpg" height="150px" width="150px"/>";
 
         var marker = L.marker([43.350835, -5.851479]).
             bindPopup("<b>Parque de invierno</b><br>Aquí empieza nuestra ruta").openPopup(popup).addTo(this.map);

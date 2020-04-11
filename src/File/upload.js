@@ -2,53 +2,53 @@
 const fileClient = new SolidFileClient(solid.auth, { enableLogging: true })
 
 //logea con solid con el solid-auth-cli
-document.getElementById('login').addEventListener('click', e => solid.auth.popupLogin({ popupUri: 'https://solid.community/common/popup.html' }))
-document.getElementById('logout').addEventListener('click', e => solid.auth.logout())
+document.getElementById("login").addEventListener("click", e => solid.auth.popupLogin({ popupUri: "https://solid.community/common/popup.html" }))
+document.getElementById("logout").addEventListener("click", e => solid.auth.logout())
 solid.auth.trackSession(session => {
     if (!session) {
-        $('.logged-in').hide();
-        $('.logged-out').show();
+        $(".logged-in").hide();
+        $(".logged-out").show();
     } else {
-        $('.logged-in').show();
-        $('.logged-out').hide();
-        $('.webid').text(session.webId);
+        $(".logged-in").show();
+        $(".logged-out").hide();
+        $(".webid").text(session.webId);
     }
 })
 
 const setUploadStatus = isUploading => {
     if (isUploading) {
-        $('.not-uploading').hide()
-        $('.uploading').show()
+        $(".not-uploading").hide()
+        $(".uploading").show()
     } else {
-        $('.not-uploading').show()
-        $('.uploading').hide()
+        $(".not-uploading").show()
+        $(".uploading").hide()
     }
 }
 setUploadStatus(false)
 
 const setLogStatus = showLogs => {
     if (showLogs) {
-        $('.logs').show()
+        $(".logs").show()
     } else {
-        $('.logs').hide()
+        $(".logs").hide()
     }
 }
 const resetLogs = () => {
     setLogStatus(false)
-    $('.logs').empty()
+    $(".logs").empty()
 }
-const addSuccessLog = msg => $('.logs').append(`<li class="list-group-item list-group-item-success">${msg}</li>`)
-const addErrorLog = msg => $('.logs').append(`<li class="list-group-item list-group-item-danger">${msg}</li>`)
+const addSuccessLog = msg => $(".logs").append(`<li class="list-group-item list-group-item-success">${msg}</li>`)
+const addErrorLog = msg => $(".logs").append(`<li class="list-group-item list-group-item-danger">${msg}</li>`)
 resetLogs()
 
-const containerInput = document.getElementById('container')
-const filesInput = document.getElementById('files')
+const containerInput = document.getElementById("container")
+const filesInput = document.getElementById("files")
 
 //Subida de archivos
-document.getElementById('upload-form').addEventListener('submit', async e => {
+document.getElementById("upload-form").addEventListener("submit", async e => {
     e.preventDefault()
     //Ruta de subida (añade barra)
-    const parentContainer = containerInput.value + ((containerInput.value.endsWith('/')) ? '' : '/')
+    const parentContainer = containerInput.value + ((containerInput.value.endsWith("/")) ? "" : "/")
     const files = filesInput.files
 
     console.log(`Uploading ${files.length} file(s) to ${parentContainer}`)
