@@ -113,8 +113,7 @@ test('Name empty', ()=>{
     value: [file]
   });
 
-  fireEvent.change(inputRoute);
-  
+  fireEvent.change(inputRoute);  
   getByTestId("inputDesc").click();
   const inputDesc = getByTestId("inputDesc");
   inputDesc.innerText = "Patata";
