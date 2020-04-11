@@ -15,7 +15,7 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 
 ** Routes
 ** User (save the routes)
-** Google Maps (shows the routes in a map)
+** Leaflet(shows the routes in a map)
 ** Friend (receives the route that you send him/her)
 
 === User Experience
