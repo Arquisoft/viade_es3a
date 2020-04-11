@@ -70,11 +70,11 @@ const Data = () => {
 
             <div class="form-group">
                 <label class="exampleInputPhoto" for="photo" class="labelPhoto" data-testid="img">Images:</label><br></br>
-                <input value={null} type="file" id="photo" name="image" data-testid="inputImg" accept=".png" multiple="true" onChange={(e) => setImage(e.target.files)}/>
+                <input value={null} type="file" id="photo" name="image" data-testid="inputImg" accept="image/*" multiple="true" onChange={(e) => setImage(e.target.files)}/>
             </div>
             <div class="form-group">
                 <label class="exampleInputVideo" for="video" class="labelVideo" data-testid="vid">Video:</label><br></br>
-                <input value={null} type="file" id="video" name="video" accept=".mp4" data-testid="inputVid" multiple="true" onChange={(e) => setVideo(e.target.files)}/>
+                <input value={null} type="file" id="video" name="video" accept=".mp4" data-testid="video/*" multiple="true" onChange={(e) => setVideo(e.target.files)}/>
             </div>
             <br></br>
             {
