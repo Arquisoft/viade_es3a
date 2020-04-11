@@ -84,23 +84,36 @@ const SharedRoutes = () => {
 async function loadRoutes(url, setFolders) {
 
     let folder = await fileClien.readFolder(url);
-    setFolders(folder.folders);
+    var result=[];
+    console.log(folder.files.length)
+    for(var i=0;i<folder.files.length;i+=1){
+    let f=await fileClien.readFile(folder.files[i].url)
+    console.log(f) 
+    let otro= await fileClien.readFolder(f);
+    result.push(otro)
+   // setFolders(result)
+    
+}
+console.log(result)
+setFolders(result)
 }
 
 async function loadRoute(urlCarptetaRuta, setSelected) {
     
     let folder = await fileClien.readFolder(urlCarptetaRuta);
-    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
+   
+
+   /* let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
     let images = await loadFile(urlCarptetaRuta, "photo/img");
     let videos = await loadFile(urlCarptetaRuta, "video/vid");
-
+*/
     await showRoute(urlCarptetaRuta);
 
     setSelected({
         name: folder.name,
-        description: folderDesc,
-        images: images,
-        videos: videos
+        description: "",
+        images: "",
+        videos: ""
     });
 
 }
