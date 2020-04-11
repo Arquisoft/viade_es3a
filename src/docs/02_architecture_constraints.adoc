@@ -24,6 +24,8 @@
 | Constraint | Explanation
 | Web Application | We will develop a web application to manage routes and share them with our 'friends'
 | Decentralized Architecture | Instead of relying on a single central server it distributes workloads among several machines
-| Maintenance| Use of multiple tests to preserve the correct performance, usability, security... using Cucumber
+| Maintenance | Use of multiple tests to preserve the correct performance, usability, security...
 | Solid | The data storage is made using Solid
+| Notifications | The user should receive a notification when a friend shares a route.
+| Map view | The user can see their route´s map on the app.
 |===
