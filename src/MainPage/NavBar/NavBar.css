@@ -1,65 +1,36 @@
-.navBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgb(54, 54, 54);
+.icon {
+    margin-right: 0.5em;
+    color: rgb(97, 208, 228);
 }
-.navBar_nav {
-    position: fixed;
+
+.opcionYLogo {
     display: flex;
     align-items: center;
 }
 
-.option {
-    padding: 0.3em 2em;
-}
-
-.icon{
-    margin-right: 0.5em;
-    color:rgb(97, 208, 228);
-}
-
-.navBarOptions, .navBarLogout{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
- a, .navBarLogout .logout {
-   color: white;
-   text-decoration: none;
-   font-size: 1.1em;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.navBarOptions{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.navBarOptions li {
-    float: left;
-}
-
-.navBarLogout .logout {
-    float: right;
-}
-
-li a:hover, .navBarLogout .logout:hover{
+.option, .navBarLogout .logout {
+    color: white !important;
     text-decoration: none;
-    color:rgb(117, 227, 247);
+    font-size: 1.1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.option:hover, .navBarLogout .logout:hover {
+    text-decoration: none;
+    color: rgb(117, 227, 247) !important;
     font-size: 1.15em;
 }
 
-li a:active, .navBarLogout .logout:active{
-    color:rgb(60, 130, 143);
+.option:active, .navBarLogout .logout:active {
+    color: rgb(60, 130, 143) !important;
     font-size: 1.2em;
 }
 
-.logout{
+.logout {
     background: transparent;
     border: none;
-    color:rgb(117, 227, 247);
+    color: rgb(117, 227, 247) !important;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
