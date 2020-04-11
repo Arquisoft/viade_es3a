@@ -90,4 +90,13 @@ test("Add Route", () => {
   getByTestId("btnenviar").click();
 });
   
+test('Route empty', ()=>{
+  const { getByTestId } = render(<AddRoute></AddRoute>);
+  const inputName= getByTestId("inputName");
+  getByTestId("inputName").click();
+  inputName.innerText="Prueba";
+  getByTestId("btnenviar").click();
+  const { getByText } = within(getByTestId('msjerror'));
+  expect(getByText('Name or route is empty!')).toBeInTheDocument();
+});
   
