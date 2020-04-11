@@ -33,9 +33,9 @@ const SharedRoutes = () => {
     }, [user]);
     
         return (
-            
+             
             <div  class="container">
-                <h2 id="rutas" class="h2">Routes from your friends:</h2>
+                <h2 data-testid="label" id="rutas" class="h2">Routes from your friends:</h2>
 
                 <ul>
                 {
@@ -53,7 +53,7 @@ const SharedRoutes = () => {
                     })
                 }
                 </ul>
-                <div class="card bg-info text-white">
+                <div data-testid="card" class="card bg-info text-white">
                     <div class="card-body">
                         <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
                         <p class="card-Description" id ="routeDescription">{selected.description}</p>
