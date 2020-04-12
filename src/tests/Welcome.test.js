@@ -32,6 +32,9 @@ test("Render component not crashing.", () => {
     expect(getByTestId("profile")).toBeInTheDocument();
     expect(getByTestId("profile")).toHaveTextContent("Profile");
 
+    expect(getByTestId("friendsRoutes")).toBeInTheDocument();
+    expect(getByTestId("friendsRoutes")).toHaveTextContent("Friend's routes");
+   
     expect(getByTestId("friends")).toBeInTheDocument();
     expect(getByTestId("friends")).toHaveTextContent("Friends");
 

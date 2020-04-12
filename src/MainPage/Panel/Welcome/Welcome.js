@@ -20,6 +20,9 @@ const Welcome = () => {
                     <span className="opcion" data-testid="share">Share routes </span>: you can share your routes with your friends
                 </li>
                 <li>
+                    <span className="opcion" data-testid="friendsRoutes">Friend's routes </span>: you can see routes that have been shared to you
+                </li>
+                <li>
                     <span className="opcion" data-testid="profile">Profile </span>: your personal data
                 </li>
                 <li>
