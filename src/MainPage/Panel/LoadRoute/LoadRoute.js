@@ -47,7 +47,7 @@ const LoadRoute = () => {
     ));
     return (
         
-        <DocumentTitle title="Load Route">
+        <DocumentTitle title="My Routes">
         <div class="container">
             <h2 id="rutas" class="h2" data-testid="label">Routes list:</h2>
             

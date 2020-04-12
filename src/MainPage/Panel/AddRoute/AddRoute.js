@@ -100,7 +100,7 @@ const AddRoute = () => {
 
         <DocumentTitle title="Add route">
             <Fragment>
-                <h2>Add route</h2>
+                <h2 class="h2">Add route</h2>
                 <Data />
             </Fragment>
         </DocumentTitle>

@@ -7,6 +7,8 @@ import fileClient from "solid-file-client";
 
 import * as algo from "../Map/Map";
 
+import DocumentTitle from "react-document-title";
+
 const auth = require("solid-auth-client");
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
@@ -47,6 +49,7 @@ const LoadRoute = () => {
     }, [user]);
 
     return (
+        <DocumentTitle title="Share routes">
         <div class="container">
             <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
 
@@ -107,6 +110,7 @@ const LoadRoute = () => {
                 </div>
             </div>
         </div>
+        </DocumentTitle>
 
     );
 };
