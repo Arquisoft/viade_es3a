@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { render } from '@testing-library/react';
+import React from "react";
+import ReactDOM from "react-dom";
+import { render } from "@testing-library/react";
 import { cleanup } from "@testing-library/react";
-import ShareRoute from '../MainPage/Panel/ShareRoute/ShareRoute';
+import SharedRoutes from "../MainPage/Panel/SharedRoutes/SharedRoutes";
 
 afterEach(cleanup);
 
 test("Render component not crashing.", () => {
     const div = document.createElement("div");
-    ReactDOM.render(<ShareRoute></ShareRoute>, div);
+    ReactDOM.render(<SharedRoutes></SharedRoutes>, div);
  });
 
  test("Check Load Route panel (interface)", () => {

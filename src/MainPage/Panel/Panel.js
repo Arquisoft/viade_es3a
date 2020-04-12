@@ -1,15 +1,15 @@
-import React from 'react';
-import './Panel.css';
-import ShowMap from './Map/Map.js';
-import styled from 'styled-components';
+import React from "react";
+import "./Panel.css";
+import ShowMap from "./Map/Map.js";
+import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddRoute from "./AddRoute/AddRoute";
-import LoadRoute from './LoadRoute/LoadRoute';
-import Welcome from './Welcome/Welcome';
-import Friends from './Friends/Friends';
-import Profile from './Profile/Profile';
-import ShareRoute from './ShareRoute/ShareRoute';
-import SharedRoutes from './SharedRoutes/SharedRoutes';
+import LoadRoute from "./LoadRoute/LoadRoute";
+import Welcome from "./Welcome/Welcome";
+import Friends from "./Friends/Friends";
+import Profile from "./Profile/Profile";
+import ShareRoute from "./ShareRoute/ShareRoute";
+import SharedRoutes from "./SharedRoutes/SharedRoutes";
 
 const AppWrapper = styled.div`
 display: flex;

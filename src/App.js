@@ -1,13 +1,13 @@
-import React from 'react';
-import { LoggedIn, LoggedOut } from '@solid/react';
-import styled from 'styled-components';
-import SolidImg from './logo.svg';
+import React from "react";
+import { LoggedIn, LoggedOut } from "@solid/react";
+import styled from "styled-components";
+import SolidImg from "./logo.svg";
 import {
     ProviderLogin,
     LogoutButton,
 
-} from '@inrupt/solid-react-components';
-import MainPage from './MainPage/Main-page';
+} from "@inrupt/solid-react-components";
+import MainPage from "./MainPage/Main-page";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import DocumentTitle from "react-document-title";
@@ -61,8 +61,6 @@ const Title = styled.h1`
   align-content: center;
   align-items: center;
 `;
-
-;
 
 const Header = () => {
     return (

@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { render, fireEvent, within } from '@testing-library/react';
-import AddRoute from '../MainPage/Panel/AddRoute/AddRoute';
+import React from "react";
+import ReactDOM from "react-dom";
+import { render, fireEvent, within } from "@testing-library/react";
+import AddRoute from "../MainPage/Panel/AddRoute/AddRoute";
 
-test('Not crashing component', ()=>{
-    const div = document.createElement('div');
+test("Not crashing component", () => {
+    const div = document.createElement("div");
     ReactDOM.render(<AddRoute></AddRoute>,div);
-})
+});
 
-test('Elements addRoute are present', () => {
+test("Elements addRoute are present", () => {
     const { getByTestId } = render(<AddRoute></AddRoute>);
     expect(getByTestId("route")).toBeInTheDocument();
     expect(getByTestId("name")).toBeInTheDocument();
@@ -23,7 +23,7 @@ test('Elements addRoute are present', () => {
     expect(getByTestId("inputVid")).toBeInTheDocument();
   });
 
-test('Click on inputs', ()=>{
+test("Click on inputs", () => {
     const { getByTestId } = render(<AddRoute></AddRoute>);
     getByTestId("inputGeo").click();
     getByTestId("inputName").click();
@@ -48,16 +48,16 @@ test("Route load", () => {
   
     fireEvent.change(inputRoute);
   
-    const { getByText } = within(getByTestId('labelRoute'));
-    expect(getByText('ruta1.geojson')).toBeInTheDocument();
+    const { getByText } = within(getByTestId("labelRoute"));
+    expect(getByText("ruta1.geojson")).toBeInTheDocument();
   });
 
   
-  test('Route and name empty', ()=>{
+  test("Route and name empty", () => {
     const { getByTestId } = render(<AddRoute></AddRoute>);
     getByTestId("btnenviar").click();
-    const { getByText } = within(getByTestId('msjerror'));
-    expect(getByText('Name or route is empty!')).toBeInTheDocument();
+    const { getByText } = within(getByTestId("msjerror"));
+    expect(getByText("Name or route is empty!")).toBeInTheDocument();
 });
 
 test("Add Route", () => {
@@ -75,8 +75,8 @@ test("Add Route", () => {
 
   fireEvent.change(inputRoute);
 
-  const { getByText } = within(getByTestId('labelRoute'));
-  expect(getByText('ruta1.geojson')).toBeInTheDocument();
+  const { getByText } = within(getByTestId("labelRoute"));
+  expect(getByText("ruta1.geojson")).toBeInTheDocument();
 
   getByTestId("inputName").click();
   const inputName = getByTestId("inputName");
@@ -89,18 +89,18 @@ test("Add Route", () => {
   getByTestId("btnenviar").click();
 });
   
-test('Route empty', ()=>{
+test("Route empty", () => {
   const { getByTestId } = render(<AddRoute></AddRoute>);
   const inputName= getByTestId("inputName");
   getByTestId("inputName").click();
   inputName.innerText="Prueba";
   getByTestId("btnenviar").click();
-  const { getByText } = within(getByTestId('msjerror'));
-  expect(getByText('Name or route is empty!')).toBeInTheDocument();
+  const { getByText } = within(getByTestId("msjerror"));
+  expect(getByText("Name or route is empty!")).toBeInTheDocument();
 });
 
 
-test('Name empty', ()=>{
+test("Name empty", () => {
   const { getByTestId } = render(<AddRoute />);
   const inputRoute = getByTestId("inputGeo");
 
@@ -119,8 +119,8 @@ test('Name empty', ()=>{
   inputDesc.innerText = "Patata";
 
   getByTestId("btnenviar").click();
-  const { getByText } = within(getByTestId('msjerror'));
-  expect(getByText('Name or route is empty!')).toBeInTheDocument();
+  const { getByText } = within(getByTestId("msjerror"));
+  expect(getByText("Name or route is empty!")).toBeInTheDocument();
 });
 
 

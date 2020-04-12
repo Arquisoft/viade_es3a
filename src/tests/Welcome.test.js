@@ -1,9 +1,9 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import { render } from "@testing-library/react";
+import ReactDOM from "react-dom";
 import { cleanup } from "@testing-library/react";
 
-import Welcome from '../MainPage/Panel/Welcome/Welcome'
+import Welcome from "../MainPage/Panel/Welcome/Welcome";
 
 afterEach(cleanup);
 
@@ -32,6 +32,9 @@ test("Render component not crashing.", () => {
     expect(getByTestId("profile")).toBeInTheDocument();
     expect(getByTestId("profile")).toHaveTextContent("Profile");
 
+    expect(getByTestId("friendsRoutes")).toBeInTheDocument();
+    expect(getByTestId("friendsRoutes")).toHaveTextContent("Friend's routes");
+   
     expect(getByTestId("friends")).toBeInTheDocument();
     expect(getByTestId("friends")).toHaveTextContent("Friends");
 

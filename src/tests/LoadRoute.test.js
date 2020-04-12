@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { render } from '@testing-library/react';
+import React from "react";
+import ReactDOM from "react-dom";
+import { render } from "@testing-library/react";
 import { cleanup } from "@testing-library/react";
 
-import LoadRoute from '../MainPage/Panel/LoadRoute/LoadRoute';
+import LoadRoute from "../MainPage/Panel/LoadRoute/LoadRoute";
 
 afterEach(cleanup);
 
