@@ -2,20 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { render } from "@testing-library/react";
 import { cleanup } from "@testing-library/react";
-
-import LoadRoute from "../MainPage/Panel/LoadRoute/LoadRoute";
+import SharedRoutes from "../MainPage/Panel/SharedRoutes/SharedRoutes";
 
 afterEach(cleanup);
 
 test("Render component not crashing.", () => {
     const div = document.createElement("div");
-    ReactDOM.render(<LoadRoute></LoadRoute>, div);
+    ReactDOM.render(<SharedRoutes></SharedRoutes>, div);
  });
 
  test("Check Load Route panel (interface)", () => {
-    const { getByTestId } = render(<LoadRoute></LoadRoute>);
+    const { getByTestId } = render(<SharedRoutes></SharedRoutes>);
     expect(getByTestId("label")).toBeInTheDocument();
-    expect(getByTestId("label")).toHaveTextContent("Routes list:");
-
+    expect(getByTestId("label")).toHaveTextContent("Routes from your friends:");
     expect(getByTestId("card")).toBeInTheDocument();
  });

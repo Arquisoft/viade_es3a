@@ -1,16 +1,16 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import ReactDOM from 'react-dom';
-import Profile from '../MainPage/Panel/Profile/Profile';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import ReactDOM from "react-dom";
+import Profile from "../MainPage/Panel/Profile/Profile";
+import { BrowserRouter as Router } from "react-router-dom";
 
-test('Not crashing component', () => {
-    const div = document.createElement('div');
+test("Not crashing component", () => {
+    const div = document.createElement("div");
     ReactDOM.render(
         <Router><Profile></Profile></Router>, div);
 });
 
-test('Profile elements are present', () => {
+test("Profile elements are present", () => {
     const { getByTestId } = render(<Router><Profile></Profile></Router>);
     expect(getByTestId("titleProfile")).toBeInTheDocument();
     expect(getByTestId("photoProfile")).toBeInTheDocument();
@@ -18,7 +18,7 @@ test('Profile elements are present', () => {
     // expect(getByTestId("logoProfile")).toBeInTheDocument();
     expect(getByTestId("userProfile")).toBeInTheDocument();
     expect(getByTestId("dividerProfile")).toBeInTheDocument();
-    expect(screen.getByText("Go to SOLID profile")).toBeInTheDocument()
+    expect(screen.getByText("Go to SOLID profile")).toBeInTheDocument();
     expect(getByTestId("myFriendsProfile")).toBeInTheDocument();
     expect(getByTestId("friendsLengthProfile")).toBeInTheDocument();
     expect(getByTestId("buttonFriendsProfile")).toBeInTheDocument();
@@ -27,7 +27,7 @@ test('Profile elements are present', () => {
     expect(getByTestId("buttonRoutesProfile")).toBeInTheDocument();
 });
 
-test('Buttons with correct links', () => {
+test("Buttons with correct links", () => {
     const profile = render(<Router><Profile></Profile></Router>);
 
     /* const enlaceSolid = profile.getByText("Go to SOLID profile");

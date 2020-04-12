@@ -1,6 +1,6 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.css';
-import './Welcome.css'
+import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import "./Welcome.css";
 
 const Welcome = () => {
     return (
@@ -20,6 +20,9 @@ const Welcome = () => {
                     <span className="opcion" data-testid="share">Share routes </span>: you can share your routes with your friends
                 </li>
                 <li>
+                    <span className="opcion" data-testid="friendsRoutes">Friend's routes </span>: you can see routes that have been shared to you
+                </li>
+                <li>
                     <span className="opcion" data-testid="profile">Profile </span>: your personal data
                 </li>
                 <li>
@@ -28,8 +31,9 @@ const Welcome = () => {
             </ul>
 
             <p data-testid="message">Enjoy our app ! :)</p>
+            <p className="alert">Be careful! Make sure the app has control permissions on your solid profile</p>
         </div >
-    )
-}
+    );
+};
 
 export default Welcome;
