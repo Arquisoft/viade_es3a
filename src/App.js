@@ -62,8 +62,6 @@ const Title = styled.h1`
   align-items: center;
 `;
 
-;
-
 const Header = () => {
     return (
         <HeaderWrapper>

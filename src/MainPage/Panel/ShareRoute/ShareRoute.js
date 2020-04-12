@@ -14,7 +14,7 @@ const { READ, WRITE, APPEND, CONTROL } = Permissions;
 
 const fetch = auth.fetch.bind(auth);
 
-const aclApi = new AclApi(fetch, { autoSave: true })
+const aclApi = new AclApi(fetch, { autoSave: true });
 
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });

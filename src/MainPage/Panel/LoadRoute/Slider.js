@@ -11,7 +11,6 @@ const properties = {
     transitionTime: 350,
     stopOnHover: true,
     useKeyboardArrows: true,
-    stopOnHover: true,
 };
 
 const Slider = (props) => {

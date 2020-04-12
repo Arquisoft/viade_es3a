@@ -16,8 +16,8 @@ const Card = (props) => {
                 </center>
             </div>
         </div>
-    )
-}
+    );
+};
 
 const Friends = () => {
     const webId = useWebId();

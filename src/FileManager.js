@@ -25,7 +25,7 @@ export async function  fileUpload (files){
                 console.error(err);
             } 
         }
-    };
+    }
 
    
       

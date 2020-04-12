@@ -20,7 +20,7 @@ const Upload = ({setFile, file}) => {
 
     const changeName = (e) => {
         setFile(e.target.files[0]);
-    }
+    };
     //para acceder a componentes del dum desde react
     //const refFile = useRef();
 
@@ -120,8 +120,9 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
         setError(null);
     var existe = await fileClien.itemExists(folder);
 
-    if (!existe)
+    if (!existe){
         await fileClien.createFolder(folder);
+    }
     var fileList = [];
     var nameValue = name;
     var destination = folder + "/" + nameValue + "/";
@@ -170,8 +171,10 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
         document.getElementById("video").value=null;
         document.getElementById("route").value=null;
     }
-    else
+    else{
         alert("Route title already used, use another title");
+    }
+        
 }
 
 };

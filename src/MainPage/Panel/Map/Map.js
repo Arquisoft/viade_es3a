@@ -15,7 +15,7 @@ function getStyle(feature, layer) {
         weight: 1,
         opacity: 1,
         color: "#000"
-    }
+    };
 }
 
 const geojsonMarkerOptions = {
@@ -63,7 +63,7 @@ export function updateMap (route,name) {
             
         </Map>
     </div>;
-    ReactDOM.render(com,document.getElementById("jeje"))
+    ReactDOM.render(com,document.getElementById("jeje"));
 
 
     let parseR = JSON.parse(route);

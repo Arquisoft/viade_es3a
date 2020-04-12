@@ -29,8 +29,10 @@ async function creates() {
 
   var existeP = await fileClien.itemExists(folderP);
   var existeI = await fileClien.itemExists(folderI);
-  if (!existeP)
-      await fileClien.createFolder(folderP);
+  if (!existeP){
+    await fileClien.createFolder(folderP);
+  }
+      
   if (!existeI){
       await fileClien.createFolder(folderI);
 
