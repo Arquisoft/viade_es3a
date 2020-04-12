@@ -52,7 +52,7 @@ const Data = () => {
     const [video, setVideo] = useState(null);
 
     const url=user.split("profile/card#me")[0]+"/private/routes3a";
-    console.log(url);
+    
     return (
         <div>
             <br></br>
@@ -131,7 +131,7 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
         var k=0;
         await fileClien.createFolder(destination);
         var user=await auth.currentSession()
-        console.log(user.webId)
+        
         let content = "@prefix : <#>.\n"+
         "@prefix n0: <http://www.w3.org/ns/auth/acl#>.\n"+
         "@prefix M: <./>.\n"+

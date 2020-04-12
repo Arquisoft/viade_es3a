@@ -22,8 +22,6 @@ const LoadRoute = () => {
         url: ""
     });
 
-    console.log(selected);
-
     var user = useWebId();
     const webId = useWebId();
     var coll = document.getElementsByClassName("collapsible");
@@ -125,7 +123,7 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
     let images = await loadFile(urlCarptetaRuta, "photo/img");
     let videos = await loadFile(urlCarptetaRuta, "video/vid");
-    console.log(folder.url);
+    
     await showRoute(urlCarptetaRuta);
 
     setSelected({
@@ -170,7 +168,6 @@ async function enseñaAmigos(source, target, name) {
 
     let acl = await fileClien.readFile(source + "/.acl");
 
-    console.log(acl)
     let content = "";
 
     let userToAcl = target2.split("]")[0]
@@ -208,7 +205,7 @@ async function enseñaAmigos(source, target, name) {
             await fileClien.createFile(source + "/.acl", nuevo2, "text/turtle");
 
         }
-        console.log(urlTarget + "/" + name + " ("+(await auth.currentSession()).webId+")")
+
         await fileClien.postFile(urlTarget + "/" + name + "->"+((await auth.currentSession()).webId).split("https://")[1].split(".")[0], source, "text/plain");
 
         alert("Your route has been shared!");

@@ -27,7 +27,6 @@ const SharedRoutes = () => {
 
     var images = [];
     var videos = [];
-    console.log(selected);
 
     var user=useWebId();
 
@@ -86,15 +85,15 @@ async function loadRoutes(url, setFolders) {
 
     let folder = await fileClien.readFolder(url);
     var result=[];
-    console.log(folder.files.length);
+
     for(var i=0;i<folder.files.length;i+=1){
         let f=await fileClien.readFile(folder.files[i].url);
-        console.log(f);
+        
         let otro= await fileClien.readFolder(f);
         result.push(otro);
         // setFolders(result)
     }
-console.log(result);
+
 setFolders(result);
 }
 
@@ -135,7 +134,6 @@ export async function showRoute(urlCarptetaRuta) {
     
     let folder = await fileClien.readFolder(urlCarptetaRuta);
 
-    console.log(folder);
     document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
     let ruta = await fileClien.readFile(urlCarptetaRuta+folder.name+".geojson");
 

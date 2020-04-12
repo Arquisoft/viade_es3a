@@ -27,8 +27,6 @@ const LoadRoute = () => {
         videos: []
     });
 
-    console.log(selected);
-
     var user = useWebId();
 
     useEffect(() => {
