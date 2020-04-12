@@ -47,13 +47,13 @@ var videos = [];
                         var urlArchivo = "" + folder.url;
                         var arrayUrl = urlArchivo.split("/");
                         urlRutas.push(urlArchivo);
-                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ")
+                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
                         return (
                             <li key={"folder_" + i}>
                                 <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
                                     {nombre}
                                 </a>
-                            </li>)
+                            </li>);
                     })
                 }
             </ul>
@@ -71,23 +71,22 @@ var videos = [];
     
            
         );
-}
+};
 
 async function loadRoutes(url, setFolders) {
 
     let folder = await fileClien.readFolder(url);
     var result=[];
-    console.log(folder.files.length)
+    console.log(folder.files.length);
     for(var i=0;i<folder.files.length;i+=1){
-    let f=await fileClien.readFile(folder.files[i].url)
-    console.log(f) 
-    let otro= await fileClien.readFolder(f);
-    result.push(otro)
-   // setFolders(result)
-    
-}
-console.log(result)
-setFolders(result)
+        let f=await fileClien.readFile(folder.files[i].url);
+        console.log(f);
+        let otro= await fileClien.readFolder(f);
+        result.push(otro);
+        // setFolders(result)
+    }
+console.log(result);
+setFolders(result);
 }
 
 async function loadRoute(urlCarptetaRuta, setSelected) {
@@ -116,7 +115,7 @@ async function loadFile(urlCarptetaRuta, route){
     for(k=0; k<1000; k++){
         try{
             await fileClien.readFile(urlCarptetaRuta + route + (k+1));
-            result.push(urlCarptetaRuta + route + (k+1))
+            result.push(urlCarptetaRuta + route + (k+1));
         }catch{
             k=1000;
         }

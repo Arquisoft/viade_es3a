@@ -129,8 +129,8 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
     if (!existe) {
         var k=0;
         await fileClien.createFolder(destination);
-        var user=await auth.currentSession()
-        console.log(user.webId)
+        var user=await auth.currentSession();
+        console.log(user.webId);
         let content = "# ACL resource for the private folder\n"+
       "@prefix acl: <http://www.w3.org/ns/auth/acl#>.\n"+
       "\n"+
@@ -140,9 +140,9 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
           "acl:agent <"+ user.webId +">;\n"+
           "acl:accessTo <./>;\n"+
           "acl:defaultForNew <./>;\n"+
-          "acl:mode acl:Read, acl:Write, acl:Control."
+          "acl:mode acl:Read, acl:Write, acl:Control.";
 
-        await fileClien.createFile(destination+"/.acl", content,"text/turtle")
+        await fileClien.createFile(destination+"/.acl", content,"text/turtle");
 
         fileList.push(route);
         await fileClien.createFile(destination + "/"+ "description", description, "text/plain");

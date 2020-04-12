@@ -18,7 +18,7 @@ test("Profile elements are present", () => {
     // expect(getByTestId("logoProfile")).toBeInTheDocument();
     expect(getByTestId("userProfile")).toBeInTheDocument();
     expect(getByTestId("dividerProfile")).toBeInTheDocument();
-    expect(screen.getByText("Go to SOLID profile")).toBeInTheDocument()
+    expect(screen.getByText("Go to SOLID profile")).toBeInTheDocument();
     expect(getByTestId("myFriendsProfile")).toBeInTheDocument();
     expect(getByTestId("friendsLengthProfile")).toBeInTheDocument();
     expect(getByTestId("buttonFriendsProfile")).toBeInTheDocument();

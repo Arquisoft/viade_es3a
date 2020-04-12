@@ -1,10 +1,10 @@
-import React from "react"
+import React from "react";
 import { ProfileViewer } from "@inrupt/solid-react-components";
 import { useWebId } from "@solid/react";
 import { Value, Link as LinkSolid } from "@solid/react";
 import { Link } from "react-router-dom";
 import { ReactComponent as ProfileLogo } from "../../../img/profile.svg";
-import "./Profile.css"
+import "./Profile.css";
 
 import DocumentTitle from "react-document-title";
 

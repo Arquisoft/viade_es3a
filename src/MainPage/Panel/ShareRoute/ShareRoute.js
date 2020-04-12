@@ -12,7 +12,7 @@ const auth = require("solid-auth-client")
 const { AclApi, AclDoc, AclParser, AclRule, Permissions, Agents } = SolidAclUtils
 const { READ, WRITE, APPEND, CONTROL } = Permissions
 
-const fetch = auth.fetch.bind(auth)
+const fetch = auth.fetch.bind(auth);
 
 const aclApi = new AclApi(fetch, { autoSave: true })
 
@@ -180,7 +180,7 @@ async function enseñaAmigos(source,target,name){
     const aclApi = new AclApi(fetch, { autoSave: true })
     const acl = await aclApi.loadFromFileUrl(source)
 
-    await acl.addRule(READ, target2.split("]")[0])
+    await acl.addRule(READ, target2.split("]")[0]);
 
     await fileClien.postFile(urlTarget + "/"+ name, source , "text/plain");
     
@@ -196,8 +196,8 @@ const Carda = (props) => {
                     <button  className="btn btn-light" onClick={() => enseñaAmigos(props.url,props.nombre,props.name)}>Share</button>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default LoadRoute;
 

@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import ReactDOM from "react-dom";
 
-import Friends from "../MainPage/Panel/Friends/Friends"
+import Friends from "../MainPage/Panel/Friends/Friends";
 
 test("Render component not crashing.", () => {
     const div = document.createElement("div");

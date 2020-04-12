@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import "./Welcome.css"
+import "./Welcome.css";
 
 const Welcome = () => {
     return (
@@ -29,7 +29,7 @@ const Welcome = () => {
 
             <p data-testid="message">Enjoy our app ! :)</p>
         </div >
-    )
-}
+    );
+};
 
 export default Welcome;

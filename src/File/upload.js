@@ -17,64 +17,64 @@ solid.auth.trackSession((session) => {
 
 const setUploadStatus = (isUploading) => {
     if (isUploading) {
-        $(".not-uploading").hide()
-        $(".uploading").show()
+        $(".not-uploading").hide();
+        $(".uploading").show();
     } else {
-        $(".not-uploading").show()
-        $(".uploading").hide()
+        $(".not-uploading").show();
+        $(".uploading").hide();
     }
 }
 setUploadStatus(false)
 
 const setLogStatus = (showLogs) => {
     if (showLogs) {
-        $(".logs").show()
+        $(".logs").show();
     } else {
-        $(".logs").hide()
+        $(".logs").hide();
     }
 }
 const resetLogs = () => {
-    setLogStatus(false)
-    $(".logs").empty()
+    setLogStatus(false);
+    $(".logs").empty();
 }
-const addSuccessLog = (msg) => $(".logs").append(`<li class="list-group-item list-group-item-success">${msg}</li>`)
-const addErrorLog = (msg) => $(".logs").append(`<li class="list-group-item list-group-item-danger">${msg}</li>`)
-resetLogs()
+const addSuccessLog = (msg) => $(".logs").append(`<li class="list-group-item list-group-item-success">${msg}</li>`);
+const addErrorLog = (msg) => $(".logs").append(`<li class="list-group-item list-group-item-danger">${msg}</li>`);
+resetLogs();
 
-const containerInput = document.getElementById("container")
-const filesInput = document.getElementById("files")
+const containerInput = document.getElementById("container");
+const filesInput = document.getElementById("files");
 
 //Subida de archivos
 document.getElementById("upload-form").addEventListener("submit", async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     //Ruta de subida (añade barra)
-    const parentContainer = containerInput.value + ((containerInput.value.endsWith("/")) ? "" : "/")
-    const files = filesInput.files
+    const parentContainer = containerInput.value + ((containerInput.value.endsWith("/")) ? "" : "/");
+    const files = filesInput.files;
 
-    console.log(`Uploading ${files.length} file(s) to ${parentContainer}`)
+    console.log(`Uploading ${files.length} file(s) to ${parentContainer}`);
 
-    setUploadStatus(true)
-    resetLogs()
-    setLogStatus(true)
+    setUploadStatus(true);
+    resetLogs();
+    setLogStatus(true);
     for (let i = 0; i < files.length; i++) {
-        const file = files[i]
+        const file = files[i];
         //le añade el nombre a la ruta
-        const url = parentContainer + file.name
+        const url = parentContainer + file.name;
 
-        console.log(`Uploading ${file.name} to ${url}`)
+        console.log(`Uploading ${file.name} to ${url}`);
         try {
             // Uploading the file
             // Content can be a file from a html input
             // or a string. For json objects, use JSON.stringify(object)
             //Usa fileClient para subirla, con el método putFile
-            const res = await fileClient.putFile(url, file, file.type)
-            const msg = `${res.status} Uploaded ${file.name} to ${res.url}`
-            console.log(msg)
-            addSuccessLog(msg)
+            const res = await fileClient.putFile(url, file, file.type);
+            const msg = `${res.status} Uploaded ${file.name} to ${res.url}`;
+            console.log(msg);
+            addSuccessLog(msg);
         } catch (err) {
-            console.error(err)
-            addErrorLog(err.message)
+            console.error(err);
+            addErrorLog(err.message);
         }
     }
-    setUploadStatus(false)
-})
+    setUploadStatus(false);
+});

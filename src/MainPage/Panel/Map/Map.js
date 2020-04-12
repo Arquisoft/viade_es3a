@@ -52,7 +52,7 @@ const ShowMap = (props) => {
             </Map>
         </div>
     );
-}
+};
 
 export function updateMap (route,name) {
     let center = [40.205, -3.60];

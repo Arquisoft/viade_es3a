@@ -8,7 +8,7 @@ import fileClient from "solid-file-client";
 import { useWebId } from "@solid/react";
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
-const auth = require("solid-auth-client")
+const auth = require("solid-auth-client");
 
 const MainPage = () => {
   creates();
@@ -22,7 +22,7 @@ const MainPage = () => {
 
 
 async function creates() {
-  var user=await auth.currentSession()
+  var user=await auth.currentSession();
 
   const folderP=user.webId.split("profile/card#me")[0]+"private/routes3a";
   const folderI=user.webId.split("profile/card#me")[0]+"inbox/routes3a";
@@ -51,9 +51,9 @@ async function creates() {
       "n0:accessTo rou:;\n"+
       "n0:agent c:me;\n"+
       "n0:default rou:;\n"+
-      "n0:mode n0:Control, n0:Read, n0:Write."
+      "n0:mode n0:Control, n0:Read, n0:Write.";
 
-      await fileClien.createFile(folderI+"/.acl", content,"text/turtle")
+      await fileClien.createFile(folderI+"/.acl", content,"text/turtle");
   }
 }
 

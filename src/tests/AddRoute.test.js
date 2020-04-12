@@ -6,7 +6,7 @@ import AddRoute from "../MainPage/Panel/AddRoute/AddRoute";
 test("Not crashing component", () => {
     const div = document.createElement("div");
     ReactDOM.render(<AddRoute></AddRoute>,div);
-})
+});
 
 test("Elements addRoute are present", () => {
     const { getByTestId } = render(<AddRoute></AddRoute>);

@@ -39,14 +39,14 @@ const LoadRoute = () => {
         }
     }, [user]);
 
-    images=[]
-    videos=[]
+    images=[];
+    videos=[];
     selected.images.map((image) => (
         images.push(image)
-    ))
+    ));
     selected.videos.map((video) => (
         videos.push(video)
-    ))
+    ));
     return (
         
         <DocumentTitle title="Load Route">
@@ -59,13 +59,13 @@ const LoadRoute = () => {
                         var urlArchivo = "" + folder.url;
                         var arrayUrl = urlArchivo.split("/");
                         urlRutas.push(urlArchivo);
-                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ")
+                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
                         return (
                             <li key={"folder_" + i}>
                                 <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
                                     {nombre}
                                 </a>
-                            </li>)
+                            </li>);
                     })
                 }
             </ul>
@@ -81,7 +81,7 @@ const LoadRoute = () => {
         </div>
         </DocumentTitle>           
     );
-}
+};
 
 async function loadRoutes(url, setFolders) {
 
@@ -115,7 +115,7 @@ async function loadFile(urlCarptetaRuta, route) {
     for (k = 0; k < 1000; k++) {
         try {
             await fileClien.readFile(urlCarptetaRuta + route + (k + 1));
-            result.push(urlCarptetaRuta + route + (k + 1))
+            result.push(urlCarptetaRuta + route + (k + 1));
         } catch{
             k = 1000;
         }
