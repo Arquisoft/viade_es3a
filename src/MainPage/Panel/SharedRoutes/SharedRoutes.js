@@ -11,6 +11,10 @@ import Slider from "../LoadRoute/Slider";
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas=[];
+
+var images = [];
+var videos = [];
+
 const SharedRoutes = () => {
 
     const [folders, setFolders] = useState([]);
@@ -22,7 +26,7 @@ const SharedRoutes = () => {
     });
 
     var images = [];
-var videos = [];
+    var videos = [];
     console.log(selected);
 
     var user=useWebId();
@@ -34,7 +38,12 @@ var videos = [];
             loadRoutes(url, setFolders);
         }
     }, [user]);
-    
+    selected.images.map((image) => (
+        images.push(image)
+    ));
+    selected.videos.map((video) => (
+        videos.push(video)
+    ));
         return (
             
             <DocumentTitle title="Shared Routes">
@@ -90,21 +99,20 @@ setFolders(result);
 }
 
 async function loadRoute(urlCarptetaRuta, setSelected) {
-    
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-   
 
-   /* let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+
+    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
     let images = await loadFile(urlCarptetaRuta, "photo/img");
     let videos = await loadFile(urlCarptetaRuta, "video/vid");
-*/
+
     await showRoute(urlCarptetaRuta);
 
     setSelected({
         name: folder.name,
-        description: "",
-        images: [],
-        videos: []
+        description: folderDesc,
+        images: images,
+        videos: videos
     });
 
 }

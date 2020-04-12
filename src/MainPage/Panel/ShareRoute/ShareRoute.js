@@ -208,7 +208,8 @@ async function enseñaAmigos(source, target, name) {
             await fileClien.createFile(source + "/.acl", nuevo2, "text/turtle");
 
         }
-        await fileClien.postFile(urlTarget + "/" + name, source, "text/plain");
+        console.log(urlTarget + "/" + name + " ("+(await auth.currentSession()).webId+")")
+        await fileClien.postFile(urlTarget + "/" + name + "->"+((await auth.currentSession()).webId).split("https://")[1].split(".")[0], source, "text/plain");
 
         alert("Your route has been shared!");
     }
