@@ -13,20 +13,20 @@
     padding: 0em 0.9em;
 }
 
-.option, .navBarLogout .logout {
+.optionL, .navBarLogout .logout {
     color: white !important;
     text-decoration: none;
     font-size: 1.1em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.option:hover, .navBarLogout .logout:hover {
+.optionL:hover, .navBarLogout .logout:hover {
     text-decoration: none;
     color: rgb(117, 227, 247) !important;
     font-size: 1.15em;
 }
 
-.option:active, .navBarLogout .logout:active {
+.optionL:active, .navBarLogout .logout:active {
     color: rgb(60, 130, 143) !important;
     font-size: 1.2em;
 }
