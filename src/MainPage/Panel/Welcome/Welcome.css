@@ -13,7 +13,9 @@
     color: rgb(77, 218, 243);
     font-family: 'Open Sans', sans-serif;
 }
-
+.alert {
+    color: red;
+}
 .opcion {
     font-weight: bolder;
 }
