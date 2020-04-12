@@ -105,7 +105,7 @@ const SharedRoutes = () => {
     ));
         return (
             
-            <DocumentTitle title="Shared Routes">
+            <DocumentTitle title="Friend's routes">
         <div class="container">
             <h2 data-testid ="label" id="rutas" class="h2" data-testid="label">Routes from your friends:</h2>
             

@@ -65,7 +65,7 @@ const Profile = () => {
                         <div className="name">
                             <Value src="user.name" data-testid="nameProfile" />
                         </div>
-                        <div className="user" data-testid="userProfile">Viade"s user</div>
+                        <div className="user" data-testid="userProfile">Viade's user</div>
                         <div className="divider" data-testid="dividerProfile"></div>
                         <LinkSolid href={`[${webId}]`} className="buttonSolid" data-testid="buttonSolidProfile">Go to SOLID profile</LinkSolid>
                     </div>
