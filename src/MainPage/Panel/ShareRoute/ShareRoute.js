@@ -18,6 +18,98 @@ var urlRutas = [];
 var images = [];
 var videos = [];
 
+const LoadRoute = () => {
+
+    const [folders, setFolders] = useState([]);
+    const [selected, setSelected] = useState({
+        name: "",
+        description: "",
+        images: [],
+        videos: [],
+        url: ""
+    });
+
+    var user = useWebId();
+    const webId = useWebId();
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+    useEffect(() => {
+        if (user != undefined) {
+            const url = user.split("profile/card#me")[0] + "/private/routes3a";
+            //listRoutes(url);
+            loadRoutes(url, setFolders);
+        }
+    }, [user]);
+
+    images=[];
+    videos=[];
+    selected.images.map((image) => (
+        images.push(image)
+    ));
+    selected.videos.map((video) => (
+        videos.push(video)
+    ));
+
+    return (
+        <DocumentTitle title="Share routes">
+        <div class="container">
+            <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
+
+            <ul>
+                {
+                    folders.map((folder, i) => {
+                        var urlArchivo = "" + folder.url;
+                        var arrayUrl = urlArchivo.split("/");
+                        urlRutas.push(urlArchivo);
+                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
+                        return (
+                            <li key={"folder_" + i}>
+                                <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
+                                    {nombre}
+                                </a>
+                            </li>);
+                    })
+                }
+            </ul>
+            <div data-testid="card" class="card bg-info text-white">
+                <div class="card-body">
+                <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
+                    <p class="card-Description" id="routeDescription">{selected.description}</p>
+                    <div className="bodyMedia">
+                        <Slider images={images} videos={videos} />
+                    </div>
+                    <br></br>
+                    <p>
+                        <h3 className="toShare">Do you want to share it? </h3>
+                        <List src={`[${user}].friends`} className="list" padding-inline-start="0">{(friend) =>
+                            <li key={friend} className="listElement">
+                                <p>
+                                    <Carda nombre={`[${friend}]`} url={selected.url} name={selected.name}></Carda>
+                                </p>
+                            </li>}
+                        </List>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        </DocumentTitle>
+
+    );
+};
+
 async function loadRoutes(url, setFolders) {
 
     let folder = await fileClien.readFolder(url);
@@ -77,7 +169,7 @@ async function enseñaAmigos(source, target, name) {
 
     let content = "";
 
-    let userToAcl = target2.split("]")[0];
+    let userToAcl = target2.split("]")[0]
 
     if (!(acl + "").includes(userToAcl.substring(0, userToAcl.length - 2))) {
         if (!(acl + "").includes("c0")) {
@@ -96,7 +188,7 @@ async function enseñaAmigos(source, target, name) {
                 "n0:accessTo M:; \n" +
                 "n0:agent c0:me;\n" +
                 "n0:default M:; \n" +
-                "n0:mode n0:Read.";
+                "n0:mode n0:Read."
             await fileClien.createFile(source + "/.acl", content, "text/turtle");
         }
         else {
@@ -116,9 +208,9 @@ async function enseñaAmigos(source, target, name) {
         await fileClien.postFile(urlTarget + "/" + name + "->"+((await auth.currentSession()).webId).split("https://")[1].split(".")[0], source, "text/plain");
 
         alert("Your route has been shared!");
-    }else{
-        alert("Your route was already shared with this person!");
     }
+    else
+        alert("Your route was already shared with this person!");
 }
 const Carda = (props) => {
     return (
@@ -130,106 +222,6 @@ const Carda = (props) => {
                 <button className="btn btn-light" onClick={() => enseñaAmigos(props.url, props.nombre, props.name)}>Share</button>
             </div>
         </div>
-    );
-};
-
-const LoadRoute = () => {
-
-    const [folders, setFolders] = useState([]);
-    const [selected, setSelected] = useState({
-        name: "",
-        description: "",
-        images: [],
-        videos: [],
-        url: ""
-    });
-
-    var user = useWebId();
-    const webId = useWebId();
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-        });
-    }
-    useEffect(() => {
-        if (user != undefined) {
-            const url = user.split("profile/card#me")[0] + "/private/routes3a";
-            //listRoutes(url);
-            loadRoutes(url, setFolders);
-        }
-    }, [user]);
-
-    return (
-        <div class="container">
-            <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
-
-            <ul>
-                {
-                    folders.map((folder, i) => {
-                        var urlArchivo = "" + folder.url;
-                        var arrayUrl = urlArchivo.split("/");
-                        urlRutas.push(urlArchivo);
-                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
-                        return (
-                            <li key={"folder_" + i}>
-                                <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
-                                    {nombre}
-                                </a>
-                            </li>);
-                    })
-                }
-            </ul>
-            <div data-testid="card" class="card bg-info text-white">
-                <div class="card-body">
-                    <h4 class="card-title" id="routeName">{selected.name}</h4>
-                    <p class="card-Description" id="routeDescription">{selected.description}</p>
-                    <div className="card-Image" id="routeImage">
-                        {
-                            selected.images.map((image, i) => (
-                                <div key={"image_" + i}><img src={image} class={"imag"} /></div>
-                            ))
-                        }
-                    </div>
-                    <div id="ImgDiv"><div id="images"></div></div><br></br>
-                    <div className="card-Video" id="routeVideo">
-                        {
-                            selected.videos.map((video, i) => (
-                                <div key={"video_" + i}><video src={video} class={"vid"} controls /></div>
-                            ))
-                        }
-                    </div>
-                    <div id="VidDiv"><div id="videos"></div></div><br></br>
-                    <center>
-                        <h2 className="h2">Share with a friend:  </h2>
-                        <List src={`[${user}].friends`} className="list" padding-inline-start="0">{(friend) =>
-                            <li key={friend} className="listElement">
-                                <p>
-                                    <Carda nombre={`[${friend}]`} url={selected.url} name={selected.name}></Carda>
-                                </p>
-                            </li>}
-                        </List>
-
-
-
-
-                    </center>
-
-
-
-
-                </div>
-            </div>
-        </div>
-
     );
 };
 
