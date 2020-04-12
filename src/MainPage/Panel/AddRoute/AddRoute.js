@@ -11,7 +11,7 @@ import * as solidAuth from "solid-auth-client";
 import fileClient from "solid-file-client";
 import { Redirect } from "react-router-dom";
 import DocumentTitle from "react-document-title";
-const auth = require("solid-auth-client")
+const auth = require("solid-auth-client");
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
@@ -174,7 +174,7 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
         alert("Route title already used, use another title");
 }
 
-}
+};
 
 
 export default AddRoute;

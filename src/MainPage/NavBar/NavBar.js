@@ -21,7 +21,7 @@ const NavBar = () => {
         <div className="navBarLogo">
          
           <Link to="/viade_es3a" data-testid="logo">
-            <img src={require('../../img/logo_viade_es3a.jpg')} alt="React logo" width="160" />
+            <img src={require("../../img/logo_viade_es3a.jpg")} alt="React logo" width="160" />
           </Link>
           
         </div>

@@ -34,7 +34,7 @@ const Friends = () => {
             </List>
         </div>
         </DocumentTitle>
-    )
-}
+    );
+};
 
 export default Friends;

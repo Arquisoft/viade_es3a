@@ -25,7 +25,7 @@ const geojsonMarkerOptions = {
     weight: 0,
     opacity: 1,
     fillOpacity: 0.4
-}
+};
 
 function pointToLayer(feature, latlng) {
     return L.circleMarker(latlng, geojsonMarkerOptions);
@@ -56,7 +56,7 @@ const ShowMap = (props) => {
 
 export function updateMap (route,name) {
     let center = [40.205, -3.60];
-    let aa = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    let aa = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
     let com = <div style={styles.wrapper} id={name}>
         <Map style={styles.map} center={center} zoom="8">
             <TileLayer url={aa} />
@@ -66,7 +66,7 @@ export function updateMap (route,name) {
     ReactDOM.render(com,document.getElementById("jeje"))
 
 
-    let parseR = JSON.parse(route)
+    let parseR = JSON.parse(route);
     com = <div style={styles.wrapper} id={name}>
         <Map style={styles.map} center={center} zoom="8">
             <TileLayer url={aa} />
@@ -76,7 +76,7 @@ export function updateMap (route,name) {
             />
         </Map>
     </div>;
-    ReactDOM.render(com,document.getElementById("jeje"))
+    ReactDOM.render(com,document.getElementById("jeje"));
 }
 
 ShowMap.defaultProps = {

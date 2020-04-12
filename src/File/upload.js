@@ -1,9 +1,9 @@
 
-const fileClient = new SolidFileClient(solid.auth, { enableLogging: true })
+const fileClient = new SolidFileClient(solid.auth, { enableLogging: true });
 
 //logea con solid con el solid-auth-cli
-document.getElementById("login").addEventListener("click", (e) => solid.auth.popupLogin({ popupUri: "https://solid.community/common/popup.html" }))
-document.getElementById("logout").addEventListener("click", (e) => solid.auth.logout())
+document.getElementById("login").addEventListener("click", (e) => solid.auth.popupLogin({ popupUri: "https://solid.community/common/popup.html" }));
+document.getElementById("logout").addEventListener("click", (e) => solid.auth.logout());
 solid.auth.trackSession((session) => {
     if (!session) {
         $(".logged-in").hide();
@@ -13,7 +13,7 @@ solid.auth.trackSession((session) => {
         $(".logged-out").hide();
         $(".webid").text(session.webId);
     }
-})
+});
 
 const setUploadStatus = (isUploading) => {
     if (isUploading) {
@@ -23,8 +23,8 @@ const setUploadStatus = (isUploading) => {
         $(".not-uploading").show();
         $(".uploading").hide();
     }
-}
-setUploadStatus(false)
+};
+setUploadStatus(false);
 
 const setLogStatus = (showLogs) => {
     if (showLogs) {
@@ -32,11 +32,11 @@ const setLogStatus = (showLogs) => {
     } else {
         $(".logs").hide();
     }
-}
+};
 const resetLogs = () => {
     setLogStatus(false);
     $(".logs").empty();
-}
+};
 const addSuccessLog = (msg) => $(".logs").append(`<li class="list-group-item list-group-item-success">${msg}</li>`);
 const addErrorLog = (msg) => $(".logs").append(`<li class="list-group-item list-group-item-danger">${msg}</li>`);
 resetLogs();

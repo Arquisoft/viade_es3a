@@ -93,7 +93,7 @@ const Profile = () => {
             </div>
 
         </DocumentTitle>
-    )
-}
+    );
+};
 
 export default Profile;

@@ -1,7 +1,7 @@
 
 
-const auth = require('solid-auth-cli');
-const FC   = require('solid-file-client');
+const auth = require("solid-auth-cli");
+const FC   = require("solid-file-client");
 const fc   = new FC( auth );
 
 

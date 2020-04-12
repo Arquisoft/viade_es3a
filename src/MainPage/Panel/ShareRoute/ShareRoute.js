@@ -7,10 +7,10 @@ import fileClient from "solid-file-client";
 
 import * as algo from "../Map/Map";
 
-const SolidAclUtils = require("solid-acl-utils")
-const auth = require("solid-auth-client")
-const { AclApi, AclDoc, AclParser, AclRule, Permissions, Agents } = SolidAclUtils
-const { READ, WRITE, APPEND, CONTROL } = Permissions
+const SolidAclUtils = require("solid-acl-utils");
+const auth = require("solid-auth-client");
+const { AclApi, AclDoc, AclParser, AclRule, Permissions, Agents } = SolidAclUtils;
+const { READ, WRITE, APPEND, CONTROL } = Permissions;
 
 const fetch = auth.fetch.bind(auth);
 
@@ -66,13 +66,13 @@ const LoadRoute = () => {
                         var urlArchivo= ""+folder.url;
                         var arrayUrl=urlArchivo.split("/");
                         urlRutas.push(urlArchivo);
-                        var nombre=arrayUrl[arrayUrl.length-2].split("%20").join(" ")
+                        var nombre=arrayUrl[arrayUrl.length-2].split("%20").join(" ");
                         return (
                         <li key={"folder_"+i}>
                             <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
                                 {nombre}
                             </a>
-                        </li>)
+                        </li>);
                     })
                 }
                 </ul>
@@ -119,7 +119,7 @@ const LoadRoute = () => {
             </div>
            
         );
-}
+};
 
 async function loadRoutes(url, setFolders) {
 
@@ -133,7 +133,7 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
     let images = await loadFile(urlCarptetaRuta, "photo/img");
     let videos = await loadFile(urlCarptetaRuta, "video/vid");
-    console.log(folder.url)
+    console.log(folder.url);
     await showRoute(urlCarptetaRuta);
 
     setSelected({
@@ -152,7 +152,7 @@ async function loadFile(urlCarptetaRuta, route){
     for(k=0; k<1000; k++){
         try{
             await fileClien.readFile(urlCarptetaRuta + route + (k+1));
-            result.push(urlCarptetaRuta + route + (k+1))
+            result.push(urlCarptetaRuta + route + (k+1));
         }catch{
             k=1000;
         }
@@ -175,16 +175,16 @@ async function enseñaAmigos(source,target,name){
    
     const target2=target.split("[")[1];
     const urlTarget=target2.split("profile/card#me")[0]+"/inbox/routes3a";
-    console.log(name)
+    console.log(name);
 
-    const aclApi = new AclApi(fetch, { autoSave: true })
-    const acl = await aclApi.loadFromFileUrl(source)
+    const aclApi = new AclApi(fetch, { autoSave: true });
+    const acl = await aclApi.loadFromFileUrl(source);
 
     await acl.addRule(READ, target2.split("]")[0]);
 
     await fileClien.postFile(urlTarget + "/"+ name, source , "text/plain");
     
-    alert("Your route has been shared!")
+    alert("Your route has been shared!");
 }
 const Carda = (props) => {
     return (
