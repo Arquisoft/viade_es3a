@@ -1,11 +1,11 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import { render } from "@testing-library/react";
+import ReactDOM from "react-dom";
 import { cleanup } from "@testing-library/react";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 
-import NavBar from '../MainPage/NavBar/NavBar';
-import App from '../App';
+import NavBar from "../MainPage/NavBar/NavBar";
+import App from "../App";
 
 afterEach(cleanup);
 
@@ -14,7 +14,7 @@ test("Render component not crashing.", () => {
     ReactDOM.render(<Router><NavBar></NavBar></Router>, div);
  });
 
- test('renders learn react link', () => {
+ test("renders learn react link", () => {
     const { getByText } = render(<App />);
     const linkElement = getByText("ROUTE MANAGER");
     expect(linkElement).toBeInTheDocument();

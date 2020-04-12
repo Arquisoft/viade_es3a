@@ -1,16 +1,16 @@
-import React from 'react';
-import './NavBar.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import React from "react";
+import "./NavBar.css";
+import "bootstrap/dist/css/bootstrap.css";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import {
   LogoutButton
-} from '@inrupt/solid-react-components';
-import BackupOutlinedIcon from '@material-ui/icons/BackupOutlined';
-import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
-import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
-import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
-import ShareIcon from '@material-ui/icons/Share';
+} from "@inrupt/solid-react-components";
+import BackupOutlinedIcon from "@material-ui/icons/BackupOutlined";
+import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
+import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
+import ShareIcon from "@material-ui/icons/Share";
 
 const NavBar = () => {
   // const webId = useWebId();
@@ -21,7 +21,7 @@ const NavBar = () => {
         <div className="navBarLogo">
          
           <Link to="/viade_es3a" data-testid="logo">
-            <img src={require('../../img/logo_viade_es3a.jpg')} alt="React logo" width="160" />
+            <img src={require("../../img/logo_viade_es3a.jpg")} alt="React logo" width="160" />
           </Link>
           
         </div>

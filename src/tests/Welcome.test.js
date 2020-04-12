@@ -1,9 +1,9 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import { render } from "@testing-library/react";
+import ReactDOM from "react-dom";
 import { cleanup } from "@testing-library/react";
 
-import Welcome from '../MainPage/Panel/Welcome/Welcome'
+import Welcome from "../MainPage/Panel/Welcome/Welcome";
 
 afterEach(cleanup);
 

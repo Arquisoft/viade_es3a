@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { List, useWebId,Value, Name, Link  } from '@solid/react';
-import 'bootstrap/dist/css/bootstrap.css';
-import './ShareRoute.css';
-import * as solidAuth from 'solid-auth-client';
-import fileClient from 'solid-file-client';
+import React, { useState, useEffect } from "react";
+import { List, useWebId,Value, Name, Link  } from "@solid/react";
+import "bootstrap/dist/css/bootstrap.css";
+import "./ShareRoute.css";
+import * as solidAuth from "solid-auth-client";
+import fileClient from "solid-file-client";
 
-import * as algo from '../Map/Map';
+import * as algo from "../Map/Map";
 
-const SolidAclUtils = require('solid-acl-utils')
-const auth = require('solid-auth-client')
-const { AclApi, AclDoc, AclParser, AclRule, Permissions, Agents } = SolidAclUtils
-const { READ, WRITE, APPEND, CONTROL } = Permissions
+const SolidAclUtils = require("solid-acl-utils");
+const auth = require("solid-auth-client");
+const { AclApi, AclDoc, AclParser, AclRule, Permissions, Agents } = SolidAclUtils;
+const { READ, WRITE, APPEND, CONTROL } = Permissions;
 
-const fetch = auth.fetch.bind(auth)
+const fetch = auth.fetch.bind(auth);
 
-const aclApi = new AclApi(fetch, { autoSave: true })
+const aclApi = new AclApi(fetch, { autoSave: true });
 
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
@@ -23,11 +23,11 @@ const LoadRoute = () => {
 
     const [folders, setFolders] = useState([]);
     const [selected, setSelected] = useState({
-        name: '',
-        description: '',
+        name: "",
+        description: "",
         images: [],
         videos: [],
-        url: ''
+        url: ""
     });
 
     console.log(selected);
@@ -58,32 +58,32 @@ const LoadRoute = () => {
     
         return (
             <div  class="container">
-                <h2 id="rutas" class="h2">Routes list:</h2>
+                <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
 
                 <ul>
                 {
                     folders.map((folder,i) => {
                         var urlArchivo= ""+folder.url;
-                        var arrayUrl=urlArchivo.split('/');
+                        var arrayUrl=urlArchivo.split("/");
                         urlRutas.push(urlArchivo);
-                        var nombre=arrayUrl[arrayUrl.length-2].split("%20").join(" ")
+                        var nombre=arrayUrl[arrayUrl.length-2].split("%20").join(" ");
                         return (
-                        <li key={'folder_'+i}>
+                        <li key={"folder_"+i}>
                             <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
                                 {nombre}
                             </a>
-                        </li>)
+                        </li>);
                     })
                 }
                 </ul>
-                <div class="card bg-info text-white">
+                <div data-testid="card" class="card bg-info text-white">
                     <div class="card-body">
                         <h4 class="card-title" id="routeName">{selected.name}</h4>
                         <p class="card-Description" id ="routeDescription">{selected.description}</p>
                         <div className="card-Image" id="routeImage">
                             {
                                 selected.images.map((image,i) => (
-                                    <div key={'image_'+i}><img src={image} class={'imag'}/></div>
+                                    <div key={"image_"+i}><img src={image} class={"imag"}/></div>
                                 ))
                             }
                         </div>
@@ -91,14 +91,14 @@ const LoadRoute = () => {
                         <div className="card-Video" id="routeVideo">
                         {
                                 selected.videos.map((video,i) => (
-                                    <div key={'video_'+i}><video src={video} class={'vid'} controls/></div>
+                                    <div key={"video_"+i}><video src={video} class={"vid"} controls/></div>
                                 ))
                             }
                         </div>
                         <div id="VidDiv"><div id="videos"></div></div><br></br>
                         <center>
                             <h2 className="h2">Share with a friend:  </h2>
-                        <List  src={`[${user}].friends`} className="list" padding-inline-start="0">{friend =>
+                        <List  src={`[${user}].friends`} className="list" padding-inline-start="0">{(friend) =>
                             <li key={friend} className="listElement">
                             <p>
                                 <Carda nombre={`[${friend}]`} url={selected.url} name={selected.name}></Carda>
@@ -119,7 +119,7 @@ const LoadRoute = () => {
             </div>
            
         );
-}
+};
 
 async function loadRoutes(url, setFolders) {
 
@@ -133,7 +133,7 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
     let images = await loadFile(urlCarptetaRuta, "photo/img");
     let videos = await loadFile(urlCarptetaRuta, "video/vid");
-    console.log(folder.url)
+    console.log(folder.url);
     await showRoute(urlCarptetaRuta);
 
     setSelected({
@@ -152,7 +152,7 @@ async function loadFile(urlCarptetaRuta, route){
     for(k=0; k<1000; k++){
         try{
             await fileClien.readFile(urlCarptetaRuta + route + (k+1));
-            result.push(urlCarptetaRuta + route + (k+1))
+            result.push(urlCarptetaRuta + route + (k+1));
         }catch{
             k=1000;
         }
@@ -183,7 +183,7 @@ async function enseñaAmigos(source,target,name){
 
     //await fileClien.postFile(urlTarget + "/"+ name, source , "text/plain");
     
-    alert("Your route has been shared!")
+    alert("Your route has been shared!");
 }
 const Carda = (props) => {
     return (
@@ -195,8 +195,8 @@ const Carda = (props) => {
                     <button  className="btn btn-light" onClick={() => enseñaAmigos(props.url,props.nombre,props.name)}>Share</button>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default LoadRoute;
 

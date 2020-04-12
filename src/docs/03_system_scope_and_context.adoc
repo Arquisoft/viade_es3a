@@ -25,4 +25,4 @@ image::BusinessContext.png[Business Context Diagram]
 The application is a a decentralised web based app, the users will store the data in the solid pods for wich they will need internet acces.
 The idea is for users to be able to share routes through urls without the need of a central database in wich to store the data
 
-image::TechnicalContext.PNG[Technical Context Diagram]
+
