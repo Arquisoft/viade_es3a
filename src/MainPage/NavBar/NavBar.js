@@ -9,7 +9,7 @@ import { LogoutButton } from "@inrupt/solid-react-components";
 import BackupOutlinedIcon from "@material-ui/icons/BackupOutlined";
 import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
-import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined;"
+import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import ShareIcon from "@material-ui/icons/Share";
 
