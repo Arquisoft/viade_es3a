@@ -1,6 +1,6 @@
 [[section-runtime-view]]
 == Runtime View
-=== <LOG IN>
+.LOG IN
 * 1. When we open the application we will see a place to introduce the personal ID and the password. Introduce it and press the botton 'OK'.
 * 2. Later, our application will ask the server to approve the login request. 
 * 3. When the server accepts, the users will have access to their routes and friends.
@@ -8,22 +8,22 @@
 image::loginwebid.png[Quality Tree]
 image::loginprovider.png[Quality Tree]
 
-=== <ADD ROUTE>
+.ADD ROUTE
 * 1. We click on Add route, which is in the NavBar.
 * 2. We add all the stuff we want to upload to the POD (.geoJson file is obligatory).
 
 image::add.png[Quality Tree]
 
-=== <MY ROUTE>
+.MY ROUTE
 * 1. We click on 'My routes', which is in the NavBar.
 * 2. We will see a list that contains every route we have added to our POD. We choose one.
 * 3. When the petition is processed, we will see the map with our route and a menu where we can see the photos, videos and descrption.
 
-=== <SHARE ROUTES>
+.SHARE ROUTES
 * 1. We click on 'Share routes', which is in the NavBar.
 * 2. We can see our list of routes and friends. If we click on a route, when the petition is processed, we can share it with a friend by clicking on the button 'Share' of the friend we want to share the route with.
 
-=== <PROFILE>
+.PROFILE
 * 1. We click on 'Profile', which is in the NavBar.
 * 2. We can see our profile, the number of routes and the number of Friends.
 * 3.1 We can click on 'Go to SOLID profile' to see the full profile.
@@ -32,11 +32,11 @@ image::add.png[Quality Tree]
 
 image::profile.png[Quality Tree]
 
-=== <FRIENDS>
+.FRIENDS
 * 1. We click on 'Friends', which is in the NavBar.
 * 2. We can see our Friends
 
 image::friends.png[Quality Tree]
 
-=== <LOG OUT>
+.LOG OUT
 * 1. If we click on 'Log out', we will log out of the application.
