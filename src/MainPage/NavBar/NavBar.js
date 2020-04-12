@@ -26,27 +26,27 @@ const NavBar = () => {
         <Nav className="mr-auto">
           <NavItem href="/viade_es3a/addRoute" className="opcionYLogo">
             <BackupOutlinedIcon className="icon" />
-            <Nav.Link as={Link} to="/viade_es3a/addRoute" className="option" data-testid="add">Add Route</Nav.Link>
+            <Nav.Link as={Link} to="/viade_es3a/addRoute" className="optionL" data-testid="add">Add Route</Nav.Link>
           </NavItem>
           <NavItem href="/viade_es3a/loadRoute" bg="light" className="opcionYLogo">
             <RoomOutlinedIcon className="icon" />
-            <Nav.Link as={Link} to="/viade_es3a/loadRoute" className="option" data-testid="load">My routes</Nav.Link>
+            <Nav.Link as={Link} to="/viade_es3a/loadRoute" className="optionL" data-testid="load">My routes</Nav.Link>
           </NavItem>
           <NavItem href="/viade_es3a/shareRoute" className="opcionYLogo">
             <ShareIcon className="icon" />
-            <Nav.Link as={Link} to="/viade_es3a/shareRoute" className="option" data-testid="share">Share routes</Nav.Link>
+            <Nav.Link as={Link} to="/viade_es3a/shareRoute" className="optionL" data-testid="share">Share routes</Nav.Link>
           </NavItem>
           <NavItem href="/viade_es3a/SharedRoutes" className="opcionYLogo">
             <PeopleAltOutlinedIcon className="icon" />
-            <Nav.Link as={Link} to="/viade_es3a/SharedRoutes" className="option" data-testid="friendsRoutes">Friend's Routes</Nav.Link>
+            <Nav.Link as={Link} to="/viade_es3a/SharedRoutes" className="optionL" data-testid="friendsRoutes">Friend's Routes</Nav.Link>
           </NavItem>
           <NavItem href="/viade_es3a/profile" className="opcionYLogo">
             <AccountCircleOutlinedIcon className="icon" />
-            <Nav.Link as={Link} to="/viade_es3a/profile" className="option" data-testid="profile">Profile</Nav.Link>
+            <Nav.Link as={Link} to="/viade_es3a/profile" className="optionL" data-testid="profile">Profile</Nav.Link>
           </NavItem>
           <NavItem href="/viade_es3a/friends" className="opcionYLogo">
             <PeopleAltOutlinedIcon className="icon" />
-            <Nav.Link as={Link} to="/viade_es3a/friends" className="option" data-testid="friends">Friends</Nav.Link>
+            <Nav.Link as={Link} to="/viade_es3a/friends" className="optionL" data-testid="friends">Friends</Nav.Link>
           </NavItem>
         </Nav>
         <Nav pullRight>
