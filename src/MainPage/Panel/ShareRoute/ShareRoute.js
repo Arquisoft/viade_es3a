@@ -175,14 +175,13 @@ async function enseñaAmigos(source,target,name){
    
     const target2=target.split("[")[1];
     const urlTarget=target2.split("profile/card#me")[0]+"/inbox/routes3a";
-    console.log(name)
 
-    const aclApi = new AclApi(fetch, { autoSave: true })
-    const acl = await aclApi.loadFromFileUrl(source)
+    //const aclApi = new AclApi(fetch, { autoSave: true })
+    //const acl = await aclApi.loadFromFileUrl(source)
 
-    await acl.addRule(READ, target2.split("]")[0])
+    //await acl.addRule(READ, target2.split("]")[0])
 
-    await fileClien.postFile(urlTarget + "/"+ name, source , "text/plain");
+    //await fileClien.postFile(urlTarget + "/"+ name, source , "text/plain");
     
     alert("Your route has been shared!")
 }
