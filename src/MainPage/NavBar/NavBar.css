@@ -1,5 +1,5 @@
 .mr-auto {
-    margin: auto !important;
+    margin: auto;
 }
 
 .icon {
@@ -22,12 +22,12 @@
 
 .optionL:hover, .navBarLogout .logout:hover {
     text-decoration: none;
-    color: rgb(117, 227, 247) !important;
+    color: rgb(117, 227, 247);
     font-size: 1.15em;
 }
 
 .optionL:active, .navBarLogout .logout:active {
-    color: rgb(60, 130, 143) !important;
+    color: rgb(60, 130, 143);
     font-size: 1.2em;
 }
 
