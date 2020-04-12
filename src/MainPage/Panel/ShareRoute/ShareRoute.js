@@ -176,10 +176,42 @@ async function enseñaAmigos(source,target,name){
     const target2=target.split("[")[1];
     const urlTarget=target2.split("profile/card#me")[0]+"/inbox/routes3a";
 
-    //const aclApi = new AclApi(fetch, { autoSave: true })
-    //const acl = await aclApi.loadFromFileUrl(source)
+    let acl = await fileClien.readFile(source+"/.acl");
 
-    //await acl.addRule(READ, target2.split("]")[0])
+    console.log(acl)
+    let content = "";
+
+    let userToAcl=target2.split("]")[0]
+
+
+    if(!(acl+"").includes("c0")) {
+        console.log("achusma")
+        content = "@prefix : <#>.\n"+
+        "@prefix n0: <http://www.w3.org/ns/auth/acl#>.\n"+
+        "@prefix M: <./>.\n"+
+        "@prefix c: </profile/card#>.\n"+
+        "@prefix c0: <"+userToAcl.substring(0, userToAcl.length-2)+">.\n"+
+        ":ControlReadWrite\n"+
+            "a n0:Authorization;\n"+
+            "n0:accessTo M:;\n"+
+            "n0:agent c:me;\n"+
+            "n0:default M:;\n"+
+            "n0:mode n0:Control, n0:Read, n0:Write.\n"+
+        ":Read a n0:Authorization; \n"+
+        "n0:accessTo M:; \n"+
+        "n0:agent c0:me;\n"+
+        "n0:default M:; \n"+
+        "n0:mode n0:Read."
+    }
+
+
+    
+
+    await fileClien.createFile(source+"/.acl", content,"text/turtle");
+                //const aclApi = new AclApi(fetch, { autoSave: true })
+                //const acl = await aclApi.loadFromFileUrl(source)
+
+                //await acl.addRule(READ, target2.split("]")[0])
 
     //await fileClien.postFile(urlTarget + "/"+ name, source , "text/plain");
     
