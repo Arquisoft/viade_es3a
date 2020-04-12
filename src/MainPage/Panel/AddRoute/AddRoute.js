@@ -18,7 +18,7 @@ const fileClien = new fileClient(solidAuth, { enableLogging: true });
 const Upload = ({setFile, file}) => {
     const filename = file == null ? "Choose File" : file.name;
 
-    const changeName = e => {
+    const changeName = (e) => {
         setFile(e.target.files[0]);
     }
     //para acceder a componentes del dum desde react

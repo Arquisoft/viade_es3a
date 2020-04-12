@@ -50,7 +50,7 @@ const Profile = () => {
                                 {...{
                                     webId,
                                     direction: "down",
-                                    onError: error => {
+                                    onError: (error) => {
                                         // eslint-disable-next-line no-console
                                         console.log("ERROR", error.statusText);
                                     },

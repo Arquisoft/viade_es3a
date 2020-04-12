@@ -2,9 +2,9 @@
 const fileClient = new SolidFileClient(solid.auth, { enableLogging: true })
 
 //logea con solid con el solid-auth-cli
-document.getElementById("login").addEventListener("click", e => solid.auth.popupLogin({ popupUri: "https://solid.community/common/popup.html" }))
-document.getElementById("logout").addEventListener("click", e => solid.auth.logout())
-solid.auth.trackSession(session => {
+document.getElementById("login").addEventListener("click", (e) => solid.auth.popupLogin({ popupUri: "https://solid.community/common/popup.html" }))
+document.getElementById("logout").addEventListener("click", (e) => solid.auth.logout())
+solid.auth.trackSession((session) => {
     if (!session) {
         $(".logged-in").hide();
         $(".logged-out").show();
@@ -15,7 +15,7 @@ solid.auth.trackSession(session => {
     }
 })
 
-const setUploadStatus = isUploading => {
+const setUploadStatus = (isUploading) => {
     if (isUploading) {
         $(".not-uploading").hide()
         $(".uploading").show()
@@ -26,7 +26,7 @@ const setUploadStatus = isUploading => {
 }
 setUploadStatus(false)
 
-const setLogStatus = showLogs => {
+const setLogStatus = (showLogs) => {
     if (showLogs) {
         $(".logs").show()
     } else {
@@ -37,15 +37,15 @@ const resetLogs = () => {
     setLogStatus(false)
     $(".logs").empty()
 }
-const addSuccessLog = msg => $(".logs").append(`<li class="list-group-item list-group-item-success">${msg}</li>`)
-const addErrorLog = msg => $(".logs").append(`<li class="list-group-item list-group-item-danger">${msg}</li>`)
+const addSuccessLog = (msg) => $(".logs").append(`<li class="list-group-item list-group-item-success">${msg}</li>`)
+const addErrorLog = (msg) => $(".logs").append(`<li class="list-group-item list-group-item-danger">${msg}</li>`)
 resetLogs()
 
 const containerInput = document.getElementById("container")
 const filesInput = document.getElementById("files")
 
 //Subida de archivos
-document.getElementById("upload-form").addEventListener("submit", async e => {
+document.getElementById("upload-form").addEventListener("submit", async (e) => {
     e.preventDefault()
     //Ruta de subida (añade barra)
     const parentContainer = containerInput.value + ((containerInput.value.endsWith("/")) ? "" : "/")

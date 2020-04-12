@@ -6,8 +6,8 @@ import styled from "styled-components";
 import ReactDOM from "react-dom";
 
 const Wrapper = styled.div`
-    width: ${props => props.width};
-    height: ${props => props.height};
+    width: ${(props) => props.width};
+    height: ${(props) => props.height};
 `;
 
 function getStyle(feature, layer) {

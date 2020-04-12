@@ -98,7 +98,7 @@ const LoadRoute = () => {
                         <div id="VidDiv"><div id="videos"></div></div><br></br>
                         <center>
                             <h2 className="h2">Share with a friend:  </h2>
-                        <List  src={`[${user}].friends`} className="list" padding-inline-start="0">{friend =>
+                        <List  src={`[${user}].friends`} className="list" padding-inline-start="0">{(friend) =>
                             <li key={friend} className="listElement">
                             <p>
                                 <Carda nombre={`[${friend}]`} url={selected.url} name={selected.name}></Carda>
