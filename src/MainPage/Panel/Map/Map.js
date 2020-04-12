@@ -67,9 +67,15 @@ export function updateMap (route,name) {
 
 
     let parseR = JSON.parse(route);
+    let first = parseR.features[0].geometry.coordinates[0];
+    console.log(first); 
+    var firstP = [
+        first[1],
+        first[0]
+    ];
     com = <div style={styles.wrapper} id={name}>
-        <Map style={styles.map} center={center} zoom="8" >
-            <TileLayer url={aa} />
+        <Map style={styles.map} center={firstP} zoom="12" >
+            <TileLayer url={aa} /> 
             <GeoJSON
                 data={parseR}
                 pointToLayer={pointToLayer}
