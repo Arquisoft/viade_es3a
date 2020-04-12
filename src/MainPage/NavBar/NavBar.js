@@ -1,17 +1,17 @@
-import React from 'react';
-import './NavBar.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import "./NavBar.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
-import { Link } from 'react-router-dom';
-import { LogoutButton } from '@inrupt/solid-react-components';
+import { Link } from "react-router-dom";
+import { LogoutButton } from "@inrupt/solid-react-components";
 
 // Iconos
-import BackupOutlinedIcon from '@material-ui/icons/BackupOutlined';
-import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
-import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
-import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
-import ShareIcon from '@material-ui/icons/Share';
+import BackupOutlinedIcon from "@material-ui/icons/BackupOutlined";
+import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined;"
+import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
+import ShareIcon from "@material-ui/icons/Share";
 
 
 const NavBar = () => {

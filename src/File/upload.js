@@ -60,8 +60,6 @@ document.getElementById("upload-form").addEventListener("submit", async (e) => {
         const file = files[i];
         //le añade el nombre a la ruta
         const url = parentContainer + file.name;
-
-        console.log(`Uploading ${file.name} to ${url}`);
         try {
             // Uploading the file
             // Content can be a file from a html input
@@ -69,7 +67,6 @@ document.getElementById("upload-form").addEventListener("submit", async (e) => {
             //Usa fileClient para subirla, con el método putFile
             const res = await fileClient.putFile(url, file, file.type);
             const msg = `${res.status} Uploaded ${file.name} to ${res.url}`;
-            console.log(msg);
             addSuccessLog(msg);
         } catch (err) {
             console.error(err);

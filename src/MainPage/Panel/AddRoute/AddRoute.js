@@ -113,7 +113,7 @@ const AddRoute = () => {
 
 const createFolder = async (folder, route, name, description, photo, video,setFile, setName, setDescription, setImage, setVideo, setError) => {
     
-    if (name===""||route==null){
+    if (name===""||route===null){
         setError("Name or route is empty!");
     }
     else{
@@ -130,7 +130,7 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
     if (!existe) {
         var k=0;
         await fileClien.createFolder(destination);
-        var user=await auth.currentSession()
+        var user=await auth.currentSession();
         
         let content = "@prefix : <#>.\n"+
         "@prefix n0: <http://www.w3.org/ns/auth/acl#>.\n"+
@@ -143,16 +143,16 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
             "n0:agent c:me;\n"+
             "n0:default M:;\n"+
             "n0:mode n0:Control, n0:Read, n0:Write.\n"+
-        ":Read a n0:Authorization; n0:accessTo M:; n0:default M:; n0:mode n0:Read."
+        ":Read a n0:Authorization; n0:accessTo M:; n0:default M:; n0:mode n0:Read.";
 
         await fileClien.createFile(destination+"/.acl", content,"text/turtle");
 
         fileList.push(route);
         await fileClien.createFile(destination + "/"+ "description", description, "text/plain");
-        for(k=0; photo != null && k<photo.length; k++){
+        for(k=0; photo !== null && k<photo.length; k++){
             await fileClien.createFile(destination + "/"+ "photo" + "/img" + (k+1), photo[k], "img");
         }
-        for(k=0; video != null && k<video.length; k++){
+        for(k=0; video !== null && k<video.length; k++){
             await fileClien.createFile(destination + "/"+ "video"+ "/vid" + (k+1), video[k], "video");
         }
 

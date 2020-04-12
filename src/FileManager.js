@@ -19,7 +19,6 @@ export async function  fileUpload (files){
                 // Content can be a file from a html input
                 // or a string. For json objects, use JSON.stringify(object)
                 const res = await fc.putFile(url, file, file.type);
-                console.log("Bien"+res);
               
             } catch (err) {
                 console.error(err);

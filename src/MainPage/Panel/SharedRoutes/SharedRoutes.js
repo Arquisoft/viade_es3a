@@ -15,6 +15,66 @@ var urlRutas=[];
 var images = [];
 var videos = [];
 
+async function loadRoutes(url, setFolders) {
+
+    let folder = await fileClien.readFolder(url);
+    var result=[];
+
+    for(var i=0;i<folder.files.length;i+=1){
+        let f=await fileClien.readFile(folder.files[i].url);
+        
+        let otro= await fileClien.readFolder(f);
+        result.push(otro);
+        // setFolders(result)
+    }
+
+setFolders(result);
+}
+
+async function loadRoute(urlCarptetaRuta, setSelected) {
+
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+
+    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
+    let images = await loadFile(urlCarptetaRuta, "photo/img");
+    let videos = await loadFile(urlCarptetaRuta, "video/vid");
+
+    await showRoute(urlCarptetaRuta);
+
+    setSelected({
+        name: folder.name,
+        description: folderDesc,
+        images: images,
+        videos: videos
+    });
+
+}
+
+async function loadFile(urlCarptetaRuta, route){
+    var k;
+    var result = [];
+    for(k=0; k<1000; k++){
+        try{
+            await fileClien.readFile(urlCarptetaRuta + route + (k+1));
+            result.push(urlCarptetaRuta + route + (k+1));
+        }catch{
+            k=1000;
+        }
+    }
+    return result;
+}
+
+export async function showRoute(urlCarptetaRuta) {
+    
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+
+    document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
+    let ruta = await fileClien.readFile(urlCarptetaRuta+folder.name+".geojson");
+
+    algo.updateMap(ruta, folder.name);
+    
+}
+
 const SharedRoutes = () => {
 
     const [folders, setFolders] = useState([]);
@@ -80,65 +140,5 @@ const SharedRoutes = () => {
            
         );
 };
-
-async function loadRoutes(url, setFolders) {
-
-    let folder = await fileClien.readFolder(url);
-    var result=[];
-
-    for(var i=0;i<folder.files.length;i+=1){
-        let f=await fileClien.readFile(folder.files[i].url);
-        
-        let otro= await fileClien.readFolder(f);
-        result.push(otro);
-        // setFolders(result)
-    }
-
-setFolders(result);
-}
-
-async function loadRoute(urlCarptetaRuta, setSelected) {
-
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-
-    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
-    let images = await loadFile(urlCarptetaRuta, "photo/img");
-    let videos = await loadFile(urlCarptetaRuta, "video/vid");
-
-    await showRoute(urlCarptetaRuta);
-
-    setSelected({
-        name: folder.name,
-        description: folderDesc,
-        images: images,
-        videos: videos
-    });
-
-}
-
-async function loadFile(urlCarptetaRuta, route){
-    var k;
-    var result = [];
-    for(k=0; k<1000; k++){
-        try{
-            await fileClien.readFile(urlCarptetaRuta + route + (k+1));
-            result.push(urlCarptetaRuta + route + (k+1));
-        }catch{
-            k=1000;
-        }
-    }
-    return result;
-}
-
-export async function showRoute(urlCarptetaRuta) {
-    
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-
-    document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
-    let ruta = await fileClien.readFile(urlCarptetaRuta+folder.name+".geojson");
-
-    algo.updateMap(ruta, folder.name);
-    
-}
 
 export default SharedRoutes;
