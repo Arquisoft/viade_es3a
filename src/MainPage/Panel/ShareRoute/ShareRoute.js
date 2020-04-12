@@ -4,15 +4,20 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./ShareRoute.css";
 import * as solidAuth from "solid-auth-client";
 import fileClient from "solid-file-client";
+import DocumentTitle from "react-document-title";
 
 import * as algo from "../Map/Map";
 
-import DocumentTitle from "react-document-title";
+import Slider from "../LoadRoute/Slider";
 
 const auth = require("solid-auth-client");
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas = [];
+
+var images = [];
+var videos = [];
+
 const LoadRoute = () => {
 
     const [folders, setFolders] = useState([]);
@@ -48,6 +53,15 @@ const LoadRoute = () => {
         }
     }, [user]);
 
+    images=[];
+    videos=[];
+    selected.images.map((image) => (
+        images.push(image)
+    ));
+    selected.videos.map((video) => (
+        videos.push(video)
+    ));
+
     return (
         <DocumentTitle title="Share routes">
         <div class="container">
@@ -71,26 +85,14 @@ const LoadRoute = () => {
             </ul>
             <div data-testid="card" class="card bg-info text-white">
                 <div class="card-body">
-                    <h4 class="card-title" id="routeName">{selected.name}</h4>
+                <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
                     <p class="card-Description" id="routeDescription">{selected.description}</p>
-                    <div className="card-Image" id="routeImage">
-                        {
-                            selected.images.map((image, i) => (
-                                <div key={"image_" + i}><img src={image} class={"imag"} /></div>
-                            ))
-                        }
+                    <div className="bodyMedia">
+                        <Slider images={images} videos={videos} />
                     </div>
-                    <div id="ImgDiv"><div id="images"></div></div><br></br>
-                    <div className="card-Video" id="routeVideo">
-                        {
-                            selected.videos.map((video, i) => (
-                                <div key={"video_" + i}><video src={video} class={"vid"} controls /></div>
-                            ))
-                        }
-                    </div>
-                    <div id="VidDiv"><div id="videos"></div></div><br></br>
-                    <center>
-                        <h2 className="h2">Share with a friend:  </h2>
+                    <br></br>
+                    <p>
+                        <h3 className="toShare">Do you want to share it? </h3>
                         <List src={`[${user}].friends`} className="list" padding-inline-start="0">{(friend) =>
                             <li key={friend} className="listElement">
                                 <p>
@@ -98,14 +100,7 @@ const LoadRoute = () => {
                                 </p>
                             </li>}
                         </List>
-
-
-
-
-                    </center>
-
-
-
+                    </p>
 
                 </div>
             </div>
