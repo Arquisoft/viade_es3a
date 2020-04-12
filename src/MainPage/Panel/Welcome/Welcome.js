@@ -31,6 +31,7 @@ const Welcome = () => {
             </ul>
 
             <p data-testid="message">Enjoy our app ! :)</p>
+            <p className="alert">Be careful! Make sure the app has control permissions on your solid profile</p>
         </div >
     );
 };
