@@ -1,8 +1,8 @@
-import React from 'react'
-import { useWebId, List, Value, Name, Link } from '@solid/react';
-import './Friends.css'
-import 'bootstrap/dist/css/bootstrap.css';
-import DocumentTitle from 'react-document-title';
+import React from "react";
+import { useWebId, List, Value, Name, Link } from "@solid/react";
+import "./Friends.css";
+import "bootstrap/dist/css/bootstrap.css";
+import DocumentTitle from "react-document-title";
 
 const Card = (props) => {
     return (
@@ -16,8 +16,8 @@ const Card = (props) => {
                 </center>
             </div>
         </div>
-    )
-}
+    );
+};
 
 const Friends = () => {
     const webId = useWebId();
@@ -25,7 +25,7 @@ const Friends = () => {
         <DocumentTitle title="Friends">
         <div>
             <h2 className="h2" data-testId="label">Your friends, <Value src="user.name"/> </h2>
-            <List src={`[${webId}].friends`} className="list" padding-inline-start="0">{friend =>
+            <List src={`[${webId}].friends`} className="list" padding-inline-start="0">{(friend) =>
                 <li key={friend} className="listElement">
                     <p>
                         <Card nombre={`[${friend}]`}></Card>
@@ -34,7 +34,7 @@ const Friends = () => {
             </List>
         </div>
         </DocumentTitle>
-    )
-}
+    );
+};
 
 export default Friends;

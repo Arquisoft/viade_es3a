@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from "react-responsive-carousel";
 
-import "./Slider.css"
+import "./Slider.css";
 
 const properties = {
     infiniteLoop: true,
@@ -11,8 +11,7 @@ const properties = {
     transitionTime: 350,
     stopOnHover: true,
     useKeyboardArrows: true,
-    stopOnHover: true,
-}
+};
 
 const Slider = (props) => {
     return (

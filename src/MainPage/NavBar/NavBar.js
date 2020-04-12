@@ -52,7 +52,7 @@ const NavBar = () => {
         <Nav pullRight>
           <NavItem href="/viade_es3a/logout" className="opcionYLogo">
             <ExitToAppOutlinedIcon className="icon" />
-            <LogoutButton data-testid="logout" className="logout" data-testid="logout"/>
+            <LogoutButton data-testid="logout" className="logout" data-testid="logout" />
           </NavItem>
         </Nav>
       </Navbar.Collapse>

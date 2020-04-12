@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useWebId } from '@solid/react';
-import 'bootstrap/dist/css/bootstrap.css';
-import { Card, Button } from 'react-bootstrap';
-import './LoadRoute.css';
-import * as solidAuth from 'solid-auth-client';
-import fileClient from 'solid-file-client';
+import React, { useState, useEffect } from "react";
+import { useWebId } from "@solid/react";
+import "bootstrap/dist/css/bootstrap.css";
+import { Card, Button } from "react-bootstrap";
+import "./LoadRoute.css";
+import * as solidAuth from "solid-auth-client";
+import fileClient from "solid-file-client";
 import DocumentTitle from "react-document-title";
 
-import * as algo from '../Map/Map';
+import * as algo from "../Map/Map";
 
 import Slider from "./Slider";
 
@@ -21,13 +21,11 @@ const LoadRoute = () => {
 
     const [folders, setFolders] = useState([]);
     const [selected, setSelected] = useState({
-        name: '',
-        description: '',
+        name: "",
+        description: "",
         images: [],
         videos: []
     });
-
-    console.log(selected);
 
     var user = useWebId();
 
@@ -39,14 +37,14 @@ const LoadRoute = () => {
         }
     }, [user]);
 
-    images=[]
-    videos=[]
+    images=[];
+    videos=[];
     selected.images.map((image) => (
         images.push(image)
-    ))
+    ));
     selected.videos.map((video) => (
         videos.push(video)
-    ))
+    ));
     return (
         
         <DocumentTitle title="Load Route">
@@ -57,15 +55,15 @@ const LoadRoute = () => {
                 {
                     folders.map((folder, i) => {
                         var urlArchivo = "" + folder.url;
-                        var arrayUrl = urlArchivo.split('/');
+                        var arrayUrl = urlArchivo.split("/");
                         urlRutas.push(urlArchivo);
-                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ")
+                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
                         return (
-                            <li key={'folder_' + i}>
+                            <li key={"folder_" + i}>
                                 <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
                                     {nombre}
                                 </a>
-                            </li>)
+                            </li>);
                     })
                 }
             </ul>
@@ -81,7 +79,7 @@ const LoadRoute = () => {
         </div>
         </DocumentTitle>           
     );
-}
+};
 
 async function loadRoutes(url, setFolders) {
 
@@ -115,7 +113,7 @@ async function loadFile(urlCarptetaRuta, route) {
     for (k = 0; k < 1000; k++) {
         try {
             await fileClien.readFile(urlCarptetaRuta + route + (k + 1));
-            result.push(urlCarptetaRuta + route + (k + 1))
+            result.push(urlCarptetaRuta + route + (k + 1));
         } catch{
             k = 1000;
         }

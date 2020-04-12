@@ -1,26 +1,26 @@
-import React, { Fragment, useState, useEffect, useRef } from 'react';
-import './AddRoute.css';
-import { useWebId } from '@solid/react';
+import React, { Fragment, useState, useEffect, useRef } from "react";
+import "./AddRoute.css";
+import { useWebId } from "@solid/react";
 import {
 
     Uploader,
     ProfileUploader
-} from '@inrupt/solid-react-components';
+} from "@inrupt/solid-react-components";
 
-import * as solidAuth from 'solid-auth-client';
-import fileClient from 'solid-file-client';
-import { Redirect } from 'react-router-dom';
+import * as solidAuth from "solid-auth-client";
+import fileClient from "solid-file-client";
+import { Redirect } from "react-router-dom";
 import DocumentTitle from "react-document-title";
-const auth = require('solid-auth-client')
+const auth = require("solid-auth-client");
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
 const Upload = ({setFile, file}) => {
-    const filename = file == null ? 'Choose File' : file.name;
+    const filename = file == null ? "Choose File" : file.name;
 
-    const changeName = e => {
+    const changeName = (e) => {
         setFile(e.target.files[0]);
-    }
+    };
     //para acceder a componentes del dum desde react
     //const refFile = useRef();
 
@@ -46,13 +46,13 @@ const Data = () => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
 
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
     const [image, setImage] = useState(null);
     const [video, setVideo] = useState(null);
 
     const url=user.split("profile/card#me")[0]+"/private/routes3a";
-    console.log(url);
+    
     return (
         <div>
             <br></br>
@@ -84,7 +84,7 @@ const Data = () => {
                     </div>
             }
             <center>
-                <button data-testid="btnenviar" onClick={()=> createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo, setError)}  class="btn btn-info" >Add route
+                <button data-testid="btnenviar" onClick={() => createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo, setError)}  class="btn btn-info" >Add route
                 </button>
             </center>
           
@@ -98,7 +98,7 @@ const AddRoute = () => {
 
     return (
 
-        <DocumentTitle title='Add route'>
+        <DocumentTitle title="Add route">
             <Fragment>
                 <h2>Add route</h2>
                 <Data />
@@ -120,8 +120,9 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
         setError(null);
     var existe = await fileClien.itemExists(folder);
 
-    if (!existe)
+    if (!existe){
         await fileClien.createFolder(folder);
+    }
     var fileList = [];
     var nameValue = name;
     var destination = folder + "/" + nameValue + "/";
@@ -130,19 +131,21 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
         var k=0;
         await fileClien.createFolder(destination);
         var user=await auth.currentSession()
-        console.log(user.webId)
-        let content = "# ACL resource for the private folder\n"+
-      "@prefix acl: <http://www.w3.org/ns/auth/acl#>.\n"+
-      "\n"+
-      "# The owner has all permissions\n"+
-      "<#owner>\n"+
-          "a acl:Authorization;\n"+
-          "acl:agent <"+ user.webId +">;\n"+
-          "acl:accessTo <./>;\n"+
-          "acl:defaultForNew <./>;\n"+
-          "acl:mode acl:Read, acl:Write, acl:Control."
+        
+        let content = "@prefix : <#>.\n"+
+        "@prefix n0: <http://www.w3.org/ns/auth/acl#>.\n"+
+        "@prefix M: <./>.\n"+
+        "@prefix c: </profile/card#>.\n"+
+        
+        ":ControlReadWrite\n"+
+            "a n0:Authorization;\n"+
+            "n0:accessTo M:;\n"+
+            "n0:agent c:me;\n"+
+            "n0:default M:;\n"+
+            "n0:mode n0:Control, n0:Read, n0:Write.\n"+
+        ":Read a n0:Authorization; n0:accessTo M:; n0:default M:; n0:mode n0:Read."
 
-        await fileClien.createFile(destination+"/.acl", content,"text/turtle")
+        await fileClien.createFile(destination+"/.acl", content,"text/turtle");
 
         fileList.push(route);
         await fileClien.createFile(destination + "/"+ "description", description, "text/plain");
@@ -160,21 +163,23 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
         }
         alert("Your route has been added to the pod!!");
         //clean all fields
-        setName('');
-        setDescription('');
+        setName("");
+        setDescription("");
         setFile(null);
         setImage(null);
         setVideo(null);  
         
-        document.getElementById('photo').value=null;
-        document.getElementById('video').value=null;
-        document.getElementById('route').value=null;
+        document.getElementById("photo").value=null;
+        document.getElementById("video").value=null;
+        document.getElementById("route").value=null;
     }
-    else
+    else{
         alert("Route title already used, use another title");
+    }
+        
 }
 
-}
+};
 
 
 export default AddRoute;
