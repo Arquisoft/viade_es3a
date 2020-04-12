@@ -72,7 +72,7 @@ const LoadRoute = () => {
     var user = useWebId();
 
     useEffect(() => {
-        if (user !== undefined) {
+        if (user != undefined) {
             const url = user.split("profile/card#me")[0] + "/private/routes3a";
             //listRoutes(url);
             loadRoutes(url, setFolders);
