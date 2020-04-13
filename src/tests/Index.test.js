@@ -1,7 +1,7 @@
 import React from "react";
 import App from "../App";
 import ReactDOM from "react-dom";
-jest.mock("react-dom", ()=> ({render: jest.fn()}));
+jest.mock("react-dom", () => ({render: jest.fn()}));
 
 test("renders learn react link", () => {
     const div = document.createElement("div");

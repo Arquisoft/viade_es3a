@@ -4,7 +4,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
-
+/*
 const Wrapper = styled.div`
     width: ${(props) => props.width};
     height: ${(props) => props.height};
@@ -16,7 +16,7 @@ function getStyle(feature, layer) {
         opacity: 1,
         color: "#000"
     };
-}
+}*/
 
 const geojsonMarkerOptions = {
     radius: 4,
@@ -68,7 +68,6 @@ export function updateMap (route,name) {
 
     let parseR = JSON.parse(route);
     let first = parseR.features[0].geometry.coordinates[0];
-    console.log(first); 
     var firstP = [
         first[1],
         first[0]

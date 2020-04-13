@@ -169,7 +169,7 @@ async function enseñaAmigos(source, target, name) {
 
     let content = "";
 
-    let userToAcl = target2.split("]")[0]
+    let userToAcl = target2.split("]")[0];
 
     if (!(acl + "").includes(userToAcl.substring(0, userToAcl.length - 2))) {
         if (!(acl + "").includes("c0")) {
@@ -209,8 +209,9 @@ async function enseñaAmigos(source, target, name) {
 
         alert("Your route has been shared!");
     }
-    else
+    else{
         alert("Your route was already shared with this person!");
+    }
 }
 const Carda = (props) => {
     return (
