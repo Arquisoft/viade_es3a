@@ -48,11 +48,16 @@ const NavBar = () => {
             <PeopleAltOutlinedIcon className="icon" />
             <Nav.Link as={Link} to="/viade_es3a/friends" className="optionL" data-testid="friends">Friends</Nav.Link>
           </NavItem>
+          
         </Nav>
         <Nav pullRight>
           <NavItem href="/viade_es3a/logout" className="opcionYLogo">
             <ExitToAppOutlinedIcon className="icon" />
             <LogoutButton data-testid="logout" className="logout" data-testid="logout" />
+          </NavItem>
+          <NavItem href="/viade_es3a/notifications" className="opcionYLogo">
+            <PeopleAltOutlinedIcon className="icon" />
+            <Nav.Link as={Link} to="/viade_es3a/notifications" className="notifications" data-testid="notifications"></Nav.Link>
           </NavItem>
         </Nav>
       </Navbar.Collapse>
