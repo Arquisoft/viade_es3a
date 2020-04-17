@@ -10,6 +10,7 @@ import Friends from "./Friends/Friends";
 import Profile from "./Profile/Profile";
 import ShareRoute from "./ShareRoute/ShareRoute";
 import SharedRoutes from "./SharedRoutes/SharedRoutes";
+import Notifications from "./Notifications/Notifications";
 
 const AppWrapper = styled.div`
 display: flex;
@@ -33,6 +34,7 @@ const LeftPanel = () => {
                     <Route path="/viade_es3a/sharedRoutes" component={SharedRoutes} />
                     <Route path="/viade_es3a/friends" component={Friends} />
                     <Route path="/viade_es3a/profile" component={Profile} /> 
+                    <Route path="/viade_es3a/notifications" component={Notifications} /> 
                 </div>
             </Switch>
         </nav>

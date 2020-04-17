@@ -14,9 +14,28 @@ const Card = (props) => {
                     <Name src={props.nombre}>{props.nombre}</Name>
                 </h4>
                 <center>
-                    <Link href={props.nombre} className="btn btn-light" data-testId="link">Profile</Link>
+                    <Link href={props.nombre} className="btn btn-light" data-testId="link">Notifications</Link>
                 </center>
             </div>
         </div>
     );
+};const Notifications = () => {
+    const webId = useWebId();
+    return (
+        <DocumentTitle title="Friends">
+        <div>
+            <h2 className="h2" data-testId="label">Your notifications, <Value src="user.name"/> </h2>
+            <List src={`[${webId}].friends`} className="list" padding-inline-start="0">{(friend) =>
+                <li key={friend} className="listElement">
+                    <p>
+                        <Card nombre={`[${friend}]`}></Card>
+                    </p>
+                </li>}
+            </List>
+        </div>
+        </DocumentTitle>
+    );
 };
+
+
+export default Notifications;
