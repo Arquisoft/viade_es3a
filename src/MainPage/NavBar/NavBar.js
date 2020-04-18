@@ -1,7 +1,7 @@
 import React from "react";
 import "./NavBar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Navbar, Nav, NavItem } from "react-bootstrap";
+import { Navbar, Nav, NavItem, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { LogoutButton } from "@inrupt/solid-react-components";
 
@@ -12,10 +12,12 @@ import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined"
 import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import ShareIcon from "@material-ui/icons/Share";
+import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
+import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
 
 
 const NavBar = () => {
-  // const webId = useWebId();
+  //git check const webId = useWebId();
   return (
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top" className="navBar">
       <Navbar.Brand as={Link} to="/viade_es3a" className="logo" data-testid="logo">
@@ -28,14 +30,27 @@ const NavBar = () => {
             <BackupOutlinedIcon className="icon" />
             <Nav.Link as={Link} to="/viade_es3a/addRoute" className="optionL" data-testid="add">Add Route</Nav.Link>
           </NavItem>
-          <NavItem href="/viade_es3a/loadRoute" bg="light" className="opcionYLogo">
-            <RoomOutlinedIcon className="icon" />
-            <Nav.Link as={Link} to="/viade_es3a/loadRoute" className="optionL" data-testid="load">My routes</Nav.Link>
-          </NavItem>
+
+          <MapOutlinedIcon className="icon"/>
+          <NavDropdown title="Routes" className="optionL">
+          <div className="dropdown">
+            <NavDropdown.Item href="/viade_es3a/loadRoute" className="dropdown">
+              <RoomOutlinedIcon className="icon"/>
+              <Nav.Link as={Link} to="/viade_es3a/loadRoute" className="optionL" data-testid="load">My routes</Nav.Link>
+            </NavDropdown.Item>
+            <NavDropdown.Item href="/viade_es3a/createRoute" className="dropdown">
+              <CreateOutlinedIcon className="icon" />
+              <Nav.Link as={Link} to="/viade_es3a/createRoute" className="optionL" data-testid="share">Create route</Nav.Link>
+            </NavDropdown.Item>
+            </div>
+          </NavDropdown>
+          
+
           <NavItem href="/viade_es3a/shareRoute" className="opcionYLogo">
             <ShareIcon className="icon" />
             <Nav.Link as={Link} to="/viade_es3a/shareRoute" className="optionL" data-testid="share">Share routes</Nav.Link>
           </NavItem>
+
           <NavItem href="/viade_es3a/SharedRoutes" className="opcionYLogo">
             <PeopleAltOutlinedIcon className="icon" />
             <Nav.Link as={Link} to="/viade_es3a/SharedRoutes" className="optionL" data-testid="friendsRoutes">Friend's Routes</Nav.Link>

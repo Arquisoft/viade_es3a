@@ -11,12 +11,24 @@
     display: flex;
     align-items: center;
     padding: 0em 0.9em;
+    background: #343a40;
 }
+
+.dropdown{
+    background-color: #343a40;
+    color: white !important;
+    text-decoration: none;
+    font-size: 1.0em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
 
 .optionL, .navBarLogout .logout {
     color: white !important;
     text-decoration: none;
     font-size: 1.1em;
+    background: #343a40;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
