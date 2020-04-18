@@ -4,19 +4,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
-/*
-const Wrapper = styled.div`
-    width: ${(props) => props.width};
-    height: ${(props) => props.height};
-`;
-
-function getStyle(feature, layer) {
-    return {
-        weight: 1,
-        opacity: 1,
-        color: "#000"
-    };
-}*/
+import Routing from "./RoutingMachine";
 
 const geojsonMarkerOptions = {
     radius: 4,
@@ -44,11 +32,13 @@ const styles = {
 };
 
 const ShowMap = (props) => {
+
+
     return (
         <div style={styles.wrapper} id="thisMap" >
             <Map style={styles.map} center={props.center} zoom={props.zoom}>
                 <TileLayer url={props.url} />
-                
+                 {/* <Routing map={this.map}></Routing> No se como referenciar el mapa con RoutingMachine */}
             </Map>
         </div>
     );
