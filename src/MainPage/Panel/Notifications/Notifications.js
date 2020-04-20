@@ -10,7 +10,7 @@ const Card = (props) => {
     return (
         <div class="card bg-info text-white" >
             <div class="card-body">
-                <h4 class="card-title" id="friendName">
+                <h4 class="card-title" id="notification">
                     <Name src={props.nombre}>{props.nombre}</Name>
                 </h4>
                 <center>
@@ -23,13 +23,13 @@ const Card = (props) => {
 };const Notifications = () => {
     const webId = useWebId();
     return (
-        <DocumentTitle title="Friends">
+        <DocumentTitle title="Notifications">
         <div>
             <h2 className="h2" data-testId="label">Your notifications, <Value src="user.name"/> </h2>
-            <List src={`[${webId}].friends`} className="list" padding-inline-start="0">{(friend) =>
-                <li key={friend} className="listElement">
+            <List src={`[${webId}].notifications`} className="list" padding-inline-start="0">{(notification) =>
+                <li key={notification} className="listElement">
                     <p>
-                        <Card nombre={`[${friend}]`}></Card>
+                        <Card nombre={`[${notification}]`}></Card>
                     </p>
                 </li>}
             </List>
