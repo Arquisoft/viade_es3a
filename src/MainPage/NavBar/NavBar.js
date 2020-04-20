@@ -53,8 +53,7 @@ const NavBar = () => {
         </Nav>
         <Nav pullRight>
         <NavItem href="/viade_es3a/notifications" className="opcionYLogo">
-            <NotificationsActiveOutlinedIcon className="icon" />
-            <Nav.Link as={Link} to="/viade_es3a/notifications" className="optionL" data-testid="notifications"></Nav.Link>
+            <Link to="/viade_es3a/notifications"><NotificationsActiveOutlinedIcon className="icon" data-testid="notifications"/></Link>
           </NavItem>
           <NavItem href="/viade_es3a/logout" className="opcionYLogo">
             <ExitToAppOutlinedIcon className="icon" />
