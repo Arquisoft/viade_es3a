@@ -15,14 +15,20 @@
 }
 
 .dropdown{
-    background-color: #343a40;
     color: white !important;
     text-decoration: none;
     font-size: 1.0em;
+    background: #343a40;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
+.dropdown:hover {
+    text-decoration: none;
+    color: rgb(117, 227, 247);
+    font-size: 1.05em;
+    background: #343a40;
+}
 
 .optionL, .navBarLogout .logout {
     color: white !important;
