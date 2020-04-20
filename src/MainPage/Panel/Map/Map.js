@@ -1,5 +1,5 @@
 import React from "react";
-import { TileLayer, Map, GeoJSON } from "react-leaflet";
+import { TileLayer, Map, GeoJSON, Marker, Polyline } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
@@ -32,7 +32,6 @@ const styles = {
 };
 
 const ShowMap = (props) => {
-
 
     return (
         <div style={styles.wrapper} id="thisMap" >
@@ -79,6 +78,33 @@ ShowMap.defaultProps = {
     zoom: 8,
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 };
+
+// Crear nueva ruta
+export function createPoint (point,name) {
+    let center = [40.205, -3.60];
+    let tl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+    let route = <div style={styles.wrapper} id={name}>
+    <Map style={styles.map} center={center} zoom="12" >
+        <TileLayer url={tl} /> 
+        <Marker position={point}></Marker>
+    </Map>
+</div>;
+
+}
+
+export function createRoute (points,name) {
+    let center = [40.205, -3.60];
+    let tl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+    let route = <div style={styles.wrapper} id={name}>
+    <Map style={styles.map} center={center} zoom="12" >
+        <TileLayer url={tl} /> 
+        <Polyline
+            // points={this.draw()}
+          />
+    </Map>
+</div>;
+
+}
 
 export default ShowMap;
 
