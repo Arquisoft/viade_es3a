@@ -6,6 +6,8 @@ import styled from "styled-components";
 import ReactDOM from "react-dom";
 import Routing from "./RoutingMachine";
 
+import createRoute from "../CreateRoute/CreateRoute";
+
 const geojsonMarkerOptions = {
     radius: 4,
     fillColor: "#EE4266",
@@ -35,13 +37,18 @@ const ShowMap = (props) => {
 
     return (
         <div style={styles.wrapper} id="thisMap" >
-            <Map style={styles.map} center={props.center} zoom={props.zoom}>
+            <Map style={styles.map} center={props.center} zoom={props.zoom} onClick={click()} >   
                 <TileLayer url={props.url} />
                  {/* <Routing map={this.map}></Routing> No se como referenciar el mapa con RoutingMachine */}
             </Map>
         </div>
     );
 };
+
+export function click(){
+
+    // createRoute.clickOnMap
+}
 
 export function updateMap (route,name) {
     let center = [40.205, -3.60];
@@ -88,23 +95,10 @@ export function createPoint (point,name) {
         <TileLayer url={tl} /> 
         <Marker position={point}></Marker>
     </Map>
-</div>;
-
+    </div>;
 }
 
-export function createRoute (points,name) {
-    let center = [40.205, -3.60];
-    let tl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-    let route = <div style={styles.wrapper} id={name}>
-    <Map style={styles.map} center={center} zoom="12" >
-        <TileLayer url={tl} /> 
-        <Polyline
-            // points={this.draw()}
-          />
-    </Map>
-</div>;
 
-}
 
 export default ShowMap;
 

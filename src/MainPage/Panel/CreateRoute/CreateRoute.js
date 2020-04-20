@@ -1,6 +1,9 @@
 import React from "react";
 import DocumentTitle from "react-document-title";
 import SaveIcon from '@material-ui/icons/Save';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+import map from "../Map/Map";
 
 class CreateRoute extends React.Component {
 
@@ -11,11 +14,54 @@ class CreateRoute extends React.Component {
           name: "",
           description: "",
           images: [],
-          videos: []
+          videos: [],
+          cont: 1
         };
       }
 
+      getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((position) => {
+            this.setState({
+              center: {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              }
+            })
+          },
+            (error) => {
+              this.setState({
+                center: {
+                  lat: 40.205,
+                  lng: -3.60,
+                },
+                zoom: 12
+              })
+            });
+        }
+      }
+
+     clickOnMap = (e) => {
+        const { markers } = this.state;
+        markers.push({ lat: e.latlng.lat, lng: e.latlng.lng })
+        this.setState({ markers })
+        map.createPoint(this.state.markers.length-1, this.state.cont);
+        // this.draw();
+      }
+
+      draw() {
+        let points = [];
+        for (let i = 0; i < this.state.markers.length; i++)
+          points.push({ lat: this.state.markers[i].lat, lng: this.state.markers[i].lng })
+        return points;
+      };
+
+      clearAll() { //Se pone todo por defecto, es decir: name=""...
+        window.location.reload();
+      }
+
     render() {
+        this.getLocation();
         return(
             <DocumentTitle title="Create route">
                 <div>
@@ -40,8 +86,9 @@ class CreateRoute extends React.Component {
                     </div>
                     <br></br>
                     <center>
-                    <button data-testid="btnenviar"  class="btn btn-info" > <SaveIcon /> Save </button>
-                </center>
+                        <button data-testid="btnenviar" class="btn btn-info" > <SaveIcon /> Save </button>
+                        <button data-testid="btnenviar" class="btn btn-info" onClick={this.clearAll} > <DeleteIcon /> Clear </button>
+                    </center>
                 </div>
             </DocumentTitle>
         )

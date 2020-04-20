@@ -40,7 +40,7 @@ const NavBar = () => {
             </NavDropdown.Item>
             <NavDropdown.Item href="/viade_es3a/createRoute" className="dropdown">
               <CreateOutlinedIcon className="icon" />
-              <Nav.Link as={Link} to="/viade_es3a/createRoute" className="optionL" data-testid="share">Create route</Nav.Link>
+              <Nav.Link as={Link} to="/viade_es3a/createRoute" className="optionL" data-testid="share">Create a route</Nav.Link>
             </NavDropdown.Item>
             </div>
           </NavDropdown>
