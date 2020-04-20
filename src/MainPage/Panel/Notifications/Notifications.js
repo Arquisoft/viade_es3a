@@ -19,6 +19,7 @@ const Card = (props) => {
             </div>
         </div>
     );
+    
 };const Notifications = () => {
     const webId = useWebId();
     return (
