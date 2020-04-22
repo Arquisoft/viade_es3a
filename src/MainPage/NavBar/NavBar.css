@@ -14,14 +14,13 @@
     background: #343a40;
 }
 
-.dropdown{
+.dropdown {
     color: white !important;
     text-decoration: none;
     font-size: 1.0em;
     background: #343a40;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
 
 .dropdown:hover {
     text-decoration: none;
@@ -30,7 +29,7 @@
     background: #343a40;
 }
 
-.optionL, .navBarLogout .logout {
+#dropdownItemL, .optionL, .navBarLogout .logout, .nav-link {
     color: white !important;
     text-decoration: none;
     font-size: 1.1em;
@@ -57,3 +56,5 @@
     font-size: 1.1em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.dropdown-item { background-color: #343a40 !important; }

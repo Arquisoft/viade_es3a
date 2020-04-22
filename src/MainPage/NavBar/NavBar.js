@@ -31,9 +31,9 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/viade_es3a/addRoute" className="optionL" data-testid="add">Add Route</Nav.Link>
           </NavItem>
 
+          <div className="opcionYLogo">
           <MapOutlinedIcon className="icon"/>
-          <NavDropdown title="Routes" className="dropdown">
-          <div className="dropdown">
+          <NavDropdown title="Routes" className="dropdown" id ="dropdownItemL">
             <NavDropdown.Item href="/viade_es3a/loadRoute" className="dropdown">
               <RoomOutlinedIcon className="icon"/>
               <Nav.Link as={Link} to="/viade_es3a/loadRoute" className="optionL" data-testid="load">My routes</Nav.Link>
@@ -42,9 +42,8 @@ const NavBar = () => {
               <CreateOutlinedIcon className="icon" />
               <Nav.Link as={Link} to="/viade_es3a/createRoute" className="optionL" data-testid="share">Create a route</Nav.Link>
             </NavDropdown.Item>
-            </div>
           </NavDropdown>
-          
+          </div>
 
           <NavItem href="/viade_es3a/shareRoute" className="opcionYLogo">
             <ShareIcon className="icon" />
@@ -57,10 +56,9 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/viade_es3a/profile" className="optionL" data-testid="profile">Profile</Nav.Link>
           </NavItem>
 
-          
+          <div className="opcionYLogo">
           <PeopleAltOutlinedIcon className="icon" />
-          <NavDropdown title="Friends" className="dropdown">
-          <div className="dropdown">
+          <NavDropdown title="Friends" className="dropdown" id ="dropdownItemL">
             <NavDropdown.Item href="/viade_es3a/friends" className="dropdown">
               <PeopleAltOutlinedIcon className="icon" />
               <Nav.Link as={Link} to="/viade_es3a/friends" className="optionL" data-testid="friends">Friends</Nav.Link>
@@ -69,9 +67,10 @@ const NavBar = () => {
               <PeopleAltOutlinedIcon className="icon" />
               <Nav.Link as={Link} to="/viade_es3a/SharedRoutes" className="optionL" data-testid="friendsRoutes">Friend's Routes</Nav.Link>
             </NavDropdown.Item>
-            </div>
           </NavDropdown>
+          </div>
         </Nav>
+
         <Nav pullRight>
           <NavItem href="/viade_es3a/logout" className="opcionYLogo">
             <ExitToAppOutlinedIcon className="icon" />
