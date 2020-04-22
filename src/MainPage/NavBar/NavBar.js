@@ -61,7 +61,7 @@ const NavBar = () => {
           <NavDropdown title="Friends" className="dropdown" id ="dropdownItemL">
             <NavDropdown.Item href="/viade_es3a/friends" className="dropdown">
               <PeopleAltOutlinedIcon className="icon" />
-              <Nav.Link as={Link} to="/viade_es3a/friends" className="optionL" data-testid="friends">Friends</Nav.Link>
+              <Nav.Link as={Link} to="/viade_es3a/friends" className="optionL" data-testid="friends">My friends</Nav.Link>
             </NavDropdown.Item>
             <NavDropdown.Item href="/viade_es3a/SharedRoutes" className="dropdown">
               <PeopleAltOutlinedIcon className="icon" />

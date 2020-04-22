@@ -58,3 +58,7 @@
 }
 
 .dropdown-item { background-color: #343a40 !important; }
+
+.dropdown-menu{
+    background-color: rgb(96, 194, 211) !important;
+}
