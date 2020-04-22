@@ -2,8 +2,8 @@ import React from "react";
 import DocumentTitle from "react-document-title";
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
-
-import map from "../Map/Map";
+import { TileLayer, Marker, Polyline } from 'react-leaflet';
+import { MapStyle} from './CreateRouteStyle';
 
 class CreateRoute extends React.Component {
 
@@ -19,23 +19,29 @@ class CreateRoute extends React.Component {
         };
       }
 
+       styles = {
+        wrapper: {
+            width: "70vw",
+            height: "100vh",
+            className: "rightPanel_mapa",
+            display: "flex"
+        },
+        map: {
+            flex: 1
+        }
+    };
+
       getLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition((position) => {
             this.setState({
-              center: {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
+              center: { lat: position.coords.latitude,lng: position.coords.longitude
               }
             })
           },
             (error) => {
               this.setState({
-                center: {
-                  lat: 40.205,
-                  lng: -3.60,
-                },
-                zoom: 12
+                center: { lat: 43.38, lng: -5.0}
               })
             });
         }
@@ -45,11 +51,10 @@ class CreateRoute extends React.Component {
         const { markers } = this.state;
         markers.push({ lat: e.latlng.lat, lng: e.latlng.lng })
         this.setState({ markers })
-        map.createPoint(this.state.markers.length-1, this.state.cont);
-        // this.draw();
+        this.drawLine();
       }
 
-      draw() {
+      drawLine() {
         let points = [];
         for (let i = 0; i < this.state.markers.length; i++)
           points.push({ lat: this.state.markers[i].lat, lng: this.state.markers[i].lng })
@@ -64,7 +69,9 @@ class CreateRoute extends React.Component {
         this.getLocation();
         return(
             <DocumentTitle title="Create route">
-                <div>
+                <div className="leftPanel_leftPart">     
+                  <div className="leftPanel">
+                  <nav className="leftPanel_leftPart">
                     <h2 class="h2">Create a route</h2>
                     <br></br>
                     <div class="form-group">
@@ -87,9 +94,21 @@ class CreateRoute extends React.Component {
                     <br></br>
                     <center>
                         <button data-testid="btnenviar" class="btn btn-info" > <SaveIcon /> Save </button>
+                        <p></p>
                         <button data-testid="btnenviar" class="btn btn-info" onClick={this.clearAll} > <DeleteIcon /> Clear </button>
                     </center>
+                  </nav>
+                  <div className="rightPanel_mapa" id="jeje">
+                      <MapStyle id="map" center={this.state.center} zoom={12} onClick={this.clickOnMap}>
+                        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                        {this.state.markers.map((position, idx) =>
+                          <Marker key={`marker-${idx}`} position={position}></Marker>
+                        )}
+                        <Polyline positions={this.drawLine()} />
+                      </MapStyle>
+                  </div>
                 </div>
+              </div>
             </DocumentTitle>
         )
     }

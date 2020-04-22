@@ -37,21 +37,15 @@ const ShowMap = (props) => {
 
     return (
         <div style={styles.wrapper} id="thisMap" >
-            <Map style={styles.map} center={props.center} zoom={props.zoom} onClick={click()} >   
+            <Map style={styles.map} center={props.center} zoom={props.zoom}  >   
                 <TileLayer url={props.url} />
-                 {/* <Routing map={this.map}></Routing> No se como referenciar el mapa con RoutingMachine */}
             </Map>
         </div>
     );
 };
 
-export function click(){
-
-    // createRoute.clickOnMap
-}
-
 export function updateMap (route,name) {
-    let center = [40.205, -3.60];
+    let center = [43.38, -5.80];
     let aa = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
     let com = <div style={styles.wrapper} id={name}>
         <Map style={styles.map} center={center} zoom="8">
@@ -81,23 +75,10 @@ export function updateMap (route,name) {
 }
 
 ShowMap.defaultProps = {
-    center: [40.205, -3.60],
-    zoom: 8,
+    center: [43.38, -5.80],
+    zoom: 12,
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 };
-
-// Crear nueva ruta
-export function createPoint (point,name) {
-    let center = [40.205, -3.60];
-    let tl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-    let route = <div style={styles.wrapper} id={name}>
-    <Map style={styles.map} center={center} zoom="12" >
-        <TileLayer url={tl} /> 
-        <Marker position={point}></Marker>
-    </Map>
-    </div>;
-}
-
 
 
 export default ShowMap;
