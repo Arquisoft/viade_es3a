@@ -33,7 +33,7 @@ const NavBar = () => {
 
           <div className="opcionYLogo">
           <MapOutlinedIcon className="icon"/>
-          <NavDropdown title="Routes" className="dropdown" id ="dropdownItemL">
+          <NavDropdown title="Routes" className="dropdown" id ="dropdownItemL" data-testid="dropdownItemRoutes">
             <NavDropdown.Item href="/viade_es3a/loadRoute" className="dropdown">
               <RoomOutlinedIcon className="icon"/>
               <Nav.Link as={Link} to="/viade_es3a/loadRoute" className="optionL" data-testid="load">My routes</Nav.Link>
