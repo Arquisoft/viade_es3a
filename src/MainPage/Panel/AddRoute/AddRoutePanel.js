@@ -5,7 +5,7 @@ import AddRoute from "./AddRoute";
 
 const LeftPanel = () => {
     return (
-        <nav className="leftPanel_leftPart">
+        <nav className="leftPanel_leftPart" data-testid="addRoutePart">
             <AddRoute/>
         </nav>
          );
@@ -13,7 +13,7 @@ const LeftPanel = () => {
 
 const RightPanel = () => {
     return (
-        <div className="rightPanel_mapa" id="jeje">
+        <div className="rightPanel_mapa" id="jeje" data-testid="mapPart">
                     <ShowMap></ShowMap>
         </div>
     );
