@@ -8,7 +8,7 @@ test("Not crashing component", () => {
     ReactDOM.render(<LoadRoutePanel/>, div);
 });
 
-test("Panel contains AddRoute and Map", () => {
+test("Panel contains LoadRoute and Map", () => {
     const { getByTestId } = render(<LoadRoutePanel/>);
     expect(getByTestId("loadRoutePart")).toBeInTheDocument();
     expect(getByTestId("mapPart")).toBeInTheDocument();
