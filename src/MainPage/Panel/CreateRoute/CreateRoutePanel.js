@@ -5,8 +5,8 @@ import "./CreateRoute.css"
 
 const CreateRoutePanel = () => {
     return (  
-            <div className="panel">
-                <CreateRoute />
+            <div className="panel" data-testid="createRoutePart">
+                <CreateRoute/>
             </div>
     );
 };
