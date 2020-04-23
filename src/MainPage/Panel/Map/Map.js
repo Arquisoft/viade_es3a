@@ -4,7 +4,6 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
-import Routing from "./RoutingMachine";
 
 import createRoute from "../CreateRoute/CreateRoute";
 
