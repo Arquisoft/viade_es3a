@@ -28,13 +28,9 @@ test("Render component not crashing.", () => {
     expect(getByTestId("add")).toBeInTheDocument();
     getByTestId("add").click();
 
-    // const wrapper = render(<Router><NavBar></NavBar></Router>);
-    // wrapper.find(".open-menu-button-class").simulate("click");
-    // expect(wrapper.state("active")).toBeTruthy();
-
-    //waitForElement(() => expect(queryByTestId(document.documentElement, "load")).not.toBeInTheDocument());
-    // getByTestId("dropdownItemRoutes").click();
-    // await waitForElement(() => getByTestId("load"));
+    expect(getByTestId("dropdownItemRoutes")).toBeInTheDocument();
+    getByTestId("dropdownItemRoutes").click(); 
+    // await expect(getByTestId("load")).toBeInTheDocument(); 
 
     expect(getByTestId("share")).toBeInTheDocument();
     getByTestId("share").click();
@@ -45,7 +41,21 @@ test("Render component not crashing.", () => {
     expect(getByTestId("profile")).toBeInTheDocument();
     getByTestId("profile").click();
 
+    expect(getByTestId("dropdownItemFriends")).toBeInTheDocument();
+    getByTestId("dropdownItemFriends").click();
+
     // expect(getByTestId("friends")).toBeInTheDocument();
     // getByTestId("friends").click();
 
+    // Iconos
+    expect(getByTestId("iconAddRoute")).toBeInTheDocument();
+    expect(getByTestId("iconRoutes")).toBeInTheDocument();
+    // expect(getByTestId("iconMyRoutes")).toBeInTheDocument();
+    // expect(getByTestId("iconCreateRoute")).toBeInTheDocument();
+    expect(getByTestId("iconShareRoutes")).toBeInTheDocument();
+    expect(getByTestId("iconProfile")).toBeInTheDocument();
+    expect(getByTestId("iconFriends")).toBeInTheDocument();
+    // expect(getByTestId("iconMyFriends")).toBeInTheDocument();
+    // expect(getByTestId("iconFriendsRoutes")).toBeInTheDocument();
+    expect(getByTestId("iconLogout")).toBeInTheDocument();
   });
