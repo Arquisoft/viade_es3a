@@ -14,7 +14,7 @@ const auth = require("solid-auth-client");
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas = [];
-
+var cont = 0;
 var images = [];
 var videos = [];
 
@@ -61,7 +61,7 @@ const LoadRoute = () => {
     selected.videos.map((video) => (
         videos.push(video)
     ));
-
+    cont=0;
     return (
         <DocumentTitle title="Share routes">
         <div class="container">
@@ -164,7 +164,12 @@ export async function showRoute(urlCarptetaRuta) {
 }
 
 async function share(){
-    
+    for(var i=0; i<cont;i++){
+        let a = document.getElementById("ck"+i);
+        if(a.checked==true)
+            await enseñaAmigos(a.getAttribute("url"),a.getAttribute("nombre"),a.getAttribute("name"))
+    }
+    alert("Your route has been shared!");
 }
 
 async function enseñaAmigos(source, target, name) {
@@ -214,10 +219,10 @@ async function enseñaAmigos(source, target, name) {
 
         await fileClien.postFile(urlTarget + "/" + name + "->"+((await auth.currentSession()).webId).split("https://")[1].split(".")[0], source, "text/plain");
 
-        alert("Your route has been shared!");
+        //alert("Your route has been shared!");
     }
     else{
-        alert("Your route was already shared with this person!");
+        //alert("Your route was already shared with this person!");
     }
 }
 const Carda = (props) => {
@@ -227,7 +232,7 @@ const Carda = (props) => {
                 <h4 class="card-title" id="friendName">
                     <Name src={props.nombre}>{props.nombre}</Name>
                 </h4>
-                <input type="checkbox" url={props.url} nombre={props.nombre} name={props.name}/>
+                <input type="checkbox" id={"ck"+(cont++)} url={props.url} nombre={props.nombre} name={props.name}/>
                 <label>Share</label>
             </div>
         </div>
