@@ -103,7 +103,9 @@ const LoadRoute = () => {
                     </p>
 
                 </div>
+                <button className="btn btn-light" onClick={() => share()}>Share</button>
             </div>
+            
         </div>
         </DocumentTitle>
 
@@ -160,6 +162,11 @@ export async function showRoute(urlCarptetaRuta) {
     algo.updateMap(ruta, folder.name);
 
 }
+
+async function share(){
+    
+}
+
 async function enseñaAmigos(source, target, name) {
 
     const target2 = target.split("[")[1];
@@ -220,7 +227,8 @@ const Carda = (props) => {
                 <h4 class="card-title" id="friendName">
                     <Name src={props.nombre}>{props.nombre}</Name>
                 </h4>
-                <button className="btn btn-light" onClick={() => enseñaAmigos(props.url, props.nombre, props.name)}>Share</button>
+                <input type="checkbox" url={props.url} nombre={props.nombre} name={props.name}/>
+                <label>Share</label>
             </div>
         </div>
     );
