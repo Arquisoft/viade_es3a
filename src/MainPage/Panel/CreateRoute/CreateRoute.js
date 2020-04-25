@@ -106,43 +106,43 @@ class CreateRoute extends React.Component {
             alert("There is not a route created. Please, click on the map to draw one");
           }
         else{
-        //     //Vamos a guardar la ruta en el POD
-        //     const auth = require("solid-auth-client");
-        //     var user= "" + useWebId();
-        //     const fileClien = new fileClient(solidAuth, { enableLogging: true });
+            //Vamos a guardar la ruta en el POD
+            const auth = require("solid-auth-client");
+            var user= "" + useWebId();
+            const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
-        //     const folder = user.split("profile/card#me")[0]+"/private/routes3a";
+            const folder = user.split("profile/card#me")[0]+"/private/routes3a";
 
-        //     var existe = await fileClien.itemExists(folder);
-        //     if (!existe){
-        //       await fileClien.saveRoute(folder);
-        //     }
+            var existe = await fileClien.itemExists(folder);
+            if (!existe){
+              await fileClien.saveRoute(folder);
+            }
 
-        //     var fileList = [];
+            var fileList = [];
 
-        //     //Name
-        //     var destination = folder + "/" + name + "/";
-        //     existe = await fileClien.itemExists(destination);
+            //Name
+            var destination = folder + "/" + name + "/";
+            existe = await fileClien.itemExists(destination);
 
-        //     if (!existe) {
-        //       var k=0;
-        //       await fileClien.createFolder(destination);
-        //       var user = await auth.currentSession();
+            if (!existe) {
+              var k=0;
+              await fileClien.createFolder(destination);
+              var user = await auth.currentSession();
               
-        //       let content = "@prefix : <#>.\n"+
-        //       "@prefix n0: <http://www.w3.org/ns/auth/acl#>.\n"+
-        //       "@prefix M: <./>.\n"+
-        //       "@prefix c: </profile/card#>.\n"+
+              let content = "@prefix : <#>.\n"+
+              "@prefix n0: <http://www.w3.org/ns/auth/acl#>.\n"+
+              "@prefix M: <./>.\n"+
+              "@prefix c: </profile/card#>.\n"+
               
-        //       ":ControlReadWrite\n"+
-        //           "a n0:Authorization;\n"+
-        //           "n0:accessTo M:;\n"+
-        //           "n0:agent c:me;\n"+
-        //           "n0:default M:;\n"+
-        //           "n0:mode n0:Control, n0:Read, n0:Write.\n"+
-        //       ":Read a n0:Authorization; n0:accessTo M:; n0:default M:; n0:mode n0:Read.";
+              ":ControlReadWrite\n"+
+                  "a n0:Authorization;\n"+
+                  "n0:accessTo M:;\n"+
+                  "n0:agent c:me;\n"+
+                  "n0:default M:;\n"+
+                  "n0:mode n0:Control, n0:Read, n0:Write.\n"+
+              ":Read a n0:Authorization; n0:accessTo M:; n0:default M:; n0:mode n0:Read.";
               
-        //     await fileClien.createFile(destination+"/.acl", content,"text/turtle");
+            await fileClien.createFile(destination+"/.acl", content,"text/turtle");
 
             //Crear route con los markers --> GeoJson
             // Create an empty GeoJSON route
@@ -159,34 +159,34 @@ class CreateRoute extends React.Component {
             }
 
             console.log(route);
-            // fileList.push(route);
+            fileList.push(route);
             
-            // //Description
-            // await fileClien.createFile(destination + "/"+ "description", description, "text/plain");
+            //Description
+            await fileClien.createFile(destination + "/"+ "description", description, "text/plain");
 
-            // //Images
-            // for(k=0; images !== null && k< images.length; k++){
-            //   await fileClien.createFile(destination + "/"+ "photo" + "/img" + (k+1), images[k], "img");
-            // }
+            //Images
+            for(k=0; images !== null && k< images.length; k++){
+              await fileClien.createFile(destination + "/"+ "photo" + "/img" + (k+1), images[k], "img");
+            }
 
-            // //Videos
-            // for(k=0; videos !== null && k<videos.length; k++){
-            //   await fileClien.createFile(destination + "/"+ "video"+ "/vid" + (k+1), videos[k], "video");
-            // }
+            //Videos
+            for(k=0; videos !== null && k<videos.length; k++){
+              await fileClien.createFile(destination + "/"+ "video"+ "/vid" + (k+1), videos[k], "video");
+            }
 
-            // // ??????
-            // for (var i = 0; i < fileList.length; i++) {
-            //   var file = fileList[i];
-            //   const fileURl = destination + "/" + name + ".geojson";
-            //   fileClien.putFile(fileURl, file, file.type);
-            // }
+            // ??????
+            for (var i = 0; i < fileList.length; i++) {
+              var file = fileList[i];
+              const fileURl = destination + "/" + name + ".geojson";
+              fileClien.putFile(fileURl, file, file.type);
+            }
 
-            // alert("Your route has been added to the pod!!");
-            // this.clearAll();
+            alert("Your route has been added to the pod!!");
+            this.clearAll();
 
-            // }else{
-            //   alert("Route title already used, use another title");
-            // }
+            }else{
+              alert("Route title already used, use another title");
+            }
 
           }
        }
