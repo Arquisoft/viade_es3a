@@ -113,7 +113,7 @@ const AddRoute = () => {
 
 const createFolder = async (folder, route, name, description, photo, video,setFile, setName, setDescription, setImage, setVideo, setError) => {
     
-    if (name===""||route===null){
+    if (name === ""|| route === null){
         setError("Name or route is empty!");
     }
     else{
