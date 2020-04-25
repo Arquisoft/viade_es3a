@@ -103,7 +103,7 @@ const LoadRoute = () => {
                     </p>
 
                 </div>
-                <button className="btn btn-light" onClick={() => share()}>Share</button>
+                <button disabled="true" className="btn btn-light" id="botonin" onClick={() => share()}>Share</button>
             </div>
             
         </div>
@@ -134,7 +134,7 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
         videos: videos,
         url: folder.url
     });
-
+    document.getElementById("botonin").disabled = false;
 }
 
 async function loadFile(urlCarptetaRuta, route) {
