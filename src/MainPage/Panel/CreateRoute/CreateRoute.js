@@ -6,7 +6,7 @@ import L from 'leaflet';
 import { TileLayer, Marker, Polyline } from 'react-leaflet';
 import { MapStyle} from './CreateRouteStyle';
 import { useWebId } from "@solid/react";
-
+import ReactDOM from 'react-dom'
 import UploadRouteToPod from './UploadRouteToPod';
 
 class CreateRoute extends React.Component {
@@ -20,6 +20,7 @@ class CreateRoute extends React.Component {
           images: [],
           videos: []
         };
+        window.createRouteComponent = this;
       }
 
        styles = {
@@ -64,8 +65,16 @@ class CreateRoute extends React.Component {
         return points;
       };
 
-      clearAll() { //Se pone todo por defecto, es decir: name=""...
-        window.location.reload();
+      clearAl() { 
+        window.createRouteComponent.setState({ markers:[] });
+      }
+
+      reloa(){
+        window.createRouteComponent.setState({ markers:[],
+          name: "",
+          description: "",
+          images: [],
+          videos: []});
       }
 
       //Update data
@@ -117,14 +126,11 @@ class CreateRoute extends React.Component {
                 route.features.push(geojson);
               }
 
-              console.log(route);
-
-              UploadRouteToPod.uploadRoute(route, name, description, images, videos);
+              await UploadRouteToPod.uploadRoute(route, name, description, images, videos);
             
             
             }
        }
-
     
     render() {
         this.getLocation();
@@ -155,7 +161,7 @@ class CreateRoute extends React.Component {
                     <br></br>
                     <div className="botones">
                         <button data-testid="btnenviar" className="btn btn-info" id="botonOpcion" onClick={this.saveRoute}> <SaveIcon /> Save </button>
-                        <button data-testid="btnenviar" className="btn btn-info" id="botonOpcion" onClick={this.clearAll} > <DeleteIcon /> Clear </button>
+                        <button data-testid="btnenviar" className="btn btn-info" id="botonOpcion" onClick={this.clearAl} > <DeleteIcon /> Clear </button>
                     </div>
                   </nav>
                   <div className="rightPanel_mapa" id="jeje">
@@ -174,5 +180,7 @@ class CreateRoute extends React.Component {
     }
     
 }
-
+export function recarga(){
+  window.createRouteComponent.reloa();
+}
 export default CreateRoute;
