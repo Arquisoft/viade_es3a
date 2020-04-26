@@ -1,7 +1,7 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent, waitForElement, cleanup} from "@testing-library/react";
+import { queryByTestId, waitFor} from '@testing-library/dom';
 import ReactDOM from "react-dom";
-import { cleanup } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import NavBar from "../MainPage/NavBar/NavBar";
@@ -20,7 +20,7 @@ test("Render component not crashing.", () => {
     expect(linkElement).toBeInTheDocument();
   });
 
-  test("Check NavBar Options", () => {
+  test("Check NavBar Options", async() => {
     const { getByTestId } = render(<Router><NavBar></NavBar></Router>);
     expect(getByTestId("logo")).toBeInTheDocument();
     getByTestId("logo").click();
@@ -28,19 +28,34 @@ test("Render component not crashing.", () => {
     expect(getByTestId("add")).toBeInTheDocument();
     getByTestId("add").click();
 
-    expect(getByTestId("load")).toBeInTheDocument();
-    getByTestId("load").click();
+    expect(getByTestId("dropdownItemRoutes")).toBeInTheDocument();
+    getByTestId("dropdownItemRoutes").click(); 
+    // await expect(getByTestId("load")).toBeInTheDocument(); 
 
     expect(getByTestId("share")).toBeInTheDocument();
     getByTestId("share").click();
 
-    expect(getByTestId("friendsRoutes")).toBeInTheDocument();
-    getByTestId("friendsRoutes").click();
+    // expect(getByTestId("friendsRoutes")).toBeInTheDocument();
+    // getByTestId("friendsRoutes").click();
 
     expect(getByTestId("profile")).toBeInTheDocument();
     getByTestId("profile").click();
 
-    expect(getByTestId("friends")).toBeInTheDocument();
-    getByTestId("friends").click();
+    expect(getByTestId("dropdownItemFriends")).toBeInTheDocument();
+    getByTestId("dropdownItemFriends").click();
 
+    // expect(getByTestId("friends")).toBeInTheDocument();
+    // getByTestId("friends").click();
+
+    // Iconos
+    expect(getByTestId("iconAddRoute")).toBeInTheDocument();
+    expect(getByTestId("iconRoutes")).toBeInTheDocument();
+    // expect(getByTestId("iconMyRoutes")).toBeInTheDocument();
+    // expect(getByTestId("iconCreateRoute")).toBeInTheDocument();
+    expect(getByTestId("iconShareRoutes")).toBeInTheDocument();
+    expect(getByTestId("iconProfile")).toBeInTheDocument();
+    expect(getByTestId("iconFriends")).toBeInTheDocument();
+    // expect(getByTestId("iconMyFriends")).toBeInTheDocument();
+    // expect(getByTestId("iconFriendsRoutes")).toBeInTheDocument();
+    expect(getByTestId("iconLogout")).toBeInTheDocument();
   });

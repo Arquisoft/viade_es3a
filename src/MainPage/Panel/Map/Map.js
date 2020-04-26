@@ -1,22 +1,11 @@
 import React from "react";
-import { TileLayer, Map, GeoJSON } from "react-leaflet";
+import { TileLayer, Map, GeoJSON, Marker, Polyline } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
-/*
-const Wrapper = styled.div`
-    width: ${(props) => props.width};
-    height: ${(props) => props.height};
-`;
 
-function getStyle(feature, layer) {
-    return {
-        weight: 1,
-        opacity: 1,
-        color: "#000"
-    };
-}*/
+import createRoute from "../CreateRoute/CreateRoute";
 
 const geojsonMarkerOptions = {
     radius: 4,
@@ -44,18 +33,18 @@ const styles = {
 };
 
 const ShowMap = (props) => {
+
     return (
         <div style={styles.wrapper} id="thisMap" >
-            <Map style={styles.map} center={props.center} zoom={props.zoom}>
+            <Map style={styles.map} center={props.center} zoom={props.zoom}  >   
                 <TileLayer url={props.url} />
-                
             </Map>
         </div>
     );
 };
 
 export function updateMap (route,name) {
-    let center = [40.205, -3.60];
+    let center = [43.38, -5.80];
     let aa = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
     let com = <div style={styles.wrapper} id={name}>
         <Map style={styles.map} center={center} zoom="8">
@@ -85,10 +74,11 @@ export function updateMap (route,name) {
 }
 
 ShowMap.defaultProps = {
-    center: [40.205, -3.60],
-    zoom: 8,
+    center: [43.38, -5.80],
+    zoom: 12,
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 };
+
 
 export default ShowMap;
 

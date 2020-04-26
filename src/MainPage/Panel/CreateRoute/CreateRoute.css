@@ -1,0 +1,24 @@
+.h2 {
+    font-family: monospace;
+    color: teal;
+}
+
+.panel {
+    float: left;
+    width: 100%;
+    background: lightgrey;
+    padding: 1em;
+    height: 100%;
+    overflow: auto;
+}
+
+.botones {
+    float: left;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#botonOpcion{
+    margin: 0.5em;
+}

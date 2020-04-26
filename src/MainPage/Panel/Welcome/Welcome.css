@@ -20,3 +20,20 @@
     font-weight: bolder;
 }
 
+.leftPanel_leftPart{
+    float: left;
+    width: 30%;
+    background:lightgrey;
+    padding: 1em;
+    height: 100%;
+    overflow: auto;
+}
+
+
+.rightPanel_mapa{
+    float: right;
+    width: 70%;
+    height: auto;
+    background: cyan;
+}
+
