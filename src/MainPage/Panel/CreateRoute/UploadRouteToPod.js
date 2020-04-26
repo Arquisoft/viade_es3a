@@ -51,9 +51,6 @@ class UploadRouteToPod {
 
                 await fileClien.createFile(destination+"/.acl", content,"text/turtle");
 
-                //Route
-                fileList.push(route);
-
                 //Description
                 await fileClien.createFile(destination + "/"+ "description", description, "text/plain");
        
@@ -67,13 +64,20 @@ class UploadRouteToPod {
                     await fileClien.createFile(destination + "/"+ "video"+ "/vid" + (k+1), videos[k], "video");
                 }
 
-                for (var i = 0; i < fileList.length; i++) {
-                    var file = fileList[i];
-                    const fileURl = destination + "/" + name + ".geojson";
-                    fileClien.putFile(fileURl, file, file.type);
-                }
+                console.log(route);
+                
+                //Route
+                await fileClien.createFile(destination + "/" + name + ".geojson", route, "text/plain");
+                
+                // fileList.push(route);
+                // var file = fileList[0];
+                // var fileURl = destination + "/" + name + ".geojson";
+                // fileClien.putFile(fileURl, file, file.type);
+                
 
                 alert("Your route has been added to the pod!!");
+                window.location.reload();
+
             }else{
                 alert("Route title already used, use another title");
             }

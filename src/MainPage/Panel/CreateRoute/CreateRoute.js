@@ -120,7 +120,7 @@ class CreateRoute extends React.Component {
               console.log(route);
 
               UploadRouteToPod.uploadRoute(route, name, description, images, videos);
-
+            
             
             }
        }

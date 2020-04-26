@@ -156,11 +156,11 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
                 await fileClien.createFile(destination + "/"+ "video"+ "/vid" + (k+1), video[k], "video");
             }
 
-            for (var i = 0; i < fileList.length; i++) {
-                var file = fileList[i];
-                const fileURl = destination + "/" + nameValue + ".geojson";
-                fileClien.putFile(fileURl, file, file.type);
-            }
+            
+            var file = fileList[0];
+            const fileURl = destination + "/" + nameValue + ".geojson";
+            fileClien.putFile(fileURl, file, file.type);
+            
             alert("Your route has been added to the pod!!");
             //clean all fields
             setName("");
