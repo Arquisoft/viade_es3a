@@ -6,3 +6,19 @@
     font-family: monospace;
     color: teal;
 }
+
+
+.botones{
+    float: left;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.hola{
+    color: #17a2b8;
+}
+
+.right{
+    float: right;
+}
