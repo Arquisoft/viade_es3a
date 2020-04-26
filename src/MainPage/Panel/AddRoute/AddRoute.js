@@ -118,64 +118,64 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
     }
     else{
         setError(null);
-    var existe = await fileClien.itemExists(folder);
+        var existe = await fileClien.itemExists(folder);
 
-    if (!existe){
-        await fileClien.createFolder(folder);
-    }
-    var fileList = [];
-    var nameValue = name;
-    var destination = folder + "/" + nameValue + "/";
-    existe = await fileClien.itemExists(destination);
-    if (!existe) {
-        var k=0;
-        await fileClien.createFolder(destination);
-        var user=await auth.currentSession();
-        
-        let content = "@prefix : <#>.\n"+
-        "@prefix n0: <http://www.w3.org/ns/auth/acl#>.\n"+
-        "@prefix M: <./>.\n"+
-        "@prefix c: </profile/card#>.\n"+
-        
-        ":ControlReadWrite\n"+
-            "a n0:Authorization;\n"+
-            "n0:accessTo M:;\n"+
-            "n0:agent c:me;\n"+
-            "n0:default M:;\n"+
-            "n0:mode n0:Control, n0:Read, n0:Write.\n"+
-        ":Read a n0:Authorization; n0:accessTo M:; n0:default M:; n0:mode n0:Read.";
-
-        await fileClien.createFile(destination+"/.acl", content,"text/turtle");
-
-        fileList.push(route);
-        await fileClien.createFile(destination + "/"+ "description", description, "text/plain");
-        for(k=0; photo !== null && k<photo.length; k++){
-            await fileClien.createFile(destination + "/"+ "photo" + "/img" + (k+1), photo[k], "img");
+        if (!existe){
+            await fileClien.createFolder(folder);
         }
-        for(k=0; video !== null && k<video.length; k++){
-            await fileClien.createFile(destination + "/"+ "video"+ "/vid" + (k+1), video[k], "video");
-        }
+        var fileList = [];
+        var nameValue = name;
+        var destination = folder + "/" + nameValue + "/";
+        existe = await fileClien.itemExists(destination);
+        if (!existe) {
+            var k=0;
+            await fileClien.createFolder(destination);
+            var user=await auth.currentSession();
+            
+            let content = "@prefix : <#>.\n"+
+            "@prefix n0: <http://www.w3.org/ns/auth/acl#>.\n"+
+            "@prefix M: <./>.\n"+
+            "@prefix c: </profile/card#>.\n"+
+            
+            ":ControlReadWrite\n"+
+                "a n0:Authorization;\n"+
+                "n0:accessTo M:;\n"+
+                "n0:agent c:me;\n"+
+                "n0:default M:;\n"+
+                "n0:mode n0:Control, n0:Read, n0:Write.\n"+
+            ":Read a n0:Authorization; n0:accessTo M:; n0:default M:; n0:mode n0:Read.";
 
-        for (var i = 0; i < fileList.length; i++) {
-            var file = fileList[i];
-            const fileURl = destination + "/" + nameValue + ".geojson";
-            fileClien.putFile(fileURl, file, file.type);
+            await fileClien.createFile(destination+"/.acl", content,"text/turtle");
+
+            fileList.push(route);
+            await fileClien.createFile(destination + "/"+ "description", description, "text/plain");
+            for(k=0; photo !== null && k<photo.length; k++){
+                await fileClien.createFile(destination + "/"+ "photo" + "/img" + (k+1), photo[k], "img");
+            }
+            for(k=0; video !== null && k<video.length; k++){
+                await fileClien.createFile(destination + "/"+ "video"+ "/vid" + (k+1), video[k], "video");
+            }
+
+            for (var i = 0; i < fileList.length; i++) {
+                var file = fileList[i];
+                const fileURl = destination + "/" + nameValue + ".geojson";
+                fileClien.putFile(fileURl, file, file.type);
+            }
+            alert("Your route has been added to the pod!!");
+            //clean all fields
+            setName("");
+            setDescription("");
+            setFile(null);
+            setImage(null);
+            setVideo(null);  
+            
+            document.getElementById("photo").value=null;
+            document.getElementById("video").value=null;
+            document.getElementById("route").value=null;
         }
-        alert("Your route has been added to the pod!!");
-        //clean all fields
-        setName("");
-        setDescription("");
-        setFile(null);
-        setImage(null);
-        setVideo(null);  
-        
-        document.getElementById("photo").value=null;
-        document.getElementById("video").value=null;
-        document.getElementById("route").value=null;
-    }
-    else{
-        alert("Route title already used, use another title");
-    }
+        else{
+            alert("Route title already used, use another title");
+        }
         
 }
 
