@@ -33,7 +33,7 @@ const Friends = () => {
     const webId = useWebId();
     return (
         <DocumentTitle title="Friends">
-            <div>
+            <div className="prueba">
                 <h2 className="h2" data-testId="label">Your friends, <Value src="user.name" /> </h2>
             
                 <div class="card bg-info text-white" >

@@ -91,7 +91,7 @@ const LoadRoute = () => {
                         <Slider images={images} videos={videos} />
                     </div>
                     <br></br>
-                    <p>
+                    <p className="prueba">
                         <h3 className="toShare">Do you want to share it? </h3>
                         <List src={`[${user}].friends`} className="list" padding-inline-start="0">{(friend) =>
                             <li key={friend} className="listElement">

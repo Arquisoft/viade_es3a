@@ -1,8 +1,9 @@
-.listElement {
-    list-style: none;
+.prueba ul {
+    list-style-type: none ;
+    padding: 0;
 }
 
-.h2{
+.h2 {
     font-family: monospace;
     color: teal;
 }
@@ -24,4 +25,5 @@
 
 .right{
     float: right;
+
 }
