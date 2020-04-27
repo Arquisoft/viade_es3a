@@ -6,6 +6,7 @@ import DocumentTitle from "react-document-title";
 import fileClient from "solid-file-client";
 import React, { useState, useEffect } from "react";
 import * as solidAuth from "solid-auth-client";
+import { Toast } from 'react-bootstrap';
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
 async function loadRoutes(url, setFolders) {
@@ -26,7 +27,7 @@ setFolders(result);
 const Notifications = () => {
 
     const [folders, setFolders] = useState([]);
-
+    const [show, setShow] = useState(true);
     var user=useWebId();
 
     useEffect(() => {
@@ -46,14 +47,16 @@ const Notifications = () => {
                     folders.map((folder, i) => {
                         var urlArchivo = "" + folder.url;
                         var arrayUrl = urlArchivo.split("/");
+                        console.log(arrayUrl);
                         var userShare = arrayUrl[2].split(".")[0];
                         var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
-                        return (
-                            <li key={"folder_" + i}>
-                                <p id="routeName">
-                                    The route {nombre} has been shared with you by {userShare}.
-                                </p>
-                            </li>);
+                        return(<Toast>
+                            <Toast.Header closeButton={false}>
+                              <strong class="mr-auto text-info">{userShare}</strong>
+                              <small></small>
+                            </Toast.Header>
+                            <Toast.Body>The route {nombre} has been shared with you.</Toast.Body>
+                          </Toast>);
                     })
                 }
             </ul>
