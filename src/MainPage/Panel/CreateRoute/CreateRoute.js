@@ -129,6 +129,7 @@ class CreateRoute extends React.Component {
     render() {
         this.getLocation();
         return(
+            
             <DocumentTitle title="Create route">
                 <div className="leftPanel_leftPart">     
                   <div className="leftPanel">

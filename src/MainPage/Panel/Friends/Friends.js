@@ -7,7 +7,10 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import DocumentTitle from "react-document-title";
 
-const Card = (props) => {
+import auth from "solid-auth-client";
+
+const Card = (props, webId) => {
+    var user= ""+ useWebId();
     return (
         <div class="card bg-info text-white" >
             <div class="card-body">
@@ -16,9 +19,9 @@ const Card = (props) => {
                 </h4>
                 <center>
                     <div className="botones">
-                        <Link href={props.nombre} className="btn btn-light" data-testId="link">Profile</Link>
-                        <div className="hola">separ</div>
-                        <Link href={props.nombre} className="btn btn-light" data-testId="link">Delete</Link>
+                        <Link href={props.nombre} className="btn btn-light" id="botonOpcion" data-testId="link">Profile</Link>
+                        <button className="btn btn-light" id="botonOpcion" data-testId="button" >Delete</button>
+                        {/* onClick={() => deleteFriend(props, webId)} */}
                     </div>
                 </center>
             </div>
@@ -40,10 +43,12 @@ const Friends = () => {
                         </h4>
                         <center>
                             <div class="form-group">
-                                <Form.Control type="text" placeholder="https://uo264033.solid.community/profile/card#me" />
+                                <Form.Control type="text" placeholder="https://uo264033.solid.community/profile/card#me" name="webid"/>
                                 <div className="right">
-                                    <IconButton aria-label="search"> Search
-                                        <SearchIcon fontSize="large" />
+                                    <IconButton aria-label="search"> Search  
+                                    {/* var friendWebId = getDocumentId("webid"); */}
+                                    {/* onClick={() => addFriend(friendWebId, userWebId)} */}
+                                        <SearchIcon fontSize="large"/>
                                     </IconButton>
                                 </div>
                             </div>
@@ -55,7 +60,7 @@ const Friends = () => {
                 <List src={`[${webId}].friends`} className="list" padding-inline-start="0">{(friend) =>
                     <li key={friend} className="listElement">
                         <p>
-                            <Card nombre={`[${friend}]`}></Card>
+                            <Card nombre={`[${friend}]`} web= {webId}></Card>
                         </p>
                     </li>}
                 </List>
@@ -63,5 +68,27 @@ const Friends = () => {
         </DocumentTitle>
     );
 };
+
+
+const deleteFriend = async (friendWebId, userWebId) => {
+    const auth = require("solid-auth-client");
+    var friends =  `[${userWebId}].friends`;
+    for(let i=0; i< friends.length; i++){
+        if(friends[i] === friendWebId)
+            friends.splice(i);
+    }
+    //Mirar si se elimina en Solid
+  }
+
+  const addFriend =  async (friendWebId, userWebId) => {
+    const auth = require("solid-auth-client");
+    var friends =  `[${userWebId}].friends`;
+    for(let i=0; i< friends.length; i++){
+        if(friends[i] === friendWebId)
+            friends.push(i);
+    }
+    //Mirar si se añade en Solid
+  }
+
 
 export default Friends;
