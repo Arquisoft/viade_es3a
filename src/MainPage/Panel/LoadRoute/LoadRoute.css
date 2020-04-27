@@ -23,3 +23,20 @@
 .lista:hover{
     color: rgb(0,100,220);
 }
+
+ul {
+    list-style: none;
+    padding: 0px;
+    margin-left: 10px;
+}
+
+ul li::before {
+    content: "\1F4CD";  
+    color: teal; 
+    display: inline-block; 
+    padding-right: 34px;
+    font-size: 22px;
+    line-height: 28px;
+    vertical-align: -4px;
+    width: 15px;
+}
