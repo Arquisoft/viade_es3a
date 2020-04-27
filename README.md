@@ -18,7 +18,6 @@ More information about how this project has been setup is available [in the wiki
 
 * Elena Díaz Gutiérrez
 * María González Gancedo
-* Andrés Ángel González Granda
 * Andrea López Suárez
 * Carlos Menéndez Martínez
 * Iván Rodríguez Ovín
