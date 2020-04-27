@@ -1,11 +1,15 @@
-.prueba ul {
-    list-style-type: none ;
-    padding: 0;
-}
-
 .h2 {
     font-family: monospace;
     color: teal;
+}
+
+.panel {
+    float: left;
+    width: 100%;
+    background: lightgrey;
+    padding: 1em;
+    height: 100%;
+    overflow: auto;
 }
 
 .botones {
@@ -16,14 +20,5 @@
 }
 
 #botonOpcion{
-    margin: 0.5em;
-}
-
-.hola{
-    color: #17a2b8;
-}
-
-.right{
-    float: right;
-
+    margin: 1em;
 }
