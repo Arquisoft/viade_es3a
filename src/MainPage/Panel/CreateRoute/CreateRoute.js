@@ -112,22 +112,14 @@ class CreateRoute extends React.Component {
           } else if(markers.lenght <=1){
             alert("There is not a route created. Please, click on the map to draw one");
           }else{
-              //Crear route con los markers --> GeoJson
-              // Create an empty GeoJSON route
-              var route = {
-                "type": "FeatureCollection",
-                "features": []
-              };
 
-              //De cada punto crear un Marker para crear cada parte del fichero
+              var polylines = [];
               for (let i = 0; i < markers.length; i++){
-                var marker = new L.Marker([markers[i].lat, markers[i].lng]);
-                var geojson = marker.toGeoJSON();
-                route.features.push(geojson);
+                polylines.push(new L.LatLng(markers[i].lat, markers[i].lng));
               }
+              var polyline = new L.Polyline(polylines);
 
-              await UploadRouteToPod.uploadRoute(route, name, description, images, videos);
-            
+              await UploadRouteToPod.uploadRoute(polyline.toGeoJSON(), name, description, images, videos);
             
             }
        }
