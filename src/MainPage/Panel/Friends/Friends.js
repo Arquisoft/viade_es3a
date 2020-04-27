@@ -23,14 +23,12 @@ const Friends = () => {
     const webId = useWebId();
     return (
         <DocumentTitle title="Friends">
-        <div>
+        <div className="prueba">
             <h2 className="h2" data-testId="label">Your friends, <Value src="user.name"/> </h2>
             <List src={`[${webId}].friends`} className="list" padding-inline-start="0">{(friend) =>
-                <li key={friend} className="listElement">
-                    <p>
+                <div key={friend} className="listElement">
                         <Card nombre={`[${friend}]`}></Card>
-                    </p>
-                </li>}
+                </div>}
             </List>
         </div>
         </DocumentTitle>
