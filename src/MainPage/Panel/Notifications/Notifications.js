@@ -8,63 +8,66 @@ import React, { useState, useEffect } from "react";
 import * as solidAuth from "solid-auth-client";
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
+async function loadRoutes(url, setFolders) {
 
+    let folder = await fileClien.readFolder(url);
+    var result=[];
 
-const Card = (props) => {
-    return (
-        <div class="card bg-info text-white" >
-            <div class="card-body">
-                <h4 class="card-title" id="notification">
-                    <Name src={props.nombre}>{props.nombre}</Name>
-                </h4>
-                <center>
-                    <Link href={props.nombre} className="btn btn-light" data-testId="link">Notifications</Link>
-                </center>
-            </div>
-        </div>
-    );
-    
-};const Notifications = () => {
-    const webId = useWebId();
-    
-    const [notifications, setNotifications] = React.useState([]);
+    for(var i=0;i<folder.files.length;i+=1){
+        let f=await fileClien.readFile(folder.files[i].url);
+        
+        let otro= await fileClien.readFolder(f);
+        result.push(otro);
+    }
+
+setFolders(result);
+}
+
+const Notifications = () => {
+
+    const [folders, setFolders] = useState([]);
+    const [selected, setSelected] = useState({
+        name: "",
+        description: "",
+        images: [],
+        videos: []
+    });
+
+    var images = [];
+    var videos = [];
+
+    var user=useWebId();
 
     useEffect(() => {
-        if (webId != undefined) {
-            const url = webId.split("profile/card#me")[0] + "/inbox/notifications";
-            //listRoutes(url);
-            loadNotifications(url, setNotifications);
+        if ( user != undefined) {
+            const url=user.split("profile/card#me")[0]+"inbox/routes3a";
+            loadRoutes(url, setFolders);
         }
-    }, [webId]);
-    return (
+    }, [user]);
+        return (
+            
         <DocumentTitle title="Notifications">
-        <div>
-            <h2 className="h2" data-testId="label">Your notifications, <Value src="user.name"/> </h2>
+        <div class="container">
+        <h2 className="h2" data-testId="label">Your notifications, <Value src="user.name"/> </h2>
+            
             <ul className="list" padding-inline-start="0">
                 {
-                    notifications.map((notification, i) => (
-                        <li key={`notification_${i}`} className="listElement">
-                        <p>
-                            <Card nombre={`[${notification}]`}></Card>
-                        </p>
-                    </li>
-                    ))
+                    folders.map((folder, i) => {
+                        var urlArchivo = "" + folder.url;
+                        var arrayUrl = urlArchivo.split("/");
+                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
+                        return (
+                            <li key={"folder_" + i}>
+                                <p id="routeName">
+                                    The route {nombre} has benn shared with you.
+                                </p>
+                            </li>);
+                    })
                 }
             </ul>
         </div>
         </DocumentTitle>
-    );
+        );
 };
-
-async function loadNotifications(url, setNotifications) {
-    let folder = await fileClien.readFolder(url);
-    let notifications = folder.folders.map((folder, i) => {
-        var urlArchivo = "" + folder.url;
-        var arrayUrl = urlArchivo.split("/");
-        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
-        return 'It has been shared with you the route ' + nombre;
-    });
-    setNotifications(notifications);
-}
 
 export default Notifications;
