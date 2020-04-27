@@ -53,60 +53,61 @@ const LoadRoute = () => {
         }
     }, [user]);
 
-    images=[];
-    videos=[];
+    images = [];
+    videos = [];
     selected.images.map((image) => (
         images.push(image)
     ));
     selected.videos.map((video) => (
         videos.push(video)
     ));
-    cont=0;
+    cont = 0;
     return (
         <DocumentTitle title="Share routes">
-        <div class="container">
-            <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
+            <div class="container">
+                <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
 
-            <ul>
-                {
-                    folders.map((folder, i) => {
-                        var urlArchivo = "" + folder.url;
-                        var arrayUrl = urlArchivo.split("/");
-                        urlRutas.push(urlArchivo);
-                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
-                        return (
-                            <li key={"folder_" + i}>
-                                <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
-                                    {nombre}
-                                </a>
-                            </li>);
-                    })
-                }
-            </ul>
-            <div data-testid="card" class="card bg-info text-white">
-                <div class="card-body">
-                <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
-                    <p class="card-Description" id="routeDescription">{selected.description}</p>
-                    <div className="bodyMedia">
-                        <Slider images={images} videos={videos} />
-                    </div>
-                    <br></br>
-                    <p className="prueba">
-                        <h3 className="toShare">Do you want to share it? </h3>
-                        <List src={`[${user}].friends`} className="list" padding-inline-start="0">{(friend) =>
-                            <li key={friend} className="listElement">
-                                <p>
+                <ul>
+                    {
+                        folders.map((folder, i) => {
+                            var urlArchivo = "" + folder.url;
+                            var arrayUrl = urlArchivo.split("/");
+                            urlRutas.push(urlArchivo);
+                            var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
+                            return (
+                                <li key={"folder_" + i}>
+                                    <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
+                                        {nombre}
+                                    </a>
+                                </li>);
+                        })
+                    }
+                </ul>
+                <div data-testid="card" class="card bg-info text-white">
+                    <div class="card-body">
+                        <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
+                        <p class="card-Description" id="routeDescription">{selected.description}</p>
+                        <div className="bodyMedia">
+                            <Slider images={images} videos={videos} />
+                        </div>
+                        <br></br>
+                        <p className="prueba">
+                            <h3 className="toShare">Do you want to share it? </h3>
+                            <List src={`[${user}].friends`} className="list">{(friend) =>
+                                <li key={friend} className="listElement">
+                                    {/* <p>
                                     <Carda nombre={`[${friend}]`} url={selected.url} name={selected.name}></Carda>
-                                </p>
-                            </li>}
-                        </List>
-                    </p>
+                                </p> */}
+                                    <OneFriend nombre={`[${friend}]`} url={selected.url} name={selected.name}></OneFriend>
+                                </li>}
+                            </List>
+                        </p>
 
+                    </div>
+                    <button disabled="true" className="btn btn-light" id="botonin" onClick={() => share()}>Share</button>
                 </div>
-                <button disabled="true" className="btn btn-light" id="botonin" onClick={() => share()}>Share</button>
+
             </div>
-            
-        </div>
         </DocumentTitle>
 
     );
@@ -124,7 +125,7 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
     let images = await loadFile(urlCarptetaRuta, "photo/img");
     let videos = await loadFile(urlCarptetaRuta, "video/vid");
-    
+
     await showRoute(urlCarptetaRuta);
 
     setSelected({
@@ -163,11 +164,11 @@ export async function showRoute(urlCarptetaRuta) {
 
 }
 
-async function share(){
-    for(var i=0; i<cont;i++){
-        let a = document.getElementById("ck"+i);
-        if(a.checked==true)
-            await enseñaAmigos(a.getAttribute("url"),a.getAttribute("nombre"),a.getAttribute("name"))
+async function share() {
+    for (var i = 0; i < cont; i++) {
+        let a = document.getElementById("ck" + i);
+        if (a.checked == true)
+            await enseñaAmigos(a.getAttribute("url"), a.getAttribute("nombre"), a.getAttribute("name"))
     }
     alert("Your route has been shared!");
 }
@@ -217,11 +218,11 @@ async function enseñaAmigos(source, target, name) {
 
         }
 
-        await fileClien.postFile(urlTarget + "/" + name + "->"+((await auth.currentSession()).webId).split("https://")[1].split(".")[0], source, "text/plain");
+        await fileClien.postFile(urlTarget + "/" + name + "->" + ((await auth.currentSession()).webId).split("https://")[1].split(".")[0], source, "text/plain");
 
         //alert("Your route has been shared!");
     }
-    else{
+    else {
         //alert("Your route was already shared with this person!");
     }
 }
@@ -232,8 +233,30 @@ const Carda = (props) => {
                 <h4 class="card-title" id="friendName">
                     <Name src={props.nombre}>{props.nombre}</Name>
                 </h4>
-                <input type="checkbox" id={"ck"+(cont++)} url={props.url} nombre={props.nombre} name={props.name}/>
+                <input type="checkbox" id={"ck" + (cont++)} url={props.url} nombre={props.nombre} name={props.name} />
                 <label>Share</label>
+            </div>
+        </div>
+    );
+};
+
+const OneFriend = (props) => {
+    return (
+        <div class="divAmigoShare">
+            <div className="friendameDiv">
+                <h5 id="friendName">
+                <Link href={props.nombre} className="linkNameFriend" title="Go to SOLID profile">
+                    <Name src={props.nombre}>{props.nombre}</Name>
+                </Link>    
+                </h5>
+            </div>
+            <div className="checkBoxShareDiv">
+                <label className="custom-radio-checkbox">
+                    {/* Input oculto */}
+                    <input className="custom-radio-checkbox__input" type="checkbox" id={"ck" + (cont++)} url={props.url} nombre={props.nombre} name={props.name} />
+                    {/* Imagen en sustitucion */}
+                    <span className="custom-radio-checkbox__show custom-radio-checkbox__show--checkbox"></span>
+                </label>
             </div>
         </div>
     );

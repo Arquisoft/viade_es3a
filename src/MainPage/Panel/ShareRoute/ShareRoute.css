@@ -2,38 +2,100 @@
     list-style: none;
 }
 
-.h2{
+.h2 {
     font-family: monospace;
     color: teal;
 }
 
-.h2{
+.h2 {
     font-family: monospace;
     color: teal;
 }
 
-.cardName{
+.cardName {
     font-family: monospace;
 }
 
-.vid{
+.vid {
     width: 100%;
 }
 
-.imag{
+.imag {
     width: 100%;
 }
 
-.lista{
+.lista {
     color: teal;
     transition: all 0.4s ease-out;
 }
 
-.lista:hover{
-    color: rgb(0,100,220);
+.lista:hover {
+    color: rgb(0, 100, 220);
 }
 
 .prueba ul {
-    list-style-type: none ;
+    list-style-type: none;
     padding: 0;
+}
+
+.divAmigoShare {
+    background: linear-gradient(to right, rgba(226, 240, 245, 0.295) 0%, rgba(252, 252, 252, 0.295) 56%, rgba(187, 237, 252, 0.295) 100%);
+    border-radius: 0.3em;
+    width: 100%;
+    padding: 0.6em;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.1em;
+    color: rgb(237, 253, 253);
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.checkBoxShareDiv {
+    float: right;
+    margin-right: 0;
+}
+
+.friendameDiv {
+    width: 90%;
+}
+
+.custom-radio-checkbox__show--checkbox {
+    background-image: url("../../../img/unchecked.png");
+}
+
+.custom-radio-checkbox>.custom-radio-checkbox__input {
+    display: none;
+}
+
+/* Radio personalizado usando <span> */
+
+.custom-radio-checkbox>.custom-radio-checkbox__show {
+    cursor: pointer;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: .5rem;
+    background-size: cover;
+
+    /* Transiciones */
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+/* Cambia el checkbox personalizado cuando es pulsado */
+
+.custom-radio-checkbox>.custom-radio-checkbox__input:checked+.custom-radio-checkbox__show--checkbox {
+    background-image: url("../../../img/checked.png");
+}
+
+.linkNameFriend{
+    color: white;
+    text-decoration: none;
+}
+
+.linkNameFriend:hover {
+    color: white;
+    font-size: 1.1em;
 }
