@@ -26,15 +26,6 @@ setFolders(result);
 const Notifications = () => {
 
     const [folders, setFolders] = useState([]);
-    const [selected, setSelected] = useState({
-        name: "",
-        description: "",
-        images: [],
-        videos: []
-    });
-
-    var images = [];
-    var videos = [];
 
     var user=useWebId();
 
@@ -55,11 +46,12 @@ const Notifications = () => {
                     folders.map((folder, i) => {
                         var urlArchivo = "" + folder.url;
                         var arrayUrl = urlArchivo.split("/");
+                        var userShare = arrayUrl[2].split(".")[0];
                         var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
                         return (
                             <li key={"folder_" + i}>
                                 <p id="routeName">
-                                    The route {nombre} has benn shared with you.
+                                    The route {nombre} has been shared with you by {userShare}.
                                 </p>
                             </li>);
                     })
