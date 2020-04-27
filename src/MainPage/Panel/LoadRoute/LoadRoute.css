@@ -24,7 +24,7 @@
     color: rgb(0,100,220);
 }
 
-ul {
+/* ul {
     list-style: none;
     padding: 0px;
     margin-left: 10px;
@@ -39,4 +39,4 @@ ul li::before {
     line-height: 28px;
     vertical-align: -4px;
     width: 15px;
-}
+} */
