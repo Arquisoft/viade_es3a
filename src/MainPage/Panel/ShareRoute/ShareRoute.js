@@ -226,19 +226,6 @@ async function enseñaAmigos(source, target, name) {
         //alert("Your route was already shared with this person!");
     }
 }
-const Carda = (props) => {
-    return (
-        <div class="card bg-info text-white">
-            <div class="card-body">
-                <h4 class="card-title" id="friendName">
-                    <Name src={props.nombre}>{props.nombre}</Name>
-                </h4>
-                <input type="checkbox" id={"ck" + (cont++)} url={props.url} nombre={props.nombre} name={props.name} />
-                <label>Share</label>
-            </div>
-        </div>
-    );
-};
 
 const OneFriend = (props) => {
     return (
