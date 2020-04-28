@@ -17,6 +17,7 @@ var urlRutas = [];
 var cont = 0;
 var images = [];
 var videos = [];
+var rut = "";
 
 const LoadRoute = () => {
 
@@ -127,6 +128,7 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     
     await showRoute(urlCarptetaRuta);
 
+    
     setSelected({
         name: folder.name,
         description: folderDesc,
@@ -134,7 +136,6 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
         videos: videos,
         url: folder.url
     });
-    //document.getElementById("botonin").disabled = false;
 }
 
 async function loadFile(urlCarptetaRuta, route) {
@@ -148,13 +149,13 @@ async function loadFile(urlCarptetaRuta, route) {
             k = 1000;
         }
     }
+    rut=route;
     return result;
 }
 
 export async function showRoute(urlCarptetaRuta) {
 
     let folder = await fileClien.readFolder(urlCarptetaRuta);
-
 
     document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
     let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
@@ -164,12 +165,25 @@ export async function showRoute(urlCarptetaRuta) {
 }
 
 async function share(){
-    for(var i=0; i<cont;i++){
-        let a = document.getElementById("ck"+i);
-        if(a.checked==true)
-            await enseñaAmigos(a.getAttribute("url"),a.getAttribute("nombre"),a.getAttribute("name"))
+    var fri = false;
+    if(rut != ""){
+            for(var i=0; i<cont;i++){
+                let a = document.getElementById("ck"+i);
+                if(a.checked==true) {
+                    fri = true;
+                    await enseñaAmigos(a.getAttribute("url"),a.getAttribute("nombre"),a.getAttribute("name"))
+                }
+            }
+            if(fri){
+                alert("Your route has been shared!");
+            }
+            else {
+                alert("You have to select at least a friend!");
+            }
     }
-    alert("Your route has been shared!");
+    else {
+        alert("You have to select a route!");
+    }
 }
 
 async function enseñaAmigos(source, target, name) {
@@ -205,14 +219,14 @@ async function enseñaAmigos(source, target, name) {
         }
         else {
 
-            var cont = 1;
+            var conta = 1;
             let nuevo = "";
             let nuevo2 = "";
-            while ((acl + "").includes("c" + cont)) {
-                cont++;
+            while ((acl + "").includes("c" + conta)) {
+                conta++;
             }
-            nuevo = acl.split(":ControlR")[0] + "@prefix c" + cont + ": <" + userToAcl.substring(0, userToAcl.length - 2) + ">.\n" + ":ControlR" + acl.split(":ControlR")[1];
-            nuevo2 = nuevo.split("c0:me")[0] + "c0:me, c" + cont + ":me" + nuevo.split("c0:me")[1];
+            nuevo = acl.split(":ControlR")[0] + "@prefix c" + conta + ": <" + userToAcl.substring(0, userToAcl.length - 2) + ">.\n" + ":ControlR" + acl.split(":ControlR")[1];
+            nuevo2 = nuevo.split("c0:me")[0] + "c0:me, c" + conta + ":me" + nuevo.split("c0:me")[1];
             await fileClien.createFile(source + "/.acl", nuevo2, "text/turtle");
 
         }
