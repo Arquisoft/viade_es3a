@@ -6,8 +6,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import IconButton from '@material-ui/core/IconButton';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import DocumentTitle from "react-document-title";
-import ldflex from "@solid/query-ldflex";
+
 import auth from "solid-auth-client";
+const { default: data } = require('@solid/query-ldflex');
 
 const Card = (props, webId) => {
     var user = "" + useWebId();
@@ -62,9 +63,14 @@ const Friends = () => {
 
 
 const deleteFriend = async (friendWebId, userWebId) => {
-    
-    console.log(userWebId)
-    console.log(await ldflex[userWebId].knows.delete(ldflex[friendWebId]));
+    const user = data[userWebId];
+    //console.log(user.friends.firstName)
+    for await (const name of user.friends.firstName){
+    console.log("Hola")
+        console.log(`  - ${name} is a friend`);}
+    //console.log(friendWebId)
+    //await ldflex[userWebId].friends.delete(friendWebId);
+    //console.log(await ldflex[userWebId].friends.friends.random);
     /*const auth = require("solid-auth-client");
     var friends = `[${userWebId}].friends`;
     for (let i = 0; i < friends.length; i++) {
