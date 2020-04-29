@@ -40,7 +40,7 @@ const Notifications = () => {
             
         <DocumentTitle title="Notifications">
         <div class="container">
-        <h2 className="h2" data-testId="label">Your notifications, <Value src="user.name"/> </h2>
+        <h2 className="h2" data-testId="welcome">Your notifications, <Value src="user.name"/> </h2>
             
             <ul className="list" padding-inline-start="0">
                 {
