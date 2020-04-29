@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import IconButton from '@material-ui/core/IconButton';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import DocumentTitle from "react-document-title";
-
+import ldflex from "@solid/query-ldflex";
 import auth from "solid-auth-client";
 
 const Card = (props, webId) => {
@@ -20,7 +20,7 @@ const Card = (props, webId) => {
                 <center>
                     <div className="botones">
                         <Link href={props.nombre} className="btn btn-light" id="botonOpcion" data-testId="link">Profile</Link>
-                        <button className="btn btn-light" id="botonOpcion" data-testId="button" >Delete</button>
+                        <button className="btn btn-light" id="botonOpcion" data-testId="button"  onClick={() => deleteFriend(props, user)} >Delete</button>
                         {/* onClick={() => deleteFriend(props, webId)} */}
                     </div>
                 </center>
@@ -62,12 +62,15 @@ const Friends = () => {
 
 
 const deleteFriend = async (friendWebId, userWebId) => {
-    const auth = require("solid-auth-client");
+    
+    console.log(userWebId)
+    console.log(await ldflex[userWebId].knows.delete(ldflex[friendWebId]));
+    /*const auth = require("solid-auth-client");
     var friends = `[${userWebId}].friends`;
     for (let i = 0; i < friends.length; i++) {
         if (friends[i] === friendWebId)
             friends.splice(i);
-    }
+    }*/
     //Mirar si se elimina en Solid
 }
 
@@ -80,6 +83,5 @@ const addFriend = async (friendWebId, userWebId) => {
     }
     //Mirar si se añade en Solid
 }
-
 
 export default Friends;
