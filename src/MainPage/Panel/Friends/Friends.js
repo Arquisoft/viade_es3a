@@ -64,13 +64,29 @@ const Friends = () => {
 };
 
 
-const deleteFriend = async (friendWebId, userWebId) => {
-    const user = data[userWebId];
-    //console.log(user.friends.firstName)
-    for await (const name of user.friends.firstName){
-    console.log("Hola")
-        console.log(`  - ${name} is a friend`);}
-    //console.log(friendWebId)
+const deleteFriend = async (friend, userWebId) => {
+  var friendWebId=friend.nombre
+  friendWebId=friendWebId.replace('[','');
+  friendWebId=friendWebId.replace(']','');
+ console.log(friendWebId)
+
+  const user = data[userWebId]; //sacamos nuestra informacion
+    if (await isWebIdValid(friendWebId)) {
+      if (friendWebId.localeCompare("") !== 0) {
+        //comprobamos que no pasamos un campo vacio
+        if (await !friendAlreadyAdded(friendWebId, userWebId)) {
+          //notificamos si el amigo estaba añadido
+          alert("Friend not added");
+        } else {
+          await user.knows.delete(data[friendWebId]); //añadimos el amigo
+          reload();
+        }
+      } else {
+        alert("Error");
+      }
+    } else {
+     alert("Error 2");
+    }
     //await ldflex[userWebId].friends.delete(friendWebId);
     //console.log(await ldflex[userWebId].friends.friends.random);
     /*const auth = require("solid-auth-client");
