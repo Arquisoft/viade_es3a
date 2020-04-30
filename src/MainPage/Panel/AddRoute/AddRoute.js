@@ -12,21 +12,11 @@ import fileClient from "solid-file-client";
 import { Redirect } from "react-router-dom";
 import DocumentTitle from "react-document-title";
 
-import Loader from "../Loader/Loader";
-
 const auth = require("solid-auth-client");
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
-const [visible, setVisible] = useState(false);
 
-const ShowLoader = () =>{
-    setVisible(true);
-};
-
-const HideLoader = () =>{
-    setVisible(false);
-};
 
 const Upload = ({setFile, file}) => {
     const filename = file == null ? "Choose File" : file.name;
@@ -100,8 +90,6 @@ const Data = () => {
                 <button data-testid="btnenviar" onClick={() => createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo, setError)}  class="btn btn-info" >Add route
                 </button>
             </center>
-            
-            <Loader show={ShowLoader} hide={HideLoader}/>
          </div>
 
     );
