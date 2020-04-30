@@ -28,8 +28,7 @@ async function loadRoutes(url, setFolders) {
         result.push(otro);
         }
         catch(error){
-            
-            fileClien.deleteFile(folder.files[i].url);
+            await fileClien.deleteFile(folder.files[i].url);
         }
         // setFolders(result)
     }
