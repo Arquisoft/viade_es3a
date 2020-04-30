@@ -1,5 +1,42 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
 
+.scrollBarWelcome{
+    overflow: auto;
+    max-height: 42vmin;
+}
+
+.opcionYLogoWelcome:hover {
+    background-color: #3c4349;
+}
+
+.iconWelcome {
+    margin-right: 0.8em;
+    color: rgb(97, 208, 228);
+}
+
+.opcionYLogoWelcome {
+    display: flex;
+    align-items: center;
+    padding: 0.2em 0.9em;
+    background-color: #343a40;
+}
+
+.mostrar{
+    background-color: #17a2b8;
+}
+
+.optionTitle, .cardWelcome{
+    color: white;
+}
+
+.optionTitle{
+    font-size: 1.1em;
+}
+
+.cardWelcome{
+    background-color: #343a40;
+}
+
 .contenedor {
     display: block;
     align-items: center;
@@ -7,6 +44,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.1em;
 }
+
 .titulo {
     -webkit-text-stroke: 1.8px #000000;
     font-size: 3em;
