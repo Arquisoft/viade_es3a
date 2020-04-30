@@ -7,3 +7,6 @@ ignore:
   - "src/MainPage/Main-page.js"
   - "src/MainPage/Panel/CreateRoute/UploadRouteToPod.js"
   - "src/MainPage/Panel/Friends/Friends.js"
+  - "src/MainPage/Panel/SharedRoutes/SharedRoutes.js"
+  - "src/MainPage/Panel/Notifications/Notifications.js"
+  - "src/MainPage/Panel/AddRoute/AddRoute.js"
