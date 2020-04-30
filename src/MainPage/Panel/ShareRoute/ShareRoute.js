@@ -76,7 +76,7 @@ const LoadRoute = () => {
                             urlRutas.push(urlArchivo);
                             var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
                             return (
-                                <li key={"folder_" + i}>
+                                <li key={"folder_" + i} className="optionS" id="optionS">
                                     <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
                                         {nombre}
                                     </a>

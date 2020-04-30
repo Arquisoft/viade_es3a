@@ -16,27 +16,40 @@
 }
 
 .lista{
+    text-decoration: none;
     color: teal;
     transition: all 0.4s ease-out;
 }
 
 .lista:hover{
-    color: rgb(0,100,220);
+    text-decoration: none;
+    color: rgb(60, 130, 143);
 }
 
-/* ul {
+.option:hover {
+    text-decoration: none;
+    color: rgb(60, 130, 143);
+    font-size: 1.15em;
+}
+
+.option:active {
+    color: rgb(60, 130, 143);
+    font-size: 1.2em;
+}
+
+ul {
     list-style: none;
     padding: 0px;
     margin-left: 10px;
 }
 
-ul li::before {
+ul #option::before {
     content: "\1F4CD";  
     color: teal; 
     display: inline-block; 
     padding-right: 34px;
     font-size: 22px;
-    line-height: 28px;
+    line-height: 30px;
     vertical-align: -4px;
     width: 15px;
-} */
+}
