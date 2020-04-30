@@ -70,15 +70,15 @@ const deleteFriend = async (friend, userWebId) => {
   friendWebId=friendWebId.replace(']','');
  console.log(friendWebId)
 
-  const user = data[userWebId]; //sacamos nuestra informacion
+  const user = data[userWebId]; 
     if (await isWebIdValid(friendWebId)) {
       if (friendWebId.localeCompare("") !== 0) {
-        //comprobamos que no pasamos un campo vacio
         if (await !friendAlreadyAdded(friendWebId, userWebId)) {
-          //notificamos si el amigo estaba añadido
-          alert("Friend not added");
+          
+          alert("An error occurred when deleting the friend (maybe it was previously deleted)");
         } else {
           await user.knows.delete(data[friendWebId]); //añadimos el amigo
+          alert("user will be deleted from your friends")
           reload();
         }
       } else {
@@ -87,15 +87,7 @@ const deleteFriend = async (friend, userWebId) => {
     } else {
      alert("Error 2");
     }
-    //await ldflex[userWebId].friends.delete(friendWebId);
-    //console.log(await ldflex[userWebId].friends.friends.random);
-    /*const auth = require("solid-auth-client");
-    var friends = `[${userWebId}].friends`;
-    for (let i = 0; i < friends.length; i++) {
-        if (friends[i] === friendWebId)
-            friends.splice(i);
-    }*/
-    //Mirar si se elimina en Solid
+    
 }
 
   const reload = () => {
