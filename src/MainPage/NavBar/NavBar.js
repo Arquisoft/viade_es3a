@@ -73,10 +73,7 @@ const NavBar = () => {
         </Nav>
   
         <Nav pullRight>
-          <NavItem href="/viade_es3a/friends" className="opcionYLogo">
-            <PeopleAltOutlinedIcon className="icon" />
-            <Nav.Link as={Link} to="/viade_es3a/friends" className="optionL" data-testid="friends">Friends</Nav.Link>
-          </NavItem>
+        
         <NavItem href="/viade_es3a/notifications" className="opcionYLogo">
             <Link to="/viade_es3a/notifications"><NotificationsActiveOutlinedIcon className="icon" data-testid="notifications"/></Link>
           </NavItem>
