@@ -1,3 +1,6 @@
 ignore:
   - "src/index.js"
   - "src/serviceWorker.js"
+  - "src/MainPage/Panel/Map/Map.js"
+  - "src/MainPage/Panel/CreateRoute/CreateRoute.js"
+  - "src/MainPage/Panel/ShareRoute/ShareRoute.js"

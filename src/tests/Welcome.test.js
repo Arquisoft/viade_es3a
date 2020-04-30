@@ -24,7 +24,7 @@ test("Render component not crashing.", () => {
     expect(getByTestId("add")).toHaveTextContent("Add route");
     
     expect(getByTestId("load")).toBeInTheDocument();
-    expect(getByTestId("load")).toHaveTextContent("Load route");
+    expect(getByTestId("load")).toHaveTextContent("My route");
 
     expect(getByTestId("share")).toBeInTheDocument();
     expect(getByTestId("share")).toHaveTextContent("Share route");

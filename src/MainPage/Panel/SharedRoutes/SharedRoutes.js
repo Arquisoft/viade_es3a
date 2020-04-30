@@ -21,10 +21,15 @@ async function loadRoutes(url, setFolders) {
     var result=[];
 
     for(var i=0;i<folder.files.length;i+=1){
+        try{
         let f=await fileClien.readFile(folder.files[i].url);
         
         let otro= await fileClien.readFolder(f);
         result.push(otro);
+        }
+        catch(error){
+            await fileClien.deleteFile(folder.files[i].url);
+        }
         // setFolders(result)
     }
 
