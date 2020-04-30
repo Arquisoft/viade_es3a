@@ -64,7 +64,9 @@ image:d05_level3.png["Level 3"]
 |Name |Responsability
 | Add Route | It allows to store a route in the POD.
 | My Routes | It lists routes created by user.
+| Create Routes | It allows you to create a new route and store into your POD.
 | Share Routes | It allows to share user routes with friends.
+| Shared Routes | It allows to see routes that has been shared to you.
 |===
 
 
