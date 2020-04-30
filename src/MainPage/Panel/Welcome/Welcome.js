@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./Welcome.css";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Button";
 
 // Iconos
 import BackupOutlinedIcon from "@material-ui/icons/BackupOutlined";
@@ -153,8 +153,14 @@ const Welcome = () => {
 
             <AccordionWelcome />
 
-            <p data-testid="message">Enjoy our app ! :)</p>
-            <p className="alert">Be careful! Make sure the app has control permissions on your solid profile</p>
+            <center>
+                <p data-testid="message">Enjoy our app ! :)</p>
+            </center>
+            
+            <Alert variant={'danger'}>
+                Be careful! Make sure the app has control permissions on your solid profile
+            </Alert>
+            
         </div >
     );
 };
