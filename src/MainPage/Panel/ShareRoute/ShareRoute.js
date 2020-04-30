@@ -190,6 +190,7 @@ async function enseñaAmigos(source, target, name) {
 
     const target2 = target.split("[")[1];
     const urlTarget = target2.split("profile/card#me")[0] + "/inbox/routes3a";
+    const urlTargetNotifications = target2.split("profile/card#me")[0] + "/inbox/notifications";
 
     let acl = await fileClien.readFile(source + "/.acl");
 
@@ -233,7 +234,9 @@ async function enseñaAmigos(source, target, name) {
 
         await fileClien.postFile(urlTarget + "/" + name + "->"+((await auth.currentSession()).webId).split("https://")[1].split(".")[0], source, "text/plain");
 
-        //alert("Your route has been shared!");
+        await fileClien.postFile(urlTargetNotifications + '/' + name, '', 'text/plain');
+
+        alert("Your route has been shared!");
     }
     else{
         //alert("Your route was already shared with this person!");
