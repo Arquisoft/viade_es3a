@@ -11,7 +11,7 @@ test("Render component not crashing.", () => {
     ReactDOM.render(<SharedRoutes></SharedRoutes>, div);
  });
 
- test("Check Load Route panel (interface)", () => {
+ test("Check SharedRoute panel (interface)", () => {
     const { getByTestId } = render(<SharedRoutes></SharedRoutes>);
     expect(getByTestId("label")).toBeInTheDocument();
     expect(getByTestId("label")).toHaveTextContent("Routes from your friends:");

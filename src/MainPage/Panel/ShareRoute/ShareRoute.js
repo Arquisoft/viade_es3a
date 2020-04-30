@@ -14,9 +14,10 @@ const auth = require("solid-auth-client");
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas = [];
-
+var cont = 0;
 var images = [];
 var videos = [];
+var rut = "";
 
 const LoadRoute = () => {
 
@@ -61,7 +62,7 @@ const LoadRoute = () => {
     selected.videos.map((video) => (
         videos.push(video)
     ));
-
+    cont=0;
     return (
         <DocumentTitle title="Share routes">
         <div class="container">
@@ -91,7 +92,7 @@ const LoadRoute = () => {
                         <Slider images={images} videos={videos} />
                     </div>
                     <br></br>
-                    <p>
+                    <p className="prueba">
                         <h3 className="toShare">Do you want to share it? </h3>
                         <List src={`[${user}].friends`} className="list" padding-inline-start="0">{(friend) =>
                             <li key={friend} className="listElement">
@@ -103,7 +104,9 @@ const LoadRoute = () => {
                     </p>
 
                 </div>
+                <button className="btn btn-light" id="botonin" onClick={() => share()}>Share</button>
             </div>
+            
         </div>
         </DocumentTitle>
 
@@ -125,6 +128,7 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     
     await showRoute(urlCarptetaRuta);
 
+    
     setSelected({
         name: folder.name,
         description: folderDesc,
@@ -132,7 +136,6 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
         videos: videos,
         url: folder.url
     });
-
 }
 
 async function loadFile(urlCarptetaRuta, route) {
@@ -146,6 +149,7 @@ async function loadFile(urlCarptetaRuta, route) {
             k = 1000;
         }
     }
+    rut=route;
     return result;
 }
 
@@ -153,13 +157,35 @@ export async function showRoute(urlCarptetaRuta) {
 
     let folder = await fileClien.readFolder(urlCarptetaRuta);
 
-
     document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
     let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
 
     algo.updateMap(ruta, folder.name);
 
 }
+
+async function share(){
+    var fri = false;
+    if(rut != ""){
+            for(var i=0; i<cont;i++){
+                let a = document.getElementById("ck"+i);
+                if(a.checked==true) {
+                    fri = true;
+                    await enseñaAmigos(a.getAttribute("url"),a.getAttribute("nombre"),a.getAttribute("name"))
+                }
+            }
+            if(fri){
+                alert("Your route has been shared!");
+            }
+            else {
+                alert("You have to select at least a friend!");
+            }
+    }
+    else {
+        alert("You have to select a route!");
+    }
+}
+
 async function enseñaAmigos(source, target, name) {
 
     const target2 = target.split("[")[1];
@@ -194,14 +220,14 @@ async function enseñaAmigos(source, target, name) {
         }
         else {
 
-            var cont = 1;
+            var conta = 1;
             let nuevo = "";
             let nuevo2 = "";
-            while ((acl + "").includes("c" + cont)) {
-                cont++;
+            while ((acl + "").includes("c" + conta)) {
+                conta++;
             }
-            nuevo = acl.split(":ControlR")[0] + "@prefix c" + cont + ": <" + userToAcl.substring(0, userToAcl.length - 2) + ">.\n" + ":ControlR" + acl.split(":ControlR")[1];
-            nuevo2 = nuevo.split("c0:me")[0] + "c0:me, c" + cont + ":me" + nuevo.split("c0:me")[1];
+            nuevo = acl.split(":ControlR")[0] + "@prefix c" + conta + ": <" + userToAcl.substring(0, userToAcl.length - 2) + ">.\n" + ":ControlR" + acl.split(":ControlR")[1];
+            nuevo2 = nuevo.split("c0:me")[0] + "c0:me, c" + conta + ":me" + nuevo.split("c0:me")[1];
             await fileClien.createFile(source + "/.acl", nuevo2, "text/turtle");
 
         }
@@ -213,7 +239,7 @@ async function enseñaAmigos(source, target, name) {
         alert("Your route has been shared!");
     }
     else{
-        alert("Your route was already shared with this person!");
+        //alert("Your route was already shared with this person!");
     }
 }
 const Carda = (props) => {
@@ -223,7 +249,8 @@ const Carda = (props) => {
                 <h4 class="card-title" id="friendName">
                     <Name src={props.nombre}>{props.nombre}</Name>
                 </h4>
-                <button className="btn btn-light" onClick={() => enseñaAmigos(props.url, props.nombre, props.name)}>Share</button>
+                <input type="checkbox" id={"ck"+(cont++)} url={props.url} nombre={props.nombre} name={props.name}/>
+                <label>Share</label>
             </div>
         </div>
     );

@@ -7,6 +7,15 @@
     background: rgb(54, 54, 54);
 }
 
+.panelCompleto{
+    float: left;
+    width: 100%;
+    background:lightgrey;
+    padding: 1em;
+    height: 100%;
+    overflow: auto;
+}
+
 .leftPanel_leftPart{
     float: left;
     width: 30%;
