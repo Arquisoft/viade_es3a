@@ -4,3 +4,6 @@ ignore:
   - "src/MainPage/Panel/Map/Map.js"
   - "src/MainPage/Panel/CreateRoute/CreateRoute.js"
   - "src/MainPage/Panel/ShareRoute/ShareRoute.js"
+  - "src/MainPage/Main-page.js"
+  - "src/MainPage/Panel/CreateRoute/UploadRouteToPod.js"
+  - "src/MainPage/Panel/Friends/Friends.js"
