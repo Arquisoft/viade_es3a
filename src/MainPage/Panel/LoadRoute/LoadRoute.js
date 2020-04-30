@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useWebId } from "@solid/react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, InputGroup } from "react-bootstrap";
 import "./LoadRoute.css";
 import * as solidAuth from "solid-auth-client";
 import fileClient from "solid-file-client";
@@ -10,6 +10,7 @@ import DocumentTitle from "react-document-title";
 import * as algo from "../Map/Map";
 
 import Slider from "./Slider";
+
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas = [];
@@ -49,6 +50,8 @@ async function loadFile(urlCarptetaRuta, route) {
             k = 1000;
         }
     }
+    var x = document.getElementById("botonDel");
+      x.style.display = "block";
     return result;
 }
 
@@ -117,7 +120,7 @@ const LoadRoute = () => {
                     <div className="bodyMedia">
                         <Slider images={images} videos={videos} />
                     </div>
-                    <button className="btn btn-light" id="botonin" onClick={() => deleteRoute(selected)}>Delete</button>
+                    <button className="btn btn-light" id="botonDel" onClick={() => deleteRoute(selected)}>Delete</button>
                 </div>
             </div>
         </div>
@@ -132,5 +135,13 @@ async function loadRoutes(url, setFolders) {
 }
 async function deleteRoute(selected){
     console.log(selected.url);
+    if(fileClien.itemExists(selected.url)){
+        alert("Route will be deleted, please wait a few seconds")
+        await fileClien.deleteFolder(selected.url);
+    }
+    else{
+        alert("Route can`t be deleted")
+    }
+    window.location.reload();
 }
 export default LoadRoute;
