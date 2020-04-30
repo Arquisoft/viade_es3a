@@ -1,5 +1,5 @@
 .prueba ul {
-    list-style-type: none ;
+    list-style-type: none;
     padding: 0;
 }
 
@@ -15,15 +15,56 @@
     width: 100%;
 }
 
-#botonOpcion{
+#botonOpcion {
     margin: 0.5em;
 }
 
-.hola{
+.hola {
     color: #17a2b8;
 }
 
-.right{
+.right {
     float: right;
+}
 
+/*Resize the wrap to see the search bar change!*/
+
+.iconSearch {
+    margin-right: 0.2em;
+    color: rgb(255, 255, 255);
+}
+
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+    
+}
+
+.searchTerm {
+    width: 100%;
+    border: 3px solid #17a2b8;
+    border-right: none;
+    padding: 5px;
+    height: 2.3em;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+    background-color: #f8f9fa;
+}
+
+.searchTerm:focus {
+    color: #00B4CC;
+}
+
+.searchButton {
+    width: 40px;
+    height: 1.85em;
+    border: 1px solid #17a2b8;
+    background: #17a2b8;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
 }

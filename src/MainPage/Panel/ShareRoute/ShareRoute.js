@@ -17,6 +17,7 @@ var urlRutas = [];
 var cont = 0;
 var images = [];
 var videos = [];
+var rut = "";
 
 const LoadRoute = () => {
 
@@ -95,19 +96,15 @@ const LoadRoute = () => {
                             <h3 className="toShare">Do you want to share it? </h3>
                             <List src={`[${user}].friends`} className="list">{(friend) =>
                                 <li key={friend} className="listElement">
-                                    {/* <p>
-                                    <Carda nombre={`[${friend}]`} url={selected.url} name={selected.name}></Carda>
-                                </p> */}
                                     <OneFriend nombre={`[${friend}]`} url={selected.url} name={selected.name}></OneFriend>
                                 </li>}
                             </List>
                         </p>
 
-                    </div>
-                    <button disabled="true" className="btn btn-light" id="botonin" onClick={() => share()}>Share</button>
-                </div>
-
-            </div>
+                        </div>
+                <button className="btn btn-light" id="botonin" onClick={() => share()}>Share</button>
+            </div>  
+        </div>
         </DocumentTitle>
 
     );
@@ -128,6 +125,7 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
 
     await showRoute(urlCarptetaRuta);
 
+    
     setSelected({
         name: folder.name,
         description: folderDesc,
@@ -135,7 +133,6 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
         videos: videos,
         url: folder.url
     });
-    document.getElementById("botonin").disabled = false;
 }
 
 async function loadFile(urlCarptetaRuta, route) {
@@ -149,13 +146,13 @@ async function loadFile(urlCarptetaRuta, route) {
             k = 1000;
         }
     }
+    rut=route;
     return result;
 }
 
 export async function showRoute(urlCarptetaRuta) {
 
     let folder = await fileClien.readFolder(urlCarptetaRuta);
-
 
     document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
     let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
@@ -164,19 +161,33 @@ export async function showRoute(urlCarptetaRuta) {
 
 }
 
-async function share() {
-    for (var i = 0; i < cont; i++) {
-        let a = document.getElementById("ck" + i);
-        if (a.checked == true)
-            await enseñaAmigos(a.getAttribute("url"), a.getAttribute("nombre"), a.getAttribute("name"))
+async function share(){
+    var fri = false;
+    if(rut != ""){
+            for(var i=0; i<cont;i++){
+                let a = document.getElementById("ck"+i);
+                if(a.checked==true) {
+                    fri = true;
+                    await enseñaAmigos(a.getAttribute("url"),a.getAttribute("nombre"),a.getAttribute("name"))
+                }
+            }
+            if(fri){
+                alert("Your route has been shared!");
+            }
+            else {
+                alert("You have to select at least a friend!");
+            }
     }
-    alert("Your route has been shared!");
+    else {
+        alert("You have to select a route!");
+    }
 }
 
 async function enseñaAmigos(source, target, name) {
 
     const target2 = target.split("[")[1];
     const urlTarget = target2.split("profile/card#me")[0] + "/inbox/routes3a";
+    const urlTargetNotifications = target2.split("profile/card#me")[0] + "/inbox/notifications";
 
     let acl = await fileClien.readFile(source + "/.acl");
 
@@ -206,21 +217,23 @@ async function enseñaAmigos(source, target, name) {
         }
         else {
 
-            var cont = 1;
+            var conta = 1;
             let nuevo = "";
             let nuevo2 = "";
-            while ((acl + "").includes("c" + cont)) {
-                cont++;
+            while ((acl + "").includes("c" + conta)) {
+                conta++;
             }
-            nuevo = acl.split(":ControlR")[0] + "@prefix c" + cont + ": <" + userToAcl.substring(0, userToAcl.length - 2) + ">.\n" + ":ControlR" + acl.split(":ControlR")[1];
-            nuevo2 = nuevo.split("c0:me")[0] + "c0:me, c" + cont + ":me" + nuevo.split("c0:me")[1];
+            nuevo = acl.split(":ControlR")[0] + "@prefix c" + conta + ": <" + userToAcl.substring(0, userToAcl.length - 2) + ">.\n" + ":ControlR" + acl.split(":ControlR")[1];
+            nuevo2 = nuevo.split("c0:me")[0] + "c0:me, c" + conta + ":me" + nuevo.split("c0:me")[1];
             await fileClien.createFile(source + "/.acl", nuevo2, "text/turtle");
 
         }
 
         await fileClien.postFile(urlTarget + "/" + name + "->" + ((await auth.currentSession()).webId).split("https://")[1].split(".")[0], source, "text/plain");
 
-        //alert("Your route has been shared!");
+        await fileClien.postFile(urlTargetNotifications + '/' + name, '', 'text/plain');
+
+        alert("Your route has been shared!");
     }
     else {
         //alert("Your route was already shared with this person!");

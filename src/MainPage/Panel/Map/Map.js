@@ -56,13 +56,37 @@ export function updateMap (route,name) {
 
 
     let parseR = JSON.parse(route);
-    let first = parseR.features[0].geometry.coordinates[0];
-    var firstP = [
-        first[1],
-        first[0]
-    ];
+
+    let firstPoint1;
+    let zoomUp;
+    //1era opcion
+    if(parseR.geometry !== undefined){
+        firstPoint1 = parseR.geometry.coordinates[0];
+        //Darle la vuelta
+        center = [
+            firstPoint1[1],
+            firstPoint1[0]
+        ];
+        zoomUp = 14;
+    }
+    //2a opcion
+    else if(parseR.features[0] !== undefined && parseR.features[0].geometry.type !== "Point"){
+        firstPoint1 = parseR.features[0].geometry.coordinates[0];
+        //Darle la vuelta
+        center = [
+            firstPoint1[1],
+            firstPoint1[0]
+        ];
+        zoomUp = 14;
+    }else{
+        center = [43.5878945, -5.80789456];
+        zoomUp = 11;
+    }
+
+    console.log(center);
+    
     com = <div style={styles.wrapper} id={name}>
-        <Map style={styles.map} center={firstP} zoom="12" >
+        <Map style={styles.map} center={center} zoom={zoomUp} >
             <TileLayer url={aa} /> 
             <GeoJSON
                 data={parseR}

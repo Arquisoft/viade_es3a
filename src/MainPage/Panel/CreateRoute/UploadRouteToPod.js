@@ -2,6 +2,7 @@ import React from "react";
 import auth from 'solid-auth-client';
 import fileClient from "solid-file-client";
 import * as solidAuth from "solid-auth-client";
+import {CreateRoute, recarga} from "./CreateRoute";
 
 class UploadRouteToPod {
 
@@ -71,7 +72,13 @@ class UploadRouteToPod {
                 await fileClien.createFile(destination + "/" + name + ".geojson", routed, "text/json");
                
                 alert("Your route has been added to the pod!!");
-                window.location.reload();
+
+
+                recarga();
+                document.getElementById("name").value="";
+                document.getElementById("description").value="";
+                document.getElementById("photo").value=null;
+                document.getElementById("video").value=null;
 
             }else{
                 alert("Route title already used, use another title");

@@ -11,6 +11,7 @@ import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
+import NotificationsActiveOutlinedIcon from "@material-ui/icons/NotificationsActiveOutlined";
 import ShareIcon from "@material-ui/icons/Share";
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
@@ -70,12 +71,17 @@ const NavBar = () => {
           </NavDropdown>
           </div>
         </Nav>
-
+  
         <Nav pullRight>
+        
+        <NavItem href="/viade_es3a/notifications" className="opcionYLogo">
+            <Link to="/viade_es3a/notifications"><NotificationsActiveOutlinedIcon className="icon" data-testid="notifications"/></Link>
+          </NavItem>
           <NavItem href="/viade_es3a/logout" className="opcionYLogo">
             <ExitToAppOutlinedIcon className="icon" data-testid="iconLogout"/>
             <LogoutButton data-testid="logout" className="logout" data-testid="logout" />
           </NavItem>
+          
         </Nav>
       </Navbar.Collapse>
     </Navbar>

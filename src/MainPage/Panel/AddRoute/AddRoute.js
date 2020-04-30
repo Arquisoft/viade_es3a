@@ -11,9 +11,22 @@ import * as solidAuth from "solid-auth-client";
 import fileClient from "solid-file-client";
 import { Redirect } from "react-router-dom";
 import DocumentTitle from "react-document-title";
+
+import Loader from "../Loader/Loader";
+
 const auth = require("solid-auth-client");
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
+
+const [visible, setVisible] = useState(false);
+
+const ShowLoader = () =>{
+    setVisible(true);
+};
+
+const HideLoader = () =>{
+    setVisible(false);
+};
 
 const Upload = ({setFile, file}) => {
     const filename = file == null ? "Choose File" : file.name;
@@ -87,8 +100,8 @@ const Data = () => {
                 <button data-testid="btnenviar" onClick={() => createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo, setError)}  class="btn btn-info" >Add route
                 </button>
             </center>
-          
             
+            <Loader show={ShowLoader} hide={HideLoader}/>
          </div>
 
     );
@@ -112,7 +125,7 @@ const AddRoute = () => {
 
 
 const createFolder = async (folder, route, name, description, photo, video,setFile, setName, setDescription, setImage, setVideo, setError) => {
-    
+
     if (name === ""|| route === null){
         setError("Name or route is empty!");
     }
@@ -160,7 +173,7 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
             var file = fileList[0];
             const fileURl = destination + "/" + nameValue + ".geojson";
             fileClien.putFile(fileURl, file, file.type);
-            
+
             alert("Your route has been added to the pod!!");
             //clean all fields
             setName("");
