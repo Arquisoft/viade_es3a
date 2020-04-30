@@ -11,7 +11,7 @@ import FriendsPanel from "./Friends/FriendsPanel";
 import ProfilePanel from "./Profile/ProfilePanel";
 import ShareRoutePanel from "./ShareRoute/ShareRoutePanel";
 import SharedRoutesPanel from "./SharedRoutes/SharedRoutesPanel";
-import Notifications from "./Notifications/Notifications";
+import NotificationsPanel from "./Notifications/NotificationsPanel";
 
 
 const AppWrapper = styled.div`
@@ -37,7 +37,7 @@ const LeftPanel = () => {
                     <Route path="/viade_es3a/sharedRoutes" component={SharedRoutesPanel} />
                     <Route path="/viade_es3a/friends" component={FriendsPanel} />
                     <Route path="/viade_es3a/profile" component={ProfilePanel} /> 
-                    <Route path="/viade_es3a/notifications" component={Notifications} /> 
+                    <Route path="/viade_es3a/notifications" component={NotificationsPanel} /> 
                 </div>
             </Switch>
         </nav>
