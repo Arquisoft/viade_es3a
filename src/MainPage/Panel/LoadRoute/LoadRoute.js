@@ -32,7 +32,8 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
         name: folder.name,
         description: folderDesc,
         images: images,
-        videos: videos
+        videos: videos,
+        url: urlCarptetaRuta
     });
 
 }
@@ -116,6 +117,7 @@ const LoadRoute = () => {
                     <div className="bodyMedia">
                         <Slider images={images} videos={videos} />
                     </div>
+                    <button className="btn btn-light" id="botonin" onClick={() => deleteRoute(selected)}>Delete</button>
                 </div>
             </div>
         </div>
@@ -128,5 +130,7 @@ async function loadRoutes(url, setFolders) {
     let folder = await fileClien.readFolder(url);
     setFolders(folder.folders);
 }
-
+async function deleteRoute(selected){
+    console.log(selected.url);
+}
 export default LoadRoute;
