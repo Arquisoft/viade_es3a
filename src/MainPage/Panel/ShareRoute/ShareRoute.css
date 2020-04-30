@@ -1,3 +1,7 @@
+.listElement {
+    list-style: none;
+}
+
 .h2{
     font-family: monospace;
     color: teal;
@@ -27,4 +31,9 @@
 
 .lista:hover{
     color: rgb(0,100,220);
+}
+
+.prueba ul {
+    list-style-type: none ;
+    padding: 0;
 }
