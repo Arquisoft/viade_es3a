@@ -1,12 +1,38 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
 
-.scrollBarWelcome{
+.cardWelcomeInfo {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: ºem;
+    letter-spacing: 2.2px;
+    word-spacing: 1.8px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+}
+
+.optionTitleInfo{
+    color: #ffffff;
+}
+
+.scrollBarWelcome {
     overflow: auto;
     max-height: 42vmin;
 }
 
+.opcionYLogoWelcomeViade{
+    background-color: #17a2b8;
+    padding: 0.1em 0.9em;
+}
+
 .opcionYLogoWelcome:hover {
     background-color: #3c4349;
+}
+
+.opcionYLogoWelcomeViade:hover {
+    background-color: #1db0c7;
 }
 
 .iconWelcome {
@@ -21,20 +47,28 @@
     background-color: #343a40;
 }
 
-.mostrar{
+.mostrar {
     background-color: #17a2b8;
 }
 
-.optionTitle, .cardWelcome{
+.mostrarInfo{
+    background-color: #84d3df;
+}
+
+.optionTitle, .cardWelcome {
     color: white;
 }
 
-.optionTitle{
+.optionTitle {
     font-size: 1.1em;
 }
 
-.cardWelcome{
+.cardWelcome {
     background-color: #343a40;
+}
+
+.cardWelcomeInfo{
+    background-color: #17a2b8;
 }
 
 .contenedor {
@@ -48,30 +82,20 @@
 .titulo {
     -webkit-text-stroke: 1.8px #000000;
     font-size: 3em;
-    color: rgb(77, 218, 243);
+    color: #25c9e2;
     font-family: 'Open Sans', sans-serif;
 }
+
+.viadeInfo{
+    -webkit-text-stroke: 0.8px #000000;
+    font-size: 1.4em;
+    color: #25c9e2;
+    font-family: 'Open Sans', sans-serif;
+}
+
 .alert {
     color: red;
 }
-.opcion {
-    font-weight: bolder;
-}
-
-.leftPanel_leftPart{
-    float: left;
-    width: 30%;
-    background:lightgrey;
-    padding: 1em;
-    height: 100%;
-    overflow: auto;
-}
 
 
-.rightPanel_mapa{
-    float: right;
-    width: 70%;
-    height: auto;
-    background: cyan;
-}
 

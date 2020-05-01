@@ -143,24 +143,38 @@ const AccordionWelcome = () => {
     )
 }
 
+const WhatIsViade = () => {
+    return (
+        <Accordion>
+            <Card className="cardWelcomeInfo" data-testid="introduction">
+                <Card.Header>
+                    <Accordion.Toggle as={Card.Header} eventKey="6" className="opcionYLogoWelcomeViade">
+                        <div className="optionTitleInfo">What is VIADE?</div>
+                    </Accordion.Toggle>
+                </Card.Header>
+                <Accordion.Collapse eventKey="6" className="mostrarInfo">
+                    <Card.Body>Viade is a decentralized routes management system based on the solid specifications.</Card.Body>
+                </Accordion.Collapse>
+            </Card>
+        </Accordion>
+    );
+}
+
 const Welcome = () => {
     return (
         <div className="contenedor">
             <h2 className="titulo" data-testid="label">Welcome to VIADE</h2>
-            <p data-testid="introduction"> Viade is a decentralized routes management system based on the solid specifications.
-            </p>
-            <p data-testid="list">Here's the list of things you can do with VIADE:</p>
+
+            <WhatIsViade />
+            <p data-testid="list">Here's the list of things you can do with<span className="viadeInfo"> VIADE</span>:</p>
 
             <AccordionWelcome />
+            <p data-testid="message">Enjoy our app ! :)</p>
 
-            <center>
-                <p data-testid="message">Enjoy our app ! :)</p>
-            </center>
-            
             <Alert variant={'danger'}>
                 Be careful! Make sure the app has control permissions on your solid profile
             </Alert>
-            
+
         </div >
     );
 };
