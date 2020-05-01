@@ -23,7 +23,7 @@ export async function showRoute(urlCarptetaRuta) {
 
     let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
 
-    algo.updateMap(ruta,folder.name);
+    algo.updateMap(ruta, folder.name);
 }
 
 async function loadFile(urlCarptetaRuta, route) {
@@ -38,13 +38,13 @@ async function loadFile(urlCarptetaRuta, route) {
         }
     }
     var x = document.getElementById("botonDel");
-      x.style.display = "block";
+    x.style.display = "block";
     return result;
 }
 
 async function loadRoute(urlCarptetaRuta, setSelected) {
 
-    
+
 
     let folder = await fileClien.readFolder(urlCarptetaRuta);
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
@@ -82,8 +82,8 @@ const LoadRoute = () => {
         }
     }, [user]);
 
-    images=[];
-    videos=[];
+    images = [];
+    videos = [];
     selected.images.map((image) => (
         images.push(image)
     ));
@@ -91,39 +91,40 @@ const LoadRoute = () => {
         videos.push(video)
     ));
     return (
-        
+
         <DocumentTitle title="My Routes">
-        <div class="container">
-            <h2 id="rutas" class="h2" data-testid="label">Routes list:</h2>
-            
-            <ul>
-                {
-                    folders.map((folder, i) => {
-                        var urlArchivo = "" + folder.url;
-                        var arrayUrl = urlArchivo.split("/");
-                        urlRutas.push(urlArchivo);
-                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
-                        return (
-                            <li key={"folder_" + i} className="option" id="option">
-                                <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
-                                    {nombre}
-                                </a>
-                            </li>);
-                    })
-                }
-            </ul>
-            <div class="card bg-info text-white" data-testid="card">
-                <div class="card-body">
-                    <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
-                    <p class="card-Description" id="routeDescription">{selected.description}</p>
-                    <div className="bodyMedia">
-                        <Slider images={images} videos={videos} />
+            <div class="container">
+                <h2 id="rutas" class="h2" data-testid="label">Routes list</h2>
+                <div className="chooseRoute" data-testid="chooseRoute">Choose a route to see in detail:</div>
+                <div className="listaDeRutas">
+                    {
+                        folders.map((folder, i) => {
+                            var urlArchivo = "" + folder.url;
+                            var arrayUrl = urlArchivo.split("/");
+                            urlRutas.push(urlArchivo);
+                            var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
+                            return (
+                                <div key={"folder_" + i} className="optionRoute" id="optionRoute">
+                                    <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)} id="enlaceLoadRoute">
+                                        {nombre}
+                                        <span class="hyperspan"></span>
+                                    </a>
+                                </div>);
+                        })
+                    }
+                </div>
+                <div class="card bg-info text-white" data-testid="card">
+                    <div class="card-body">
+                        <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
+                        <p class="card-Description" id="routeDescription">{selected.description}</p>
+                        <div className="bodyMedia">
+                            <Slider images={images} videos={videos} />
+                        </div>
+                        <button className="btn btn-light" id="botonDel" onClick={() => deleteRoute(selected)}>Delete</button>
                     </div>
-                    <button className="btn btn-light" id="botonDel" onClick={() => deleteRoute(selected)}>Delete</button>
                 </div>
             </div>
-        </div>
-        </DocumentTitle>           
+        </DocumentTitle>
     );
 };
 
@@ -132,12 +133,12 @@ async function loadRoutes(url, setFolders) {
     let folder = await fileClien.readFolder(url);
     setFolders(folder.folders);
 }
-async function deleteRoute(selected){
-    if(fileClien.itemExists(selected.url)){
+async function deleteRoute(selected) {
+    if (fileClien.itemExists(selected.url)) {
         alert("Route will be deleted, please wait a few seconds")
         await fileClien.deleteFolder(selected.url);
     }
-    else{
+    else {
         alert("Route can`t be deleted")
     }
     window.location.reload();

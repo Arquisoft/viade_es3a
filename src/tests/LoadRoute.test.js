@@ -15,7 +15,8 @@ test("Render component not crashing.", () => {
  test("Check Load Route panel (interface)", () => {
     const { getByTestId } = render(<LoadRoute></LoadRoute>);
     expect(getByTestId("label")).toBeInTheDocument();
-    expect(getByTestId("label")).toHaveTextContent("Routes list:");
+    expect(getByTestId("label")).toHaveTextContent("Routes list");
+    expect(getByTestId("chooseRoute")).toHaveTextContent("Choose a route to see in detail:");
 
     expect(getByTestId("card")).toBeInTheDocument();
  });
