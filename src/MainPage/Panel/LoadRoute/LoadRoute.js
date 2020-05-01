@@ -72,7 +72,8 @@ const LoadRoute = () => {
         images: [],
         videos: []
     });
-
+    const [showResults, setShowResults] = useState(false)
+    const onClick = () => setShowResults(true)
     var user = useWebId();
 
     useEffect(() => {
@@ -120,6 +121,7 @@ const LoadRoute = () => {
                     <div className="bodyMedia">
                         <Slider images={images} videos={videos} />
                     </div>
+                    <button className="btn btn-light" id="botonEdi" onClick={onClick}>Edit</button>
                     <button className="btn btn-light" id="botonDel" onClick={() => deleteRoute(selected)}>Delete</button>
                 </div>
             </div>
