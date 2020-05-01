@@ -15,18 +15,12 @@ async function loadRoutes(url, setFolders) {
     var result=[];
 
     for(var i=0;i<folder.files.length;i+=1){
-        try{
-        let f=await fileClien.readFile(folder.files[i].url);
-        
-        let otro= await fileClien.readFolder(f);
-        result.push(otro);
-        }
-        catch(error){
-            await fileClien.deleteFile(folder.files[i].url);
-        }
-        // setFolders(result)
+        result.push(folder.files[i].url);
     }
-
+    for(var i=0;i<folder.files.length;i+=1){
+        await fileClien.deleteFile(folder.files[i].url);
+        //console.log(folder.files[i].url);
+    }
 setFolders(result);
 }
 
@@ -51,17 +45,16 @@ const Notifications = () => {
             <ul className="list" padding-inline-start="0">
                 {
                     folders.map((folder, i) => {
-                        var urlArchivo = "" + folder.url;
-                        var arrayUrl = urlArchivo.split("/");
-                        console.log(arrayUrl);
-                        var userShare = arrayUrl[2].split(".")[0];
-                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
+                        var arrayUrl = folder.split("/")[folder.split("/").length - 1];
+                        var userShare = arrayUrl.split(".")[0];
+                        var nombre = userShare.split("-%3E")[0].split("%20").join(" ");
+                        var who = userShare.split("-%3E")[1];
                         return(<Toast>
                             <Toast.Header closeButton={false}>
-                              <strong class="mr-auto text-info">{userShare}</strong>
+                              <strong class="mr-auto text-info">{who}</strong>
                               <small></small>
                             </Toast.Header>
-                            <Toast.Body>The route {nombre} has been shared with you.</Toast.Body>
+                        <Toast.Body>{who} has shared the route {nombre} with you.</Toast.Body>
                           </Toast>);
                     })
                 }
