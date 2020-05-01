@@ -1,16 +1,62 @@
 import React from "react";
 import { useWebId, List, Value, Name, Link } from "@solid/react";
 import "./Friends.css";
-import { Form } from 'react-bootstrap';
+import { Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
-import IconButton from '@material-ui/core/IconButton';
-import FileClient from 'solid-file-client';
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import IconButton from "@material-ui/core/IconButton";
+import FileClient from "solid-file-client";
+import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import DocumentTitle from "react-document-title";
   
 
 import auth from "solid-auth-client";
-const { default: data } = require('@solid/query-ldflex');
+const { default: data } = require("@solid/query-ldflex");
+
+const reload = () => {
+  window.location.reload();
+};
+
+const isWebIdValid = async (friendWebId) => {
+  const fc = new FileClient(auth);
+  let session = await auth.currentSession();
+  if (!session) {
+    session = await auth.login();
+  }
+  try {
+    let op = async (client) => await client.itemExists(friendWebId);
+    return await op(fc);
+  } catch (e) {
+    session = await auth.currentSession();
+  }
+}
+
+const friendAlreadyAdded = async (friendWebId, webId) => {
+  const user = data[webId];
+  for await (const friend of user.friends)
+    if (String(friend).localeCompare(String(friendWebId)) === 0) return true;
+  return false;
+}
+
+const addFriend = async (friendWebId, userWebId) =>{
+  
+  const user = data[userWebId]; //sacamos nuestra informacion
+  if (await isWebIdValid(friendWebId)) {
+    if (friendWebId.localeCompare("") !== 0) {
+      //comprobamos que no pasamos un campo vacio
+      if (await friendAlreadyAdded(friendWebId, userWebId)) {
+        //notificamos si el amigo estaba añadido
+        alert("Friend already added");
+      } else {
+        await user.knows.add(data[friendWebId]); //añadimos el amigo
+        reload();
+      }
+    } else {
+      alert("Error");
+    }
+  } else {
+   alert("Error 2");
+  }
+}
 
 const Card = (props, webId) => {
     var user = "" + useWebId();
@@ -43,7 +89,7 @@ const Friends = () => {
 
                 <div class="wrap">
                     <div class="search">
-                        <input type="text" class="searchTerm" placeholder="https://uo264033.solid.community/profile/card#me" id="input"/>
+                        <input type="text" class="searchTerm" placeholder="https://pepitogarcia.solid.community/profile/card#me" id="input"/>
                         <button type="submit" class="searchButton" onClick={() => addFriend(document.getElementById('input').value, webId)}>
                             <SearchOutlinedIcon className="iconSearch"/>
                         </button>
@@ -68,7 +114,6 @@ const deleteFriend = async (friend, userWebId) => {
   var friendWebId=friend.nombre
   friendWebId=friendWebId.replace('[','');
   friendWebId=friendWebId.replace(']','');
- console.log(friendWebId)
 
   const user = data[userWebId]; 
     if (await isWebIdValid(friendWebId)) {
@@ -78,7 +123,7 @@ const deleteFriend = async (friend, userWebId) => {
           alert("An error occurred when deleting the friend (maybe it was previously deleted)");
         } else {
           await user.knows.delete(data[friendWebId]); //añadimos el amigo
-          alert("user will be deleted from your friends")
+          alert("user will be deleted from your friends");
           reload();
         }
       } else {
@@ -89,52 +134,5 @@ const deleteFriend = async (friend, userWebId) => {
     }
     
 }
-
-  const reload = () => {
-    window.location.reload();
-  };
-
-
-  const addFriend = async (friendWebId, userWebId) =>{
-    
-    const user = data[userWebId]; //sacamos nuestra informacion
-    if (await isWebIdValid(friendWebId)) {
-      if (friendWebId.localeCompare("") !== 0) {
-        //comprobamos que no pasamos un campo vacio
-        if (await friendAlreadyAdded(friendWebId, userWebId)) {
-          //notificamos si el amigo estaba añadido
-          alert("Friend already added");
-        } else {
-          await user.knows.add(data[friendWebId]); //añadimos el amigo
-          reload();
-        }
-      } else {
-        alert("Error");
-      }
-    } else {
-     alert("Error 2");
-    }
-  }
-
-  const isWebIdValid = async (friendWebId) =>{
-    const fc = new FileClient(auth);
-    let session = await auth.currentSession();
-    if (!session) {
-      session = await auth.login();
-    }
-    try {
-      let op = async (client) => await client.itemExists(friendWebId);
-      return await op(fc);
-    } catch (e) {
-      session = await auth.currentSession();
-    }
-  }
-
-  const friendAlreadyAdded = async (friendWebId, webId) => {
-    const user = data[webId];
-    for await (const friend of user.friends)
-      if (String(friend).localeCompare(String(friendWebId)) === 0) return true;
-    return false;
-  }
 
 export default Friends;

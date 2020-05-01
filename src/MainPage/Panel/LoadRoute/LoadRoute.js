@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useWebId } from "@solid/react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, InputGroup } from "react-bootstrap";
 import "./LoadRoute.css";
 import * as solidAuth from "solid-auth-client";
 import fileClient from "solid-file-client";
@@ -11,11 +11,36 @@ import * as algo from "../Map/Map";
 
 import Slider from "./Slider";
 
+
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas = [];
 
 var images = [];
 var videos = [];
+
+export async function showRoute(urlCarptetaRuta) {
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+
+    let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
+
+    algo.updateMap(ruta,folder.name);
+}
+
+async function loadFile(urlCarptetaRuta, route) {
+    var k;
+    var result = [];
+    for (k = 0; k < 1000; k++) {
+        try {
+            await fileClien.readFile(urlCarptetaRuta + route + (k + 1));
+            result.push(urlCarptetaRuta + route + (k + 1));
+        } catch{
+            k = 1000;
+        }
+    }
+    var x = document.getElementById("botonDel");
+      x.style.display = "block";
+    return result;
+}
 
 async function loadRoute(urlCarptetaRuta, setSelected) {
 
@@ -32,31 +57,10 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
         name: folder.name,
         description: folderDesc,
         images: images,
-        videos: videos
+        videos: videos,
+        url: urlCarptetaRuta
     });
 
-}
-
-async function loadFile(urlCarptetaRuta, route) {
-    var k;
-    var result = [];
-    for (k = 0; k < 1000; k++) {
-        try {
-            await fileClien.readFile(urlCarptetaRuta + route + (k + 1));
-            result.push(urlCarptetaRuta + route + (k + 1));
-        } catch{
-            k = 1000;
-        }
-    }
-    return result;
-}
-
-export async function showRoute(urlCarptetaRuta) {
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-
-    let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
-
-    algo.updateMap(ruta,folder.name);
 }
 
 const LoadRoute = () => {
@@ -74,7 +78,6 @@ const LoadRoute = () => {
     useEffect(() => {
         if (user != undefined) {
             const url = user.split("profile/card#me")[0] + "/private/routes3a";
-            //listRoutes(url);
             loadRoutes(url, setFolders);
         }
     }, [user]);
@@ -116,6 +119,7 @@ const LoadRoute = () => {
                     <div className="bodyMedia">
                         <Slider images={images} videos={videos} />
                     </div>
+                    <button className="btn btn-light" id="botonDel" onClick={() => deleteRoute(selected)}>Delete</button>
                 </div>
             </div>
         </div>
@@ -128,5 +132,14 @@ async function loadRoutes(url, setFolders) {
     let folder = await fileClien.readFolder(url);
     setFolders(folder.folders);
 }
-
+async function deleteRoute(selected){
+    if(fileClien.itemExists(selected.url)){
+        alert("Route will be deleted, please wait a few seconds")
+        await fileClien.deleteFolder(selected.url);
+    }
+    else{
+        alert("Route can`t be deleted")
+    }
+    window.location.reload();
+}
 export default LoadRoute;

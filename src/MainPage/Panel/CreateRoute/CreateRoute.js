@@ -1,13 +1,14 @@
 import React from "react";
 import DocumentTitle from "react-document-title";
-import SaveIcon from '@material-ui/icons/Save';
-import DeleteIcon from '@material-ui/icons/Delete';
-import L from 'leaflet';
-import { TileLayer, Marker, Polyline } from 'react-leaflet';
-import { MapStyle} from './CreateRouteStyle';
+import SaveIcon from "@material-ui/icons/Save";
+import DeleteIcon from "@material-ui/icons/Delete";
+import L from "leaflet";
+import { TileLayer, Marker, Polyline } from "react-leaflet";
+import { MapStyle} from "./CreateRouteStyle";
 import { useWebId } from "@solid/react";
-import ReactDOM from 'react-dom'
-import UploadRouteToPod from './UploadRouteToPod';
+import ReactDOM from "react-dom"
+import UploadRouteToPod from "./UploadRouteToPod";
+import { Loading } from "../../../Loading";
 
 class CreateRoute extends React.Component {
 
@@ -18,7 +19,8 @@ class CreateRoute extends React.Component {
           name: "",
           description: "",
           images: [],
-          videos: []
+          videos: [],
+          loading: false
         };
         window.createRouteComponent = this;
       }
@@ -53,8 +55,8 @@ class CreateRoute extends React.Component {
 
      clickOnMap = (e) => {
         const { markers } = this.state;
-        markers.push({ lat: e.latlng.lat, lng: e.latlng.lng })
-        this.setState({ markers })
+        markers.push({ lat: e.latlng.lat, lng: e.latlng.lng });
+        this.setState({ markers });
         this.drawLine();
       }
 
@@ -80,13 +82,13 @@ class CreateRoute extends React.Component {
       //Update data
       saveName = (n) => {
         var { name } = this.state;
-        name = document.getElementById('name').value;
+        name = document.getElementById("name").value;
         this.setState({ name });
       }
 
       saveDescription = (n) => {
         var { description } = this.state;
-        description = document.getElementById('description').value;
+        description = document.getElementById("description").value;
         this.setState({ description });
       }
 
@@ -113,6 +115,10 @@ class CreateRoute extends React.Component {
             alert("There is not a route created. Please, click on the map to draw one");
           }else{
 
+              this.setState(prevState => ({
+                ...prevState,
+                loading: true
+              }))
               var polylines = [];
               for (let i = 0; i < markers.length; i++){
                 polylines.push(new L.LatLng(markers[i].lat, markers[i].lng));
@@ -120,6 +126,10 @@ class CreateRoute extends React.Component {
               var polyline = new L.Polyline(polylines);
 
               await UploadRouteToPod.uploadRoute(polyline.toGeoJSON(), name, description, images, videos);
+              this.setState(prevState => ({
+                ...prevState,
+                loading: false
+              }))
             
             }
        }
@@ -127,7 +137,9 @@ class CreateRoute extends React.Component {
     render() {
         this.getLocation();
         return(
-            
+
+          <React.Fragment>
+            <Loading loading={this.state.loading}/>
             <DocumentTitle title="Create route">
                 <div className="leftPanel_leftPart">     
                   <div className="leftPanel">
@@ -169,6 +181,7 @@ class CreateRoute extends React.Component {
                 </div>
               </div>
             </DocumentTitle>
+          </React.Fragment>
         )
     }
     

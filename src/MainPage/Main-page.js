@@ -10,17 +10,6 @@ import { useWebId } from "@solid/react";
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 const auth = require("solid-auth-client");
 
-const MainPage = () => {
-  creates();
-  return (
-    <div>
-      <NavBar />
-      <Panel />
-    </div>
-  );
-};
-
-
 async function creates() {
   var user=await auth.currentSession();
 
@@ -58,5 +47,16 @@ async function creates() {
       await fileClien.createFile(folderI+"/.acl", content,"text/turtle");
   }
 }
+
+
+const MainPage = () => {
+  creates();
+  return (
+    <div>
+      <NavBar />
+      <Panel />
+    </div>
+  );
+};
 
 export default MainPage;

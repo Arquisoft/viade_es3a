@@ -5,7 +5,7 @@ import Profile from "../MainPage/Panel/Profile/Profile";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { Link as LinkSolid } from "@solid/react";
-const solid = { auth:require('solid-auth-cli') }
+const solid = { auth:require("solid-auth-cli") };
 
 test("Not crashing component", () => {
     const div = document.createElement("div");
@@ -50,7 +50,7 @@ test("Profile show correct info", () => {
     login().then(session => {
         const goToSolidProfile = getByText("Go to SOLID profile");
         expect(goToSolidProfile.getAttribute("href")).toEqual(`<${session.webId}>`);
-    })
+    });
 });
 
 

@@ -6,7 +6,7 @@ import DocumentTitle from "react-document-title";
 import fileClient from "solid-file-client";
 import React, { useState, useEffect } from "react";
 import * as solidAuth from "solid-auth-client";
-import { Toast } from 'react-bootstrap';
+import { Toast } from "react-bootstrap";
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
 async function loadRoutes(url, setFolders) {
@@ -15,10 +15,16 @@ async function loadRoutes(url, setFolders) {
     var result=[];
 
     for(var i=0;i<folder.files.length;i+=1){
+        try{
         let f=await fileClien.readFile(folder.files[i].url);
         
         let otro= await fileClien.readFolder(f);
         result.push(otro);
+        }
+        catch(error){
+            await fileClien.deleteFile(folder.files[i].url);
+        }
+        // setFolders(result)
     }
 
 setFolders(result);

@@ -9,6 +9,7 @@ import DocumentTitle from "react-document-title";
 import * as algo from "../Map/Map";
 
 import Slider from "../LoadRoute/Slider";
+import { Loading } from "../../../Loading";
 
 const auth = require("solid-auth-client");
 
@@ -19,55 +20,24 @@ var images = [];
 var videos = [];
 var rut = "";
 
-const LoadRoute = () => {
-
-    const [folders, setFolders] = useState([]);
-    const [selected, setSelected] = useState({
-        name: "",
-        description: "",
-        images: [],
-        videos: [],
-        url: ""
-    });
-
-    var user = useWebId();
-    const webId = useWebId();
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-        });
-    }
-    useEffect(() => {
-        if (user != undefined) {
-            const url = user.split("profile/card#me")[0] + "/private/routes3a";
-            //listRoutes(url);
-            loadRoutes(url, setFolders);
+async function loadFile(urlCarptetaRuta, route) {
+    var k;
+    var result = [];
+    for (k = 0; k < 1000; k++) {
+        try {
+            await fileClien.readFile(urlCarptetaRuta + route + (k + 1));
+            result.push(urlCarptetaRuta + route + (k + 1));
+        } catch{
+            k = 1000;
         }
-    }, [user]);
+    }
+    rut=route;
+    return result;
+}
 
-    images = [];
-    videos = [];
-    selected.images.map((image) => (
-        images.push(image)
-    ));
-    selected.videos.map((video) => (
-        videos.push(video)
-    ));
-    cont = 0;
-    return (
-        <DocumentTitle title="Share routes">
-            <div class="container">
-                <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
+export async function showRoute(urlCarptetaRuta) {
 
+<<<<<<< HEAD
                 <ul>
                     {
                         folders.map((folder, i) => {
@@ -100,15 +70,16 @@ const LoadRoute = () => {
                                 </li>}
                             </List>
                         </p>
+=======
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+>>>>>>> develop
 
-                        </div>
-                <button className="btn btn-light" id="botonin" onClick={() => share()}>Share</button>
-            </div>  
-        </div>
-        </DocumentTitle>
+    document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
+    let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
 
-    );
-};
+    algo.updateMap(ruta, folder.name);
+
+}
 
 async function loadRoutes(url, setFolders) {
 
@@ -135,35 +106,10 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     });
 }
 
-async function loadFile(urlCarptetaRuta, route) {
-    var k;
-    var result = [];
-    for (k = 0; k < 1000; k++) {
-        try {
-            await fileClien.readFile(urlCarptetaRuta + route + (k + 1));
-            result.push(urlCarptetaRuta + route + (k + 1));
-        } catch{
-            k = 1000;
-        }
-    }
-    rut=route;
-    return result;
-}
-
-export async function showRoute(urlCarptetaRuta) {
-
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-
-    document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
-    let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
-
-    algo.updateMap(ruta, folder.name);
-
-}
-
-async function share(){
+async function share(setLoading){
     var fri = false;
     if(rut != ""){
+            setLoading(true);
             for(var i=0; i<cont;i++){
                 let a = document.getElementById("ck"+i);
                 if(a.checked==true) {
@@ -171,6 +117,7 @@ async function share(){
                     await enseñaAmigos(a.getAttribute("url"),a.getAttribute("nombre"),a.getAttribute("name"))
                 }
             }
+            setLoading(false);
             if(fri){
                 alert("Your route has been shared!");
             }
@@ -239,6 +186,101 @@ async function enseñaAmigos(source, target, name) {
         //alert("Your route was already shared with this person!");
     }
 }
+
+const LoadRoute = () => {
+
+    const [folders, setFolders] = useState([]);
+    const [selected, setSelected] = useState({
+        name: "",
+        description: "",
+        images: [],
+        videos: [],
+        url: ""
+    });
+
+    const [loading, setLoading] = useState(false);
+
+    var user = useWebId();
+    const webId = useWebId();
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+    useEffect(() => {
+        if (user != undefined) {
+            const url = user.split("profile/card#me")[0] + "/private/routes3a";
+            //listRoutes(url);
+            loadRoutes(url, setFolders);
+        }
+    }, [user]);
+
+    images = [];
+    videos = [];
+    selected.images.map((image) => (
+        images.push(image)
+    ));
+    selected.videos.map((video) => (
+        videos.push(video)
+    ));
+    cont = 0;
+    return (
+        <React.Fragment>
+        <Loading loading={loading}/>
+        <DocumentTitle title="Share routes">
+            <div class="container">
+                <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
+
+                <ul>
+                    {
+                        folders.map((folder, i) => {
+                            var urlArchivo = "" + folder.url;
+                            var arrayUrl = urlArchivo.split("/");
+                            urlRutas.push(urlArchivo);
+                            var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
+                            return (
+                                <li key={"folder_" + i}>
+                                    <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
+                                        {nombre}
+                                    </a>
+                                </li>);
+                        })
+                    }
+                </ul>
+                <div data-testid="card" class="card bg-info text-white">
+                    <div class="card-body">
+                        <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
+                        <p class="card-Description" id="routeDescription">{selected.description}</p>
+                        <div className="bodyMedia">
+                            <Slider images={images} videos={videos} />
+                        </div>
+                        <br></br>
+                        <p className="prueba">
+                            <h3 className="toShare">Do you want to share it? </h3>
+                            <List src={`[${user}].friends`} className="list">{(friend) =>
+                                <li key={friend} className="listElement">
+                                    <OneFriend nombre={`[${friend}]`} url={selected.url} name={selected.name}></OneFriend>
+                                </li>}
+                            </List>
+                        </p>
+
+                        </div>
+                <button className="btn btn-light" id="botonin" onClick={() => share(setLoading)}>Share</button>
+            </div>  
+        </div>
+        </DocumentTitle>
+        </React.Fragment>
+    );
+};
 
 const OneFriend = (props) => {
     return (

@@ -15,17 +15,32 @@ var urlRutas=[];
 var images = [];
 var videos = [];
 
+export async function showRoute(urlCarptetaRuta) {
+    
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+
+    document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
+    let ruta = await fileClien.readFile(urlCarptetaRuta+folder.name+".geojson");
+
+    algo.updateMap(ruta, folder.name);
+    
+}
+
 async function loadRoutes(url, setFolders) {
 
     let folder = await fileClien.readFolder(url);
     var result=[];
 
     for(var i=0;i<folder.files.length;i+=1){
+        try{
         let f=await fileClien.readFile(folder.files[i].url);
         
         let otro= await fileClien.readFolder(f);
         result.push(otro);
-        // setFolders(result)
+        }
+        catch(error){
+            await fileClien.deleteFile(folder.files[i].url);
+        }
     }
 
 setFolders(result);
@@ -62,17 +77,6 @@ async function loadFile(urlCarptetaRuta, route){
         }
     }
     return result;
-}
-
-export async function showRoute(urlCarptetaRuta) {
-    
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-
-    document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
-    let ruta = await fileClien.readFile(urlCarptetaRuta+folder.name+".geojson");
-
-    algo.updateMap(ruta, folder.name);
-    
 }
 
 const SharedRoutes = () => {

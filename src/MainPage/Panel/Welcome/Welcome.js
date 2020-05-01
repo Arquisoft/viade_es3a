@@ -10,7 +10,6 @@ import BackupOutlinedIcon from "@material-ui/icons/BackupOutlined";
 import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
-import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import NotificationsActiveOutlinedIcon from "@material-ui/icons/NotificationsActiveOutlined";
 import ShareIcon from "@material-ui/icons/Share";
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
@@ -207,7 +206,6 @@ const Welcome = () => {
             <Alert variant={'danger'}>
                 Be careful! Make sure the app has control permissions on your solid profile
             </Alert>
-
         </div >
     );
 };

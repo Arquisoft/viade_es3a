@@ -27,7 +27,7 @@
     float: right;
 }
 
-/*Resize the wrap to see the search bar change!*/
+/* Resize the wrap to see the search bar change! */
 
 .iconSearch {
     margin-right: 0.2em;
@@ -38,7 +38,6 @@
     width: 100%;
     position: relative;
     display: flex;
-    
 }
 
 .searchTerm {
@@ -54,7 +53,7 @@
 }
 
 .searchTerm:focus {
-    color: #00B4CC;
+    color: #00b4cc;
 }
 
 .searchButton {

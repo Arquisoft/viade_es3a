@@ -68,7 +68,7 @@ class UploadRouteToPod {
                 console.log(route);
                 
                 //Route
-                var routed = JSON.stringify(route)
+                var routed = JSON.stringify(route);
                 await fileClien.createFile(destination + "/" + name + ".geojson", routed, "text/json");
                
                 alert("Your route has been added to the pod!!");

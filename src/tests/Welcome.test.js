@@ -35,6 +35,7 @@ test("Render component not crashing.", () => {
     expect(getByTestId("createRouteInfoWelcome")).toBeInTheDocument();
     expect(getByTestId("createRouteInfoWelcome")).toHaveTextContent("You can create your own route and save it");
 
+
     expect(getByTestId("share")).toBeInTheDocument();
     expect(getByTestId("share")).toHaveTextContent("Share route");
 
