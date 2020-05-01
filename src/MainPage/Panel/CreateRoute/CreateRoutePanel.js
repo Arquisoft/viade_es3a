@@ -1,6 +1,6 @@
 import React from "react";
 import CreateRoute from "./CreateRoute";
-import "./CreateRoute.css"
+import "./CreateRoute.css";
 
 
 const CreateRoutePanel = () => {

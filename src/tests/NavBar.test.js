@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, waitForElement, cleanup} from "@testing-library/react";
-import { queryByTestId, waitFor} from '@testing-library/dom';
+import { queryByTestId, waitFor} from "@testing-library/dom";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 

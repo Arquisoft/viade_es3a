@@ -12,7 +12,7 @@ import fileClient from "solid-file-client";
 import { Redirect } from "react-router-dom";
 import DocumentTitle from "react-document-title";
 import Loader from "react-loader-spinner";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { Loading } from "../../../Loading";
 
 const auth = require("solid-auth-client");

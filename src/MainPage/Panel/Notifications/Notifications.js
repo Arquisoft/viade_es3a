@@ -6,7 +6,7 @@ import DocumentTitle from "react-document-title";
 import fileClient from "solid-file-client";
 import React, { useState, useEffect } from "react";
 import * as solidAuth from "solid-auth-client";
-import { Toast } from 'react-bootstrap';
+import { Toast } from "react-bootstrap";
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 
 async function loadRoutes(url, setFolders) {

@@ -82,8 +82,6 @@ export function updateMap (route,name) {
         center = [43.5878945, -5.80789456];
         zoomUp = 11;
     }
-
-    console.log(center);
     
     com = <div style={styles.wrapper} id={name}>
         <Map style={styles.map} center={center} zoom={zoomUp} >
