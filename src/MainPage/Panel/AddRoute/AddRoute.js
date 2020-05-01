@@ -11,6 +11,8 @@ import * as solidAuth from "solid-auth-client";
 import fileClient from "solid-file-client";
 import { Redirect } from "react-router-dom";
 import DocumentTitle from "react-document-title";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 const auth = require("solid-auth-client");
 
@@ -54,10 +56,13 @@ const Data = () => {
     const [image, setImage] = useState(null);
     const [video, setVideo] = useState(null);
 
+    const [loading, setLoading] = useState(false);
+
     const url=user.split("profile/card#me")[0]+"/private/routes3a";
     
     return (
         <div>
+            <Loader visible={loading} type="Oval" height={80} width={80} color="#05302f" secondaryColor="#18EEE9"/>
             <br></br>
             <Upload setFile={setFile} file={file}/>
             <br></br>
@@ -87,7 +92,7 @@ const Data = () => {
                     </div>
             }
             <center>
-                <button data-testid="btnenviar" onClick={() => createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo, setError)}  class="btn btn-info" >Add route
+                <button data-testid="btnenviar" onClick={() => createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo, setError, setLoading)}  class="btn btn-info" >Add route
                 </button>
             </center>
          </div>
@@ -112,13 +117,14 @@ const AddRoute = () => {
 
 
 
-const createFolder = async (folder, route, name, description, photo, video,setFile, setName, setDescription, setImage, setVideo, setError) => {
+const createFolder = async (folder, route, name, description, photo, video,setFile, setName, setDescription, setImage, setVideo, setError, setLoading) => {
 
     if (name === ""|| route === null){
         setError("Name or route is empty!");
     }
     else{
         setError(null);
+        setLoading(true);
         var existe = await fileClien.itemExists(folder);
 
         if (!existe){
@@ -177,6 +183,7 @@ const createFolder = async (folder, route, name, description, photo, video,setFi
         else{
             alert("Route title already used, use another title");
         }
+        setLoading(false);
         
 }
 
