@@ -13,6 +13,7 @@ import { Redirect } from "react-router-dom";
 import DocumentTitle from "react-document-title";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import { Loading } from "../../../Loading";
 
 const auth = require("solid-auth-client");
 
@@ -62,21 +63,7 @@ const Data = () => {
     
     return (
         <div>
-            <div style={{
-                position: 'fixed',
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0,
-                zIndex: 1000,
-                backgroundColor: '#3339',
-                display: loading ? 'flex' : 'none',
-                justifyContent: 'center'
-            }}>
-                <Loader style={{
-                    alignSelf: 'center'
-                }} visible={true} type="ThreeDots" height={200} width={200} color="#18EEE9" />
-            </div>
+            <Loading loading={loading}/>
             <br></br>
             <Upload setFile={setFile} file={file}/>
             <br></br>
