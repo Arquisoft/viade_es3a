@@ -62,7 +62,21 @@ const Data = () => {
     
     return (
         <div>
-            <Loader visible={loading} type="Oval" height={80} width={80} color="#05302f" secondaryColor="#18EEE9"/>
+            <div style={{
+                position: 'fixed',
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0,
+                zIndex: 1000,
+                backgroundColor: '#3339',
+                display: loading ? 'flex' : 'none',
+                justifyContent: 'center'
+            }}>
+                <Loader style={{
+                    alignSelf: 'center'
+                }} visible={true} type="ThreeDots" height={200} width={200} color="#18EEE9" />
+            </div>
             <br></br>
             <Upload setFile={setFile} file={file}/>
             <br></br>
