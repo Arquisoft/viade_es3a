@@ -108,21 +108,37 @@
     color: red;
 }
 
-.open-class::after{
+.headerWelcome .open-class::after{
     content: "\25B2";
     color: rgb(97, 208, 228);
 }
 
-.closed-class::after{
+.headerWelcome .closed-class::after{
     content: "\25BC"; 
     color: rgb(255, 255, 255);
 }
 
-.open-class::after, .closed-class::after {
+.headerWelcome .open-class::after, .closed-class::after {
     font-size: 0.6em;
-    float: right;
     margin-left: 2em;
 }
+
+.headerWelcomeInfo .open-class .opcionYLogoWelcomeNearMe::after{
+    content: "\25BC"; 
+    color: rgb(255, 255, 255);
+}
+
+.headerWelcomeInfo .closed-class .opcionYLogoWelcomeNearMe::after{
+    content: "\25B2";
+    color: #30363b;
+}
+
+.headerWelcomeInfo .open-class .opcionYLogoWelcomeNearMe::after, .headerWelcomeInfo .closed-class .opcionYLogoWelcomeNearMe::after{
+    font-size: 0.8em;
+    margin-left: 2em;
+}
+
+
 
 
 

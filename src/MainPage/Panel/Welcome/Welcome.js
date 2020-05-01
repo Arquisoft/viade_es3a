@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Welcome.css";
-import { Nav, Accordion, useAccordionToggle } from 'react-bootstrap'
+import { Accordion, useAccordionToggle } from 'react-bootstrap'
 import Card from "react-bootstrap/Card";
 import Alert from "react-bootstrap/Button";
 
@@ -34,7 +34,7 @@ const AccordionWelcome = () => {
         const customClass = (eventKey === panelIndex) ? "open-class" : "closed-class"
 
         return (
-            <Card.Header>
+            <Card.Header className="headerWelcome">
                 <Accordion.Toggle as={Card.Header} className={customClass} id="opcionYLogoWelcome" onClick={customOnClick}>
                     {children}
                 </Accordion.Toggle>
@@ -164,22 +164,24 @@ const WhatIsViade = () => {
         const customClass = (eventKey === panelIndex) ? "open-class" : "closed-class"
 
         return (
-            <Card.Header>
+            <Card.Header className="headerWelcomeInfo">
                 <Accordion.Toggle as={Card.Header} className={customClass} id="opcionYLogoWelcomeViade" onClick={customOnClick}>
-                    {children}
+                    <div className="opcionYLogoWelcomeNearMe">
+                        {children}
+                    </div>
                 </Accordion.Toggle>
             </Card.Header>
         )
     }
 
     return (
-        <Accordion defaultActiveKey="6">
+        <Accordion defaultActiveKey={0}>
             <Card className="cardWelcomeInfo" data-testid="introduction">
                 <CustomToggle eventKey={0}>
-                    <div className="opcionYLogoWelcomeNearMe">
-                        <div className="optionTitleInfo">What is VIADE?</div>
-                        <NearMeIcon className="iconNearWelcome" data-testid="iconLogout" />
-                    </div>
+
+                    <div className="optionTitleInfo">What is VIADE?</div>
+                    <NearMeIcon className="iconNearWelcome" data-testid="iconLogout" />
+
                 </CustomToggle>
                 <Accordion.Collapse eventKey={0} className="mostrarInfo">
                     <Card.Body>Viade is a decentralized routes management system based on the solid specifications.</Card.Body>
