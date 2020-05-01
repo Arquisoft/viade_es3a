@@ -1,9 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
 
-.subCards{
-    display: none;
-}
-
 .cardWelcomeInfo {
     font-family: Verdana, Geneva, sans-serif;
     font-size: ºem;
@@ -15,22 +11,23 @@
     font-style: normal;
     font-variant: normal;
     text-transform: none;
+    background-color: #17a2b8;
 }
 
-.iconHappy{
+.iconHappy {
     margin-left: 0.3em;
     color: #1894a7;
 }
 
-.optionTitleInfo{
+.optionTitleInfo {
     color: #ffffff;
 }
 
-.opcionYLogoWelcomeNearMe{
+.opcionYLogoWelcomeNearMe {
     display: flex;
 }
 
-.iconNearWelcome{
+.iconNearWelcome {
     margin-left: 0.3em;
     color: #dc3545;
 }
@@ -40,16 +37,16 @@
     max-height: 42vmin;
 }
 
-.opcionYLogoWelcomeViade{
+#opcionYLogoWelcomeViade {
     background-color: #17a2b8;
     padding: 0.1em 0.9em;
 }
 
-.opcionYLogoWelcome:hover {
+#opcionYLogoWelcome:hover {
     background-color: #3c4349;
 }
 
-.opcionYLogoWelcomeViade:hover {
+#opcionYLogoWelcomeViade:hover {
     background-color: #1db0c7;
 }
 
@@ -58,7 +55,7 @@
     color: rgb(97, 208, 228);
 }
 
-.opcionYLogoWelcome {
+#opcionYLogoWelcome {
     display: flex;
     align-items: center;
     padding: 0.2em 0.9em;
@@ -69,7 +66,7 @@
     background-color: #17a2b8;
 }
 
-.mostrarInfo{
+.mostrarInfo {
     background-color: #84d3df;
 }
 
@@ -83,10 +80,6 @@
 
 .cardWelcome {
     background-color: #343a40;
-}
-
-.cardWelcomeInfo{
-    background-color: #17a2b8;
 }
 
 .contenedor {
@@ -104,7 +97,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-.viadeInfo{
+.viadeInfo {
     -webkit-text-stroke: 0.8px #000000;
     font-size: 1.4em;
     color: #25c9e2;
@@ -114,6 +107,23 @@
 .alert {
     color: red;
 }
+
+.open-class::after{
+    content: "\25B2";
+    color: rgb(97, 208, 228);
+}
+
+.closed-class::after{
+    content: "\25BC"; 
+    color: rgb(255, 255, 255);
+}
+
+.open-class::after, .closed-class::after {
+    font-size: 0.6em;
+    float: right;
+    margin-left: 2em;
+}
+
 
 
 
