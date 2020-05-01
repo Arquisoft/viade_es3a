@@ -26,8 +26,15 @@
 
 #botonDel {
   display:none;
+  float: right;
 }
-
+#botonEdi {
+    display:none;
+    float: left;
+  }
+  #botonCam {
+    float: left;
+}
 /* ul {
     list-style: none;
     padding: 0px;

@@ -19,9 +19,6 @@ var images = [];
 var videos = [];
 
 async function loadRoute(urlCarptetaRuta, setSelected) {
-
-    
-
     let folder = await fileClien.readFolder(urlCarptetaRuta);
     let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
     let images = await loadFile(urlCarptetaRuta, "photo/img");
@@ -51,7 +48,9 @@ async function loadFile(urlCarptetaRuta, route) {
         }
     }
     var x = document.getElementById("botonDel");
-      x.style.display = "block";
+    x.style.display = "block";
+    var y = document.getElementById("botonEdi");
+    y.style.display = "block";
     return result;
 }
 
@@ -60,7 +59,7 @@ export async function showRoute(urlCarptetaRuta) {
 
     let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
 
-    algo.updateMap(ruta,folder.name);
+    algo.updateMap(ruta, folder.name);
 }
 
 const LoadRoute = () => {
@@ -72,8 +71,12 @@ const LoadRoute = () => {
         images: [],
         videos: []
     });
+    const [description, setDescription] = useState("");
+    const [image, setImage] = useState(null);
+    const [video, setVideo] = useState(null);
     const [showResults, setShowResults] = useState(false)
-    const onClick = () => setShowResults(true)
+    const onClick = () => showResults ? setShowResults(false):setShowResults(true);
+
     var user = useWebId();
 
     useEffect(() => {
@@ -84,8 +87,10 @@ const LoadRoute = () => {
         }
     }, [user]);
 
-    images=[];
-    videos=[];
+    images = [];
+    videos = [];
+    
+    //setShowResults(false); 
     selected.images.map((image) => (
         images.push(image)
     ));
@@ -93,55 +98,75 @@ const LoadRoute = () => {
         videos.push(video)
     ));
     return (
-        
+
         <DocumentTitle title="My Routes">
-        <div class="container">
-            <h2 id="rutas" class="h2" data-testid="label">Routes list:</h2>
-            
-            <ul>
-                {
-                    folders.map((folder, i) => {
-                        var urlArchivo = "" + folder.url;
-                        var arrayUrl = urlArchivo.split("/");
-                        urlRutas.push(urlArchivo);
-                        var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
-                        return (
-                            <li key={"folder_" + i}>
-                                <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
-                                    {nombre}
-                                </a>
-                            </li>);
-                    })
-                }
-            </ul>
-            <div class="card bg-info text-white" data-testid="card">
-                <div class="card-body">
-                    <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
-                    <p class="card-Description" id="routeDescription">{selected.description}</p>
-                    <div className="bodyMedia">
-                        <Slider images={images} videos={videos} />
+            <div class="container">
+                <h2 id="rutas" class="h2" data-testid="label">Routes list:</h2>
+
+                <ul>
+                    {
+                        folders.map((folder, i) => {
+                            var urlArchivo = "" + folder.url;
+                            var arrayUrl = urlArchivo.split("/");
+                            urlRutas.push(urlArchivo);
+                            var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
+                            return (
+                                <li key={"folder_" + i}>
+                                    <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected) }>
+                                        {nombre}
+                                    </a>
+                                </li>);
+                        })
+                    }
+                </ul>
+                <div class="card bg-info text-white" data-testid="card">
+                    <div class="card-body">
+                        <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
+                        <p class="card-Description" id="routeDescription">{selected.description}</p>
+                        <div className="bodyMedia">
+                            <Slider images={images} videos={videos} />
+                        </div>
+                        {showResults ? <div><div class="form-group">
+                            <label for="exampleFormControlTextarea1" class="labelDescription" data-testid="desc">Description:</label>
+                            <textarea class="form-control" id="description" data-testid="inputDesc" name="description" rows="3" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                        </div>
+
+                            <div class="form-group">
+                                <label class="exampleInputPhoto" for="photo" class="labelPhoto" data-testid="img">Images:</label><br></br>
+                                <input value={null} type="file" id="photo" name="image" data-testid="inputImg" accept="image/*" multiple="true" onChange={(e) => setImage(e.target.files)} />
+                            </div>
+                            <div class="form-group">
+                                <label class="exampleInputVideo" for="video" class="labelVideo" data-testid="vid">Video:</label><br></br>
+                                <input value={null} type="file" id="video" name="video" accept="video/*" data-testid="inputVid" multiple="true" onChange={(e) => setVideo(e.target.files)} />
+                            </div>
+                            <button className="btn btn-light" id="botonCam" onClick={""}>Submit</button>
+                            </div> : null}
+                        <button className="btn btn-light" id="botonEdi" onClick={() => editRoute(selected)}>Edit</button>
+                        <button className="btn btn-light" id="botonDel" onClick={() => deleteRoute(selected)}>Delete</button>
                     </div>
-                    <button className="btn btn-light" id="botonEdi" onClick={onClick}>Edit</button>
-                    <button className="btn btn-light" id="botonDel" onClick={() => deleteRoute(selected)}>Delete</button>
                 </div>
             </div>
-        </div>
-        </DocumentTitle>           
+        </DocumentTitle>
     );
 };
+
+
+async function editRoute() {
+
+}
 
 async function loadRoutes(url, setFolders) {
 
     let folder = await fileClien.readFolder(url);
     setFolders(folder.folders);
 }
-async function deleteRoute(selected){
+async function deleteRoute(selected) {
     console.log(selected.url);
-    if(fileClien.itemExists(selected.url)){
+    if (fileClien.itemExists(selected.url)) {
         alert("Route will be deleted, please wait a few seconds")
         await fileClien.deleteFolder(selected.url);
     }
-    else{
+    else {
         alert("Route can`t be deleted")
     }
     window.location.reload();
