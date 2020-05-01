@@ -15,10 +15,17 @@ test("Render component not crashing.", () => {
  test("Check Welcome information", () => {
     const { getByTestId } = render(<Welcome></Welcome>);
     expect(getByTestId("label")).toBeInTheDocument();
-    expect(getByTestId("label")).toHaveTextContent("Welcome to VIADE");
+    expect(getByTestId("label")).toHaveTextContent("Welcome to VIADE");    
+
+    expect(getByTestId("what")).toBeInTheDocument();
+    expect(getByTestId("what")).toHaveTextContent("What is VIADE?");
 
     expect(getByTestId("introduction")).toBeInTheDocument();
     expect(getByTestId("introduction")).toHaveTextContent("Viade is a decentralized routes management");
+
+    expect(getByTestId("list")).toBeInTheDocument();
+    expect(getByTestId("list")).toHaveTextContent("Here's the list of things you can do with"); 
+    expect(getByTestId("list")).toHaveTextContent("VIADE");
 
     expect(getByTestId("add")).toBeInTheDocument();
     expect(getByTestId("add")).toHaveTextContent("Add route");
@@ -26,6 +33,9 @@ test("Render component not crashing.", () => {
     expect(getByTestId("addRouteInfoWelcome")).toBeInTheDocument();
     expect(getByTestId("addRouteInfoWelcome")).toHaveTextContent("You can upload a route and it will be saved in your SOLID pod");
     
+    expect(getByTestId("routes")).toBeInTheDocument();
+    expect(getByTestId("routes")).toHaveTextContent("Routes");
+
     expect(getByTestId("load")).toBeInTheDocument();
     expect(getByTestId("load")).toHaveTextContent("My routes");
 
@@ -34,7 +44,6 @@ test("Render component not crashing.", () => {
 
     expect(getByTestId("createRouteInfoWelcome")).toBeInTheDocument();
     expect(getByTestId("createRouteInfoWelcome")).toHaveTextContent("You can create your own route and save it");
-
 
     expect(getByTestId("share")).toBeInTheDocument();
     expect(getByTestId("share")).toHaveTextContent("Share route");
@@ -71,6 +80,9 @@ test("Render component not crashing.", () => {
 
     expect(getByTestId("message")).toBeInTheDocument();
     expect(getByTestId("message")).toHaveTextContent("Enjoy our app !");
+
+    expect(getByTestId("alert")).toBeInTheDocument();
+    expect(getByTestId("alert")).toHaveTextContent("Be careful! Make sure the app has control permissions on your solid profile");
 
 });
 
