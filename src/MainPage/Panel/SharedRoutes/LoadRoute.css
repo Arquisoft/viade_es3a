@@ -16,10 +16,40 @@
 }
 
 .lista{
+    text-decoration: none;
     color: teal;
     transition: all 0.4s ease-out;
 }
 
 .lista:hover{
-    color: rgb(0,100,220);
+    text-decoration: none;
+    color: rgb(60, 130, 143);
+}
+
+.optionSh:hover {
+    text-decoration: none;
+    color: rgb(60, 130, 143);
+    font-size: 1.15em;
+}
+
+.optionSh:active {
+    color: rgb(60, 130, 143);
+    font-size: 1.2em;
+}
+
+ul {
+    list-style: none;
+    padding: 0px;
+    margin-left: 10px;
+}
+
+ul #optionSh::before {
+    content: "\1F4CD";  
+    color: teal; 
+    display: inline-block; 
+    padding-right: 34px;
+    font-size: 25px;
+    line-height: 32px;
+    vertical-align: -4px;
+    width: 15px;
 }

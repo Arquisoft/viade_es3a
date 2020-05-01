@@ -36,7 +36,6 @@ async function loadFile(urlCarptetaRuta, route) {
 }
 
 export async function showRoute(urlCarptetaRuta) {
-
     let folder = await fileClien.readFolder(urlCarptetaRuta);
 
     document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
