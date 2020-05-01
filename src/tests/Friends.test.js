@@ -13,6 +13,9 @@ test("Render component not crashing.", () => {
     const { getByTestId } = render(<Friends></Friends>);
     expect(getByTestId("label")).toBeInTheDocument();
     expect(getByTestId("label")).toHaveTextContent("Your friends,");
+
+    expect(getByTestId("addFriend")).toBeInTheDocument();
+    expect(getByTestId("addFriend")).toHaveTextContent("Add friends by webId");
 });
 
 

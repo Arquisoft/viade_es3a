@@ -84,9 +84,7 @@ const Friends = () => {
         <DocumentTitle title="Friends">
             <div className="prueba">
                 <h2 className="h2" data-testId="label">Your friends, <Value src="user.name" /> </h2>
-
-                <h4 class="card-title" id="friendName">Agregar amigos</h4>
-
+                <h4 class="card-title" id="addFriend" data-testId="addFriend">Add friends by webId</h4>
                 <div class="wrap">
                     <div class="search">
                         <input type="text" class="searchTerm" placeholder="https://pepitogarcia.solid.community/profile/card#me" id="input"/>
