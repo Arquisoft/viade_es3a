@@ -166,8 +166,8 @@ async function editRoute(selected, description, images, videos) {
         for (var k = 0; videos.length != 0 && k < videos.length; k++) {
             await fileClien.createFile(urlfol + "/" + selected.name + "/" + "video" + "/vid" + (k + 1 + selected.videos.length), videos[k], "video");
         }
-        document.getElementById("photo2").value = null;
-        document.getElementById("video2").value = null;
+        document.getElementById("photo2").value = [];
+        document.getElementById("video2").value = [];
         document.getElementById("description2").value = "";
         alert("Route edited!!!");
         window.location.reload();
