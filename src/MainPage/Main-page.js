@@ -15,6 +15,7 @@ async function creates() {
 
   const folderP=user.webId.split("profile/card#me")[0]+"private/routes3a";
   const folderI=user.webId.split("profile/card#me")[0]+"inbox/routes3a";
+  const folderN=user.webId.split("profile/card#me")[0]+"inbox/routes3a/notifications";;
 
   var existeP = await fileClien.itemExists(folderP);
   var existeI = await fileClien.itemExists(folderI);
@@ -45,6 +46,7 @@ async function creates() {
       "n0:mode n0:Control, n0:Read, n0:Write.";
 
       await fileClien.createFile(folderI+"/.acl", content,"text/turtle");
+      await fileClien.createFolder(folderN);
   }
 }
 
