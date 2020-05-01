@@ -1,5 +1,6 @@
 import React from "react";
 import "./Panel.css";
+import ShowMap from "./Map/Map.js";
 import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddRoutePanel from "./AddRoute/AddRoutePanel";
@@ -42,6 +43,20 @@ const LeftPanel = () => {
         </nav>
     );
 };
+
+const RightPanel = () => {
+    return (
+        <article className="rightPanel_mapa" id="jeje">
+            {/* <h1>*Insert route to show map*</h1> */}
+           
+                    <ShowMap></ShowMap>
+            
+
+        </article>
+    );
+};
+
+
 
 const Panel = () => {
     return (

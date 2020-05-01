@@ -12,5 +12,4 @@ test("Render component not crashing.", () => {
     const { getByTestId } = render(<Notifications></Notifications>);
     expect(getByTestId("welcome")).toBeInTheDocument();
     getByTestId("welcome").click();
-    expect(getByTestId("welcome")).toHaveTextContent("Your notifications,");
   });
