@@ -67,3 +67,19 @@
     cursor: pointer;
     font-size: 20px;
 }
+
+#addFriend{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 1em;
+    letter-spacing: 2.2px;
+    word-spacing: 1.8px;
+    color: #000000;
+    padding: 0.2em ;
+}
+
+#addFriend::after {
+    color: teal;
+    content: "\21B4";
+    font-size: 1.5em;
+    margin-left: 0.7em;
+}

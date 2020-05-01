@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useWebId } from "@solid/react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Card, Button } from "react-bootstrap";
-import "./LoadRoute.css";
+import "../LoadRoute/LoadRoute.css";
 import * as solidAuth from "solid-auth-client";
 import fileClient from "solid-file-client";
 import DocumentTitle from "react-document-title";
@@ -113,7 +113,7 @@ const SharedRoutes = () => {
         <div class="container">
             <h2 data-testid ="label" id="rutas" class="h2" data-testid="label">Routes from your friends:</h2>
             
-            <ul>
+            <div className="listaDeRutas">
                 {
                     folders.map((folder, i) => {
                         var urlArchivo = "" + folder.url;
@@ -121,14 +121,15 @@ const SharedRoutes = () => {
                         urlRutas.push(urlArchivo);
                         var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
                         return (
-                            <li key={"folder_" + i} className="optionSh" id="optionSh">
-                                <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
+                            <div key={"folder_" + i} className="optionRoute" id="optionRoute">
+                                <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}  id="enlaceLoadRoute">
                                     {nombre}
+                                    <span class="hyperspan"></span>
                                 </a>
-                            </li>);
+                            </div>);
                     })
                 }
-            </ul>
+            </div>
             <div data-testid="card" class="card bg-info text-white" data-testid="card">
                 <div class="card-body">
                     <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
