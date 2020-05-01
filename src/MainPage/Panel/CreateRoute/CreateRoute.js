@@ -1,13 +1,13 @@
 import React from "react";
 import DocumentTitle from "react-document-title";
-import SaveIcon from '@material-ui/icons/Save';
-import DeleteIcon from '@material-ui/icons/Delete';
-import L from 'leaflet';
-import { TileLayer, Marker, Polyline } from 'react-leaflet';
-import { MapStyle} from './CreateRouteStyle';
+import SaveIcon from "@material-ui/icons/Save";
+import DeleteIcon from "@material-ui/icons/Delete";
+import L from "leaflet";
+import { TileLayer, Marker, Polyline } from "react-leaflet";
+import { MapStyle} from "./CreateRouteStyle";
 import { useWebId } from "@solid/react";
-import ReactDOM from 'react-dom'
-import UploadRouteToPod from './UploadRouteToPod';
+import ReactDOM from "react-dom"
+import UploadRouteToPod from "./UploadRouteToPod";
 import { Loading } from "../../../Loading";
 
 class CreateRoute extends React.Component {
@@ -55,8 +55,8 @@ class CreateRoute extends React.Component {
 
      clickOnMap = (e) => {
         const { markers } = this.state;
-        markers.push({ lat: e.latlng.lat, lng: e.latlng.lng })
-        this.setState({ markers })
+        markers.push({ lat: e.latlng.lat, lng: e.latlng.lng });
+        this.setState({ markers });
         this.drawLine();
       }
 
@@ -82,13 +82,13 @@ class CreateRoute extends React.Component {
       //Update data
       saveName = (n) => {
         var { name } = this.state;
-        name = document.getElementById('name').value;
+        name = document.getElementById("name").value;
         this.setState({ name });
       }
 
       saveDescription = (n) => {
         var { description } = this.state;
-        description = document.getElementById('description').value;
+        description = document.getElementById("description").value;
         this.setState({ description });
       }
 

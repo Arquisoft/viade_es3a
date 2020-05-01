@@ -13,8 +13,8 @@ import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import NotificationsActiveOutlinedIcon from "@material-ui/icons/NotificationsActiveOutlined";
 import ShareIcon from "@material-ui/icons/Share";
-import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
-import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
+import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
+import MapOutlinedIcon from "@material-ui/icons/MapOutlined";
 
 
 const NavBar = () => {
@@ -22,7 +22,7 @@ const NavBar = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top" className="navBar">
       <Navbar.Brand as={Link} to="/viade_es3a" className="logo" data-testid="logo">
-        <img src={require('../../img/logo_viade_es3a.jpg')} alt="React logo" width="122" />
+        <img src={require("../../img/logo_viade_es3a.jpg")} alt="React logo" width="122" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

@@ -18,6 +18,30 @@ var urlRutas = [];
 var images = [];
 var videos = [];
 
+export async function showRoute(urlCarptetaRuta) {
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+
+    let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
+
+    algo.updateMap(ruta,folder.name);
+}
+
+async function loadFile(urlCarptetaRuta, route) {
+    var k;
+    var result = [];
+    for (k = 0; k < 1000; k++) {
+        try {
+            await fileClien.readFile(urlCarptetaRuta + route + (k + 1));
+            result.push(urlCarptetaRuta + route + (k + 1));
+        } catch{
+            k = 1000;
+        }
+    }
+    var x = document.getElementById("botonDel");
+      x.style.display = "block";
+    return result;
+}
+
 async function loadRoute(urlCarptetaRuta, setSelected) {
 
     
@@ -39,30 +63,6 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
 
 }
 
-async function loadFile(urlCarptetaRuta, route) {
-    var k;
-    var result = [];
-    for (k = 0; k < 1000; k++) {
-        try {
-            await fileClien.readFile(urlCarptetaRuta + route + (k + 1));
-            result.push(urlCarptetaRuta + route + (k + 1));
-        } catch{
-            k = 1000;
-        }
-    }
-    var x = document.getElementById("botonDel");
-      x.style.display = "block";
-    return result;
-}
-
-export async function showRoute(urlCarptetaRuta) {
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-
-    let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
-
-    algo.updateMap(ruta,folder.name);
-}
-
 const LoadRoute = () => {
 
     const [folders, setFolders] = useState([]);
@@ -78,7 +78,6 @@ const LoadRoute = () => {
     useEffect(() => {
         if (user != undefined) {
             const url = user.split("profile/card#me")[0] + "/private/routes3a";
-            //listRoutes(url);
             loadRoutes(url, setFolders);
         }
     }, [user]);
@@ -134,7 +133,6 @@ async function loadRoutes(url, setFolders) {
     setFolders(folder.folders);
 }
 async function deleteRoute(selected){
-    console.log(selected.url);
     if(fileClien.itemExists(selected.url)){
         alert("Route will be deleted, please wait a few seconds")
         await fileClien.deleteFolder(selected.url);

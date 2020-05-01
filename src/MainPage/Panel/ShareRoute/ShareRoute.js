@@ -20,31 +20,6 @@ var images = [];
 var videos = [];
 var rut = "";
 
-async function loadRoutes(url, setFolders) {
-
-    let folder = await fileClien.readFolder(url);
-    setFolders(folder.folders);
-}
-
-async function loadRoute(urlCarptetaRuta, setSelected) {
-
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
-    let images = await loadFile(urlCarptetaRuta, "photo/img");
-    let videos = await loadFile(urlCarptetaRuta, "video/vid");
-
-    await showRoute(urlCarptetaRuta);
-
-    
-    setSelected({
-        name: folder.name,
-        description: folderDesc,
-        images: images,
-        videos: videos,
-        url: folder.url
-    });
-}
-
 async function loadFile(urlCarptetaRuta, route) {
     var k;
     var result = [];
@@ -69,6 +44,31 @@ export async function showRoute(urlCarptetaRuta) {
 
     algo.updateMap(ruta, folder.name);
 
+}
+
+async function loadRoutes(url, setFolders) {
+
+    let folder = await fileClien.readFolder(url);
+    setFolders(folder.folders);
+}
+
+async function loadRoute(urlCarptetaRuta, setSelected) {
+
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
+    let images = await loadFile(urlCarptetaRuta, "photo/img");
+    let videos = await loadFile(urlCarptetaRuta, "video/vid");
+
+    await showRoute(urlCarptetaRuta);
+
+    
+    setSelected({
+        name: folder.name,
+        description: folderDesc,
+        images: images,
+        videos: videos,
+        url: folder.url
+    });
 }
 
 async function share(setLoading){
