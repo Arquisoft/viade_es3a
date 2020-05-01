@@ -2,6 +2,11 @@
     list-style: none;
 }
 
+.listFriendsShare{
+    overflow: auto;
+    max-height: 45vh;
+}
+
 .h2 {
     font-family: monospace;
     color: teal;
@@ -35,32 +40,60 @@
     color: rgb(60, 130, 143);
 }
 
-.optionS:hover {
+.listaDeRutasShare {
+    overflow: auto;
+    max-height: 30vh;
+    margin-bottom: 1em;
+    border: 0.2em solid #1894a7;
+    border-radius: 0.5em;
+}
+
+.optionShare{
+    background-color: rgba(255, 255, 255, 0.527);
+    margin-bottom: 0.5em;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    position: relative;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: ºem;
+    letter-spacing: 2.2px;
+    word-spacing: 1.8px;
+    text-decoration: none;
+}
+
+.optionShare:hover {
     text-decoration: none;
     color: rgb(60, 130, 143);
     font-size: 1.15em;
+    background-color: rgba(210, 245, 252, 0.719);
 }
 
-.optionS:active {
+.optionShare:active {
     color: rgb(60, 130, 143);
     font-size: 1.2em;
 }
 
-ul {
-    list-style: none;
-    padding: 0px;
-    margin-left: 10px;
+div #optionShare {
+    margin-left: 0;
 }
 
-ul #optionS::before {
-    content: "\1F4CD";  
-    color: teal; 
-    display: inline-block; 
+div #optionShare::before {
+    content: "\1F4CD";
+    color: teal;
+    display: inline-block;
     padding-right: 34px;
-    font-size: 25px;
-    line-height: 32px;
+    font-size: 22px;
+    line-height: 30px;
     vertical-align: -4px;
     width: 15px;
+}
+
+.hyperspan {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
 }
 
 

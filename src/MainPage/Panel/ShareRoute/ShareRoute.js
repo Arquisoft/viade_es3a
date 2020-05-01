@@ -31,7 +31,7 @@ async function loadFile(urlCarptetaRuta, route) {
             k = 1000;
         }
     }
-    rut=route;
+    rut = route;
     return result;
 }
 
@@ -60,7 +60,7 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
 
     await showRoute(urlCarptetaRuta);
 
-    
+
     setSelected({
         name: folder.name,
         description: folderDesc,
@@ -70,24 +70,24 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     });
 }
 
-async function share(setLoading){
+async function share(setLoading) {
     var fri = false;
-    if(rut != ""){
-            setLoading(true);
-            for(var i=0; i<cont;i++){
-                let a = document.getElementById("ck"+i);
-                if(a.checked==true) {
-                    fri = true;
-                    await enseñaAmigos(a.getAttribute("url"),a.getAttribute("nombre"),a.getAttribute("name"))
-                }
+    if (rut != "") {
+        setLoading(true);
+        for (var i = 0; i < cont; i++) {
+            let a = document.getElementById("ck" + i);
+            if (a.checked == true) {
+                fri = true;
+                await enseñaAmigos(a.getAttribute("url"), a.getAttribute("nombre"), a.getAttribute("name"))
             }
-            setLoading(false);
-            if(fri){
-                alert("Your route has been shared!");
-            }
-            else {
-                alert("You have to select at least a friend!");
-            }
+        }
+        setLoading(false);
+        if (fri) {
+            alert("Your route has been shared!");
+        }
+        else {
+            alert("You have to select at least a friend!");
+        }
     }
     else {
         alert("You have to select a route!");
@@ -199,49 +199,52 @@ const LoadRoute = () => {
     cont = 0;
     return (
         <React.Fragment>
-        <Loading loading={loading}/>
-        <DocumentTitle title="Share routes">
-            <div class="container">
-                <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
+            <Loading loading={loading} />
+            <DocumentTitle title="Share routes">
+                <div class="container">
+                    <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
 
-                <ul>
-                    {
-                        folders.map((folder, i) => {
-                            var urlArchivo = "" + folder.url;
-                            var arrayUrl = urlArchivo.split("/");
-                            urlRutas.push(urlArchivo);
-                            var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
-                            return (
-                                <li key={"folder_" + i}>
-                                    <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
-                                        {nombre}
-                                    </a>
-                                </li>);
-                        })
-                    }
-                </ul>
-                <div data-testid="card" class="card bg-info text-white">
-                    <div class="card-body">
-                        <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
-                        <p class="card-Description" id="routeDescription">{selected.description}</p>
-                        <div className="bodyMedia">
-                            <Slider images={images} videos={videos} />
-                        </div>
-                        <br></br>
-                        <p className="prueba">
-                            <h3 className="toShare">Do you want to share it? </h3>
-                            <List src={`[${user}].friends`} className="list">{(friend) =>
-                                <li key={friend} className="listElement">
-                                    <OneFriend nombre={`[${friend}]`} url={selected.url} name={selected.name}></OneFriend>
-                                </li>}
-                            </List>
-                        </p>
+                    <div className="listaDeRutasShare">
+                        {
+                            folders.map((folder, i) => {
+                                var urlArchivo = "" + folder.url;
+                                var arrayUrl = urlArchivo.split("/");
+                                urlRutas.push(urlArchivo);
+                                var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
+                                return (
+                                    <div key={"folder_" + i} className="optionShare" id="optionShare">
+                                        <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
+                                            {nombre}
+                                            <span class="hyperspan"></span>
+                                        </a>
+                                    </div>);
+                            })
+                        }
+                    </div>
+                    <div data-testid="card" class="card bg-info text-white">
+                        <div class="card-body">
+                            <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
+                            <p class="card-Description" id="routeDescription">{selected.description}</p>
+                            <div className="bodyMedia">
+                                <Slider images={images} videos={videos} />
+                            </div>
+                            <br></br>
+                            <p className="prueba">
+                                <h3 className="toShare">Do you want to share it? </h3>
+                                <div className="listFriendsShare">
+                                    <List src={`[${user}].friends`} className="list">{(friend) =>
+                                        <li key={friend} className="listElement">
+                                            <OneFriend nombre={`[${friend}]`} url={selected.url} name={selected.name}></OneFriend>
+                                        </li>}
+                                    </List>
+                                </div>
+                            </p>
 
                         </div>
-                <button className="btn btn-light" id="botonin" onClick={() => share(setLoading)}>Share</button>
-            </div>  
-        </div>
-        </DocumentTitle>
+                        <button className="btn btn-light" id="botonin" onClick={() => share(setLoading)}>Share</button>
+                    </div>
+                </div>
+            </DocumentTitle>
         </React.Fragment>
     );
 };
@@ -251,9 +254,9 @@ const OneFriend = (props) => {
         <div class="divAmigoShare">
             <div className="friendameDiv">
                 <h5 id="friendName">
-                <Link href={props.nombre} className="linkNameFriend" title="Go to SOLID profile">
-                    <Name src={props.nombre}>{props.nombre}</Name>
-                </Link>    
+                    <Link href={props.nombre} className="linkNameFriend" title="Go to SOLID profile">
+                        <Name src={props.nombre}>{props.nombre}</Name>
+                    </Link>
                 </h5>
             </div>
             <div className="checkBoxShareDiv">
