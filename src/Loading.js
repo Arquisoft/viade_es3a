@@ -16,7 +16,7 @@ export function Loading(props) {
         }}>
             <Loader style={{
                 alignSelf: 'center'
-            }} visible={true} type="TailSpin" height={200} width={200} color="#18EEE9" />
+            }} visible={true} type="Circles" height={200} width={200} color="#18EEE9" />
         </div>
     );
 }
