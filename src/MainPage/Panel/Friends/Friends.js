@@ -43,7 +43,7 @@ const Friends = () => {
 
                 <div class="wrap">
                     <div class="search">
-                        <input type="text" class="searchTerm" placeholder="https://uo264033.solid.community/profile/card#me" id="input"/>
+                        <input type="text" class="searchTerm" placeholder="https://pepitogarcia.solid.community/profile/card#me" id="input"/>
                         <button type="submit" class="searchButton" onClick={() => addFriend(document.getElementById('input').value, webId)}>
                             <SearchOutlinedIcon className="iconSearch"/>
                         </button>
