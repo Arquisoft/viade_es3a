@@ -85,7 +85,17 @@ div #optionRoute::before {
 }
 
 #botonDel {
-    display: none;
+    display:none;
+    float: right;
+}
+
+#botonEdi {
+    display:none;
+    float: left;
+}
+
+#botonCam {
+    float: left;
 }
 
 .hyperspan {
@@ -95,5 +105,3 @@ div #optionRoute::before {
     left: 0;
     top: 0;
 }
-
-
