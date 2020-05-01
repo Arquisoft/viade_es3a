@@ -5,7 +5,7 @@ import "./Notifications.css";
 
 const LeftPanel = () => {
     return (
-        <nav className="leftPanel_leftPart"  data-testid="loadRoutePart">
+        <nav className="leftPanel_leftPart"  data-testid="notificationsRoutePart">
             <Notifications/>
         </nav>
          );

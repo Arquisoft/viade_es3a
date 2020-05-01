@@ -178,7 +178,7 @@ const WhatIsViade = () => {
             <Card className="cardWelcomeInfo" data-testid="introduction">
                 <CustomToggle eventKey={0}>
 
-                    <div className="optionTitleInfo">What is VIADE?</div>
+                    <div className="optionTitleInfo" data-testid ="what">What is VIADE?</div>
                     <NearMeIcon className="iconNearWelcome" data-testid="iconLogout" />
 
                 </CustomToggle>
@@ -203,7 +203,7 @@ const Welcome = () => {
             <span className="smileFace"><InsertEmoticonIcon className="iconHappy" /></span>
             </p>
 
-            <Alert variant={'danger'}>
+            <Alert variant={'danger'} data-testid="alert">
                 Be careful! Make sure the app has control permissions on your solid profile
             </Alert>
         </div >
