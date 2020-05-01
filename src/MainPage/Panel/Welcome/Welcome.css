@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
 
+.subCards{
+    display: none;
+}
+
 .cardWelcomeInfo {
     font-family: Verdana, Geneva, sans-serif;
     font-size: ºem;
@@ -13,8 +17,22 @@
     text-transform: none;
 }
 
+.iconHappy{
+    margin-left: 0.3em;
+    color: #1894a7;
+}
+
 .optionTitleInfo{
     color: #ffffff;
+}
+
+.opcionYLogoWelcomeNearMe{
+    display: flex;
+}
+
+.iconNearWelcome{
+    margin-left: 0.3em;
+    color: #dc3545;
 }
 
 .scrollBarWelcome {

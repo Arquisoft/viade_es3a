@@ -15,6 +15,8 @@ import NotificationsActiveOutlinedIcon from "@material-ui/icons/NotificationsAct
 import ShareIcon from "@material-ui/icons/Share";
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
+import NearMeIcon from '@material-ui/icons/NearMe';
+import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 
 
 const AccordionWelcome = () => {
@@ -149,7 +151,10 @@ const WhatIsViade = () => {
             <Card className="cardWelcomeInfo" data-testid="introduction">
                 <Card.Header>
                     <Accordion.Toggle as={Card.Header} eventKey="6" className="opcionYLogoWelcomeViade">
-                        <div className="optionTitleInfo">What is VIADE?</div>
+                        <div className="opcionYLogoWelcomeNearMe">
+                            <div className="optionTitleInfo">What is VIADE?</div>
+                            <NearMeIcon className="iconNearWelcome" data-testid="iconLogout" />
+                        </div>
                     </Accordion.Toggle>
                 </Card.Header>
                 <Accordion.Collapse eventKey="6" className="mostrarInfo">
@@ -169,7 +174,9 @@ const Welcome = () => {
             <p data-testid="list">Here's the list of things you can do with<span className="viadeInfo"> VIADE</span>:</p>
 
             <AccordionWelcome />
-            <p data-testid="message">Enjoy our app ! :)</p>
+            <p data-testid="message">Enjoy our app !
+            <span className="smileFace"><InsertEmoticonIcon className="iconHappy"/></span>
+            </p>
 
             <Alert variant={'danger'}>
                 Be careful! Make sure the app has control permissions on your solid profile
