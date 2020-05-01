@@ -98,7 +98,7 @@ async function enseñaAmigos(source, target, name) {
 
     const target2 = target.split("[")[1];
     const urlTarget = target2.split("profile/card#me")[0] + "/inbox/routes3a";
-    const urlTargetNotifications = target2.split("profile/card#me")[0] + "/inbox/notifications";
+    const urlTargetNotifications = target2.split("profile/card#me")[0] + "/inbox/routes3a/notifications";
 
     let acl = await fileClien.readFile(source + "/.acl");
 
@@ -140,9 +140,11 @@ async function enseñaAmigos(source, target, name) {
 
         }
 
-        await fileClien.postFile(urlTarget + "/" + name + "->" + ((await auth.currentSession()).webId).split("https://")[1].split(".")[0], source, "text/plain");
+        var userso=((await auth.currentSession()).webId).split("https://")[1].split(".")[0];
 
-        await fileClien.postFile(urlTargetNotifications + '/' + name, '', 'text/plain');
+        await fileClien.postFile(urlTarget + "/" + name + "->" + userso, source, "text/plain");
+
+        await fileClien.postFile(urlTargetNotifications + '/' + name + "->" + userso, '', 'text/plain');
 
         alert("Your route has been shared!");
     }

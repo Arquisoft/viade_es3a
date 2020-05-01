@@ -38,7 +38,7 @@ const Notifications = () => {
 
     useEffect(() => {
         if ( user != undefined) {
-            const url=user.split("profile/card#me")[0]+"inbox/routes3a";
+            const url=user.split("profile/card#me")[0]+"inbox/routes3a/notifications";
             loadRoutes(url, setFolders);
         }
     }, [user]);
