@@ -9,6 +9,7 @@ import DocumentTitle from "react-document-title";
 import * as algo from "../Map/Map";
 
 import Slider from "../LoadRoute/Slider";
+import { Loading } from "../../../Loading";
 
 const auth = require("solid-auth-client");
 
@@ -29,6 +30,8 @@ const LoadRoute = () => {
         videos: [],
         url: ""
     });
+
+    const [loading, setLoading] = useState(false);
 
     var user = useWebId();
     const webId = useWebId();
@@ -64,6 +67,8 @@ const LoadRoute = () => {
     ));
     cont = 0;
     return (
+        <React.Fragment>
+        <Loading loading={loading}/>
         <DocumentTitle title="Share routes">
             <div class="container">
                 <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
@@ -102,11 +107,11 @@ const LoadRoute = () => {
                         </p>
 
                         </div>
-                <button className="btn btn-light" id="botonin" onClick={() => share()}>Share</button>
+                <button className="btn btn-light" id="botonin" onClick={() => share(setLoading)}>Share</button>
             </div>  
         </div>
         </DocumentTitle>
-
+        </React.Fragment>
     );
 };
 
@@ -161,9 +166,10 @@ export async function showRoute(urlCarptetaRuta) {
 
 }
 
-async function share(){
+async function share(setLoading){
     var fri = false;
     if(rut != ""){
+            setLoading(true);
             for(var i=0; i<cont;i++){
                 let a = document.getElementById("ck"+i);
                 if(a.checked==true) {
@@ -171,6 +177,7 @@ async function share(){
                     await enseñaAmigos(a.getAttribute("url"),a.getAttribute("nombre"),a.getAttribute("name"))
                 }
             }
+            setLoading(false);
             if(fri){
                 alert("Your route has been shared!");
             }
