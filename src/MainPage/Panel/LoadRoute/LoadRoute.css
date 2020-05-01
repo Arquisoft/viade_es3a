@@ -15,17 +15,11 @@
     width: 100%;
 }
 
-<<<<<<< HEAD
+
 .lista{
     text-decoration: none;
-=======
-.lista {
->>>>>>> develop
-    color: teal;
-    transition: all 0.4s ease-out;
 }
 
-<<<<<<< HEAD
 .lista:hover{
     text-decoration: none;
     color: rgb(60, 130, 143);
@@ -58,12 +52,7 @@ ul #option::before {
     vertical-align: -4px;
     width: 15px;
 }
-=======
-.lista:hover {
-    color: rgb(0,100,220);
-}
 
 #botonDel {
   display: none;
 }
->>>>>>> develop

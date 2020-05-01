@@ -36,43 +36,7 @@ async function loadFile(urlCarptetaRuta, route) {
 }
 
 export async function showRoute(urlCarptetaRuta) {
-
-<<<<<<< HEAD
-                <ul>
-                    {
-                        folders.map((folder, i) => {
-                            var urlArchivo = "" + folder.url;
-                            var arrayUrl = urlArchivo.split("/");
-                            urlRutas.push(urlArchivo);
-                            var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
-                            return (
-                                <li key={"folder_" + i} className="optionS" id="optionS">
-                                    <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
-                                        {nombre}
-                                    </a>
-                                </li>);
-                        })
-                    }
-                </ul>
-                <div data-testid="card" class="card bg-info text-white">
-                    <div class="card-body">
-                        <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
-                        <p class="card-Description" id="routeDescription">{selected.description}</p>
-                        <div className="bodyMedia">
-                            <Slider images={images} videos={videos} />
-                        </div>
-                        <br></br>
-                        <p className="prueba">
-                            <h3 className="toShare">Do you want to share it? </h3>
-                            <List src={`[${user}].friends`} className="list">{(friend) =>
-                                <li key={friend} className="listElement">
-                                    <OneFriend nombre={`[${friend}]`} url={selected.url} name={selected.name}></OneFriend>
-                                </li>}
-                            </List>
-                        </p>
-=======
     let folder = await fileClien.readFolder(urlCarptetaRuta);
->>>>>>> develop
 
     document.getElementById("routeName").innerHTML = (folder.name).split("%20").join(" ");
     let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
