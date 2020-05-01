@@ -20,101 +20,6 @@ var images = [];
 var videos = [];
 var rut = "";
 
-const LoadRoute = () => {
-
-    const [folders, setFolders] = useState([]);
-    const [selected, setSelected] = useState({
-        name: "",
-        description: "",
-        images: [],
-        videos: [],
-        url: ""
-    });
-
-    const [loading, setLoading] = useState(false);
-
-    var user = useWebId();
-    const webId = useWebId();
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-        });
-    }
-    useEffect(() => {
-        if (user != undefined) {
-            const url = user.split("profile/card#me")[0] + "/private/routes3a";
-            //listRoutes(url);
-            loadRoutes(url, setFolders);
-        }
-    }, [user]);
-
-    images = [];
-    videos = [];
-    selected.images.map((image) => (
-        images.push(image)
-    ));
-    selected.videos.map((video) => (
-        videos.push(video)
-    ));
-    cont = 0;
-    return (
-        <React.Fragment>
-        <Loading loading={loading}/>
-        <DocumentTitle title="Share routes">
-            <div class="container">
-                <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
-
-                <ul>
-                    {
-                        folders.map((folder, i) => {
-                            var urlArchivo = "" + folder.url;
-                            var arrayUrl = urlArchivo.split("/");
-                            urlRutas.push(urlArchivo);
-                            var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
-                            return (
-                                <li key={"folder_" + i}>
-                                    <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
-                                        {nombre}
-                                    </a>
-                                </li>);
-                        })
-                    }
-                </ul>
-                <div data-testid="card" class="card bg-info text-white">
-                    <div class="card-body">
-                        <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
-                        <p class="card-Description" id="routeDescription">{selected.description}</p>
-                        <div className="bodyMedia">
-                            <Slider images={images} videos={videos} />
-                        </div>
-                        <br></br>
-                        <p className="prueba">
-                            <h3 className="toShare">Do you want to share it? </h3>
-                            <List src={`[${user}].friends`} className="list">{(friend) =>
-                                <li key={friend} className="listElement">
-                                    <OneFriend nombre={`[${friend}]`} url={selected.url} name={selected.name}></OneFriend>
-                                </li>}
-                            </List>
-                        </p>
-
-                        </div>
-                <button className="btn btn-light" id="botonin" onClick={() => share(setLoading)}>Share</button>
-            </div>  
-        </div>
-        </DocumentTitle>
-        </React.Fragment>
-    );
-};
-
 async function loadRoutes(url, setFolders) {
 
     let folder = await fileClien.readFolder(url);
@@ -246,6 +151,101 @@ async function enseñaAmigos(source, target, name) {
         //alert("Your route was already shared with this person!");
     }
 }
+
+const LoadRoute = () => {
+
+    const [folders, setFolders] = useState([]);
+    const [selected, setSelected] = useState({
+        name: "",
+        description: "",
+        images: [],
+        videos: [],
+        url: ""
+    });
+
+    const [loading, setLoading] = useState(false);
+
+    var user = useWebId();
+    const webId = useWebId();
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+    useEffect(() => {
+        if (user != undefined) {
+            const url = user.split("profile/card#me")[0] + "/private/routes3a";
+            //listRoutes(url);
+            loadRoutes(url, setFolders);
+        }
+    }, [user]);
+
+    images = [];
+    videos = [];
+    selected.images.map((image) => (
+        images.push(image)
+    ));
+    selected.videos.map((video) => (
+        videos.push(video)
+    ));
+    cont = 0;
+    return (
+        <React.Fragment>
+        <Loading loading={loading}/>
+        <DocumentTitle title="Share routes">
+            <div class="container">
+                <h2 data-testid="label" id="rutas" class="h2">Share a route with your friends:</h2>
+
+                <ul>
+                    {
+                        folders.map((folder, i) => {
+                            var urlArchivo = "" + folder.url;
+                            var arrayUrl = urlArchivo.split("/");
+                            urlRutas.push(urlArchivo);
+                            var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
+                            return (
+                                <li key={"folder_" + i}>
+                                    <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
+                                        {nombre}
+                                    </a>
+                                </li>);
+                        })
+                    }
+                </ul>
+                <div data-testid="card" class="card bg-info text-white">
+                    <div class="card-body">
+                        <h4 class="card-title" id="routeName">{selected.name.split("%20").join(" ")}</h4>
+                        <p class="card-Description" id="routeDescription">{selected.description}</p>
+                        <div className="bodyMedia">
+                            <Slider images={images} videos={videos} />
+                        </div>
+                        <br></br>
+                        <p className="prueba">
+                            <h3 className="toShare">Do you want to share it? </h3>
+                            <List src={`[${user}].friends`} className="list">{(friend) =>
+                                <li key={friend} className="listElement">
+                                    <OneFriend nombre={`[${friend}]`} url={selected.url} name={selected.name}></OneFriend>
+                                </li>}
+                            </List>
+                        </p>
+
+                        </div>
+                <button className="btn btn-light" id="botonin" onClick={() => share(setLoading)}>Share</button>
+            </div>  
+        </div>
+        </DocumentTitle>
+        </React.Fragment>
+    );
+};
 
 const OneFriend = (props) => {
     return (
