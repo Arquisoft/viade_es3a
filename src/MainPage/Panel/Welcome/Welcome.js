@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Welcome.css";
-import { Accordion, useAccordionToggle } from 'react-bootstrap';
+import { Accordion, useAccordionToggle } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Alert from "react-bootstrap/Button";
 
@@ -27,10 +27,10 @@ const AccordionWelcome = () => {
         // Decorate the click event to also set state in the component so we can 
         // compare the open panel key with the state and toggle classes accordingly
         const customOnClick = useAccordionToggle(eventKey, () => {
-            setPanelIndex(eventKey === panelIndex ? null : eventKey)
+            setPanelIndex(eventKey === panelIndex ? null : eventKey);
         });
 
-        const customClass = (eventKey === panelIndex) ? "open-class" : "closed-class"
+        const customClass = (eventKey === panelIndex) ? "open-class" : "closed-class";
 
         return (
             <Card.Header className="headerWelcome">
@@ -38,8 +38,8 @@ const AccordionWelcome = () => {
                     {children}
                 </Accordion.Toggle>
             </Card.Header>
-        )
-    }
+        );
+    };
 
     return (
         <Accordion>

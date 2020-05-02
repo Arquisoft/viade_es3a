@@ -1,5 +1,5 @@
 import React from "react";
-import auth from 'solid-auth-client';
+import auth from "solid-auth-client";
 import fileClient from "solid-file-client";
 import * as solidAuth from "solid-auth-client";
 import { CreateRoute, recarga } from "./CreateRoute";

@@ -120,7 +120,7 @@ async function enseñaAmigos(source, target, name) {
 
         await fileClien.postFile(urlTarget + "/" + name + "->" + userso, source, "text/plain");
 
-        await fileClien.postFile(urlTargetNotifications + '/' + name + "->" + userso, '', 'text/plain');
+        await fileClien.postFile(urlTargetNotifications + "/" + name + "->" + userso, "", "text/plain");
 
         alert("Your route has been shared!");
     }

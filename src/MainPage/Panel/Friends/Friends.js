@@ -35,7 +35,7 @@ const friendAlreadyAdded = async (friendWebId, webId) => {
   for await (const friend of user.friends)
     if (String(friend).localeCompare(String(friendWebId)) === 0){ return true;}
   return false;
-}
+};
 
 const addFriend = async (friendWebId, userWebId) => {
 
@@ -113,7 +113,7 @@ const Friends = () => {
         <div class="wrap">
           <div class="search">
             <input type="text" class="searchTerm" placeholder="https://pepitogarcia.solid.community/profile/card#me" id="input" />
-            <button type="submit" class="searchButton" onClick={() => addFriend(document.getElementById('input').value, webId)}>
+            <button type="submit" class="searchButton" onClick={() => addFriend(document.getElementById("input").value, webId)}>
               <SearchOutlinedIcon className="iconSearch" />
             </button>
           </div>

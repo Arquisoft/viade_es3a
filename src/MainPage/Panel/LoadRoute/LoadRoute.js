@@ -49,7 +49,69 @@ async function loadFile(urlCarptetaRuta, route) {
     return result;
 }
 
+async function loadRoute(urlCarptetaRuta, setSelected,setLoading) {
 
+    setLoading(true);
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
+    let images = await loadFile(urlCarptetaRuta, "photo/img");
+    let videos = await loadFile(urlCarptetaRuta, "video/vid");
+    
+    await showRoute(urlCarptetaRuta);
+
+    setSelected({
+        name: folder.name,
+        description: folderDesc,
+        images: images,
+        videos: videos,
+        url: urlCarptetaRuta
+    });
+    setLoading(false);
+    
+}
+async function editRoute(selected, description, images, videos) {
+    if (description != "" || images.length != 0 || videos.length != 0) {
+
+        if (description != "") {
+            await fileClien.createFile(urlfol + "/" + selected.name + "/" + "description", description, "text/plain");
+        }
+
+        for (var k = 0; images.length != 0 && k < images.length; k++) {
+            await fileClien.createFile(urlfol + "/" + selected.name + "/" + "photo" + "/img" + (k + 1 + selected.images.length), images[k], "img");
+        }
+
+        for (var k = 0; videos.length != 0 && k < videos.length; k++) {
+            await fileClien.createFile(urlfol + "/" + selected.name + "/" + "video" + "/vid" + (k + 1 + selected.videos.length), videos[k], "video");
+        }
+        document.getElementById("photo2").value = [];
+        document.getElementById("video2").value = [];
+        document.getElementById("description2").value = "";
+        alert("Route edited!!!");
+        window.location.reload();
+    }
+    else {
+        alert("All the fields are empty!!!");
+    }
+}
+async function deleteRoute(selected,setLoading) {
+    if (fileClien.itemExists(selected.url)) {
+        setLoading(true);
+        alert("Route will be deleted, please wait a few seconds");        
+        await fileClien.deleteFolder(selected.url);
+    }
+    else {
+        alert("Route can`t be deleted");
+    }
+    setLoading(false);
+    window.location.reload();
+}
+
+async function loadRoutes(url, setFolders) {
+
+    let folder = await fileClien.readFolder(url);
+    setFolders(folder.folders);
+    urlfol = url;
+}
 
 const LoadRoute = () => {
 
@@ -63,7 +125,7 @@ const LoadRoute = () => {
     const [description, setDescription] = useState("");
     const [image, setImage] = useState([]);
     const [video, setVideo] = useState([]);
-    const [showResults, setShowResults] = useState(false)
+    const [showResults, setShowResults] = useState(false);
     const onClick = () => showResults ? setShowResults(false) : setShowResults(true);    
     const [loading, setLoading] = useState(false);
 
@@ -146,69 +208,5 @@ const LoadRoute = () => {
         </div>
     );
 };
-
-async function loadRoute(urlCarptetaRuta, setSelected,setLoading) {
-
-    setLoading(true);
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
-    let images = await loadFile(urlCarptetaRuta, "photo/img");
-    let videos = await loadFile(urlCarptetaRuta, "video/vid");
-    
-    await showRoute(urlCarptetaRuta);
-
-    setSelected({
-        name: folder.name,
-        description: folderDesc,
-        images: images,
-        videos: videos,
-        url: urlCarptetaRuta
-    });
-    setLoading(false);
-    
-}
-async function editRoute(selected, description, images, videos) {
-    if (description != "" || images.length != 0 || videos.length != 0) {
-
-        if (description != "") {
-            await fileClien.createFile(urlfol + "/" + selected.name + "/" + "description", description, "text/plain");
-        }
-
-        for (var k = 0; images.length != 0 && k < images.length; k++) {
-            await fileClien.createFile(urlfol + "/" + selected.name + "/" + "photo" + "/img" + (k + 1 + selected.images.length), images[k], "img");
-        }
-
-        for (var k = 0; videos.length != 0 && k < videos.length; k++) {
-            await fileClien.createFile(urlfol + "/" + selected.name + "/" + "video" + "/vid" + (k + 1 + selected.videos.length), videos[k], "video");
-        }
-        document.getElementById("photo2").value = [];
-        document.getElementById("video2").value = [];
-        document.getElementById("description2").value = "";
-        alert("Route edited!!!");
-        window.location.reload();
-    }
-    else {
-        alert("All the fields are empty!!!");
-    }
-}
-async function deleteRoute(selected,setLoading) {
-    if (fileClien.itemExists(selected.url)) {
-        setLoading(true);
-        alert("Route will be deleted, please wait a few seconds")        
-        await fileClien.deleteFolder(selected.url);
-    }
-    else {
-        alert("Route can`t be deleted")
-    }
-    setLoading(false);
-    window.location.reload();
-}
-
-async function loadRoutes(url, setFolders) {
-
-    let folder = await fileClien.readFolder(url);
-    setFolders(folder.folders);
-    urlfol = url;
-}
 
 export default LoadRoute;
