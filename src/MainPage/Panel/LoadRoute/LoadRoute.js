@@ -9,6 +9,7 @@ import DocumentTitle from "react-document-title";
 import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
+import { Loading } from "../../../Loading";
 
 import * as algo from "../Map/Map";
 
@@ -48,35 +49,8 @@ async function loadFile(urlCarptetaRuta, route) {
     return result;
 }
 
-async function loadRoute(urlCarptetaRuta, setSelected) {
 
 
-
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
-    let images = await loadFile(urlCarptetaRuta, "photo/img");
-    let videos = await loadFile(urlCarptetaRuta, "video/vid");
-
-    await showRoute(urlCarptetaRuta);
-
-    setSelected({
-        name: folder.name,
-        description: folderDesc,
-        images: images,
-        videos: videos,
-        url: urlCarptetaRuta
-    });
-}
-async function deleteRoute(selected) {
-    if (fileClien.itemExists(selected.url)) {
-        alert("Route will be deleted, please wait a few seconds");
-        await fileClien.deleteFolder(selected.url);
-    }
-    else {
-        alert("Route can`t be deleted");
-    }
-    window.location.reload();
-}
 const LoadRoute = () => {
 
     const [folders, setFolders] = useState([]);
@@ -89,8 +63,9 @@ const LoadRoute = () => {
     const [description, setDescription] = useState("");
     const [image, setImage] = useState([]);
     const [video, setVideo] = useState([]);
-    const [showResults, setShowResults] = useState(false);
-    const onClick = () => showResults ? setShowResults(false) : setShowResults(true);
+    const [showResults, setShowResults] = useState(false)
+    const onClick = () => showResults ? setShowResults(false) : setShowResults(true);    
+    const [loading, setLoading] = useState(false);
 
     var user = useWebId();
 
@@ -110,8 +85,10 @@ const LoadRoute = () => {
         videos.push(video)
     ));
     return (
-
+        <div>
+        <Loading loading={loading}/>
         <DocumentTitle title="My Routes">
+        
             <div class="container">
                 <h2 id="rutas" class="h2" data-testid="label">Routes list</h2>
                 <div className="chooseRoute" data-testid="chooseRoute">Choose a route to see in detail:</div>
@@ -124,7 +101,7 @@ const LoadRoute = () => {
                             var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
                             return (
                                 <div key={"folder_" + i} className="optionRoute" id="optionRoute">
-                                    <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)} id="enlaceLoadRoute">
+                                    <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected,setLoading)} id="enlaceLoadRoute">
                                         {nombre}
                                         <span class="hyperspan"></span>
                                     </a>
@@ -161,15 +138,35 @@ const LoadRoute = () => {
                                 </div></center> : null}
                         <br /><br />
                         <button className="btn btn-light" id="botonEdi" onClick={onClick}>Edit  <EditTwoToneIcon /></button>
-                        <button className="btn btn-light" id="botonDel" onClick={() => deleteRoute(selected)}>Delete <DeleteIcon /></button>
+                        <button className="btn btn-light" id="botonDel" onClick={() => deleteRoute(selected, setLoading)}>Delete <DeleteIcon /></button>
                     </div>
                 </div>
             </div>
         </DocumentTitle>
+        </div>
     );
 };
 
+async function loadRoute(urlCarptetaRuta, setSelected,setLoading) {
 
+    setLoading(true);
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
+    let images = await loadFile(urlCarptetaRuta, "photo/img");
+    let videos = await loadFile(urlCarptetaRuta, "video/vid");
+    
+    await showRoute(urlCarptetaRuta);
+
+    setSelected({
+        name: folder.name,
+        description: folderDesc,
+        images: images,
+        videos: videos,
+        url: urlCarptetaRuta
+    });
+    setLoading(false);
+    
+}
 async function editRoute(selected, description, images, videos) {
     if (description != "" || images.length != 0 || videos.length != 0) {
 
@@ -193,6 +190,18 @@ async function editRoute(selected, description, images, videos) {
     else {
         alert("All the fields are empty!!!");
     }
+}
+async function deleteRoute(selected,setLoading) {
+    if (fileClien.itemExists(selected.url)) {
+        setLoading(true);
+        alert("Route will be deleted, please wait a few seconds")        
+        await fileClien.deleteFolder(selected.url);
+    }
+    else {
+        alert("Route can`t be deleted")
+    }
+    setLoading(false);
+    window.location.reload();
 }
 
 async function loadRoutes(url, setFolders) {
