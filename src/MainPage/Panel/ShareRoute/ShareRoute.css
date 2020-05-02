@@ -1,30 +1,163 @@
-.h2{
+.listElement {
+    list-style: none;
+}
+
+.listFriendsShare {
+    overflow: auto;
+    max-height: 45vh;
+}
+
+.h2 {
     font-family: monospace;
     color: teal;
 }
 
-.h2{
+.h2 {
     font-family: monospace;
     color: teal;
 }
 
-.cardName{
+.cardName {
     font-family: monospace;
 }
 
-.vid{
+.vid {
     width: 100%;
 }
 
-.imag{
+.imag {
     width: 100%;
 }
 
-.lista{
+.lista {
+    text-decoration: none;
     color: teal;
     transition: all 0.4s ease-out;
 }
 
-.lista:hover{
-    color: rgb(0,100,220);
+.lista:hover {
+    text-decoration: none;
+    color: rgb(60, 130, 143);
+}
+
+.listaDeRutasShare {
+    overflow: auto;
+    max-height: 30vh;
+    margin-bottom: 1em;
+    border: 0.2em solid #1894a7;
+    border-radius: 0.5em;
+}
+
+.optionShare {
+    background-color: rgba(255, 255, 255, 0.527);
+    margin-bottom: 0.5em;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    position: relative;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: ºem;
+    letter-spacing: 2.2px;
+    word-spacing: 1.8px;
+    text-decoration: none;
+}
+
+.optionShare:hover {
+    text-decoration: none;
+    color: rgb(60, 130, 143);
+    font-size: 1.15em;
+    background-color: rgba(210, 245, 252, 0.719);
+}
+
+.optionShare:active {
+    color: rgb(60, 130, 143);
+    font-size: 1.2em;
+}
+
+div #optionShare {
+    margin-left: 0;
+}
+
+div #optionShare::before {
+    content: "\1F4CD";
+    color: teal;
+    display: inline-block;
+    padding-right: 34px;
+    font-size: 22px;
+    line-height: 30px;
+    vertical-align: -4px;
+    width: 15px;
+}
+
+.hyperspan {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.prueba ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.divAmigoShare {
+    background: linear-gradient(to right, rgba(226, 240, 245, 0.295) 0%, rgba(252, 252, 252, 0.295) 56%, rgba(187, 237, 252, 0.295) 100%);
+    border-radius: 0.3em;
+    width: 100%;
+    padding: 0.6em;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.1em;
+    color: rgb(237, 253, 253);
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.checkBoxShareDiv {
+    float: right;
+    margin-right: 0;
+}
+
+.friendameDiv {
+    width: 90%;
+}
+
+.custom-radio-checkbox__show--checkbox {
+    background-image: url("../../../img/unchecked.png");
+}
+
+.custom-radio-checkbox>.custom-radio-checkbox__input {
+    display: none;
+}
+
+/* Radio personalizado usando <span> */
+
+.custom-radio-checkbox>.custom-radio-checkbox__show {
+    cursor: pointer;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: .5rem;
+    background-size: cover;
+    /* Transiciones */
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+/* Cambia el checkbox personalizado cuando es pulsado */
+
+.custom-radio-checkbox>.custom-radio-checkbox__input:checked+.custom-radio-checkbox__show--checkbox {
+    background-image: url("../../../img/checked.png");
+}
+
+.linkNameFriend {
+    color: white;
+    text-decoration: none;
+}
+
+.linkNameFriend:hover {
+    color: white;
+    font-size: 1.1em;
 }

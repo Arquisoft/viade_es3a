@@ -1,0 +1,5 @@
+exclude_paths:
+  - 'LoadTests/**'
+  - 'README.md'
+  - 'src/tests/**'
+  - '**.css'

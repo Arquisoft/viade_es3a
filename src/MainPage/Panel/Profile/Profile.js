@@ -30,6 +30,7 @@ export async function RoutesLength(user) {
         }
         catch (err) {
             routes = 0;
+            window.location.reload();
         }
     }
 }

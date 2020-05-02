@@ -1,8 +1,85 @@
-.listElement {
-    list-style: none;
+.prueba ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-.h2{
+.h2 {
     font-family: monospace;
     color: teal;
+}
+
+.botones {
+    float: left;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#botonOpcion {
+    margin: 0.5em;
+}
+
+.hola {
+    color: #17a2b8;
+}
+
+.right {
+    float: right;
+}
+
+/* Resize the wrap to see the search bar change! */
+
+.iconSearch {
+    margin-right: 0.2em;
+    color: rgb(255, 255, 255);
+}
+
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+    width: 100%;
+    border: 3px solid #17a2b8;
+    border-right: none;
+    padding: 5px;
+    height: 2.3em;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+    background-color: #f8f9fa;
+}
+
+.searchTerm:focus {
+    color: #00b4cc;
+}
+
+.searchButton {
+    width: 40px;
+    height: 1.85em;
+    border: 1px solid #17a2b8;
+    background: #17a2b8;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#addFriend {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 1em;
+    letter-spacing: 2.2px;
+    word-spacing: 1.8px;
+    color: #000000;
+    padding: 0.2em;
+}
+
+#addFriend::after {
+    color: teal;
+    content: "\21B4";
+    font-size: 1.5em;
+    margin-left: 0.7em;
 }

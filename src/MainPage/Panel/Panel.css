@@ -7,19 +7,71 @@
     background: rgb(54, 54, 54);
 }
 
-.leftPanel_leftPart{
+.panelCompleto {
     float: left;
-    width: 30%;
-    background:lightgrey;
+    width: 100%;
+    background: lightgrey;
     padding: 1em;
     height: 100%;
     overflow: auto;
 }
 
+.leftPanel_leftPart {
+    float: left;
+    width: 30%;
+    background: lightgrey;
+    padding: 1em;
+    height: 100%;
+    overflow: auto;
+}
 
-.rightPanel_mapa{
+.rightPanel_mapa {
     float: right;
     width: 70%;
     height: auto;
     background: cyan;
+}
+
+/* Estilo para la scrollbar (solo va en Chrome, pero mejor que nada) */
+
+::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #17a2b8;
+    border: 3px inset #46c0ce;
+    border-radius: 52px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2bdbd7;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #2bdbd7;
+}
+
+::-webkit-scrollbar-track {
+    background: #9e9e9e;
+    border: 0px dotted #ffffff;
+    border-radius: 23px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #9e9e9e;
+}
+
+::-webkit-scrollbar-track:active {
+    background: #9e9e9e;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
 }

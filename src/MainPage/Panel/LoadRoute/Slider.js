@@ -27,7 +27,7 @@ const Slider = (props) => {
                 props.videos.map((video, i) => (
                     <div className="slider-item-div">
                         <video controls className="media">
-                            <source src={video}/>
+                            <source src={video} />
                                 Your browser does not support the video tag.
                             </video>
                     </div>

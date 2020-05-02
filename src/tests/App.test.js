@@ -11,6 +11,6 @@ test("renders learn react link", () => {
 
 test("renders learn react link 2", () => {
   const { getByText } = render(<LoadRoute />);
-  const linkElement = getByText("Routes list:");
+  const linkElement = getByText("Routes list");
   expect(linkElement).toBeInTheDocument();
 });

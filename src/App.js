@@ -1,16 +1,16 @@
 import React from "react";
-import {LoggedIn, LoggedOut} from "@solid/react";
+import { LoggedIn, LoggedOut } from "@solid/react";
 import styled from "styled-components";
 import SolidImg from "./logo.svg";
-import {ProviderLogin, LogoutButton} from "@inrupt/solid-react-components";
+import { ProviderLogin, LogoutButton } from "@inrupt/solid-react-components";
 import MainPage from "./MainPage/Main-page";
 
-import {BrowserRouter as Router} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import DocumentTitle from "react-document-title";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const AppWrapper = styled.div `
+const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -21,7 +21,7 @@ const AppWrapper = styled.div `
   height: 100vh;
 `;
 
-const DemoWrapper = styled.div `
+const DemoWrapper = styled.div`
   box-shadow: 0px 20px 20px 0.5px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   padding: 2rem 4rem;
@@ -33,12 +33,12 @@ const DemoWrapper = styled.div `
 `;
 
 
-const HeaderWrapper = styled.section `
+const HeaderWrapper = styled.section`
   text-align: center;
   width: 100%;
 `;
 
-const Headline = styled.h1 `
+const Headline = styled.h1`
   color: #18EEE9;
   font-family: Arial, Helvetica, sans-serif;
   text-shadow: 0.1em 0.1em 0.05em #000000;
@@ -46,7 +46,7 @@ const Headline = styled.h1 `
   font-size: 38px;
 `;
 
-const Title = styled.h1 `
+const Title = styled.h1`
   color: #18EEE9;
   font-family: Arial, Helvetica, sans-serif;
   text-shadow: 0.1em 0.1em 0.05em #000000;
@@ -65,7 +65,7 @@ const Header = () => {
         <HeaderWrapper>
             <img src={SolidImg}
                 alt="React logo"
-                width="120"/>
+                width="120" />
             <Headline>VIADE ES3A</Headline>
         </HeaderWrapper>
     );
@@ -83,27 +83,27 @@ const App = () => {
 
         <AppWrapper>
             <DemoWrapper>
-                <DocumentTitle title='VIADE ES3A'/>
-                <Init/>
+                <DocumentTitle title='VIADE ES3A' />
+                <Init />
                 <LoggedOut>
-                    <Header/>
+                    <Header />
                     <ProviderLogin callbackUri={
                         `${
-                            window.location.origin
+                        window.location.origin
                         }/viade_es3a/`
-                    }/>
+                    } />
                     <div class="alert alert-info" role="alert">
                         Make sure to give Control permission in the Solid web!
                     </div>
                 </LoggedOut>
                 <LoggedIn>
                     <Router>
-                        <MainPage/>
+                        <MainPage />
                     </Router>
-                    <LogoutButton/>
+                    <LogoutButton />
                 </LoggedIn>
 
-                
+
 
             </DemoWrapper>
         </AppWrapper>

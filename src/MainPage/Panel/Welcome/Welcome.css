@@ -1,4 +1,85 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
+.cardWelcomeInfo {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: ºem;
+    letter-spacing: 2.2px;
+    word-spacing: 1.8px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    background-color: #17a2b8;
+}
+
+.iconHappy {
+    margin-left: 0.3em;
+    color: #1894a7;
+}
+
+.optionTitleInfo {
+    color: #ffffff;
+}
+
+.opcionYLogoWelcomeNearMe {
+    display: flex;
+}
+
+.iconNearWelcome {
+    margin-left: 0.3em;
+    color: #dc3545;
+}
+
+.scrollBarWelcome {
+    overflow: auto;
+    max-height: 42vmin;
+}
+
+#opcionYLogoWelcomeViade {
+    background-color: #17a2b8;
+    padding: 0.1em 0.9em;
+}
+
+#opcionYLogoWelcome:hover {
+    background-color: #3c4349;
+}
+
+#opcionYLogoWelcomeViade:hover {
+    background-color: #1db0c7;
+}
+
+.iconWelcome {
+    margin-right: 0.8em;
+    color: rgb(97, 208, 228);
+}
+
+#opcionYLogoWelcome {
+    display: flex;
+    align-items: center;
+    padding: 0.2em 0.9em;
+    background-color: #343a40;
+}
+
+.mostrar {
+    background-color: #17a2b8;
+}
+
+.mostrarInfo {
+    background-color: #84d3df;
+}
+
+.optionTitle, .cardWelcome {
+    color: white;
+}
+
+.optionTitle {
+    font-size: 1.1em;
+}
+
+.cardWelcome {
+    background-color: #343a40;
+}
 
 .contenedor {
     display: block;
@@ -7,16 +88,51 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.1em;
 }
+
 .titulo {
     -webkit-text-stroke: 1.8px #000000;
     font-size: 3em;
-    color: rgb(77, 218, 243);
+    color: #25c9e2;
     font-family: 'Open Sans', sans-serif;
 }
+
+.viadeInfo {
+    -webkit-text-stroke: 0.8px #000000;
+    font-size: 1.4em;
+    color: #25c9e2;
+    font-family: 'Open Sans', sans-serif;
+}
+
 .alert {
     color: red;
 }
-.opcion {
-    font-weight: bolder;
+
+.headerWelcome .open-class::after {
+    content: "\25B2";
+    color: rgb(97, 208, 228);
 }
 
+.headerWelcome .closed-class::after {
+    content: "\25BC";
+    color: rgb(255, 255, 255);
+}
+
+.headerWelcome .open-class::after, .closed-class::after {
+    font-size: 0.6em;
+    margin-left: 2em;
+}
+
+.headerWelcomeInfo .open-class .opcionYLogoWelcomeNearMe::after {
+    content: "\25BC";
+    color: rgb(255, 255, 255);
+}
+
+.headerWelcomeInfo .closed-class .opcionYLogoWelcomeNearMe::after {
+    content: "\25B2";
+    color: #30363b;
+}
+
+.headerWelcomeInfo .open-class .opcionYLogoWelcomeNearMe::after, .headerWelcomeInfo .closed-class .opcionYLogoWelcomeNearMe::after {
+    font-size: 0.8em;
+    margin-left: 2em;
+}

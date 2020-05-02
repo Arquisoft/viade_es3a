@@ -4,6 +4,9 @@ import ReactDOM from "react-dom";
 import Profile from "../MainPage/Panel/Profile/Profile";
 import { BrowserRouter as Router } from "react-router-dom";
 
+import { Link as LinkSolid } from "@solid/react";
+const solid = { auth:require("solid-auth-cli") };
+
 test("Not crashing component", () => {
     const div = document.createElement("div");
     ReactDOM.render(
@@ -40,3 +43,20 @@ test("Buttons with correct links", () => {
     expect(linkRoutes.getAttribute("href")).toEqual("/viade_es3a/loadRoute");
 
 });
+
+test("Profile show correct info", () => {
+    const { getByTestId } = render(<Router><Profile></Profile></Router>);
+
+    login().then(session => {
+        const goToSolidProfile = getByText("Go to SOLID profile");
+        expect(goToSolidProfile.getAttribute("href")).toEqual(`<${session.webId}>`);
+    });
+});
+
+
+async function login() {
+    var session = await solid.auth.currentSession();
+    if (!session) 
+        session = await solid.auth.login({ idp:"https://solid.community", username:"viadeEs3a", password:"viadeEs3a" });
+    return session;
+}
