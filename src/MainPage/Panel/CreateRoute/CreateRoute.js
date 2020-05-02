@@ -117,7 +117,7 @@ class CreateRoute extends React.Component {
   }
 
   saveRoute = async () => {
-    var name = this.state;
+    var { name } = this.state;
     var { description } = this.state;
     const { markers } = this.state;
     var { images } = this.state;
