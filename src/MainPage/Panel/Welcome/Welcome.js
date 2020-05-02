@@ -12,10 +12,10 @@ import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined"
 import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
 import NotificationsActiveOutlinedIcon from "@material-ui/icons/NotificationsActiveOutlined";
 import ShareIcon from "@material-ui/icons/Share";
-import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
-import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
-import NearMeIcon from '@material-ui/icons/NearMe';
-import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
+import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
+import MapOutlinedIcon from "@material-ui/icons/MapOutlined";
+import NearMeIcon from "@material-ui/icons/NearMe";
+import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 
 
 const AccordionWelcome = () => {
@@ -28,7 +28,7 @@ const AccordionWelcome = () => {
         // compare the open panel key with the state and toggle classes accordingly
         const customOnClick = useAccordionToggle(eventKey, () => {
             setPanelIndex(eventKey === panelIndex ? null : eventKey)
-        })
+        });
 
         const customClass = (eventKey === panelIndex) ? "open-class" : "closed-class"
 
@@ -146,7 +146,7 @@ const AccordionWelcome = () => {
             </Card>
 
         </Accordion>
-    )
+    );
 };
 
 const WhatIsViade = () => {
@@ -171,7 +171,7 @@ const WhatIsViade = () => {
                 </Accordion.Toggle>
             </Card.Header>
         );
-    }
+    };
 
     return (
         <Accordion defaultActiveKey={0}>

@@ -65,8 +65,6 @@ class UploadRouteToPod {
                     await fileClien.createFile(destination + "/" + "video" + "/vid" + (k + 1), videos[k], "video");
                 }
 
-                console.log(route);
-
                 //Route
                 var routed = JSON.stringify(route);
                 await fileClien.createFile(destination + "/" + name + ".geojson", routed, "text/json");

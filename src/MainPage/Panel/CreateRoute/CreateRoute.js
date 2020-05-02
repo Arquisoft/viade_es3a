@@ -13,9 +13,9 @@ import { Loading } from "../../../Loading";
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+  iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+  iconUrl: require("leaflet/dist/images/marker-icon.png"),
+  shadowUrl: require("leaflet/dist/images/marker-shadow.png")
 });
 
 class CreateRoute extends React.Component {
@@ -52,7 +52,7 @@ class CreateRoute extends React.Component {
           center: {
             lat: position.coords.latitude, lng: position.coords.longitude
           }
-        })
+        });
       },
         (error) => {
           this.setState({
@@ -75,7 +75,7 @@ class CreateRoute extends React.Component {
       points.push({ lat: this.state.markers[i].lat, lng: this.state.markers[i].lng });
     }
     return points;
-  };
+  }
 
   clearAl() {
     window.createRouteComponent.setState({ markers: [] });
@@ -132,7 +132,7 @@ class CreateRoute extends React.Component {
       this.setState(prevState => ({
         ...prevState,
         loading: true
-      }))
+      }));
       var polylines = [];
       for (let i = 0; i < markers.length; i++) {
         polylines.push(new L.LatLng(markers[i].lat, markers[i].lng));
@@ -196,7 +196,7 @@ class CreateRoute extends React.Component {
           </div>
         </DocumentTitle>
       </React.Fragment>
-    )
+    );
   }
 
 }

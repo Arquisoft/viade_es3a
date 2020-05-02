@@ -46,6 +46,20 @@ async function loadRoutes(url, setFolders) {
     setFolders(result);
 }
 
+async function loadFile(urlCarptetaRuta, route) {
+    var k;
+    var result = [];
+    for (k = 0; k < 1000; k++) {
+        try {
+            await fileClien.readFile(urlCarptetaRuta + route + (k + 1));
+            result.push(urlCarptetaRuta + route + (k + 1));
+        } catch{
+            k = 1000;
+        }
+    }
+    return result;
+}
+
 async function loadRoute(urlCarptetaRuta, setSelected) {
 
     let folder = await fileClien.readFolder(urlCarptetaRuta);
@@ -63,20 +77,6 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
         videos: videos
     });
 
-}
-
-async function loadFile(urlCarptetaRuta, route) {
-    var k;
-    var result = [];
-    for (k = 0; k < 1000; k++) {
-        try {
-            await fileClien.readFile(urlCarptetaRuta + route + (k + 1));
-            result.push(urlCarptetaRuta + route + (k + 1));
-        } catch{
-            k = 1000;
-        }
-    }
-    return result;
 }
 
 const SharedRoutes = () => {

@@ -33,7 +33,7 @@ const isWebIdValid = async (friendWebId) => {
 const friendAlreadyAdded = async (friendWebId, webId) => {
   const user = data[webId];
   for await (const friend of user.friends)
-    if (String(friend).localeCompare(String(friendWebId)) === 0) return true;
+    if (String(friend).localeCompare(String(friendWebId)) === 0){ return true;}
   return false;
 }
 
@@ -56,10 +56,10 @@ const addFriend = async (friendWebId, userWebId) => {
   } else {
     alert("Error 2");
   }
-}
+};
 
 const deleteFriend = async (friend, userWebId) => {
-  var friendWebId = friend.nombre
+  var friendWebId = friend.nombre;
   friendWebId = friendWebId.replace('[', '');
   friendWebId = friendWebId.replace(']', '');
 

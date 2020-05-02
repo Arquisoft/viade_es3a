@@ -70,30 +70,6 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
     });
 }
 
-async function share(setLoading) {
-    var fri = false;
-    if (rut != "") {
-        setLoading(true);
-        for (var i = 0; i < cont; i++) {
-            let a = document.getElementById("ck" + i);
-            if (a.checked == true) {
-                fri = true;
-                await enseñaAmigos(a.getAttribute("url"), a.getAttribute("nombre"), a.getAttribute("name"));
-            }
-        }
-        setLoading(false);
-        if (fri) {
-            alert("Your route has been shared!");
-        }
-        else {
-            alert("You have to select at least a friend!");
-        }
-    }
-    else {
-        alert("You have to select a route!");
-    }
-}
-
 async function enseñaAmigos(source, target, name) {
 
     const target2 = target.split("[")[1];
@@ -152,6 +128,31 @@ async function enseñaAmigos(source, target, name) {
         //alert("Your route was already shared with this person!");
     }
 }
+
+async function share(setLoading) {
+    var fri = false;
+    if (rut != "") {
+        setLoading(true);
+        for (var i = 0; i < cont; i++) {
+            let a = document.getElementById("ck" + i);
+            if (a.checked == true) {
+                fri = true;
+                await enseñaAmigos(a.getAttribute("url"), a.getAttribute("nombre"), a.getAttribute("name"));
+            }
+        }
+        setLoading(false);
+        if (fri) {
+            alert("Your route has been shared!");
+        }
+        else {
+            alert("You have to select at least a friend!");
+        }
+    }
+    else {
+        alert("You have to select a route!");
+    }
+}
+
 
 const LoadRoute = () => {
 

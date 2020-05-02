@@ -6,7 +6,7 @@ import "./LoadRoute.css";
 import * as solidAuth from "solid-auth-client";
 import fileClient from "solid-file-client";
 import DocumentTitle from "react-document-title";
-import EditTwoToneIcon from '@material-ui/icons/EditTwoTone';
+import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
 
@@ -69,11 +69,11 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
 }
 async function deleteRoute(selected) {
     if (fileClien.itemExists(selected.url)) {
-        alert("Route will be deleted, please wait a few seconds")
+        alert("Route will be deleted, please wait a few seconds");
         await fileClien.deleteFolder(selected.url);
     }
     else {
-        alert("Route can`t be deleted")
+        alert("Route can`t be deleted");
     }
     window.location.reload();
 }
@@ -89,7 +89,7 @@ const LoadRoute = () => {
     const [description, setDescription] = useState("");
     const [image, setImage] = useState([]);
     const [video, setVideo] = useState([]);
-    const [showResults, setShowResults] = useState(false)
+    const [showResults, setShowResults] = useState(false);
     const onClick = () => showResults ? setShowResults(false) : setShowResults(true);
 
     var user = useWebId();
