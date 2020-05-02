@@ -7,35 +7,36 @@
     background: rgb(54, 54, 54);
 }
 
-.h2{
+.h2 {
     font-family: monospace;
     color: teal;
 }
 
-.labelName{
+.labelName {
     font-family: monospace;
     color: teal;
     font-size: x-large;
 }
 
-.labelDescription{
+.labelDescription {
     font-family: monospace;
     color: teal;
     font-size: x-large;
 }
 
-.labelPhoto{
+.labelPhoto {
     font-family: monospace;
     color: teal;
     font-size: x-large;
 }
 
-.labelVideo{
+.labelVideo {
     font-family: monospace;
     color: teal;
     font-size: x-large;
 }
-.labelRoute{
+
+.labelRoute {
     font-family: monospace;
     color: teal;
     font-size: x-large;

@@ -68,13 +68,13 @@
     font-size: 20px;
 }
 
-#addFriend{
+#addFriend {
     font-family: Verdana, Geneva, sans-serif;
     font-size: 1em;
     letter-spacing: 2.2px;
     word-spacing: 1.8px;
     color: #000000;
-    padding: 0.2em ;
+    padding: 0.2em;
 }
 
 #addFriend::after {

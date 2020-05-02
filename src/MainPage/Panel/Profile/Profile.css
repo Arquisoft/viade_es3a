@@ -1,7 +1,6 @@
 #cardProfile {
   background: rgb(54, 54, 54);
   height: 45vh;
-
   width: 95%;
   margin: auto;
   border-radius: 1em;
@@ -24,7 +23,7 @@
   box-shadow: 0 0 1em 0.4em rgba(39, 37, 37, 0.7);
 }
 
-.hueco{
+.hueco {
   padding: 0.3em;
 }
 
@@ -51,7 +50,6 @@
 
 .infoExtra {
   text-align: center;
-
 }
 
 .name {
@@ -90,7 +88,6 @@
   margin-bottom: 3vh;
 }
 
-
 .divider {
   background-color: rgb(97, 208, 228);
   height: 0.1em;
@@ -103,7 +100,6 @@
   background-color: rgb(97, 208, 228);
   border-radius: 0.8em;
   border-color: rgb(19, 72, 82);
-
   padding: 1vh 2.5vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(17, 16, 16);

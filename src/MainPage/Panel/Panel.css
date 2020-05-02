@@ -7,26 +7,25 @@
     background: rgb(54, 54, 54);
 }
 
-.panelCompleto{
+.panelCompleto {
     float: left;
     width: 100%;
-    background:lightgrey;
+    background: lightgrey;
     padding: 1em;
     height: 100%;
     overflow: auto;
 }
 
-.leftPanel_leftPart{
+.leftPanel_leftPart {
     float: left;
     width: 30%;
-    background:lightgrey;
+    background: lightgrey;
     padding: 1em;
     height: 100%;
     overflow: auto;
 }
 
-
-.rightPanel_mapa{
+.rightPanel_mapa {
     float: right;
     width: 70%;
     height: auto;

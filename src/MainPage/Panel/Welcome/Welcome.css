@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
-
 .cardWelcomeInfo {
     font-family: Verdana, Geneva, sans-serif;
     font-size: ºem;
@@ -108,13 +107,13 @@
     color: red;
 }
 
-.headerWelcome .open-class::after{
+.headerWelcome .open-class::after {
     content: "\25B2";
     color: rgb(97, 208, 228);
 }
 
-.headerWelcome .closed-class::after{
-    content: "\25BC"; 
+.headerWelcome .closed-class::after {
+    content: "\25BC";
     color: rgb(255, 255, 255);
 }
 
@@ -123,23 +122,17 @@
     margin-left: 2em;
 }
 
-.headerWelcomeInfo .open-class .opcionYLogoWelcomeNearMe::after{
-    content: "\25BC"; 
+.headerWelcomeInfo .open-class .opcionYLogoWelcomeNearMe::after {
+    content: "\25BC";
     color: rgb(255, 255, 255);
 }
 
-.headerWelcomeInfo .closed-class .opcionYLogoWelcomeNearMe::after{
+.headerWelcomeInfo .closed-class .opcionYLogoWelcomeNearMe::after {
     content: "\25B2";
     color: #30363b;
 }
 
-.headerWelcomeInfo .open-class .opcionYLogoWelcomeNearMe::after, .headerWelcomeInfo .closed-class .opcionYLogoWelcomeNearMe::after{
+.headerWelcomeInfo .open-class .opcionYLogoWelcomeNearMe::after, .headerWelcomeInfo .closed-class .opcionYLogoWelcomeNearMe::after {
     font-size: 0.8em;
     margin-left: 2em;
 }
-
-
-
-
-
-
