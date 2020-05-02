@@ -17,7 +17,7 @@ class UploadRouteToPod {
 
         if (session) {
             var user = `${session.webId}`;
-            var folder = user.split("profile/card#me")[0] + "/private/routes3a";
+            var folder = (user+"").split("profile/card#me")[0] + "/private/routes3a";
             var fileClien = new fileClient(solidAuth, { enableLogging: true });
 
             var existe = await fileClien.itemExists(folder);
