@@ -78,7 +78,7 @@ async function share(setLoading) {
             let a = document.getElementById("ck" + i);
             if (a.checked == true) {
                 fri = true;
-                await enseñaAmigos(a.getAttribute("url"), a.getAttribute("nombre"), a.getAttribute("name"))
+                await enseñaAmigos(a.getAttribute("url"), a.getAttribute("nombre"), a.getAttribute("name"));
             }
         }
         setLoading(false);
@@ -123,7 +123,7 @@ async function enseñaAmigos(source, target, name) {
                 "n0:accessTo M:; \n" +
                 "n0:agent c0:me;\n" +
                 "n0:default M:; \n" +
-                "n0:mode n0:Read."
+                "n0:mode n0:Read.";
             await fileClien.createFile(source + "/.acl", content, "text/turtle");
         }
         else {

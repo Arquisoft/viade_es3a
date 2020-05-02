@@ -58,6 +58,31 @@ const addFriend = async (friendWebId, userWebId) => {
   }
 }
 
+const deleteFriend = async (friend, userWebId) => {
+  var friendWebId = friend.nombre
+  friendWebId = friendWebId.replace('[', '');
+  friendWebId = friendWebId.replace(']', '');
+
+  const user = data[userWebId];
+  if (await isWebIdValid(friendWebId)) {
+    if (friendWebId.localeCompare("") !== 0) {
+      if (await !friendAlreadyAdded(friendWebId, userWebId)) {
+
+        alert("An error occurred when deleting the friend (maybe it was previously deleted)");
+      } else {
+        await user.knows.delete(data[friendWebId]); //añadimos el amigo
+        alert("user will be deleted from your friends");
+        reload();
+      }
+    } else {
+      alert("Error");
+    }
+  } else {
+    alert("Error 2");
+  }
+
+};
+
 const Card = (props, webId) => {
   var user = "" + useWebId();
   return (
@@ -106,31 +131,5 @@ const Friends = () => {
     </DocumentTitle>
   );
 };
-
-
-const deleteFriend = async (friend, userWebId) => {
-  var friendWebId = friend.nombre
-  friendWebId = friendWebId.replace('[', '');
-  friendWebId = friendWebId.replace(']', '');
-
-  const user = data[userWebId];
-  if (await isWebIdValid(friendWebId)) {
-    if (friendWebId.localeCompare("") !== 0) {
-      if (await !friendAlreadyAdded(friendWebId, userWebId)) {
-
-        alert("An error occurred when deleting the friend (maybe it was previously deleted)");
-      } else {
-        await user.knows.delete(data[friendWebId]); //añadimos el amigo
-        alert("user will be deleted from your friends");
-        reload();
-      }
-    } else {
-      alert("Error");
-    }
-  } else {
-    alert("Error 2");
-  }
-
-}
 
 export default Friends;

@@ -20,6 +20,7 @@ var urlRutas = [];
 
 var images = [];
 var videos = [];
+var urlfol;
 
 export async function showRoute(urlCarptetaRuta) {
     let folder = await fileClien.readFolder(urlCarptetaRuta);
@@ -66,7 +67,16 @@ async function loadRoute(urlCarptetaRuta, setSelected) {
         url: urlCarptetaRuta
     });
 }
-
+async function deleteRoute(selected) {
+    if (fileClien.itemExists(selected.url)) {
+        alert("Route will be deleted, please wait a few seconds")
+        await fileClien.deleteFolder(selected.url);
+    }
+    else {
+        alert("Route can`t be deleted")
+    }
+    window.location.reload();
+}
 const LoadRoute = () => {
 
     const [folders, setFolders] = useState([]);
@@ -184,21 +194,12 @@ async function editRoute(selected, description, images, videos) {
         alert("All the fields are empty!!!");
     }
 }
-var urlfol;
+
 async function loadRoutes(url, setFolders) {
 
     let folder = await fileClien.readFolder(url);
     setFolders(folder.folders);
     urlfol = url;
 }
-async function deleteRoute(selected) {
-    if (fileClien.itemExists(selected.url)) {
-        alert("Route will be deleted, please wait a few seconds")
-        await fileClien.deleteFolder(selected.url);
-    }
-    else {
-        alert("Route can`t be deleted")
-    }
-    window.location.reload();
-}
+
 export default LoadRoute;

@@ -6,7 +6,7 @@ import L from "leaflet";
 import { TileLayer, Marker, Polyline } from "react-leaflet";
 import { MapStyle } from "./CreateRouteStyle";
 import { useWebId } from "@solid/react";
-import ReactDOM from "react-dom"
+import ReactDOM from "react-dom";
 import UploadRouteToPod from "./UploadRouteToPod";
 import { Loading } from "../../../Loading";
 
@@ -57,7 +57,7 @@ class CreateRoute extends React.Component {
         (error) => {
           this.setState({
             center: { lat: 43.38, lng: -5.0 }
-          })
+          });
         });
     }
   }
@@ -71,8 +71,9 @@ class CreateRoute extends React.Component {
 
   drawLine() {
     let points = [];
-    for (let i = 0; i < this.state.markers.length; i++)
-      points.push({ lat: this.state.markers[i].lat, lng: this.state.markers[i].lng })
+    for (let i = 0; i < this.state.markers.length; i++) {
+      points.push({ lat: this.state.markers[i].lat, lng: this.state.markers[i].lng });
+    }
     return points;
   };
 
@@ -104,13 +105,15 @@ class CreateRoute extends React.Component {
   }
 
   saveImages(images) {
-    for (let i = 0; i < images.length; i++)
+    for (let i = 0; i < images.length; i++) {
       this.state.images.push(images[i]);
+    }
   }
 
   saveVideos(videos) {
-    for (let i = 0; i < videos.length; i++)
+    for (let i = 0; i < videos.length; i++) {
       this.state.videos.push(videos[i]);
+    }
   }
 
   saveRoute = async () => {
@@ -140,7 +143,7 @@ class CreateRoute extends React.Component {
       this.setState(prevState => ({
         ...prevState,
         loading: false
-      }))
+      }));
 
     }
   }
