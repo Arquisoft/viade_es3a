@@ -135,7 +135,7 @@ const LoadRoute = () => {
                         <div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1" className="labels" data-testid="desc">Description:</label>
-                                <textarea class="form-control" id="description2" data-testid="inputDesc" name="description2" rows="3" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                                <textarea class="form-control" id="description2" data-testid="inputDesc" name="description2" rows="3" onChange={(e) => setDescription(e.target.value)}></textarea>
                             </div>
 
                             <div class="form-group">
