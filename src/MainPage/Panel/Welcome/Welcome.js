@@ -178,7 +178,7 @@ const WhatIsViade = () => {
             <Card className="cardWelcomeInfo" data-testid="introduction">
                 <CustomToggle eventKey={0}>
 
-                    <div className="optionTitleInfo" data-testid ="what">What is VIADE?</div>
+                    <div className="optionTitleInfo" data-testid="what">What is VIADE?</div>
                     <NearMeIcon className="iconNearWelcome" data-testid="iconLogout" />
 
                 </CustomToggle>

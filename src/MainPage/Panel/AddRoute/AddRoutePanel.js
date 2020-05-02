@@ -6,25 +6,25 @@ import AddRoute from "./AddRoute";
 const LeftPanel = () => {
     return (
         <nav className="leftPanel_leftPart" data-testid="addRoutePart">
-            <AddRoute/>
+            <AddRoute />
         </nav>
-         );
-    };
+    );
+};
 
 const RightPanel = () => {
     return (
         <div className="rightPanel_mapa" id="jeje" data-testid="mapPart">
-                    <ShowMap></ShowMap>
+            <ShowMap></ShowMap>
         </div>
     );
 };
 
 const AddRoutePanel = () => {
     return (
-        <div className="leftPanel_leftPart">     
+        <div className="leftPanel_leftPart">
             <div className="leftPanel">
                 <LeftPanel />
-                <RightPanel/>
+                <RightPanel />
             </div>
         </div>
     );

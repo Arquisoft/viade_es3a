@@ -130,28 +130,28 @@ const LoadRoute = () => {
                             <Slider images={images} videos={videos} />
                         </div>
                         <br></br>
-                        {showResults ? 
-                        <center>
-                        <div>
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1" className="labels" data-testid="desc">Description:</label>
-                                <textarea class="form-control" id="description2" data-testid="inputDesc" name="description2" rows="3" onChange={(e) => setDescription(e.target.value)}></textarea>
-                            </div>
+                        {showResults ?
+                            <center>
+                                <div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1" className="labels" data-testid="desc">Description:</label>
+                                        <textarea class="form-control" id="description2" data-testid="inputDesc" name="description2" rows="3" onChange={(e) => setDescription(e.target.value)}></textarea>
+                                    </div>
 
-                            <div class="form-group">
-                                <label class="exampleInputPhoto" for="photo2" className="labels" data-testid="img">Images:</label><br></br>
-                                <input value={null} type="file" id="photo2" name="image2" data-testid="inputImg" accept="image/*" multiple="true" onChange={(e) => setImage(e.target.files)} />
-                            </div>
-                            <div class="form-group">
-                                <label class="exampleInputVideo" for="video2" className="labels" data-testid="vid">Videos:</label><br></br>
-                                <input value={null} type="file" id="video2" name="video2" accept="video/*" data-testid="inputVid" multiple="true" onChange={(e) => setVideo(e.target.files)} />
-                            </div>
-                                <button className="btn btn-light" id="botonCam" onClick={() => editRoute(selected, description, image, video)}>Submit <SaveIcon/></button>
-                                <br/>
-                        </div></center> : null}
-                        <br/><br/>
-                        <button className="btn btn-light" id="botonEdi" onClick={onClick}>Edit  <EditTwoToneIcon/></button>
-                        <button className="btn btn-light" id="botonDel" onClick={() => deleteRoute(selected)}>Delete <DeleteIcon/></button>
+                                    <div class="form-group">
+                                        <label class="exampleInputPhoto" for="photo2" className="labels" data-testid="img">Images:</label><br></br>
+                                        <input value={null} type="file" id="photo2" name="image2" data-testid="inputImg" accept="image/*" multiple="true" onChange={(e) => setImage(e.target.files)} />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="exampleInputVideo" for="video2" className="labels" data-testid="vid">Videos:</label><br></br>
+                                        <input value={null} type="file" id="video2" name="video2" accept="video/*" data-testid="inputVid" multiple="true" onChange={(e) => setVideo(e.target.files)} />
+                                    </div>
+                                    <button className="btn btn-light" id="botonCam" onClick={() => editRoute(selected, description, image, video)}>Submit <SaveIcon /></button>
+                                    <br />
+                                </div></center> : null}
+                        <br /><br />
+                        <button className="btn btn-light" id="botonEdi" onClick={onClick}>Edit  <EditTwoToneIcon /></button>
+                        <button className="btn btn-light" id="botonDel" onClick={() => deleteRoute(selected)}>Delete <DeleteIcon /></button>
                     </div>
                 </div>
             </div>

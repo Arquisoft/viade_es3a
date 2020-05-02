@@ -36,23 +36,23 @@ const ShowMap = (props) => {
 
     return (
         <div style={styles.wrapper} id="thisMap" >
-            <Map style={styles.map} center={props.center} zoom={props.zoom}  >   
+            <Map style={styles.map} center={props.center} zoom={props.zoom}  >
                 <TileLayer url={props.url} />
             </Map>
         </div>
     );
 };
 
-export function updateMap (route,name) {
+export function updateMap(route, name) {
     let center = [43.38, -5.80];
     let aa = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
     let com = <div style={styles.wrapper} id={name}>
         <Map style={styles.map} center={center} zoom="8">
             <TileLayer url={aa} />
-            
+
         </Map>
     </div>;
-    ReactDOM.render(com,document.getElementById("jeje"));
+    ReactDOM.render(com, document.getElementById("jeje"));
 
 
     let parseR = JSON.parse(route);
@@ -60,7 +60,7 @@ export function updateMap (route,name) {
     let firstPoint1;
     let zoomUp;
     //1era opcion
-    if(parseR.geometry !== undefined){
+    if (parseR.geometry !== undefined) {
         firstPoint1 = parseR.geometry.coordinates[0];
         //Darle la vuelta
         center = [
@@ -70,7 +70,7 @@ export function updateMap (route,name) {
         zoomUp = 14;
     }
     //2a opcion
-    else if(parseR.features[0] !== undefined && parseR.features[0].geometry.type !== "Point"){
+    else if (parseR.features[0] !== undefined && parseR.features[0].geometry.type !== "Point") {
         firstPoint1 = parseR.features[0].geometry.coordinates[0];
         //Darle la vuelta
         center = [
@@ -78,21 +78,21 @@ export function updateMap (route,name) {
             firstPoint1[0]
         ];
         zoomUp = 14;
-    }else{
+    } else {
         center = [43.5878945, -5.80789456];
         zoomUp = 11;
     }
-    
+
     com = <div style={styles.wrapper} id={name}>
         <Map style={styles.map} center={center} zoom={zoomUp} >
-            <TileLayer url={aa} /> 
+            <TileLayer url={aa} />
             <GeoJSON
                 data={parseR}
                 pointToLayer={pointToLayer}
             />
         </Map>
     </div>;
-    ReactDOM.render(com,document.getElementById("jeje"));
+    ReactDOM.render(com, document.getElementById("jeje"));
 }
 
 ShowMap.defaultProps = {

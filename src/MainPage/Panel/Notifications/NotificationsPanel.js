@@ -5,26 +5,26 @@ import "./Notifications.css";
 
 const LeftPanel = () => {
     return (
-        <nav className="leftPanel_leftPart"  data-testid="notificationsRoutePart">
-            <Notifications/>
+        <nav className="leftPanel_leftPart" data-testid="notificationsRoutePart">
+            <Notifications />
         </nav>
-         );
-    };
+    );
+};
 
 const RightPanel = () => {
     return (
         <div className="rightPanel_mapa" id="jeje" data-testid="mapPart">
-                    <ShowMap></ShowMap>
+            <ShowMap></ShowMap>
         </div>
     );
 };
 
 const NotificationsPanel = () => {
     return (
-        <div className="leftPanel_leftPart">     
+        <div className="leftPanel_leftPart">
             <div className="leftPanel">
                 <LeftPanel />
-                <RightPanel/>
+                <RightPanel />
             </div>
         </div>
     );

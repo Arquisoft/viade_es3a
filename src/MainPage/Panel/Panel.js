@@ -35,8 +35,8 @@ const LeftPanel = () => {
                     <Route path="/viade_es3a/shareRoute" component={ShareRoutePanel} />
                     <Route path="/viade_es3a/sharedRoutes" component={SharedRoutesPanel} />
                     <Route path="/viade_es3a/friends" component={FriendsPanel} />
-                    <Route path="/viade_es3a/profile" component={ProfilePanel} /> 
-                    <Route path="/viade_es3a/notifications" component={NotificationsPanel} /> 
+                    <Route path="/viade_es3a/profile" component={ProfilePanel} />
+                    <Route path="/viade_es3a/notifications" component={NotificationsPanel} />
                 </div>
             </Switch>
         </nav>
@@ -45,7 +45,7 @@ const LeftPanel = () => {
 
 const Panel = () => {
     return (
-        <div className="panelCompleto">      
+        <div className="panelCompleto">
             {/* Panel izquierdo */}
             <section className="leftPanel">
                 <LeftPanel />

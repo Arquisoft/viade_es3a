@@ -140,7 +140,7 @@ async function enseñaAmigos(source, target, name) {
 
         }
 
-        var userso=((await auth.currentSession()).webId).split("https://")[1].split(".")[0];
+        var userso = ((await auth.currentSession()).webId).split("https://")[1].split(".")[0];
 
         await fileClien.postFile(urlTarget + "/" + name + "->" + userso, source, "text/plain");
 
