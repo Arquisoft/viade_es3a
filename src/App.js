@@ -5,7 +5,7 @@ import SolidImg from "./logo.svg";
 import { ProviderLogin, LogoutButton } from "@inrupt/solid-react-components";
 import MainPage from "./MainPage/Main-page";
 
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import DocumentTitle from "react-document-title";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
