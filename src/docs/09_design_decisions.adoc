@@ -12,4 +12,7 @@ As with every Solid app we will have to follow a P2P architecture without the ce
 | Documentation | Arc42 | It's mandatory aswell to use Arc42
 | FrameWork | React Native| It is a mandatory rule of this course to use React as the framework
 | Runtime enviroment | Node.js | We will use Node to launch and build the app 
+| Maps API  | Open Street Map | It's a free map apis that will give us enough to work with
+| Testing  | Jest | A freamework explained in the laboratory lessons focused on Javascript testing
+| Load Tests  | Gatling | We'll use gatling for the load tests as explaines in the lectures.
 |===
