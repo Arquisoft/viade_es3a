@@ -43,25 +43,25 @@ image::share.png[My Routes]
 * 3.2 We can click on 'Show Friends' to see the whole list of Friends.
 * 3.3 We can click on 'Show routes' to see the whole list of Routes.
 
-image::perfil.png[Quality Tree]
+image::perfil.png[Profile]
 
 .MY FRIENDS
 * 1. We click on 'My friends', which is in the NavBar menu for Friends.
 * 2. We can see our Friends
 
-image::friends.png[Quality Tree]
+image::friends.png[My Friends]
 
 .FRIEND´S ROUTES
 * 1. We click on 'Friend´s routes', which is in the NavBar menu for Friends.
 * 2. We can see the routes that had been shared by our friends.
 
-image::friendsroutes.png[Quality Tree]
+image::friendsroutes.png[Friend´s routes]
 
 .NOTIFICATIONS
 * 1. We click on 'Notifications', which is in the NavBar.
 * 2. We can see the notifications that had been sent by our friends when a route is shared.
 
-image::friendsroutes.png[Quality Tree]
+image::notifications.png[Notifications]
 
 .LOG OUT
 * 1. If we click on 'Log out', we will log out of the application.
