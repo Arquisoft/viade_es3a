@@ -2,6 +2,7 @@
 [![codecov](https://codecov.io/gh/Arquisoft/viade_es3a/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/viade_es3a)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a9b99375e1774fe48458d446e797e113)](https://www.codacy.com/gh/Arquisoft/viade_es3a?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/viade_es3a&amp;utm_campaign=Badge_Grade)
 [![Version Badge](https://img.shields.io/badge/Version-1.1-<COLOR>.svg)](https://arquisoft.github.io/viade_es3a)
+[![Inline docs](http://inch-ci.org/github/dwyl/hapi-auth-jwt2.svg?branch=master)](https://arquisoft.github.io/viade_es3a/docs)
 # VIADE ES3A
 
 This repository contains a the VIADE_ES3A project, a decentralized routes management system based on the Solid specifications.
