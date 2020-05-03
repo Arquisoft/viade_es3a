@@ -9,6 +9,7 @@
 image::loginwebid.png[Login WebId]
 
 image::loginprovider.png[Login Provider]
+image::solidLogin.PNG[Solid Login]
 
 .ADD ROUTE
 * 1. We click on Add route, which is in the NavBar.
