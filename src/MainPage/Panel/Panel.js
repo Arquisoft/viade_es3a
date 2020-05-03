@@ -1,7 +1,7 @@
 import React from "react";
 import "./Panel.css";
 import styled from "styled-components";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import AddRoutePanel from "./AddRoute/AddRoutePanel";
 import LoadRoutePanel from "./LoadRoute/LoadRoutePanel";
 import CreateRoutePanel from "./CreateRoute/CreateRoutePanel";
