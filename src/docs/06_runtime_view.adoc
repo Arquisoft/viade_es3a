@@ -49,7 +49,7 @@ image::perfil.png[Profile]
 * 1. We click on 'My friends', which is in the NavBar menu for Friends.
 * 2. We can see our Friends
 
-image::friends.png[My Friends]
+image::myfriends.png[My Friends]
 
 .FRIEND´S ROUTES
 * 1. We click on 'Friend´s routes', which is in the NavBar menu for Friends.
