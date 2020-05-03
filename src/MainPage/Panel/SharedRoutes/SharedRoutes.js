@@ -8,6 +8,7 @@ import fileClient from "solid-file-client";
 import DocumentTitle from "react-document-title";
 import * as algo from "../Map/Map";
 import Slider from "../LoadRoute/Slider";
+import { Loading } from "../../../Loading";
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 var urlRutas = [];
@@ -60,24 +61,7 @@ async function loadFile(urlCarptetaRuta, route) {
     return result;
 }
 
-async function loadRoute(urlCarptetaRuta, setSelected) {
 
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-
-    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
-    let images = await loadFile(urlCarptetaRuta, "photo/img");
-    let videos = await loadFile(urlCarptetaRuta, "video/vid");
-
-    await showRoute(urlCarptetaRuta);
-
-    setSelected({
-        name: folder.name,
-        description: folderDesc,
-        images: images,
-        videos: videos
-    });
-
-}
 
 const SharedRoutes = () => {
 
@@ -88,11 +72,12 @@ const SharedRoutes = () => {
         images: [],
         videos: []
     });
-
+    const [loading, setLoading] = useState(false);
     var images = [];
     var videos = [];
 
     var user = useWebId();
+    
 
     useEffect(() => {
         if (user != undefined) {
@@ -108,7 +93,8 @@ const SharedRoutes = () => {
         videos.push(video)
     ));
     return (
-
+        <React.Fragment>
+            <Loading loading={loading} />
         <DocumentTitle title="Friend's routes">
             <div class="container">
                 <h2 data-testid="label" id="rutas" class="h2" data-testid="label">Routes from your friends:</h2>
@@ -122,7 +108,7 @@ const SharedRoutes = () => {
                             var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
                             return (
                                 <div key={"folder_" + i} className="optionRoute" id="optionRoute">
-                                    <a role="button" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)} id="enlaceLoadRoute">
+                                    <a role="button" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected,setLoading)} id="enlaceLoadRoute">
                                         {nombre}
                                         <span class="hyperspan"></span>
                                     </a>
@@ -141,9 +127,29 @@ const SharedRoutes = () => {
                 </div>
             </div>
         </DocumentTitle>
+        </React.Fragment>
 
 
     );
 };
+async function loadRoute(urlCarptetaRuta, setSelected,setLoading) {
+    setLoading(true);
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+
+    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
+    let images = await loadFile(urlCarptetaRuta, "photo/img");
+    let videos = await loadFile(urlCarptetaRuta, "video/vid");
+
+    await showRoute(urlCarptetaRuta);
+    setLoading(false);
+
+    setSelected({
+        name: folder.name,
+        description: folderDesc,
+        images: images,
+        videos: videos
+    });
+
+}
 
 export default SharedRoutes;
