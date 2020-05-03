@@ -5,23 +5,36 @@
 * 2. Later, our application will ask the server to approve the login request. 
 * 3. When the server accepts, the users will have access to their routes and friends.
 
-image::loginwebid.png[Quality Tree]
-image::loginprovider.png[Quality Tree]
+image::loginwebid.png[Login WebId]
+image::loginprovider.png[Login Provider]
 
 .ADD ROUTE
 * 1. We click on Add route, which is in the NavBar.
-* 2. We add all the stuff we want to upload to the POD (.geoJson file is obligatory).
+* 2. We add all the stuff we want to upload to the POD (.geoJson file and name is obligatory).
+* 3. We click 'Save' to finish the action.
 
-image::add.png[Quality Tree]
+image::add.png[Add Route]
 
-.MY ROUTE
-* 1. We click on 'My routes', which is in the NavBar.
+.MY ROUTES
+* 1. We click on 'My routes' option, which is in the NavBar menu for Routes.
 * 2. We will see a list that contains every route we have added to our POD. We choose one.
 * 3. When the petition is processed, we will see the map with our route and a menu where we can see the photos, videos and descrption.
+* 4. We have the option to edit (click 'Edit' button) and delete (click 'Delete') the selected route.
+
+image::myroutes.png[My Routes]
+
+.CREATE ROUTE
+* 1. We click on 'Create a route' option, which is in the NavBar menu for Routes.
+* 2. We have the same process as in AddRoute, but this time we won´t upload a geojson file. We will create the route by clicking in the map to mark the items of the route.
+* 3. We click 'Save' to finish the action.
+
+image::createRoute.png[My Routes]
 
 .SHARE ROUTES
 * 1. We click on 'Share routes', which is in the NavBar.
 * 2. We can see our list of routes and friends. If we click on a route, when the petition is processed, we can share it with a friend by clicking on the button 'Share' of the friend we want to share the route with.
+
+image::share.png[My Routes]
 
 .PROFILE
 * 1. We click on 'Profile', which is in the NavBar.
@@ -30,13 +43,25 @@ image::add.png[Quality Tree]
 * 3.2 We can click on 'Show Friends' to see the whole list of Friends.
 * 3.3 We can click on 'Show routes' to see the whole list of Routes.
 
-image::profile.png[Quality Tree]
+image::perfil.png[Quality Tree]
 
-.FRIENDS
-* 1. We click on 'Friends', which is in the NavBar.
+.MY FRIENDS
+* 1. We click on 'My friends', which is in the NavBar menu for Friends.
 * 2. We can see our Friends
 
 image::friends.png[Quality Tree]
+
+.FRIEND´S ROUTES
+* 1. We click on 'Friend´s routes', which is in the NavBar menu for Friends.
+* 2. We can see the routes that had been shared by our friends.
+
+image::friendsroutes.png[Quality Tree]
+
+.NOTIFICATIONS
+* 1. We click on 'Notifications', which is in the NavBar.
+* 2. We can see the notifications that had been sent by our friends when a route is shared.
+
+image::friendsroutes.png[Quality Tree]
 
 .LOG OUT
 * 1. If we click on 'Log out', we will log out of the application.
