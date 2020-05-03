@@ -216,7 +216,7 @@ const LoadRoute = () => {
                                 var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
                                 return (
                                     <div key={"folder_" + i} className="optionShare" id="optionShare">
-                                        <a href="#" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
+                                        <a role="button" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
                                             {nombre}
                                             <span class="hyperspan"></span>
                                         </a>

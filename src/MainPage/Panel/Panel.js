@@ -28,15 +28,15 @@ const LeftPanel = () => {
             <Switch>
                 <div>
                     <Route exact path="/viade_es3a/" component={WelcomePanel} />
-                    <Route path="/viade_es3a/viade_es3a" component={WelcomePanel} />
-                    <Route path="/viade_es3a/addRoute" component={AddRoutePanel} />
-                    <Route path="/viade_es3a/createRoute" component={CreateRoutePanel} />
-                    <Route path="/viade_es3a/loadRoute" component={LoadRoutePanel} />
-                    <Route path="/viade_es3a/shareRoute" component={ShareRoutePanel} />
-                    <Route path="/viade_es3a/sharedRoutes" component={SharedRoutesPanel} />
-                    <Route path="/viade_es3a/friends" component={FriendsPanel} />
-                    <Route path="/viade_es3a/profile" component={ProfilePanel} />
-                    <Route path="/viade_es3a/notifications" component={NotificationsPanel} />
+                    <Route path="/" component={WelcomePanel} />
+                    <Route path="/addRoute" component={AddRoutePanel} />
+                    <Route path="/createRoute" component={CreateRoutePanel} />
+                    <Route path="/loadRoute" component={LoadRoutePanel} />
+                    <Route path="/shareRoute" component={ShareRoutePanel} />
+                    <Route path="/sharedRoutes" component={SharedRoutesPanel} />
+                    <Route path="/friends" component={FriendsPanel} />
+                    <Route path="/profile" component={ProfilePanel} />
+                    <Route path="/notifications" component={NotificationsPanel} />
                 </div>
             </Switch>
         </nav>
