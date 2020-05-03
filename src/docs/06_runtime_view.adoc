@@ -1,12 +1,14 @@
 [[section-runtime-view]]
 == Runtime View
 .LOG IN
-* 1. When we open the application we will see a place to introduce the personal ID and the password. Introduce it and press the botton 'OK'.
-* 2. Later, our application will ask the server to approve the login request. 
-* 3. When the server accepts, the users will have access to their routes and friends.
-
+* 1. When we open our application first we will see a place to introduce the provider or the WebID we want to log in with. 
 image::loginwebid.png[Login WebId]
 image::loginprovider.png[Login Provider]
+* 2. After pressing the button "Log in" we will see a place to introduce the personal ID and the password. Introduce it and press the botton 'OK'.
+* 3. Later, our application will ask the server to approve the login request. 
+* 4. When the server accepts, the users will have access to their routes and friends.
+
+
 
 .ADD ROUTE
 * 1. We click on Add route, which is in the NavBar.
