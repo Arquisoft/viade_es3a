@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { TileLayer, Map, GeoJSON, Marker, Polyline } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -32,31 +32,49 @@ const styles = {
     }
 };
 
-const ShowMap = (props) => {
 
-    return (
-        <div style={styles.wrapper} id="thisMap" >
-            <Map style={styles.map} center={props.center} zoom={props.zoom}  >
-                <TileLayer url={props.url} />
-            </Map>
-        </div>
-    );
-};
+class ShowMap extends React.Component{
+
+    constructor() {
+        super();
+        this.state = {
+            center: [43.38, -5.80],
+            zoom: 12,
+            url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            geoj: ""
+        };
+        window.mapsComponent = this;
+        this.geoJsonLayer = React.createRef();
+      }
+    reloa(centers, zooms, geojs) {
+        window.mapsComponent.setState({
+            center: centers,
+            zoom: zooms,
+            url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            geoj: geojs
+        });
+      }
+    render(){
+        return (
+            <div style={styles.wrapper} id="thisMap" >
+                <Map style={styles.map} center={this.state.center} zoom={this.state.zoom}  >
+                    <TileLayer url={this.state.url} />
+                    <GeoJSON key={this.state.geoj.toString()}
+                        pointToLayer={pointToLayer}
+                        data={this.state.geoj}
+                />
+                </Map>
+            </div>
+        );
+    }
+}
 
 export function updateMap(route, name) {
     let center = [43.38, -5.80];
     let aa = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-    let com = <div style={styles.wrapper} id={name}>
-        <Map style={styles.map} center={center} zoom="8">
-            <TileLayer url={aa} />
-
-        </Map>
-    </div>;
-    ReactDOM.render(com, document.getElementById("jeje"));
-
 
     let parseR = JSON.parse(route);
-
+    
     let firstPoint1;
     let zoomUp;
     //1era opcion
@@ -83,22 +101,16 @@ export function updateMap(route, name) {
         zoomUp = 11;
     }
 
-    com = <div style={styles.wrapper} id={name}>
-        <Map style={styles.map} center={center} zoom={zoomUp} >
-            <TileLayer url={aa} />
-            <GeoJSON
-                data={parseR}
-                pointToLayer={pointToLayer}
-            />
-        </Map>
-    </div>;
-    ReactDOM.render(com, document.getElementById("jeje"));
+    window.mapsComponent.reloa(center,zoomUp,"");
+    window.mapsComponent.reloa(center,zoomUp,parseR);
+
 }
 
 ShowMap.defaultProps = {
     center: [43.38, -5.80],
     zoom: 12,
-    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    geoj: ""
 };
 
 
