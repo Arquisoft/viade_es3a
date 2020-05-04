@@ -48,11 +48,11 @@ test("Render component not crashing.", () => {
     // getByTestId("friends").click();
 
     // Iconos
-    expect(getByTestId("iconAddRoute")).toBeInTheDocument();
+    expect(getByTestId("iconMyRoutes")).toBeInTheDocument();
     expect(getByTestId("iconRoutes")).toBeInTheDocument();
     // expect(getByTestId("iconMyRoutes")).toBeInTheDocument();
     // expect(getByTestId("iconCreateRoute")).toBeInTheDocument();
-    expect(getByTestId("iconShareRoutes")).toBeInTheDocument();
+    expect(getByTestId("iconMyFriends")).toBeInTheDocument();
     expect(getByTestId("iconProfile")).toBeInTheDocument();
     expect(getByTestId("iconFriends")).toBeInTheDocument();
     // expect(getByTestId("iconMyFriends")).toBeInTheDocument();
