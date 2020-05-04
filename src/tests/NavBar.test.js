@@ -25,8 +25,8 @@ test("Render component not crashing.", () => {
     expect(getByTestId("logo")).toBeInTheDocument();
     getByTestId("logo").click();
 
-    expect(getByTestId("add")).toBeInTheDocument();
-    getByTestId("add").click();
+    expect(getByTestId("load")).toBeInTheDocument();
+    getByTestId("load").click();
 
     expect(getByTestId("dropdownItemRoutes")).toBeInTheDocument();
     getByTestId("dropdownItemRoutes").click(); 
