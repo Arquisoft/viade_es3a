@@ -35,7 +35,7 @@ const NavBar = () => {
                 <BackupOutlinedIcon className="icon" data-testid="iconAddRoute" />
                 <Nav.Link as={Link} to="/addRoute" className="optionL" data-testid="add">Add Route</Nav.Link>
               </NavDropdown.Item>
-              <NavDropdown.Item href="#/createRoute" className="dropdown">
+              <NavDropdown.Item href="#/createRoute" className="opcionYLogo">
                 <CreateOutlinedIcon className="icon" data-testid="iconCreateRoute" />
                 <Nav.Link as={Link} to="/createRoute" className="optionL" data-testid="share">Create a route</Nav.Link>
               </NavDropdown.Item>
@@ -54,7 +54,7 @@ const NavBar = () => {
                 <ShareIcon className="icon" data-testid="iconShareRoutes" />
                 <Nav.Link as={Link} to="/shareRoute" className="optionL" data-testid="share">Share routes</Nav.Link>
               </NavDropdown.Item>
-              <NavDropdown.Item href="#/SharedRoutes" className="dropdown">
+              <NavDropdown.Item href="#/SharedRoutes" className="opcionYLogo">
                 <PeopleAltOutlinedIcon className="icon" data-testid="iconFriendsRoutes" />
                 <Nav.Link as={Link} to="/SharedRoutes" className="optionL" data-testid="friendsRoutes">Friend's Routes</Nav.Link>
               </NavDropdown.Item>
