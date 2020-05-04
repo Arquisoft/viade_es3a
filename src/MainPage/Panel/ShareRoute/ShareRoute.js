@@ -51,24 +51,7 @@ async function loadRoutes(url, setFolders) {
     setFolders(folder.folders);
 }
 
-async function loadRoute(urlCarptetaRuta, setSelected) {
 
-    let folder = await fileClien.readFolder(urlCarptetaRuta);
-    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
-    let images = await loadFile(urlCarptetaRuta, "photo/img");
-    let videos = await loadFile(urlCarptetaRuta, "video/vid");
-
-    await showRoute(urlCarptetaRuta);
-
-
-    setSelected({
-        name: folder.name,
-        description: folderDesc,
-        images: images,
-        videos: videos,
-        url: folder.url
-    });
-}
 
 async function enseñaAmigos(source, target, name) {
 
@@ -216,7 +199,7 @@ const LoadRoute = () => {
                                 var nombre = arrayUrl[arrayUrl.length - 2].split("%20").join(" ");
                                 return (
                                     <div key={"folder_" + i} className="optionShare" id="optionShare">
-                                        <a role="button" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected)}>
+                                        <a role="button" class={"lista"} onClick={() => loadRoute(urlArchivo, setSelected, setLoading)}>
                                             {nombre}
                                             <span class="hyperspan"></span>
                                         </a>
@@ -251,7 +234,26 @@ const LoadRoute = () => {
         </React.Fragment>
     );
 };
+async function loadRoute(urlCarptetaRuta, setSelected, setLoading) {
+    setLoading(true);
 
+    let folder = await fileClien.readFolder(urlCarptetaRuta);
+    let folderDesc = await fileClien.readFile(urlCarptetaRuta + "description");
+    let images = await loadFile(urlCarptetaRuta, "photo/img");
+    let videos = await loadFile(urlCarptetaRuta, "video/vid");
+
+    await showRoute(urlCarptetaRuta);
+    setLoading(false);
+
+    setSelected({
+        name: folder.name,
+        description: folderDesc,
+        images: images,
+        videos: videos,
+        url: folder.url
+    });
+
+}
 const OneFriend = (props) => {
     return (
         <div class="divAmigoShare">
