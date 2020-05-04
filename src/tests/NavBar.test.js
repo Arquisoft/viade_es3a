@@ -32,8 +32,8 @@ test("Render component not crashing.", () => {
     getByTestId("dropdownItemRoutes").click(); 
     // await expect(getByTestId("load")).toBeInTheDocument(); 
 
-    expect(getByTestId("share")).toBeInTheDocument();
-    getByTestId("share").click();
+    expect(getByTestId("friends")).toBeInTheDocument();
+    getByTestId("friends").click();
 
     // expect(getByTestId("friendsRoutes")).toBeInTheDocument();
     // getByTestId("friendsRoutes").click();
