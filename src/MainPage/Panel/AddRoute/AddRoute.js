@@ -38,7 +38,7 @@ const Upload = ({ setFile, file }) => {
                 <span class="input-group-text" id="inputGroupFileAddon01" data-testid="upload">Upload</span>
             </div>
             <div class="custom-file">
-                <input value={null} type="file" class="custom-file-input" id="route" accept=".geojson"
+                <input value={null} type="file" class="custom-file-input" id="route" accept=".geojson,.kml,.gpx"
                     aria-describedby="inputGroupFileAddon01" onChange={changeName} required data-testid="inputGeo" />
                 <label class="custom-file-label" for="inputGroupFile01" id="labelRoute" data-testid="labelRoute">{filename}</label>
 
@@ -163,11 +163,11 @@ const createFolder = async (folder, route, name, description, photo, video, setF
             for (k = 0; video !== null && k < video.length; k++) {
                 await fileClien.createFile(destination + "/" + "video" + "/vid" + (k + 1), video[k], "video");
             }
-
+            
 
             var file = fileList[0];
-            const fileURl = destination + "/" + nameValue + ".geojson";
-            fileClien.putFile(fileURl, file, file.type);
+            const fileURl = destination + "/" + nameValue + "." + (route.name.split(".")[1]).toLowerCase();
+            await fileClien.putFile(fileURl, file, file.type);
 
             alert("Your route has been added to the pod!!");
             //clean all fields

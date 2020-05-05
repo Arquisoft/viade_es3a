@@ -26,9 +26,21 @@ var urlfol;
 export async function showRoute(urlCarptetaRuta) {
     let folder = await fileClien.readFolder(urlCarptetaRuta);
 
-    let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson");
-
-    algo.updateMap(ruta, folder.name);
+    if( await fileClien.itemExists(urlCarptetaRuta + folder.name + ".geojson")) {
+        let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".geojson")
+        algo.updateMap(ruta, folder.name, 0);
+    }
+    else if( await fileClien.itemExists(urlCarptetaRuta + folder.name + ".gpx")) {
+        let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".gpx")
+        algo.updateMap(ruta, folder.name, 1);
+    }
+    else if( await fileClien.itemExists(urlCarptetaRuta + folder.name + ".kml")) {
+        let ruta = await fileClien.readFile(urlCarptetaRuta + folder.name + ".kml")
+        algo.updateMap(ruta, folder.name, 2);
+    }
+    else{
+        alert("This file is not permited");
+    }
 }
 
 async function loadFile(urlCarptetaRuta, route) {

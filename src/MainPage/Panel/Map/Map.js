@@ -5,6 +5,8 @@ import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
 
+import toGeoJSON from "@mapbox/togeojson";
+
 import createRoute from "../CreateRoute/CreateRoute";
 
 const geojsonMarkerOptions = {
@@ -33,7 +35,7 @@ const styles = {
 };
 
 
-class ShowMap extends React.Component{
+class ShowMap extends React.Component {
 
     constructor() {
         super();
@@ -45,7 +47,7 @@ class ShowMap extends React.Component{
         };
         window.mapsComponent = this;
         this.geoJsonLayer = React.createRef();
-      }
+    }
     reloa(centers, zooms, geojs) {
         window.mapsComponent.setState({
             center: centers,
@@ -53,8 +55,8 @@ class ShowMap extends React.Component{
             url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             geoj: geojs
         });
-      }
-    render(){
+    }
+    render() {
         return (
             <div style={styles.wrapper} id="thisMap" >
                 <Map style={styles.map} center={this.state.center} zoom={this.state.zoom}  >
@@ -62,48 +64,61 @@ class ShowMap extends React.Component{
                     <GeoJSON key={this.state.geoj.toString()}
                         pointToLayer={pointToLayer}
                         data={this.state.geoj}
-                />
+                    />
                 </Map>
             </div>
         );
     }
 }
 
-export function updateMap(route, name) {
+export function updateMap(route, name, num) {
     let center = [43.38, -5.80];
     let aa = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 
-    let parseR = JSON.parse(route);
-    
-    let firstPoint1;
-    let zoomUp;
-    //1era opcion
-    if (parseR.geometry !== undefined) {
-        firstPoint1 = parseR.geometry.coordinates[0];
-        //Darle la vuelta
-        center = [
-            firstPoint1[1],
-            firstPoint1[0]
-        ];
-        zoomUp = 14;
-    }
-    //2a opcion
-    else if (parseR.features[0] !== undefined && parseR.features[0].geometry.type !== "Point") {
-        firstPoint1 = parseR.features[0].geometry.coordinates[0];
-        //Darle la vuelta
-        center = [
-            firstPoint1[1],
-            firstPoint1[0]
-        ];
-        zoomUp = 14;
-    } else {
-        center = [43.5878945, -5.80789456];
-        zoomUp = 11;
-    }
+    try {
+        if (num == 0)
+            var parseR = JSON.parse(route);
+        else if (num == 1) {
 
-    window.mapsComponent.reloa(center,zoomUp,"");
-    window.mapsComponent.reloa(center,zoomUp,parseR);
+            var xmlDoc = (new DOMParser()).parseFromString(route, "text/xml");
+            var parseR = toGeoJSON.gpx(xmlDoc);
+        }
+        else {
+            var xmlDoc = (new DOMParser()).parseFromString(route, "text/xml");
+            var parseR = toGeoJSON.kml(xmlDoc);
+        }
 
+        let firstPoint1;
+        let zoomUp;
+        //1era opcion
+        if (parseR.geometry !== undefined) {
+            firstPoint1 = parseR.geometry.coordinates[0];
+            //Darle la vuelta
+            center = [
+                firstPoint1[1],
+                firstPoint1[0]
+            ];
+            zoomUp = 14;
+        }
+        //2a opcion
+        else if (parseR.features[0] !== undefined && parseR.features[0].geometry.type !== "Point") {
+            firstPoint1 = parseR.features[0].geometry.coordinates[0];
+            //Darle la vuelta
+            center = [
+                firstPoint1[1],
+                firstPoint1[0]
+            ];
+            zoomUp = 14;
+        } else {
+            center = [43.5878945, -5.80789456];
+            zoomUp = 11;
+        }
+        window.mapsComponent.reloa(center, zoomUp, "");
+        window.mapsComponent.reloa(center, zoomUp, parseR);
+    }
+    catch (error) {
+        alert("The file is bad")
+    }
 }
 
 ShowMap.defaultProps = {
