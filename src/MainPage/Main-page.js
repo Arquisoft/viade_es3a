@@ -7,6 +7,9 @@ import * as solidAuth from "solid-auth-client";
 import fileClient from "solid-file-client";
 import { useWebId } from "@solid/react";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
 const auth = require("solid-auth-client");
 
@@ -45,7 +48,13 @@ async function creates() {
       "n0:default rou:;\n" +
       "n0:mode n0:Control, n0:Read, n0:Write.";
 
-    await fileClien.createFile(folderI + "/.acl", content, "text/turtle");
+    try{
+      await fileClien.createFile(folderI + "/.acl", content, "text/turtle");
+    } catch(error){
+      toast.warning("You must have control permissions enabled to use the app", {
+        position: toast.POSITION.BOTTOM_LEFT
+     } );
+    }
     await fileClien.createFolder(folderN);
   }
 }
@@ -57,6 +66,7 @@ const MainPage = () => {
     <div>
       <NavBar />
       <Panel />
+       <ToastContainer />
     </div>
   );
 };
