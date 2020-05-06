@@ -29,10 +29,10 @@ const NavBar = () => {
         <Nav className="mr-auto">
 
           <div className="opcionYLogo">
-            <MapOutlinedIcon className="icon" data-testid="iconRoutes" />
-            <NavDropdown title="Routes" className="dropdown" id="dropdownItemL" data-testid="dropdownItemRoutes">
+            <BackupOutlinedIcon className="icon" data-testid="iconRoutes" />
+            <NavDropdown title="Upload route" className="dropdown" id="dropdownItemL" data-testid="dropdownItemRoutes">
               <NavDropdown.Item href="#/addRoute" className="opcionYLogo">
-                <BackupOutlinedIcon className="icon" data-testid="iconAddRoute" />
+                <MapOutlinedIcon className="icon" data-testid="iconAddRoute" />
                 <Nav.Link as={Link} to="/addRoute" className="optionL" data-testid="add">Add Route</Nav.Link>
               </NavDropdown.Item>
               <NavDropdown.Item href="#/createRoute" className="opcionYLogo">
@@ -48,7 +48,7 @@ const NavBar = () => {
           </NavItem>
 
           <div className="opcionYLogo">
-            <PeopleAltOutlinedIcon className="icon" data-testid="iconFriends" />
+            <ShareIcon className="icon" data-testid="iconFriends" />
             <NavDropdown title="Share" className="dropdown" id="dropdownItemL" data-testid="dropdownItemFriends">
               <NavDropdown.Item href="#/shareRoute" className="opcionYLogo">
                 <ShareIcon className="icon" data-testid="iconShareRoutes" />
