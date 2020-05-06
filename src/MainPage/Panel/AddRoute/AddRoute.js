@@ -34,7 +34,7 @@ const Upload = ({ setFile, file }) => {
     return (
         <div class="input-group">
             <div class="input-group-prepend">
-                <label for="exampleRoute" class="labelRoute" data-testid="route">Route (.geojson):</label><br></br>
+                <label for="exampleRoute" class="labelRoute" data-testid="route">Route (GeoJson/GPX/KML):</label><br></br>
                 <span class="input-group-text" id="inputGroupFileAddon01" data-testid="upload">Upload</span>
             </div>
             <div class="custom-file">
