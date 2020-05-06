@@ -37,10 +37,10 @@ test("Buttons with correct links", () => {
     expect(enlaceSolid.getAttribute("href")).toMatch("solid.community/profile/card#me"); */
 
     const linkFriends = profile.getByText("Show friends");
-    expect(linkFriends.getAttribute("href")).toEqual("/viade_es3a/friends");
+    expect(linkFriends.getAttribute("href")).toEqual("/friends");
 
     const linkRoutes = profile.getByText("Show routes");
-    expect(linkRoutes.getAttribute("href")).toEqual("/viade_es3a/loadRoute");
+    expect(linkRoutes.getAttribute("href")).toEqual("/loadRoute");
 
 });
 
