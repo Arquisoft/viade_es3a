@@ -4,6 +4,9 @@ import fileClient from "solid-file-client";
 import * as solidAuth from "solid-auth-client";
 import { CreateRoute, recarga } from "./CreateRoute";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 class UploadRouteToPod {
 
     constructor() {

@@ -15,6 +15,9 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { Loading } from "../../../Loading";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const auth = require("solid-auth-client");
 
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
@@ -61,6 +64,7 @@ const Data = () => {
 
     const url = user.split("profile/card#me")[0] + "/private/routes3a";
 
+    
     return (
         <div>
             <Loading loading={loading} />
@@ -96,6 +100,7 @@ const Data = () => {
                 <button data-testid="btnenviar" onClick={() => createFolder(url, file, name, description, image, video, setFile, setName, setDescription, setImage, setVideo, setError, setLoading)} class="btn btn-info" >Add route
                 </button>
             </center>
+            <ToastContainer data-testid="msjerror" />
         </div>
 
     );
@@ -121,7 +126,9 @@ const AddRoute = () => {
 const createFolder = async (folder, route, name, description, photo, video, setFile, setName, setDescription, setImage, setVideo, setError, setLoading) => {
 
     if (name === "" || route === null) {
-        setError("Name or route is empty!");
+        toast.error("Name or route is empty!", {
+            position: toast.POSITION.BOTTOM_LEFT
+        } );
     }
     else {
         setError(null);
@@ -169,7 +176,11 @@ const createFolder = async (folder, route, name, description, photo, video, setF
             const fileURl = destination + "/" + nameValue + "." + (route.name.split(".")[1]).toLowerCase();
             await fileClien.putFile(fileURl, file, file.type);
 
-            alert("Your route has been added to the pod!!");
+            // alert("Your route has been added to the pod!!");
+            toast.info("Your route has been added to the pod!!", {
+                position: toast.POSITION.BOTTOM_LEFT
+            } );
+
             //clean all fields
             setName("");
             setDescription("");
@@ -182,7 +193,10 @@ const createFolder = async (folder, route, name, description, photo, video, setF
             document.getElementById("route").value = null;
         }
         else {
-            alert("Route title already used, use another title");
+            toast.error("Route title already used, use another title", {
+                position: toast.POSITION.BOTTOM_LEFT
+            } );
+         
         }
         setLoading(false);
 
