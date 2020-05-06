@@ -2,10 +2,11 @@ import React from "react";
 import auth from "solid-auth-client";
 import fileClient from "solid-file-client";
 import * as solidAuth from "solid-auth-client";
-import { CreateRoute, recarga } from "./CreateRoute";
+import { CreateRoute, recarga, sleep } from "./CreateRoute";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SelectInput from "@material-ui/core/Select/SelectInput";
 
 class UploadRouteToPod {
 
@@ -72,9 +73,12 @@ class UploadRouteToPod {
                 var routed = JSON.stringify(route);
                 await fileClien.createFile(destination + "/" + name + ".geojson", routed, "text/json");
 
-                alert("Your route has been added to the pod!!");
+                
+                toast.info("Your route has been added to the pod!!", {
+                    position: toast.POSITION.BOTTOM_LEFT
+                } );
 
-
+                await sleep(5000);
                 recarga();
                 document.getElementById("name").value = "";
                 document.getElementById("description").value = "";
@@ -82,7 +86,9 @@ class UploadRouteToPod {
                 document.getElementById("video").value = null;
 
             } else {
-                alert("Route title already used, use another title");
+                toast.error("Route title already used, use another title", {
+                    position: toast.POSITION.BOTTOM_LEFT
+                } );
             }
 
         }

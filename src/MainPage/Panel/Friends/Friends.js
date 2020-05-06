@@ -8,6 +8,8 @@ import FileClient from "solid-file-client";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import DocumentTitle from "react-document-title";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import auth from "solid-auth-client";
 const { default: data } = require("@solid/query-ldflex");
@@ -38,6 +40,10 @@ const friendAlreadyAdded = async (friendWebId, webId) => {
   return false;
 };
 
+async function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 const addFriend = async (friendWebId, userWebId) => {
 
   const user = data[userWebId]; //sacamos nuestra informacion
@@ -46,16 +52,30 @@ const addFriend = async (friendWebId, userWebId) => {
       //comprobamos que no pasamos un campo vacio
       if (await friendAlreadyAdded(friendWebId, userWebId)) {
         //notificamos si el amigo estaba añadido
-        alert("Friend already added");
+        toast.error("Friend already added", {
+          position: toast.POSITION.BOTTOM_LEFT,
+          autoClose: 5000
+        } );
       } else {
         await user.knows.add(data[friendWebId]); //añadimos el amigo
+        toast.info("Your friend has been added", {
+          position: toast.POSITION.BOTTOM_LEFT,
+          autoClose: 5000
+        } );
+        await sleep(5000);
         reload();
       }
     } else {
-      alert("Error");
+      toast.error("Empty string", {
+        position: toast.POSITION.BOTTOM_LEFT,
+        autoClose: 5000
+      } );
     }
   } else {
-    alert("Error 2");
+    toast.error("Invalid WebId ", {
+      position: toast.POSITION.BOTTOM_LEFT,
+      autoClose: 5000
+    } );
   }
 };
 
@@ -68,18 +88,30 @@ const deleteFriend = async (friend, userWebId) => {
   if (await isWebIdValid(friendWebId)) {
     if (friendWebId.localeCompare("") !== 0) {
       if (await !friendAlreadyAdded(friendWebId, userWebId)) {
-
-        alert("An error occurred when deleting the friend (maybe it was previously deleted)");
+        toast.error("An error occurred when deleting the friend (maybe it was previously deleted)", {
+          position: toast.POSITION.BOTTOM_LEFT,
+          autoClose: 5000
+      } );
       } else {
         await user.knows.delete(data[friendWebId]); //añadimos el amigo
-        alert("user will be deleted from your friends");
+        toast.info("User will be deleted from your friends", {
+          position: toast.POSITION.BOTTOM_LEFT,
+          autoClose: 5000
+      } );
+      await sleep(5000);
         reload();
       }
     } else {
-      alert("Error");
+      toast.error("Empty string", {
+        position: toast.POSITION.BOTTOM_LEFT,
+        autoClose: 5000
+    } );
     }
   } else {
-    alert("Error 2");
+    toast.error("Invalid WebId ", {
+      position: toast.POSITION.BOTTOM_LEFT,
+      autoClose: 5000
+  } );
   }
 
 };
@@ -128,6 +160,8 @@ const Friends = () => {
             </p>
           </li>}
         </List>
+        
+        <ToastContainer />
       </div>
     </DocumentTitle>
   );

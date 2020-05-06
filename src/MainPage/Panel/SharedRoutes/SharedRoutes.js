@@ -10,7 +10,12 @@ import * as algo from "../Map/Map";
 import Slider from "../LoadRoute/Slider";
 import { Loading } from "../../../Loading";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const fileClien = new fileClient(solidAuth, { enableLogging: true });
+
+
 var urlRutas = [];
 
 var images = [];
@@ -33,7 +38,9 @@ export async function showRoute(urlCarptetaRuta) {
         algo.updateMap(ruta, folder.name, 2);
     }
     else{
-        alert("This file is not permited");
+        toast.error("This file is not permited", {
+            position: toast.POSITION.BOTTOM_LEFT
+        });
     }
 
 }
@@ -136,6 +143,7 @@ const SharedRoutes = () => {
                         </div>
                     </div>
                 </div>
+                <ToastContainer />
             </div>
         </DocumentTitle>
         </React.Fragment>

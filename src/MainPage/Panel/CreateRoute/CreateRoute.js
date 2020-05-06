@@ -9,6 +9,8 @@ import { useWebId } from "@solid/react";
 import ReactDOM from "react-dom";
 import UploadRouteToPod from "./UploadRouteToPod";
 import { Loading } from "../../../Loading";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -124,9 +126,13 @@ class CreateRoute extends React.Component {
     var { videos } = this.state;
 
     if (name === "") {
-      alert("Name is empty! Please, fill something to save the route");
-    } else if (markers.lenght <= 1) {
-      alert("There is not a route created. Please, click on the map to draw one");
+      toast.error("Name is empty! Please, fill something to save the route", {
+        position: toast.POSITION.BOTTOM_LEFT
+      } );
+    } else if (markers.length <= 1) {
+      toast.error("There is not a route created. Please, click on the map to draw one", {
+        position: toast.POSITION.BOTTOM_LEFT
+      } );
     } else {
 
       this.setState(prevState => ({
@@ -193,6 +199,7 @@ class CreateRoute extends React.Component {
                 </MapStyle>
               </div>
             </div>
+            <ToastContainer />
           </div>
         </DocumentTitle>
       </React.Fragment>
@@ -202,5 +209,9 @@ class CreateRoute extends React.Component {
 }
 export function recarga() {
   window.createRouteComponent.reloa();
+}
+
+export async function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 export default CreateRoute;

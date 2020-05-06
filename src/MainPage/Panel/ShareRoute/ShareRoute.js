@@ -7,6 +7,8 @@ import fileClient from "solid-file-client";
 import DocumentTitle from "react-document-title";
 
 import * as algo from "../Map/Map";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Slider from "../LoadRoute/Slider";
 import { Loading } from "../../../Loading";
@@ -52,7 +54,10 @@ export async function showRoute(urlCarptetaRuta) {
         algo.updateMap(ruta, folder.name, 2);
     }
     else{
-        alert("This file is not permited");
+        toast.info("This file is not permited", {
+            position: toast.POSITION.BOTTOM_LEFT,
+            autoClose: 5000
+        } );
     }
 }
 
@@ -116,7 +121,6 @@ async function enseñaAmigos(source, target, name) {
 
         await fileClien.postFile(urlTargetNotifications + "/" + name + "->" + userso, "", "text/plain");
 
-        alert("Your route has been shared!");
     }
     else {
         //alert("Your route was already shared with this person!");
@@ -136,14 +140,23 @@ async function share(setLoading) {
         }
         setLoading(false);
         if (fri) {
-            alert("Your route has been shared!");
+            toast.info("Your route has been shared!", {
+                position: toast.POSITION.BOTTOM_LEFT,
+                autoClose: 5000
+            } );
         }
         else {
-            alert("You have to select at least a friend!");
+            toast.error("You have to select at least a friend!", {
+                position: toast.POSITION.BOTTOM_LEFT,
+                autoClose: 5000
+            });
         }
     }
     else {
-        alert("You have to select a route!");
+        toast.error("You have to select a route!", {
+            position: toast.POSITION.BOTTOM_LEFT,
+            autoClose: 5000
+        });
     }
 }
 
@@ -240,6 +253,7 @@ const LoadRoute = () => {
                         </div>
                         <button className="btn btn-light" id="botonin" onClick={() => share(setLoading)}>Share</button>
                     </div>
+                    <ToastContainer />
                 </div>
             </DocumentTitle>
         </React.Fragment>

@@ -11,6 +11,9 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
 import { Loading } from "../../../Loading";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as algo from "../Map/Map";
 
 import Slider from "./Slider";
@@ -39,7 +42,9 @@ export async function showRoute(urlCarptetaRuta) {
         algo.updateMap(ruta, folder.name, 2);
     }
     else{
-        alert("This file is not permited");
+        toast.error("This file is not permited", {
+            position: toast.POSITION.BOTTOM_LEFT
+        } );     
     }
 }
 
@@ -81,6 +86,11 @@ async function loadRoute(urlCarptetaRuta, setSelected,setLoading) {
     setLoading(false);
     
 }
+
+async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
 async function editRoute(selected, description, images, videos) {
     if (description != "" || images.length != 0 || videos.length != 0) {
 
@@ -98,21 +108,32 @@ async function editRoute(selected, description, images, videos) {
         document.getElementById("photo2").value = [];
         document.getElementById("video2").value = [];
         document.getElementById("description2").value = "";
-        alert("Route edited!!!");
+        toast.info("Route edited!!", {
+            position: toast.POSITION.BOTTOM_LEFT,
+            autoClose: 5000
+        } ); 
+        await sleep(5000);
         window.location.reload();
+        
     }
     else {
-        alert("All the fields are empty!!!");
+        toast.error("All the fields are empty!!!", {
+            position: toast.POSITION.BOTTOM_LEFT
+        } );
     }
 }
 async function deleteRoute(selected,setLoading) {
     if (fileClien.itemExists(selected.url)) {
         setLoading(true);
-        alert("Route will be deleted, please wait a few seconds");        
+        toast.info("Route will be deleted, please wait a few seconds", {
+            position: toast.POSITION.BOTTOM_LEFT
+        } );      
         await fileClien.deleteFolder(selected.url);
     }
     else {
-        alert("Route can`t be deleted");
+        toast.error("Route can't be deleted", {
+            position: toast.POSITION.BOTTOM_LEFT
+        });
     }
     setLoading(false);
     window.location.reload();
@@ -214,6 +235,8 @@ const LoadRoute = () => {
                         <button className="btn btn-light" id="botonEdi" onClick={onClick}>Edit  <EditTwoToneIcon /></button>
                         <button className="btn btn-light" id="botonDel" onClick={() => deleteRoute(selected, setLoading)}>Delete <DeleteIcon /></button>
                     </div>
+                    
+            <ToastContainer />
                 </div>
             </div>
         </DocumentTitle>

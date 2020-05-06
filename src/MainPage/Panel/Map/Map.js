@@ -4,6 +4,8 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import toGeoJSON from "@mapbox/togeojson";
 
@@ -66,6 +68,7 @@ class ShowMap extends React.Component {
                         data={this.state.geoj}
                     />
                 </Map>
+                <ToastContainer />
             </div>
         );
     }
@@ -118,7 +121,9 @@ export function updateMap(route, name, num) {
         window.mapsComponent.reloa(center, zoomUp, parseR);
     }
     catch (error) {
-        alert("The file is bad")
+        toast.error("Invalid file", {
+            position: toast.POSITION.BOTTOM_LEFT
+        });
     }
 }
 
