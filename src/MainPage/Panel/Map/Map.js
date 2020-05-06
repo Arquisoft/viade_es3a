@@ -76,8 +76,9 @@ export function updateMap(route, name, num) {
     let aa = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 
     try {
-        if (num == 0)
+        if (num == 0) {
             var parseR = JSON.parse(route);
+        }
         else if (num == 1) {
 
             var xmlDoc = (new DOMParser()).parseFromString(route, "text/xml");
