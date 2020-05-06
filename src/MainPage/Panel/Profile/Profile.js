@@ -77,7 +77,7 @@ const Profile = () => {
                             <div className="titleExtra" data-testid="myFriendsProfile">My friends</div>
                             <div className="data" data-testid="friendsLengthProfile">{friends.length}</div>
                             {/* /viade_es3a/friends */}
-                            <Link to="/viade_es3a/friends" className="buttonExtra" data-testid="buttonFriendsProfile">Show friends</Link>
+                            <Link to="/friends" className="buttonExtra" data-testid="buttonFriendsProfile">Show friends</Link>
                         </div>
                     </div>
                     <div className="hueco"></div>
@@ -86,7 +86,7 @@ const Profile = () => {
                             <div className="titleExtra" data-testid="myRoutesProfile">My routes</div>
                             <div className="data" data-testid="routesLengthProfile">{routes}</div>
                             {/* /viade_es3a/loadRoute */}
-                            <Link to="/viade_es3a/loadRoute" className="buttonExtra" data-testid="buttonRoutesProfile">Show routes</Link>
+                            <Link to="/loadRoute" className="buttonExtra" data-testid="buttonRoutesProfile">Show routes</Link>
                         </div>
                     </div>
                 </div>
