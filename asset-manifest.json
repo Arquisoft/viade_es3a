@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/viade_es3a/static/css/main.3ae21119.chunk.css",
+    "main.js": "/viade_es3a/static/js/main.02325f9d.chunk.js",
+    "main.js.map": "/viade_es3a/static/js/main.02325f9d.chunk.js.map",
+    "runtime-main.js": "/viade_es3a/static/js/runtime-main.b63f3afa.js",
+    "runtime-main.js.map": "/viade_es3a/static/js/runtime-main.b63f3afa.js.map",
+    "static/css/2.eab057af.chunk.css": "/viade_es3a/static/css/2.eab057af.chunk.css",
+    "static/js/2.bac6b0f0.chunk.js": "/viade_es3a/static/js/2.bac6b0f0.chunk.js",
+    "static/js/2.bac6b0f0.chunk.js.map": "/viade_es3a/static/js/2.bac6b0f0.chunk.js.map",
+    "index.html": "/viade_es3a/index.html",
+    "precache-manifest.b647ba1c954467a0aada53333cd18fad.js": "/viade_es3a/precache-manifest.b647ba1c954467a0aada53333cd18fad.js",
+    "service-worker.js": "/viade_es3a/service-worker.js",
+    "static/css/2.eab057af.chunk.css.map": "/viade_es3a/static/css/2.eab057af.chunk.css.map",
+    "static/css/main.3ae21119.chunk.css.map": "/viade_es3a/static/css/main.3ae21119.chunk.css.map",
+    "static/js/2.bac6b0f0.chunk.js.LICENSE.txt": "/viade_es3a/static/js/2.bac6b0f0.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/viade_es3a/static/media/logo.52b12b95.svg",
+    "static/media/logo_viade_es3a.jpg": "/viade_es3a/static/media/logo_viade_es3a.b4ce7fd4.jpg",
+    "static/media/profile.6e41d6fb.svg": "/viade_es3a/static/media/profile.6e41d6fb.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b63f3afa.js",
+    "static/css/2.eab057af.chunk.css",
+    "static/js/2.bac6b0f0.chunk.js",
+    "static/css/main.3ae21119.chunk.css",
+    "static/js/main.02325f9d.chunk.js"
+  ]
+}
